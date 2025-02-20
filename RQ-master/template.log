@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.8.5)  20 FEB 2025 14:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.8.5)  20 FEB 2025 16:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**h:/universidad/3º/REACTORES/2025/RQ/apuntes/template.tex
-(h:/universidad/3º/REACTORES/2025/RQ/apuntes/template.tex
+**h:/universidad/3º/REACTORES/2025/RQ/Reactores-Quimicos/RQ-master/template.tex
+(h:/universidad/3º/REACTORES/2025/RQ/Reactores-Quimicos/RQ-master/template.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
 (G:\Latex\tex/latex/base\report.cls
@@ -1100,17 +1100,7 @@ Package: simplekv 2023/10/02 v0.2c Simple keyval package (CT)
 \CF_substtoks=\toks55
 )
 Package: chemfig 2023/12/28 v1.66 Draw molecule with an easy syntax (CT)
-) (template.aux
-
-LaTeX Warning: Label `n:1' multiply defined.
-
-
-LaTeX Warning: Label `n:2' multiply defined.
-
-
-LaTeX Warning: Label `n:3' multiply defined.
-
-)
+) (template.aux)
 \openout1 = `template.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 13.
@@ -1333,7 +1323,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
 
-<RMP.PNG, id=102, 1312.905pt x 402.90524pt>
+<RMP.PNG, id=96, 1312.905pt x 402.90524pt>
 File: RMP.PNG Graphic file (type png)
 <use RMP.PNG>
 Package pdftex.def Info: RMP.PNG  used on input line 68.
@@ -1343,7 +1333,7 @@ Overfull \hbox (28.45274pt too wide) in paragraph at lines 68--69
 [][] 
  []
 
-<RFP.png, id=104, 615.4995pt x 316.18124pt>
+<RFP.png, id=98, 615.4995pt x 316.18124pt>
 File: RFP.png Graphic file (type png)
 <use RFP.png>
 Package pdftex.def Info: RFP.png  used on input line 76.
@@ -1377,19 +1367,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 279--281
 
 
 [8]
-
-LaTeX Font Warning: Font shape `OT1/cmr/b/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 311.
-
-
-
-[9{G:/Latex/fonts/enc/dvips/newpx/pxb-lms.enc}]
-
-[10]
 Chapter 2.
 
 
-[11
+[9
 
 ] (template.aux)
  ***********
@@ -1404,22 +1385,19 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 38158 strings out of 473904
- 746703 string characters out of 5743485
- 1958908 words of memory out of 5000000
- 60237 multiletter control sequences out of 15000+600000
- 602803 words of font info for 161 fonts, out of 8000000 for 9000
+ 38021 strings out of 473904
+ 744693 string characters out of 5743485
+ 1953908 words of memory out of 5000000
+ 60157 multiletter control sequences out of 15000+600000
+ 589511 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 103i,12n,110p,590b,1780s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\chris\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><G:/Latex/fonts/type1/public/newpx/NewPXBMI.pfb><G:/Latex/fonts/type1/public/newpx/NewPXMI.pfb><G:/Latex/fonts/type1/public/newpx/NewPXMI_gnu.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmb10.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmbx10.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmbx7.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmbx9.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmr10.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmr17.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmr5.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmr7.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmr9.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmti10.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmtt8.pfb><G:/Latex/fonts/type1/public/newpx/pxbmiaX.pfb><G:/Latex/fonts/type1/public/newpx/pxbsys.pfb><G:/Latex/fonts/type1/public/newpx/pxmiaX.pfb><G:/Latex/fonts/type1/public/newpx/pxsys.pfb><G:/Latex/fonts/type1/public/newtx/txexs.pfb><G:/Latex/fonts/type1/public/newtx/txsym.pfb>
-Output written on template.pdf (12 pages, 441343 bytes).
+ 103i,11n,110p,611b,1749s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\chris\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><G:/Latex/fonts/type1/public/newpx/NewPXMI.pfb><G:/Latex/fonts/type1/public/newpx/NewPXMI_gnu.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmbx10.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmbx9.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmr10.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmr17.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmr5.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmr7.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmr9.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><G:/Latex/fonts/type1/public/amsfonts/cm/cmti10.pfb><G:/Latex/fonts/type1/public/newpx/pxmiaX.pfb><G:/Latex/fonts/type1/public/newpx/pxsys.pfb><G:/Latex/fonts/type1/public/newtx/txexs.pfb>
+Output written on template.pdf (10 pages, 347873 bytes).
 PDF statistics:
- 399 PDF objects out of 1000 (max. 8388607)
- 85 named destinations out of 1000 (max. 500000)
- 333 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 296 PDF objects out of 1000 (max. 8388607)
+ 48 named destinations out of 1000 (max. 500000)
+ 305 words of extra memory for PDF output out of 10000 (max. 10000000)
 
