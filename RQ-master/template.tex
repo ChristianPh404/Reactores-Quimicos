@@ -1,0 +1,373 @@
+\documentclass{report}
+
+\input{preamble} % revisar en preamble \setcounter{tocdepth}{3}
+\input{macros}
+\input{letterfonts}
+\usepackage{graphicx}
+\usepackage{chemfig}
+\usepackage{multicol}
+\title{\Huge{Reactores Quimicos}\\Teoria y ordenador}
+\author{\huge{Christian Perez hita}}
+\date{}
+
+\begin{document}
+\setcounter{tocdepth}{3}
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{contenidos}
+
+\tableofcontents
+\pagebreak
+
+\chapter{Analisis}
+\section{Caracterización de reactores}
+\dfn{ tipos de Reactores ideales}{se pueden cllasificar en funcion de: \\ $\bullet$ grado de mezcla\\$\bullet$ condiciones de operacion}	
+\noindent en funcion del grado de mezcla se clasifican en:
+\begin{itemize}
+	\item Reactores mezcla perfecta
+	\item Reactor de flujo piston
+\end{itemize}
+\par
+\noindent un reactor mezcla perfecta es aquel en el que en todos los puntos del reactor de forma axial y radial la concentracion es la misma,
+ en cambio en un reactor de flujo piston la concentracion varia en funcion de la posicion en el reactor.\\
+
+ \noindent  en funcion del intercambio de calor en:
+ \begin{itemize}
+	\item Reactores isotermicos
+	\item Reactores adiabaticos
+	\item Reactores no isotermicos-noadiabaticos
+\end{itemize}
+\noindent en funcion del regimen de operacion:
+\begin{itemize}
+	\item Reactores continuos
+	\item Reactores discontinuos
+	\item Reactores semicontinuos
+\end{itemize}
+\noindent Aunque existen tres posibles configuraciones de reactores según el régimen de operación, es importante recordar que, en el régimen continuo, transcurrido un tiempo 
+t, el sistema alcanza un estado estacionario en el cual las propiedades del reactor no varían con el tiempo (ecuaciones algebraicas).\\
+
+\noindent Esto es fundamental para el diseño del reactor. Sin embargo, para un adecuado control del proceso, es necesario realizar un estudio dinámico del reactor, analizando su comportamiento durante la puesta en marcha y ante distintos tipos de estímulos (ecuaciones diferenciales).\\
+
+\noindent De manera evidente, un reactor de flujo pistón es un reactor continuo, ya que no existe otra forma de operación para este tipo de sistema.
+\subsection{Reactores de mezcla perfecta}
+podemos encontrar 3 tipos de reactores de mezcla perfecta: 
+\begin{itemize}
+	\item Reactor de tanque agitado continuo
+	\item Reactor de tanque agitado discontinuo
+	\item Reactor semicontinuo
+\end{itemize}
+\vspace{2\baselineskip}
+\noindent el reactor de tanque agitado continuo (RCMP) es el mas comun, hay tanto una corriente de entrada como una salida\\
+
+\noindent El reactor de tanque agitado discontinuo (RDMP) es un reactor en el que se trabaja por lotes tambien conocido como reactor batch, en este tipo de reactores se carga el reactivo 
+y se deja reaccionar hasta que se obtiene el producto deseado.\\
+
+\noindent el reactor semicontinuo (RSMP) puede tener una corriente de entrada o una de salida, aunque lo mas comun es que tenga una corriente de entrada pero no de salida\\
+
+\includegraphics[width=1\textwidth]{RMP.PNG}
+
+\subsection{Reactor de flujo piston}
+\begin{raggedright}
+En el reactor flujo de piston no hay mezcla a nivel axial, por tanto vamos a tener perfiles de temperatura y concentracion en funcion de la posicion en el reactor(Z).
+por ello es necesario trabajar en estado estacionario, con dv al contrario de mezcla perfecta que siempre trabajamos con V, ademas obviamente solo se puede trabajar en continuo.
+\end{raggedright}
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{RFP.png}
+\end{center}
+
+\section{Modelizacion de reactores}
+\subsection{Modelo de mezcla perfecta}
+\begin{raggedright}
+	\vspace{1\baselineskip}
+	\noindent \textbf{Balance global en continuo:}
+	\begin{equation}
+		\frac{dM}{dt}=m_o-m_s
+	\end{equation}
+	si la masa la establecemos en funcion del volumen se puede establecer con el caudal volumetrico y densidad:
+	\begin{equation}
+		\frac{d(V\rho)}{dt}=F_o\rho_o-F_s\rho_s
+	\end{equation}
+	en el caso de trabajar en condiciones isomtermas $\rho$ es constante, y en caso de que trabajemos en un rango pequeño de temperatura podemos considerar un valor medio tal que:
+	\begin{equation}
+		\frac{dV}{dt}=F_o-F_s \xleftrightarrow{\text{V=cte}} \sum F_o=\sum F_s
+	\end{equation}
+	De forma que el caudal volumetrico de entrada coincide con el caudal volumetrico de salida.
+\end{raggedright}
+\nt{Esto solo se cumple cuando trabajamos en un reactor ideal ya que se supone mezcla perfecta,un buen sistema de agitacion que cumple las condiciones de homogeniedad y que mantenga un volumen constante.
+ en caso contrario  regulando por control de nivel se varia el acceso de corriente de entrada o de salida se mantenga en volumen constante}
+ 
+\vspace{1\baselineskip}
+\noindent \textbf{Balance a componentes:}
+ \begin{equation}
+	 \frac{dN_i}{dt}=ni_o-ni_s +ri \cdot V
+ \end{equation}
+\begin{flushleft}
+\noindent es decir la variacion del numero de moles del componente i respecto al tiempo es igual a la diferencia de moles de entrada y salida mas la velocidad de reacción del componente i por el volumen del reactor (Termino de generacion).\\
+
+ a su vez aunque debemos trabajar en moles puesto que estamos en una reacción quimica, nos interesa mas trabajar en concentraciones ya que nos da mucha mas informacion, y como
+ $V\cdot C_i =N_i$ podemos reescribir la ecuacion anterior de la siguiente forma:
+
+\end{flushleft}
+ \begin{equation}
+	 \frac{d(C_i\cdot V)}{dt}=C_{io}\cdot F_o-C_{is}\cdot F_s +r_i \cdot V
+ \end{equation}
+\begin{flushleft}
+
+\noindent de donde como se ha mencionado anteriormente, V al ser constante puede salir de la derivada, el caudal volumetrico de entrada es igual al de salida (1.3), ademas como estamos en una mezcla perfecta.\\ 
+La concentracion en la entrada y salida del reactor deben de ser identicas ya que para ser una mezcla perfecta en cualquier punto del reactor debe tener las mismas propiedades $\rightarrow C_i=C_{is}$, por tanto se simplifica a la siguiente ecuacion:
+
+\end{flushleft}
+ \begin{equation}
+	V\frac{dC_i}{dt}=F\cdot (C_{io}-C_{is}) +V \cdot r_i \hspace{0.2cm}\xleftrightarrow{\;\qquad} \hspace{0.2cm}\frac{dC_i}{dt}=\frac{F}{V}\cdot (C_{io}-C_{is}) +r_i
+ \end{equation}
+ \noindent F/V tambien se define como el tiempo de residencia $\tau$ del reactor, es decir el tiempo que una particula pasa en el reactor.
+\newpage
+\vspace{1\baselineskip}
+\noindent \textbf{Balance de energía:}
+\begin{flushleft}
+	\noindent el balance, se trata fundamentalmente de un balance entalpico, es decir si estamos en un proceso endotermico dara una disminucion de la temperatura y si es exotermico un aumento de la temperatura.\\
+\end{flushleft}
+\clm{}{}{	\begin{equation}
+	\sum_{i=A}^{P} (M_i \cdot C_{pi}) \cdot \frac{dT}{dt} = \sum_{i=A}^{P} (F_o \cdot C_{io} \cdot H_{io}) - F_s \cdot C_{is} \cdot H_{is} + V \cdot \sum_{k=1}^{n} \Delta H_k \cdot r_k + Q(T)
+\end{equation}}
+
+\begin{flushleft}
+	\noindent donde la variacion de energia, se puede calcular como la sumatoria para cada componente de su masa por su capacidad calorifica por la variacion de temperatura respecto del tiempo, es decir es el termino de acumulacion.
+
+\vspace{1\baselineskip}
+el termino de entalpia de entrada - el de salida de los componentes se trata de $ \sum_{i=A}^{P} (F_o \cdot C_{io} \cdot H_{io}) - F_s \cdot C_{is} \cdot H_{is}$\\
+\vspace{1\baselineskip}
+mientras que el termino de generación a diferencia del anterior depende de las reacciones quimica, de ahi que sea el indice k frente al i que era de los componentes.
+\begin{equation*}
+	V \cdot \sum_{k=1}^{n} \Delta H_k \cdot r_k
+\end{equation*}
+cada reacción tendra su propia entalpia,la entalpia tiene unidad de J|Kj /mol por ello debe ir multiplicada a la velocidad de reacción referida al mismo componente, de forma que queda unidad de energia/(tiempo*V) por ello es necesario multiplicar el volumen \\
+\vspace{1\baselineskip}
+por ultimo el termino Q(T) es el termino de intercambio de calor, que salvo que trabajemos en condiciones adiabaticas (para el diseño principalmente) siempre ha de estar.
+
+teniendo en cuenta la expresion general, para poder trabajar con ello hay que tener en cuenta que al estar en ideal,mezcla perfecta se tienen las siguientes consideraciones:
+\end{flushleft}
+\begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\arabic*}]
+\item \label{n:1} T = $T_s$
+\item \label{n:2} $\rho$ $\approx$ cte ,\hspace{0.1cm} $\rho$ = $\sum_{i=A}^{P} c_i$
+\item \label{n:3} $cp_i$ $\approx$ valores medios, cp
+\item \label{n:4} V$\cdot$ $\rho$ = M
+\item \label{n:5} en sistemas a presion constante, $\Delta H$ = Cp*T y como en la ecuacion es entrada-salida, $\Delta H$ = Cp*(T$_o$-T$_s$)
+\end{enumerate}
+es decir nos quedaria la siguiente expresion:
+\begin{equation}
+	V \cdot \rho \cdot cp \cdot \frac{dT}{dt} = F \cdot  \rho \cdot cp \cdot (T_o - T_s) + V \cdot \sum_{k=1}^{n} \Delta H_k \cdot r_k + Q(T)
+\end{equation}
+simplificando:
+\begin{equation}
+	\frac{dT}{dt} = \frac{F}{V} \cdot (T_o - T_s) +  \sum_{k=1}^{n} \frac{\Delta H_k \cdot r_k}{\rho \cdot cp} + \frac{Q(T)}{V \cdot \rho \cdot cp}
+\end{equation}
+\newpage
+
+\subsection{velocidades de reacción}
+\vspace{1\baselineskip}
+\qs{Calculo de velocidades de reacción}{ 
+\schemestart
+A + B \arrow{->[1]} C + D \arrow{->[3]} F
+\arrow(@c2--){->[\rotatebox{90}{2}]}[-90] 2E  % Flecha hacia abajo desde C + D
+\schemestop}
+\sol $r_k$ velocidades de reacción:
+\begin{itemize}
+	\item $r_1 = k_1 \cdot C_A \cdot C_B$
+	\item $r_2 = k_2 \cdot C_C$
+	\item $r_3 = k_3 \cdot C_D - k_{-3} \cdot C_F$
+\end{itemize}
+\sol $r_i$, velocidades de compontentes:
+\begin{multicols}{2} % Dividir en 2 columnas
+	\begin{itemize}
+		\item $r_A = -r_1$
+		\item $r_B = -r_1$
+		\item $r_C = r_1 - \frac{r_2}{2}$
+		\item $r_D = r_1 - r_3$
+		\item $r_F = r_3$
+		\item $r_E = r_2$
+	\end{itemize}
+	\end{multicols}
+
+\nt{Las velocidades de reacción, va dirigada a uno de los componentes, normalmente en funcion del producto o del reactivo limitante, Vienen expresadas en terminos de moles/(tiempo*V)}
+\subsubsection{Fase Líquida}
+la velocidad de reaccion esta en funcion de la constante cinetica (que sera en funcion de la temperatura y de las concentracionees) por tando:
+\begin{equation}
+	r = f(k,c_i) \rightarrow r=f(T,X_A)
+\end{equation}
+a su vez, la constante cinetica se obtiene mediante Arrhenius:
+\begin{equation}
+	k = k_0 \cdot \exp\left(\frac{-E_A}{RT}\right)
+\end{equation}
+y recordando expresando en funcion de la conversion se puede operar de la siguiente forma:
+\begin{equation}
+	X_A = \frac{N_{AR}-N_A}{N_{AR}} \rightarrow N_A = N_{AR} \cdot (1-X_A)
+\end{equation}
+\begin{equation*}
+	N_A = f(X_A) \approx C_A = f(X_A)
+\end{equation*}
+por tanto la concentracion inicial es:
+\begin{equation}
+	C_{i} = C_{io} - \frac{\alpha_i}{\alpha_A} \cdot (X_A-X_{Ao})
+\end{equation}
+Siendo $\alpha_i$ el coeficiente estequiometrico del componente i, y $\alpha_A$ el coeficiente estequiometrico del componente que se tomara como reactivo  ademas considerando, en el instante inicial que la conversion es 0:
+\begin{equation}
+	C_{i} = C_{io} - \frac{\alpha_i}{\alpha_A} \cdot C_{A0} \cdot X_A
+\end{equation}
+\newpage
+\subsubsection{Fase Gaseosa}
+En fase gaseosa tenemos 2 posibilidades de trabajo, bien en función de la constante cinetica y concentracion, como en la fase liquida, o bien en funcion de la constante cinetica y Presiones parciales de los componentes.
+\begin{equation*}
+	r = f(k,P_i) \rightarrow r=f(T,X_A)
+\end{equation*}
+\begin{equation*}
+	n_i = n_{ie} - \frac{\alpha_i}{\alpha_A} \cdot n_{AR} \cdot (X_A-X_{Ae})
+\end{equation*}
+Recordando que al ser un gas ocupa todo el volumen y segun la ley de los gases ideales:
+\begin{equation}
+	F = \frac{R \cdot T \cdot n_t}{P}
+\end{equation}
+donde el numero de moles se relaciona con las presiones de la siguiente forma:
+\begin{equation}
+	n_t = \sum n_i \rightarrow c_i = \frac{n_i}{F} = \frac{n_i}{n_t}-\frac{P}{R \cdot T} = y_i \cdot \frac{P}{R \cdot T}
+\end{equation}
+A su vez aplicando la ley de Dalton para las presiones parciales:
+\begin{equation}
+	P_i = y_i \cdot P = \frac{n_i}{n_t} \cdot P
+\end{equation}
+es decir sera su fracción molar por la presion total del reactor.
+\subsubsection{Calor intercambiado con el exterior}
+en un intercambiador de calor, podriamos encontrarno varios casos, bien que solo se intercambie el calor lantente es decir, que no haya variacion de temperatura ya que es solo el cambio de estado, o bien que se intercambie calor sensible, es decir que haya variacion de temperatura.
+tambien podria ser una combinacion de ambas.
+\begin{itemize}
+	\item Intercambio de calor lantente: $T_j \approx cte$ $T_j$ se trata del calor de camisa, de forma que se puede cuantificar como $Q = U\cdot S \cdot (T-T_j)$ es decir se trata del coeficiente global de transferencia de calor por la superficie de intercambio por la diferencia de temperaturas entre el reactor y su camisa.
+	\item []el coeficiente de intercambio de calor U, es función de los coeficientes individuales de la transferencia de calor y conductividad termica $U = f(h_i,h_e,k)$
+	\item Intercambio de calor sensible: $T_j \neq cte$ en este caso el intercambio de calor se cuantifica como la masa del fluido refrigerante por el calor especifico del mismo por la variacion de temperatura. $Q = m_j \cdot c_{pj} \cdot (T_{js}-T_{je})$
+	\item []tambien se podria expresar de forma analoga al intercambio de calor latente pero con la media logaritmica, es decir $Q = U\cdot S \cdot \Delta T_{mlg}$
+\end{itemize}
+como lo normal es conocer la masa del fluido refrigerante y la temperatura de entrada pero no la de salida se deben correlacionar las ecuaciones anteriores.
+\begin{note}
+	recordando que la media logaritmica es (la mayor diferencia - la menor diferencia)/ln(mayor/menor) y por logica debe ser menor en la salida que en la entrada.
+	\begin{equation*}
+		Q = U \cdot S \cdot \frac{(T-T_{je})-(T-T_{js})}{\ln\left(\frac{T-T_{je}}{T-T_{js}}\right)}
+	\end{equation*}
+\end{note}
+\noindent ahora como nos faltaria algun dato para operar con las ecuaciones previas, la forma de correlacionar ambas es la siguiente:
+\newpage
+\begin{proof}
+	\begin{equation*}
+		 Q = U\cdot S \cdot (T_{js}-T_{je})
+	\end{equation*}\\
+	\begin{equation*}
+		U \cdot S \cdot \frac{(T{js}-T_{je})}{\ln\left(\frac{T-T_{je}}{T-T_{js}}\right)}
+   \end{equation*}
+\vspace{0.1cm}
+	\begin{equation*}
+		m_j \cdot c_{pj} \cdot (T_{js}-T_{je}) = U \cdot S \cdot \frac{(T-T_{je})-(T-T_{js})}{\ln\left(\frac{T-T_{je}}{T-T_{js}}\right)}
+	\end{equation*}
+	\begin{equation*}
+		\ln \left(\frac{T-T_{je}}{T-T_{js}}\right) = \frac{U \cdot S }{m_j \cdot c_{pj}} 
+	\end{equation*}\\
+
+	\noindent donde simplemente despejando  de esta ultima ecuación:
+	\begin{equation*}
+		\frac{T-T_{je}}{T-T_{js}} = \exp\left(\frac{U \cdot S }{m_j \cdot c_{pj}}\right)
+	\end{equation*}
+	\begin{equation*}
+		T - T_{je} = (T-T_{js}) \cdot \exp\left(\frac{U \cdot S }{m_j \cdot c_{pj}}\right) 
+	\end{equation*}\\
+	al pasar el exponente al otro lado de la ecuacion:\\
+	\begin{equation*}
+		T-T_{js} = (T - T_{je}) \cdot \exp\left(- \hspace{0.5em}\frac{U \cdot S }{m_j \cdot c_{pj}}\right) 
+	\end{equation*}
+	\begin{equation*}
+		T_{js} = T- (T - T_{je}) \cdot \exp\left(- \hspace{0.5em}\frac{U \cdot S }{m_j \cdot c_{pj}}\right) 
+	\end{equation*}
+	\noindent y reintroduciendo en la primera expresion queda tal que:
+	\begin{equation*}
+		Q = m_j \cdot c_{pj} \cdot (T_{js} - [T - (T - T_{je}) \cdot \exp\left(- \hspace{0.5em}\frac{U \cdot S }{m_j \cdot c_{pj}}\right) - T_{je}])
+	\end{equation*}
+	\begin{equation*}
+		Q = m_j \cdot c_{pj} \cdot (T - T_{je}) \cdot  [1 - \exp\left(- \hspace{0.5em}\frac{U \cdot S }{m_j \cdot c_{pj}}\right) - T_{je}]
+	\end{equation*}
+\end{proof}
+\ex{Open Set and Close Set}{}
+\thm{}{If $x\in$ open set $V$ then $\exists$ $\delta>0$ such that $B_{\delta}(x)\subset V$}
+\begin{myproof}
+\end{myproof}
+
+\cor{}{By the result of the proof, we can then show...}
+\mlenma{}{Suppose $\vec{v_1}, \dots, \vec{v_n} \in \RR[n]$ is subspace of $\RR^n$.}
+\mprop{}{$1 + 1 = 2$.}
+
+\section{Random}
+\dfn{Normed Linear Space and Norm $\boldsymbol{\|\cdot\|}$}{Let $V$ be a vector space over $\bbR$ (or $\bbC$). A norm on $V$ is function $\|\cdot\|\ V\to \bbR_{\geq 0}$ satisfying \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\arabic*}]
+		\item \label{n:1}$\|x\|=0 \iff x=0$ $\forall$ $x\in V$
+		\item \label{n:2}	$\|\lambda x\|=|\lambda|\|x\|$ $\forall$ $\lambda\in\bbR$(or $\bbC$), $x\in V$
+		\item \label{n:3} $\|x+y\| \leq \|x\|+\|y\|$ $\forall$ $x,y\in V$ (Triangle Inequality/Subadditivity)
+	\end{enumerate}And $V$ is called a normed linear space.
+
+	$\bullet $ Same definition works with $V$ a vector space over $\bbC$ (again $\|\cdot\|\to\bbR_{\geq 0}$) where \ref{n:2} becomes $\|\lambda x\|=|\lambda|\|x\|$ $\forall$ $\lambda\in\bbC$, $x\in V$, where for $\lambda=a+ib$, $|\lambda|=\sqrt{a^2+b^2}$ }
+
+
+\ex{$\bs{p-}$Norm}{\label{pnorm}$V={\bbR}^m$, $p\in\bbR_{\geq 0}$. Define for $x=(x_1,x_2,\cdots,x_m)\in\bbR^m$ $$\|x\|_p=\Big(|x_1|^p+|x_2|^p+\cdots+|x_m|^p\Big)^{\frac1p}$$(In school $p=2$)}
+\textbf{Special Case $\bs{p=1}$}: $\|x\|_1=|x_1|+|x_2|+\cdots+|x_m|$ is clearly a norm by usual triangle inequality. \par
+\textbf{Special Case $\bs{p\to\infty\ (\bbR^m$ with $\|\cdot\|_{\infty})}$}: $\|x\|_{\infty}=\max\{|x_1|,|x_2|,\cdots,|x_m|\}$\\
+For $m=1$ these $p-$norms are nothing but $|x|$.
+Now exercise
+\qs{}{\label{exs1}Prove that triangle inequality is true if $p\geq 1$ for $p-$norms. (What goes wrong for $p<1$ ?)}
+\sol{\textbf{For Property \ref{n:3} for norm-2}	\subsubsection*{\textbf{When field is $\bbR:$}} We have to show\begin{align*}
+		         & \sum_i(x_i+y_i)^2\leq \left(\sqrt{\sum_ix_i^2} +\sqrt{\sum_iy_i^2}\right)^2                                       \\
+		\implies & \sum_i (x_i^2+2x_iy_i+y_i^2)\leq \sum_ix_i^2+2\sqrt{\left[\sum_ix_i^2\right]\left[\sum_iy_i^2\right]}+\sum_iy_i^2 \\
+		\implies & \left[\sum_ix_iy_i\right]^2\leq \left[\sum_ix_i^2\right]\left[\sum_iy_i^2\right]
+	\end{align*}So in other words prove $\langle x,y\rangle^2 \leq \langle x,x\rangle\langle y,y\rangle$ where
+	$$\langle x,y\rangle =\sum\limits_i x_iy_i$$
+
+	\begin{note}
+		\begin{itemize}
+			\item $\|x\|^2=\langle x,x\rangle$
+			\item $\langle x,y\rangle=\langle y,x\rangle$
+			\item $\langle \cdot,\cdot\rangle$ is $\bbR-$linear in each slot i.e. \begin{align*}
+				      \langle rx+x',y\rangle=r\langle x,y\rangle+\langle x',y\rangle	\text{ and similarly for second slot}
+			      \end{align*}Here in $\langle x,y\rangle$ $x$ is in first slot and $y$ is in second slot.
+		\end{itemize}
+	\end{note}Now the statement is just the Cauchy-Schwartz Inequality. For proof $$\langle x,y\rangle^2\leq \langle x,x\rangle\langle y,y\rangle $$ expand everything of $\langle x-\lambda y,x-\lambda y\rangle$ which is going to give a quadratic equation in variable $\lambda $ \begin{align*}
+		\langle x-\lambda y,x-\lambda y\rangle & =\langle x,x-\lambda y\rangle-\lambda\langle y,x-\lambda y\rangle                                       \\
+		                                       & =\langle x ,x\rangle -\lambda\langle x,y\rangle -\lambda\langle y,x\rangle +\lambda^2\langle y,y\rangle \\
+		                                       & =\langle x,x\rangle -2\lambda\langle x,y\rangle+\lambda^2\langle y,y\rangle
+	\end{align*}Now unless $x=\lambda y$ we have $\langle x-\lambda y,x-\lambda y\rangle>0$ Hence the quadratic equation has no root therefore the discriminant is greater than zero.
+
+	\subsubsection*{\textbf{When field is $\bbC:$}}Modify the definition by $$\langle x,y\rangle=\sum_i\overline{x_i}y_i$$Then we still have $\langle x,x\rangle\geq 0$}
+
+\section{Algorithms}
+\begin{algorithm}[H]
+\KwIn{This is some input}
+\KwOut{This is some output}
+\SetAlgoLined
+\SetNoFillComment
+\tcc{This is a comment}
+\vspace{3mm}
+some code here\;
+$x \leftarrow 0$\;
+$y \leftarrow 0$\;
+\uIf{$ x > 5$} {
+    x is greater than 5 \tcp*{This is also a comment}
+}
+\Else {
+    x is less than or equal to 5\;
+}
+\ForEach{y in 0..5} {
+    $y \leftarrow y + 1$\;
+}
+\For{$y$ in $0..5$} {
+    $y \leftarrow y - 1$\;
+}
+\While{$x > 5$} {
+    $x \leftarrow x - 1$\;
+}
+\Return Return something here\;
+\caption{what}
+\end{algorithm}
+\chapter{2}
+\end{document}
