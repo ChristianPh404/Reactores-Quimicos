@@ -9,4 +9,6 @@
 \contentsline {subsubsection}{Fase Gaseosa}{7}{section*.3}%
 \contentsline {subsubsection}{Calor intercambiado con el exterior}{7}{section*.4}%
 \contentsline {chapter}{\numberline {2}Reactor Discontinuo Mezcla perfecta}{9}{chapter.2}%
+\contentsline {subsection}{\numberline {2.0.1}Isotermo}{9}{subsection.2.0.1}%
+\contentsline {subsubsection}{Analisis de varibles}{10}{section*.5}%
 \contentsfinish 
