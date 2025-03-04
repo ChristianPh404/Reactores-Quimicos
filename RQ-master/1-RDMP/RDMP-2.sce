@@ -36,7 +36,7 @@ endfunction
 //constante que buscar siempre la r es decir tenerlas tabuladas
 CP = 0.9; // cal/(g*K)
 RHO = 1070; // g/L
-H = -50400; // cal/mol
+H = -50400; // cal/mol  //* Reacción exotérmica ya que la entalpia de reaccion tiene signo negativo
 k0 = 4.15E5; // s-1
 E = 11200; // cal/mol
 R = 1.987; // cal/(mol*K)
@@ -57,7 +57,7 @@ T = x(2,:); Tfin = T($)
 
 XA = 1 - CA/CAini; XAfin = XA($) //vector de conversion por definicion
 XAobj = 0.90;
-indexXAobj = find(XA>XAobj,1); //index para encontrar la posicion es decir a 
+indexXAobj = find(XA>XAobj,1); //primera vez que se cumple la condición
 tXAobj = t(indexXAobj)//que temperatura se alcanza el 90% de conversion
 TXAobj = T(indexXAobj)
 
@@ -75,3 +75,7 @@ plot(t,T,'r-',tXAobj,TXAobj,'ro');
 xgrid; xlabel('t'); legend('T',-2,%f);// el ,-2 es la posicion arriba izquiera fuera
 // el -3 es abajo izquierda fuera del grafico , el %f es para eliminar la caja 
 //de la leyenda
+disp('Concentracion final de A: '+string(CAfin)+' mol/L');
+disp('Temperatura final: '+string(Tfin)+' K');
+disp('Conversión final de A: '+string(XAfin)+' mol/L');
+disp('Tiempo para alcanzar el 90% de conversión: '+string(tXAobj)+' s');
