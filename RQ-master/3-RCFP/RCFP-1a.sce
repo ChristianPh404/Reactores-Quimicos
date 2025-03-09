@@ -78,3 +78,10 @@ xgrid; xlabel('t'); legend('CA','CB','CC',-2,%f);
 scf(2); clf(2); 
 plot(l,XA,'m');
 xgrid; xlabel('l'); legend('XA',-2,%f);
+disp('V' ,V);
+disp('TAU' ,TAU);
+disp('CA' ,CAs);
+disp('CB' ,CBs);
+disp('CC' ,CCs);
+disp('XA' ,XAs);
+
