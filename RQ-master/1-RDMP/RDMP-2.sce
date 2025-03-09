@@ -105,7 +105,7 @@ endfunction
 // CONSTANTES
 CP = 0.9; // cal/(g*K)
 RHO = 1070; // g/L
-H = -50400; // cal/mol
+H = -50400; // cal/mol  //* Reacción exotérmica ya que la entalpia de reaccion tiene signo negativo
 k0 = 4.15E5; // s-1
 E = 11200; // cal/mol
 R = 1.987; // cal/(mol*K)
@@ -144,6 +144,7 @@ while (XAalcanzado < XAobj & tfin < tfinal_max)
     end
 end
 
+<<<<<<< HEAD
 // Encontrar el tiempo en que se alcanza XAobj
 indexXAobj = find(XA >= XAobj, 1);
 if indexXAobj <> [] then
@@ -153,6 +154,13 @@ else
     tXAobj = NaN;
     TXAobj = NaN;
 end
+=======
+XA = 1 - CA/CAini; XAfin = XA($) //vector de conversion por definicion
+XAobj = 0.90;
+indexXAobj = find(XA>XAobj,1); //primera vez que se cumple la condición
+tXAobj = t(indexXAobj)//que temperatura se alcanza el 90% de conversion
+TXAobj = T(indexXAobj)
+>>>>>>> 32b7a4260e1a4dbabaac3799be36e166e2bca7e0
 
 // GRÁFICAS
 scf(1); clf(1); 
@@ -164,9 +172,20 @@ plot(t, XA, 'm-', tXAobj, XAobj, 'mo');
 xgrid; xlabel('t'); legend('XA', -2, %f);
 
 scf(3); clf(3); 
+<<<<<<< HEAD
 plot(t, T, 'r-', tXAobj, TXAobj, 'ro');
 xgrid; xlabel('t'); legend('T', -2, %f);
 disp('la conversion de A es de '+string(XAalcanzado*100)+'%');
 disp('la temperatura en la que se alcanza el 90% de conversion es de '+string(TXAobj)+' K');
 disp('el tiempo en el que se alcanza el 90% de conversion es de '+string(tXAobj)+' s');
 disp('el tiempo maximo permitido es de '+string(tfinal_max)+' s');
+=======
+plot(t,T,'r-',tXAobj,TXAobj,'ro');
+xgrid; xlabel('t'); legend('T',-2,%f);// el ,-2 es la posicion arriba izquiera fuera
+// el -3 es abajo izquierda fuera del grafico , el %f es para eliminar la caja 
+//de la leyenda
+disp('Concentracion final de A: '+string(CAfin)+' mol/L');
+disp('Temperatura final: '+string(Tfin)+' K');
+disp('Conversión final de A: '+string(XAfin)+' mol/L');
+disp('Tiempo para alcanzar el 90% de conversión: '+string(tXAobj)+' s');
+>>>>>>> 32b7a4260e1a4dbabaac3799be36e166e2bca7e0

@@ -169,7 +169,7 @@ simplificando:
 \vspace{1\baselineskip}
 \qs{Calculo de velocidades de reacción}{ 
 \schemestart
-A + B \arrow{->[1]} C + D \arrow{->[3]} F
+A + B \arrow{->[1]} C + D \arrow{<->[3]} F
 \arrow(@c2--){->[\rotatebox{90}{2}]}[-90] 2E  % Flecha hacia abajo desde C + D
 \schemestop}
 \sol $r_k$ velocidades de reacción:
@@ -294,6 +294,92 @@ como lo normal es conocer la masa del fluido refrigerante y la temperatura de en
 \end{proof}
 \newpage
 \chapter{Reactor Discontinuo Mezcla perfecta}
+\nt{\begin{raggedright}
+	en un reactor biologico tenemos que f/v velocidad de dilucion (D)mientras que en otros es v/f , en el primer caso es por que se tiene
+	en cuenta los caudales de salida frente los otros son de entrada, tiempos de residencia corto, en el segundo caso es tiempo espacia,
+	teniendo en cuenta los caudales de entrada
+\end{raggedright}}
+\subsection{Isotermo}
+\begin{raggedright}
+	\textbf{Balance de materia:}
+	\begin{equation}
+		\frac{dN_i}{dt} = r_i \cdot V
+	\end{equation}
+	\textbf{Balance de energía:}
+	\begin{equation}
+		\frac{dT}{dt} = \frac{\sum_{k=1}^{n} \Delta H_k \cdot r_k}{\rho \cdot cp} + \frac{Q(T)}{V \cdot \rho \cdot cp}
+	\end{equation}
+\textbf{2 posibles cuestiones}
+\begin{itemize}
+	\item \textbf{Calculo de Volumen:} V
+	\item \textbf{Calculo de Tiempo de residencia:} $\tau = \frac{V}{F}$
+\end{itemize}
+Dentro de los reactivos uno sera el limitante, en la etapa de diseño va referida al reactivo limitante (A)
+\textbf{Refiriendonos a la conversion puesto que es el parametro que mas informacion nos da:}
+ya que queremos un $\%$ minimo de conversion, se puede calcular como:
+\begin{equation}
+	X_A = \frac{N_{AR}-N_A}{N_{AR}} \rightarrow N_A = N_{AR} \cdot (1-X_A)
+\end{equation}
+en la etapa de diseño la masa dara el volumen y el balance entalpico como la temperatura es constante dara el diseño del intercambiador de calor.
+por tanto el objetivo a calcular es el tiempo de residencia.
+\begin{equation}
+	\frac{dN_A}{dt} = -r_A \cdot V
+\end{equation}
+pars transformar en conversion:
+\begin{equation}
+	X_A = \frac{N_{AR}-N_A}{N_{AR}} \rightarrow N_A = N_{AR} \cdot (1-X_A)
+\end{equation}
+\begin{equation}
+	\frac{dN_{AR}dX_A}{dt} = r_A \cdot V
+\end{equation}
+\begin{equation}
+	\frac{dX_A}{dt} = \frac{r_A \cdot V}{N_{AR}}
+\end{equation}
+\begin{equation}
+	NAR \int_{XA0}^{XA} \frac{dX_A}{r_A \cdot V} = t_R = NAR \int_{XA0}^{XA} \frac{dXA}{ra V}
+\end{equation}
+2 casos 
+\begin{itemize}
+	\item Fase liquida v =cte 
+	\begin{equation}
+		Tr = CAR \int_{XA0}^{XA} \frac{dxa}{ra}
+	\end{equation}
+	\item para fase gaseosa 
+	\begin{equation}
+		Tr = CAR \int_{XA0}^{XA} \frac{dxa}{ra \cdot (1 + eA + ra)}
+	\end{equation}
+	\end{itemize}
+\end{raggedright}
+\nt{V  = VR (1 + CA + XA)}
+\mlenma{Para componentes que no sean referencia}{CB = CB0 -CA0 * XA \\
+en el TR el divisior ra seria k1 * CA que era CA0(1-xA)* lo definido arriba}
+\begin{raggedright}
+	\textbf{Funcionamiento:}
+\nt{Productividad = moles producto deseado /m3/s el tiempo de productividad depende del ciclo no es el de operacion del reactor sino que
+incluye el de limpieza acondicionado llenado..}
+Si ya esta diseñado y quiero que responda al funcionamiento y no al disño del reactor ci = f(t)
+\begin{equation}
+	\frac{dCA}{dt} = ra
+\end{equation}
+
+\begin{equation}
+	\frac{dCB}{dt} = rb
+\end{equation}
+
+\begin{equation}
+	\frac{dCC}{dt} = rc
+\end{equation}
+%! Eso para todos los balances ponerlo mas tarde en un multicol...
+teniendo V conocido que viene de la etapa de diseño y esta construido el intercambiador de calor y conociendo los parametros Tj T..
+La T define las constantes del proceso es decir las K que tambien seran conocidas.
+es decir el modelo se completa conociendo r1,r2,r3,ra,rb,rc....rf tambien se puede deducir de forma implicita que simplemente con
+los balances a f metiendo las cineticas de r1...r3 aunque recomienda ser explicito para luego poder variar el estudio del sistema.
+\subsubsection{Analisis de varibles}
+serian 15 ecuaciones las 6 de los componentes las 3 de reacciones y las 6 de los balances, el numero de variables. todas las concentraciones
+todas las r y las constantes es decir k1 k2 k3 y k-3 
+numero de grados de libertad 4 es decir debe conocerse las 4 constantes cineticas a esa temperatura
+
+\end{raggedright}
 % \ex{Open Set and Close Set}{}
 % \thm{}{If $x\in$ open set $V$ then $\exists$ $\delta>0$ such that $B_{\delta}(x)\subset V$}
 % \begin{myproof}
