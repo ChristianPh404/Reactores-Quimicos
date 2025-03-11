@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1741523183.12024 "h:/universidad/3º/REACTORES/2025/RQ/Reactores-Quimicos/RQ-master/template.tex" "template.pdf" "template" 1741523189.75764 0
+["pdflatex"] 1741676210.72045 "h:/universidad/3º/REACTORES/2025/RQ/Reactores-Quimicos/RQ-master/template.tex" "template.pdf" "template" 1741676218.95065 0
   "C:/Users/chris/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1740633473.14957 157441 630ac9bca0e616d740d6f31fad22d781 ""
   "C:/Users/chris/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1722832897.67516 11548 2abb964a32ee8e835d96d77d3518d407 ""
   "C:/Users/chris/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1722832570.61 24247832 5cfe544f5bafed508f2820c9aa9015b6 ""
@@ -14,6 +14,8 @@
   "G:/Latex/fonts/tfm/public/cm/cmbx10.tfm" 1136765053 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "G:/Latex/fonts/tfm/public/cm/cmbx12.tfm" 1136765053 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "G:/Latex/fonts/tfm/public/cm/cmbx5.tfm" 1136765053 1332 f817c21a1ba54560425663374f1b651a ""
+  "G:/Latex/fonts/tfm/public/cm/cmbx7.tfm" 1136765053 1336 3125ccb448c1a09074e3aa4a9832f130 ""
+  "G:/Latex/fonts/tfm/public/cm/cmbx8.tfm" 1136765053 1332 1fde11373e221473104d6cc5993f046e ""
   "G:/Latex/fonts/tfm/public/cm/cmbx9.tfm" 1136765053 1328 5442e22a7072966dbaf88ca900acf3f0 ""
   "G:/Latex/fonts/tfm/public/cm/cmbxti10.tfm" 1136765053 1532 9162035f4e7176612125649e348e2195 ""
   "G:/Latex/fonts/tfm/public/cm/cmcsc10.tfm" 1136765053 1300 63a6111ee6274895728663cf4b4e7e81 ""
@@ -41,6 +43,7 @@
   "G:/Latex/fonts/tfm/public/newtx/txmiaSTbb.tfm" 1720345908 920 99acdf374993fd46fd345f9cac168080 ""
   "G:/Latex/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1247596666 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "G:/Latex/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1247596666 32080 340ef9bf63678554ee606688e7b5339d ""
+  "G:/Latex/fonts/type1/public/amsfonts/cm/cmbx8.pfb" 1247596666 32166 b0c356b15f19587482a9217ce1d8fa67 ""
   "G:/Latex/fonts/type1/public/amsfonts/cm/cmbx9.pfb" 1247596667 32298 c6d25bb16d1eac01ebdc6d7084126a1e ""
   "G:/Latex/fonts/type1/public/amsfonts/cm/cmbxti10.pfb" 1247596667 36554 b67dc2cfa451409e100b3fcf5f506509 ""
   "G:/Latex/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
@@ -280,12 +283,12 @@
   "G:/Latex/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "RFP.png" 1740060998.40499 56484 9bb5fca7f5682b230a99d7d795abca33 ""
   "RMP.PNG" 1740060998.4065 61368 de7976502cc7c6d49cc9addc518e6b50 ""
-  "h:/universidad/3º/REACTORES/2025/RQ/Reactores-Quimicos/RQ-master/template.tex" 1741523181.69015 31090 3d523e867a87cdbb7dfccc4f7e7f4809 ""
+  "h:/universidad/3º/REACTORES/2025/RQ/Reactores-Quimicos/RQ-master/template.tex" 1741676201.62605 45367 44f9fabf80eead984280baf9d58b767a ""
   "letterfonts.tex" 1740060998.40849 8702 ef32ca12e97530ef5734ca4adcb1f6b1 ""
   "macros.tex" 1740060998.409 3477 30332a9dc4820add7ec8e91e30b45576 ""
   "preamble.tex" 1740060998.4105 20995 eb918edb38bbe0aaa64e0d68ad96eec0 ""
-  "template.aux" 1741523189.17414 7642 50eb7dae0fcfbf6d251a494d2c0235f1 "pdflatex"
-  "template.toc" 1741523189.18014 1077 3eb2d275db1e64118d4fa04ec93fd080 "pdflatex"
+  "template.aux" 1741676218.22765 8418 0244bf5ba37d1a82f7914420641c1564 "pdflatex"
+  "template.toc" 1741676218.24715 1166 5fc5e96ef9bf406ca570e0164bfe45c1 "pdflatex"
   (generated)
   "template.aux"
   "template.log"

@@ -550,6 +550,8 @@ INPUT G:\Latex\fonts\tfm\public\newpx\NewPXMI.tfm
 INPUT G:\Latex\fonts\tfm\public\newtx\stxscr.tfm
 INPUT G:\Latex\fonts\tfm\public\cm\cmti10.tfm
 INPUT G:\Latex\fonts\tfm\public\cm\cmss10.tfm
+INPUT G:\Latex\fonts\tfm\public\cm\cmbx7.tfm
+INPUT G:\Latex\fonts\tfm\public\cm\cmbx8.tfm
 INPUT G:\Latex\fonts\vf\public\newpx\zplsym.vf
 INPUT G:\Latex\fonts\tfm\public\newtx\ntxsym.tfm
 INPUT template.aux
@@ -563,6 +565,8 @@ INPUT G:\Latex\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT G:\Latex\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT G:\Latex\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT G:\Latex\fonts\type1\public\amsfonts\cm\cmbx12.pfb
+INPUT G:\Latex\fonts\type1\public\amsfonts\cm\cmbx8.pfb
+INPUT G:\Latex\fonts\type1\public\amsfonts\cm\cmbx8.pfb
 INPUT G:\Latex\fonts\type1\public\amsfonts\cm\cmbx9.pfb
 INPUT G:\Latex\fonts\type1\public\amsfonts\cm\cmbx9.pfb
 INPUT G:\Latex\fonts\type1\public\amsfonts\cm\cmbxti10.pfb
