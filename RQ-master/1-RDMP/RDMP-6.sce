@@ -88,3 +88,5 @@ indexTc = find(Topt<Tmax-1E-6,1);
 tTc = t(indexTc)
 Tc = Topt(indexTc)
 plot(tTc,Tc,'ro');
+ //! probar para diferentes conversiones el grafico 1 
+ 

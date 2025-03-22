@@ -41,18 +41,27 @@ tfin = 100; dt = 0.1; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
-CA = x(1,:); CAfin = CA($)
-CB = x(2,:); CBfin = CB($)
+CA = x(1,:); CAfin = CA($);
+CB = x(2,:); CBfin = CB($);
+disp('Concentracion final de A: '+string(CAfin)+' mol/L');
+disp('Concentracion final de B: '+string(CBfin)+' mol/L');
 
 dCAdt = diff(CA)/dt; dCBdt = diff(CB)/dt; 
 dCAdteq = 1E-5; dCBdteq = 1E-5; // mol/(L*h)
 indexCAeq = find(abs(dCAdt)<dCAdteq,1); indexCBeq = find(abs(dCBdt)<dCBdteq,1);
-tCAeq = t(indexCAeq), tCBeq = t(indexCBeq)
-CAeq = CA(indexCAeq), CBeq = CB(indexCBeq)
+tCAeq = t(indexCAeq), tCBeq = t(indexCBeq);
+CAeq = CA(indexCAeq), CBeq = CB(indexCBeq);
+disp('Tiempo de equilibrio para CA: '+string(tCAeq)+' h');
+disp('Concentracion de equilibrio para CA: '+string(CAeq)+' mol/L');
+disp('Tiempo de equilibrio para CB: '+string(tCBeq)+' h');
+disp('Concentracion de equilibrio para CB: '+string(CBeq)+' mol/L');
+teq = max(tCAeq,tCBeq);
+disp('Tiempo de equilibrio: '+string(teq)+' h');
 
 indexCACB = find(CA<CB,1);
-tCACB = t(indexCACB)
-CACB = CA(indexCACB)
+tCACB = t(indexCACB);
+CACB = CA(indexCACB);
+disp('Tiempo en que CA = CB: '+string(tCACB)+' h');
 
 // GRÁFICAS
 scf(1); clf(1); 
@@ -66,3 +75,5 @@ plot(t(1:$-1),abs(dCAdt),t(1:$-1),abs(dCBdt));
 plot(tCAeq,dCAdteq,'b.',tCBeq,dCBdteq,'g.'); 
 xgrid; xlabel('t'); legend('|dCAdt|','|dCBdt|',-2,%f);
 a2 = gca; a2.log_flags = "nl";
+//! gca da el control de los ejes del grafico
+//! log_flags = "nl" es para que el eje y sea logaritmico

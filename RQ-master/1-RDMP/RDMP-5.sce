@@ -55,11 +55,17 @@ dt = 0.1; tfin = 500; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
-CA = x(1,:); CAfin = CA($)
-CB = x(2,:); CBfin = CB($)
-CC = x(3,:); CCfin = CC($)
-T  = x(4,:); Tfin  = T($)
-XA = 1 - CA/CAini; XAfin = XA($)
+CA = x(1,:); CAfin = CA($);
+CB = x(2,:); CBfin = CB($);
+CC = x(3,:); CCfin = CC($);
+T  = x(4,:); Tfin  = T($);
+XA = 1 - CA/CAini; XAfin = XA($);
+disp('Concentración final de A: '+string(CAfin)+' mol/L');
+disp('Concentración final de B: '+string(CBfin)+' mol/L');
+disp('Concentración final de C: '+string(CCfin)+' mol/L');
+disp('Conversión final de A: '+string(XAfin)+' mol/L');
+disp('Temperatura final: '+string(Tfin)+' K');
+
 
 dTdt = diff(T)/dt;
 dTdteq = 1E-3; // K/h
