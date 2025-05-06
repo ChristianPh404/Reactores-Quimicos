@@ -57,17 +57,24 @@ T0 = 310; // K
 x0 = [CA0;CB0;CC0;T0];
 
 // TIEMPO DE RESIDENCIA
-tau = 0:TAU/100:TAU; // h
-l = 0:L/100:L; // dm
+N = 800; tau = 0:TAU/N:TAU; // h
+l = 0:L/N:L; // dm
 
 // RESOLVER
 x = ode(x0,0,tau,f);
-CA = x(1,:); CAs = CA($) 
-CB = x(2,:); CBs = CB($) 
-CC = x(3,:); CCs = CC($)
-T  = x(4,:); Ts  = T($)
-XA = 1 - CA/CA0; XAs = XA($)
-
+CA = x(1,:); CAs = CA($);
+CB = x(2,:); CBs = CB($);
+CC = x(3,:); CCs = CC($);
+T  = x(4,:); Ts  = T($);
+XA = 1 - CA/CA0; XAs = XA($);
+s = 8; // número de segmentos
+s2ini = T(l=1*L/8);
+s2fin = T(l=2*L/8);
+if s2ini == s2fin then
+    disp('El reactor no esta progresando y su diferencia de temperatura es cero')
+else
+    disp('El reactor esta progresando',(s2fin-s2ini), 'K')
+end
 // GRÁFICAS
 scf(1); clf(1); 
 plot(l,XA,'m');
@@ -81,3 +88,4 @@ scf(3); clf(3);
 plot(T,XA,'mo-');
 xgrid; xlabel('T'); legend('XA',-2,%f);
 
+//TODO si dividimos el reactor en 8 segmentos, aumenta la temperatura en el segundo segmento?

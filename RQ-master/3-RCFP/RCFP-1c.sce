@@ -44,7 +44,7 @@ kd0 = 1.75E8; // L/(mol*h)
 E = 62350; // J/mol
 Keq0 = 8.25E-22; // L/mol
 H = -136400; // J/mol
-R = 8.314; // J/(mol*K)
+R = 8.314; // J/(mol*K) 
 RHO = 1150; // g/L
 CP = 3.8; // J/(g*K)
 F = 50; // L/h 
@@ -55,7 +55,9 @@ TAU = V/F // h
 
 U = 900; // J/(dm2*h*K)
 TJ = 310; // K
-
+//! hacer un bucle para ver como varia la conversion con la temperatura de refrigeracion para buscar optimo
+//! de forma que aumente el rango si aumenta la temperatura o disminuye la t si aumenta la conversion con el signo de derivda
+//! para calcular el optimo tal que sea < tol 
 // ENTRADA
 CA0 = 1.5; CB0 = 2; CC0 = 0.1; // mol/L
 T0 = 310; // K

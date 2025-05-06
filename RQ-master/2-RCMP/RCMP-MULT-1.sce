@@ -69,7 +69,7 @@ xeeguess = [CA1eeguess; CB1eeguess; CP1eeguess; CQ1eeguess; CA2eeguess; CB2eegue
 
 // OPTIMIZAR frac1 para MAXIMIZAR SEL
 frac1interval = 0:0.01:1;
-
+//! frac Ratio de reparto entre las corrientes
 for i = 1:length(frac1interval)
     frac1 = frac1interval(i);
     FB1 = frac1*FB;
@@ -92,12 +92,14 @@ end
 
 [SELmax,indexSELmax] = max(SEL)
 frac1opt = frac1interval(indexSELmax)
-
+disp("selectivdad maxima = " + string(SELmax))
+disp("frac1 optimo = " + string(frac1opt))
 // GRÁFICAS
 scf(1); clf(1);
 plot(frac1interval,SEL,'ro');
 plot(frac1opt,SELmax,'x');
 xgrid; xlabel('frac1'); ylabel('SEL');
+//* segunda opcion hacerlo con un while 
 
 // (b) Dinámica
 
@@ -113,12 +115,15 @@ F1 = FA + FB1;
 F2 = F1 + FB2;
 
 // CONDICIONES INICIALES
+//*suposicion todas las concentraciones inciales son 0 debido a que es todo disolvente
 CA1ini = 0; CB1ini = 0; CP1ini = 0; CQ1ini = 0;
 CA2ini = 0; CB2ini = 0; CP2ini = 0; CQ2ini = 0;  // mol/L
 xini = [CA1ini; CB1ini; CP1ini; CQ1ini; CA2ini; CB2ini; CP2ini; CQ2ini];
 
 // TIEMPO
 tfin = 3000; dt = 1; t = 0:dt:tfin; // s
+
+//TODO otra opcion es hacerlo con un bucle while donde se incremente el tiempo mientras las derivada <= tol 
 
 // RESOLVER
 x = ode(xini,0,t,g);
@@ -140,7 +145,14 @@ SELfin = CP2fin/CQ2fin
 scf(2); clf(2); // Reactor 1
 plot(t,CA1,t,CB1,t,CP1,t,CQ1);
 xgrid; xlabel('t'); legend('CA1','CB1','CP1','CQ1',-2,%f);
+title("Reactor 1: concentraciones vs tiempo")
 
 scf(3); clf(3); // Reactor 2
 plot(t,CA2,t,CB2,t,CP2,t,CQ2);
 xgrid; xlabel('t'); legend('CA2','CB2','CP2','CQ2',-2,%f);
+
+
+//TODO preguntas a) Tiene sentido enviar todo el compuesto B al reactor 2 ?
+// no por que el reactor 1 no tendria reaccion
+//TODO preguntas b) Influyen las condiciones iniciales en el estado estacionario?
+// no, el estado estacionario es independiente de las condiciones iniciales siempre que no exista multiplicidad de ee.

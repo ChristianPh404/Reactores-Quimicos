@@ -38,10 +38,10 @@ function dxdt = f(t,x)
         else TJ = TJ2;
     end
     // Calor transferido del reactor a la camisa
-    Q = U*A*(T-TJ)
+    Q = U*A*(TJ-T)
     // Balance de energía 
-    // d(V*RHO*CP*T) = - Q
-    dTdt = - Q/(V*RHO*CP) 
+    // d(V*RHO*CP*T) = Q
+    dTdt = Q/(V*RHO*CP) 
     // Derivadas
     dxdt(1) = dCAdt
     dxdt(2) = dCBdt
@@ -59,7 +59,8 @@ CP = 1; // kcal/(kg*K)
 Tcold = 293; Thot = 353; // K 
 
 // Operación de la camisa
-op = 1;
+//! Esta puesto para una operacion en exclusiva la del caso 1 probar a meter en un bucle for para encontrar la maxima 
+op =1;
 select op
     case 1 then TJ1 = Tcold; TJ2 = Tcold; // K
     case 2 then TJ1 = Thot;  TJ2 = Thot;  // K
@@ -77,11 +78,16 @@ tfin = 2; dt = 0.01; t = 0:dt:tfin; //h
 
 // RESOLVER
 x = ode(xini,0,t,f);
-CA = x(1,:); CAfin = CA($)
-CB = x(2,:); CBfin = CB($)
-CC = x(3,:); CCfin = CC($)
-CD = x(4,:); CDfin = CD($)
-T  = x(5,:); Tfin = T($)
+CA = x(1,:); CAfin = CA($);
+CB = x(2,:); CBfin = CB($);
+CC = x(3,:); CCfin = CC($);
+CD = x(4,:); CDfin = CD($);
+T  = x(5,:); Tfin = T($);
+disp('CAfin ' + string(CAfin) + ' mol/L');
+disp('CBfin ' + string(CBfin) + ' mol/L');
+disp('CCfin ' + string(CCfin) + ' mol/L');
+disp('CDfin ' + string(CDfin) + ' mol/L');
+disp('Tfin ' + string(Tfin) + ' K');
 
 // GRÁFICAS
 scf(1);clf(1);
@@ -95,3 +101,6 @@ xgrid; xlabel('t'); legend('T',-2,%f);
 scf(3);
 bar(op,[CAfin,CBfin,CCfin,CDfin],'stacked');
 xgrid; xlabel('op'); legend('CA','CB','CC','CD',-2,%f);
+
+
+//* Probar a hacer graficas para las concentraciones a diferentes T con el bucle for dentro 
