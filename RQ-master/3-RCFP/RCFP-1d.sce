@@ -65,8 +65,8 @@ T0 = 310; // K
 x01 = [CA0;CB0;CC0;T0];
 
 // TIEMPO DE RESIDENCIA
-tau1 = 0:TAU1/100:TAU1; // h
-l1 = 0:L1/100:L1; // dm
+N =400; tau1 = 0:TAU1/N:TAU1; // h
+l1 = 0:L1/N:L1; // dm
 
 // RESOLVER
 x1 = ode(x01,0,tau1,f);
@@ -90,8 +90,8 @@ TAU2 = V2/F // h
 x02 = [CA1s;CB1s;CC1s;T0];  // Enfriamiento: T1s => T0
 
 // TIEMPO DE RESIDENCIA
-tau2 = 0:TAU2/100:TAU2; // h
-l2 = 0:L2/100:L2; // dm
+N =400; tau2 = 0:TAU2/N:TAU2; // h
+l2 = 0:L2/N:L2; // dm
 
 // RESOLVER
 x2 = ode(x02,0,tau2,f);
@@ -118,3 +118,21 @@ xgrid; xlabel('T'); legend('XA1','XA2',-2,%f);
 scf(4);
 plot(L1, XA2s,'mo');
 xgrid; xlabel('L1'); ylabel('XA2s'); 
+m=-RHO*CP/H*CA0; // pendiente teorica de la recta de enfriamiento
+m2= (XA1s-0)/(T1s-T0); // pendiente de la recta de enfriamiento
+m3 = (XA2s-XA1s)/(T2s-T0); // pendiente de la recta de enfriamiento
+if m2 == m3 & m2 == m then //! cambiar el disp
+    disp('El reactor esta progresando',(s2fin-s2ini), 'K')
+else
+    disp('El reactor no esta progresando y su diferencia de temperatura es cero')
+end
+//dxa/dtau = r/cao
+//dxa/dtau = (1/cao)/(-H*r/(RHO*CP)) =-rho*CP/H*CA0* por eso ambas rectas son cortantes 
+//buscar punto de inflexion 
+
+d2XA1 = diff(XA1,2); // segunda derivada de XA1
+indexXA1 = find(d2XA1(1:$-1).*d2XA1(2:$) < 0) + 1; // índice de los puntos de inflexión
+lli = l1(indexXA1)
+XA1i = XA1(indexXA1)
+scf(1); plot(lli,XA1i,'ro-');
+//despues usar ese punto para calcular la conversiona al cambiar la L 

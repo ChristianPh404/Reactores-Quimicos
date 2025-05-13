@@ -28,7 +28,7 @@ F =  5; // L/h
 L =  12; // dm
 D = 1; // dm
 V = %pi/4*D^2*L // L
-R = 0.1;
+R = 0.1 ;
 TAU = V/(F*(1+R))  // h
 k = 1; // L/(mol·h)
 CA0 = 2; // mol/L
@@ -37,7 +37,7 @@ x0 = [CA0;CB0];
 
 // TIEMPO DE RESIDENCIA
 tau = 0:TAU/1000:TAU; // h
-l = 0:L/1000:L, // dm
+l = 0:L/1000:L; // dm
 
 // SOLUCIÓN SUPUESTA
 CAsguess = 2; CBsguess = 0.01; // mol/L
@@ -71,10 +71,10 @@ for i = 1:imax
 
 end
 
-i
-CA = x(1,:); CAs = xs(1)
-CB = x(2,:); CBs = xs(2)
-
+i;
+CA = x(1,:); CAs = xs(1);
+CB = x(2,:); CBs = xs(2);
+disp('la concentracion final de A es:' +string(CAs)), disp('la concentracion final de B es:' +string(CBs));
 scf(1); clf(1);
 plot(l,CA,l,CB);
 xgrid; xlabel('l'); legend('CA','CB',-2,%f);
@@ -82,3 +82,6 @@ xgrid; xlabel('l'); legend('CA','CB',-2,%f);
 scf(2);
 plot(R,CAs,'o');
 xgrid; xlabel('R'); ylabel('CAs');
+
+
+//! hacer una segunda parte donde busque el optimo con R aumentandola 
