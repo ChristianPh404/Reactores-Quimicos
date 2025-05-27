@@ -61,48 +61,63 @@ Vini = 500; // L
 CAini = 1; // mol/L
 NAini = Vini*CAini; NBini = 0; NCini = 0; // mol
 Tini = 350; // K
-xini = [Vini;NAini; NBini; NCini; Vini*Tini];
+xini = [Vini;NAini; NBini; NCini; Vini*Tini]; //*vini*tini para inicar VT que es la quinta variable diferencial
 
 // TIEMPO
 tfin = 20; dt = 0.01; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
-V  = x(1,:); Vfin = V($)
-NA = x(2,:); NAfin = NA($)
-NB = x(3,:); NBfin = NB($)
-NC = x(4,:); NCfin = NC($)
-VT = x(5,:); T = VT./V; Tfin = T($)
-
+V  = x(1,:); Vfin = V($);
+NA = x(2,:); NAfin = NA($);
+NB = x(3,:); NBfin = NB($);
+NC = x(4,:); NCfin = NC($);
+VT = x(5,:); T = VT./V; Tfin = T($);
+disp("Resultados:");
+printf("\n");
+disp("Volumen final = " + string(Vfin) + " L");
+disp("moles de A finales = " + string(NAfin) + " mol");
+disp("moles de B finales = " + string(NBfin) + " mol");
+disp("moles de C finales = " + string(NCfin) + " mol");
+disp("Temperatura final = " + string(Tfin) + " K");
+printf("\n");
+disp("concentracion a mitad de tiempo " + string(NC(t==tfin/2))); 
+printf("\n");
 // GRÁFICAS
 scf(1); clf(1);
 plot(t,V);
-xgrid; xlabel('t'); legend('V',-2,%f);
-
+xgrid; xlabel('tiempo, h'); legend('V',-2,%f);
+title('Volumen del reactor frente al tiempo');
 scf(2); clf(2);
 plot(t,NA,t,NB,t,NC);
-xgrid; xlabel('t'); legend('NA','NB','NC',-2,%f);
+xgrid; xlabel('tiempo, h'); legend('NA','NB','NC',-2,%f);
 
 scf(3); clf(3);
 plot(t,T,'r');
-xgrid; xlabel('t'); legend('T',-2,%f);
+xgrid; xlabel('tiempo, h'); legend('Temperatura, K',-2,%f);
 
 // Máximo y mínimo global
-[Tmax,indexTmax] = max(T)
-tTmax = t(indexTmax)
+[Tmax,indexTmax] = max(T);
+tTmax = t(indexTmax);
 plot(tTmax,Tmax,'ro');
-[Tmin,indexTmin] = min(T)
-tTmin = t(indexTmin)
+[Tmin,indexTmin] = min(T);
+tTmin = t(indexTmin);
 plot(tTmin,Tmin,'ro');
-
+disp("Temperatura máxima = " + string(Tmax) + " K en t = " + string(tTmax) + " h");
+disp("Temperatura mínima = " + string(Tmin) + " K en t = " + string(tTmin) + " h");
 // Extremos
 dT = diff(T);
 indexTe = find(dT(1:$-1).*dT(2:$)<0) + 1;
-tTe = t(indexTe)
-Te = T(indexTe)
+tTe = t(indexTe);
+Te = T(indexTe);
 plot(tTe,Te,'rx');
+disp("Temperaturas extremas:");
+printf("\n");
+for i = 1:length(tTe)
+    disp("Temperatura extrema " + string(i) + " = " + string(Te(i)) + " K en t = " + string(tTe(i)) + " h");
+end
 
-// (b)
+//! (b)
 
 T0interval = 273:0.1:280; // K
 
@@ -124,5 +139,25 @@ DT = 3; // K
 indexDT = find(Tmax < Tini+DT & Tmin > Tini-DT);
 plot(T0interval(indexDT),Tmax(indexDT),'r.',T0interval(indexDT),Tmin(indexDT),'b.');
 
-T0a = T0interval(indexDT(1))
-T0b = T0interval(indexDT($))
+T0a = T0interval(indexDT(1));
+T0b = T0interval(indexDT($));
+disp("el reactor se mantiene estable con una temperatura de alimentacion " + string(T0a) + " K y " + string(T0b) + " K");
+printf("\n");
+ //en el enunciado donde pone despues de 500 mol cambiarlo a L 
+
+ //dVTdt = F*T0 - H*r*V/(RHO*CP) = DVdt*T + V*dTdt = F*T + V*dTdt
+ //V*dTdt = F*T0- H*r*V/(RHO*CP) - F*T
+ //V*dTdt = F*(T0-T)/V - H*r/(RHO*CP) = 0 (t= 6.01)
+
+idk = FB*(T0-T(t==6.01))/V(t==6.01)
+idk2 = 1E7*exp(-5000/T(t==6.01)); // L/(mol*h)
+idk3= NA(t==6.01)/V(t==6.01); //CA
+idk4 = NB(t==6.01)/V(t==6.01); //CB
+idk5 = idk2*idk3*idk4; //r
+idk6 = -H*idk5/(RHO*CP); //cal/h
+printf("\n");
+if idk6 == idk then //!TODO ARRREGLAR POR QUE SI QUE TIENE MAXIMO A ESA HORA
+    disp("La ecuacion tiene un maximo en t = 6.01 h");
+else
+    disp("La ecuacion no tiene un maximo en t = 6.01 h");
+end

@@ -25,6 +25,7 @@ function dxdt = f(t,x)
     // Caudal de alimentación
     if t < tB then 
         F = FB;  // Semicontinuo
+        // ejemplo caudal de forma lineal F = 2*VB /tfin -2 *VB/tfin^2*t
     else 
         F = 0;   // Discontinuo
     end
