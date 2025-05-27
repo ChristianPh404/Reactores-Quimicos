@@ -156,7 +156,7 @@ idk4 = NB(t==6.01)/V(t==6.01); //CB
 idk5 = idk2*idk3*idk4; //r
 idk6 = -H*idk5/(RHO*CP); //cal/h
 printf("\n");
-if idk6 == idk then //!TODO ARRREGLAR POR QUE SI QUE TIENE MAXIMO A ESA HORA
+if abs((idk6 - idk)) < 1e5 then //!TODO ARRREGLAR POR QUE SI QUE TIENE MAXIMO A ESA HORA    
     disp("La ecuacion tiene un maximo en t = 6.01 h");
 else
     disp("La ecuacion no tiene un maximo en t = 6.01 h");
