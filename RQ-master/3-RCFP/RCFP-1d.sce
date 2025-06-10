@@ -87,7 +87,7 @@ V2 = %pi/4*D^2*L2 // L
 TAU2 = V2/F // h
 
 // ENTRADA
-x02 = [CA1s;CB1s;CC1s;T0];  // Enfriamiento: T1s => T0
+x02 = [CA1s;CB1s;CC1s;T0];  // Enfriamiento: T1s => T0 si fuera otra cosa en vez de T0 se pondria su valor
 
 // TIEMPO DE RESIDENCIA
 N =400; tau2 = 0:TAU2/N:TAU2; // h
@@ -99,7 +99,7 @@ CA2 = x2(1,:); CA2s = CA2($)
 CB2 = x2(2,:); CB2s = CB2($) 
 CC2 = x2(3,:); CC2s = CC2($)
 T2  = x2(4,:); T2s  = T2($)
-XA2 = 1 - CA2/CA0; XA2s = XA2($)
+XA2 = 1 - CA2/CA0; XA2s = XA2($) //! se pone CA2/Ca0 por que es la conversion respecto a la entrada inicial para ver la conversion total del reactor y no de forma individual   
 
 
 // GRÁFICAS
