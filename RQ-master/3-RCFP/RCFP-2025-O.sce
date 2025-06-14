@@ -72,7 +72,10 @@ CA1 = x1(1,:); CA1s = CA1($);
 CB1 = x1(2,:); CB1s = CB1($);
 T1  = x1(3,:); T1s  = T1($);
 XA1 = 1 - CA1/CA0; XA1s = XA1($);
-disp('Conversion del reactor 1 es: ', XA1s, ' y la temperatura es: ', T1s, ' K')
+// RESULTADOS
+C1result  = '  Las concentraciones de salida del reactor 1 son:' +ascii(10) + '  CA = ' + string(CA1s) + ' mol/L y CB = ' + string(CB1s) + ' mol/L';
+Xa1result = '  La conversión del reactor 1 es: ' + string(XA1s) + ' y la temperatura es: ' + string(T1s) + ' K';
+mprintf(C1result + "\n\n" + Xa1result+ "\n\n" );
 
 
 // *********
@@ -82,21 +85,44 @@ disp('Conversion del reactor 1 es: ', XA1s, ' y la temperatura es: ', T1s, ' K')
 // CONSTANTES
 V2 = %pi/4*D2^2*L2 // L
 TAU2 = V2/F // h
-
-// ENTRADA
-x02 = [CA1s;CB1s;T0];  // Enfriamiento: T0 puesto que en ambos son 600k
 // TIEMPO DE RESIDENCIA
 N = 600; tau2 = 0:TAU2/N:TAU2; // h
 l2 = 0:L2/N:L2; // dm
 
+// ENTRADA
+T20 = 590:0.01:600; // 
+for i = 1:length(T20)
+T2i = T20(i); // K
+x02 = [CA1s;CB1s;T2i];  // Enfriamiento: T20
 // RESOLVER
 x2 = ode(x02,0,tau2,f);
-CA2 = x2(1,:); CA2s = CA2($) 
-CB2 = x2(2,:); CB2s = CB2($) 
-T2  = x2(3,:); T2s  = T2($)
-XA2 = 1 - CA2/CA0; XA2s = XA2($) //! se pone CA2/Ca0 por que es la conversion respecto a la entrada inicial para ver la conversion total del reactor y no de forma individual   
-disp('Conversion del reactor 2 es: ', XA2s, ' y la temperatura es: ', T2s, ' K')
+T2  = x2(3,:); T2s(i)  = T2($)
+end
 
+// Encontrar el índice donde T2 es igual a Tobj
+
+Tobj= 600; // K
+indexT2 = find(abs((T2s-Tobj)/Tobj) < 1e-5); // tolerancia de 0.01%
+if isempty(indexT2)
+    disp("No se encontró una temperatura de 600 K en el reactor 2.");
+else
+    indexT2 = indexT2(1); // Tomar el primer índice encontrado
+    Tobt = T20(indexT2); // Temperatura objetivo
+end
+
+//RESOLVER PARA Tobt
+x02 = [CA1s;CB1s;Tobt];  // Enfriamiento: T20
+x2 = ode(x02,0,tau2,f);
+// RESULTADOS
+CA2 = x2(1,:); CA2s = CA2($);
+CB2 = x2(2,:); CB2s = CB2($);
+T2  = x2(3,:); T2s  = T2($);
+XA2 = 1 - CA2/CA0; XA2s = XA2($); //! se pone CA2/Ca0 por que es la conversion respecto a la entrada inicial para ver la conversion total del reactor y no de forma individual   
+xaresult = '  Conversion del reactor 2 es: ' + string(XA2s) + ' y la temperatura es: ' + string(T2s) + ' K';
+Tsresult = '  Temperatura del reactor 2 es: ' + string(Tobt) + ' K';
+Result   = '  Las concentraciones de salida del reactor 2 son:' +ascii(10) + '  CA = ' + string(CA2s) + " mol/L y CB = " + string(CB2s) + " mol/L";
+
+mprintf(xaresult+ "\n\n" + Tsresult + "\n\n" + Result + "\n\n");
 
 // GRÁFICAS
 scf(1); clf(1); 
@@ -107,10 +133,10 @@ xtitle("Conversion frente a longitud del reactor");
 scf(2); clf(2); 
 plot(l1,T1,'r',l2,T2,'g--');
 xgrid; xlabel('l,dm'); legend('T1','T2',-2,%f);
-xtitle("Temperatura frente a longitud del reactor", "l , dm", "T , K")
+xtitle("Temperatura frente a longitud del reactor", "l , dm", "T , K");
 
 scf(3); clf(3);
 plot(T1,XA1,'r--',T2,XA2,'b--');
 xgrid; xlabel('T'); legend('XA1','XA2',-2,%f); 
-xtitle("Conversion frente a temperatura", "T , k", "XA")
+xtitle("Conversion frente a temperatura", "T , k", "XA");
 

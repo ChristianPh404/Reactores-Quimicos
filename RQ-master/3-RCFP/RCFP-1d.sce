@@ -77,21 +77,41 @@ T1  = x1(4,:); T1s  = T1($)
 XA1 = 1 - CA1/CA0; XA1s = XA1($)
 
 
+d2XA1 = diff(XA1,2); // segunda derivada de XA1
+indexXA1 = find(d2XA1(1:$-1).*d2XA1(2:$) < 0) + 1; // índice de los puntos de inflexión
+lli = l1(indexXA1);
+XA1i = XA1(indexXA1);
+disp('el cambio de reactor optimo es a la longitud = ', lli, 'dm' , ' y la conversion = ', XA1i, 'mol/L')
+L3 = lli; // dm
+V3 = %pi/4*D^2*L3 // L
+TAU3 = V3/F // h
+tau3 = 0:TAU3/N:TAU3
+l3 = 0:L3/N:L3; // dm
+// RESOLVER
+x3 = ode(x01,0,tau3,f);
+CA3 = x3(1,:); CA3s = CA3($);
+CB3 = x3(2,:); CB3s = CB3($);
+CC3 = x3(3,:); CC3s = CC3($);
+T3  = x3(4,:); T3s  = T3($);
+XA3 = 1 - CA3/CA0; XA3s = XA3($);
+
+
 // *********
 // REACTOR 2
 // *********
 
 // CONSTANTES
-L2 = L - L1; // dm
+L2 = L - lli; // dm
 V2 = %pi/4*D^2*L2 // L
 TAU2 = V2/F // h
 
 // ENTRADA
-x02 = [CA1s;CB1s;CC1s;T0];  // Enfriamiento: T1s => T0 si fuera otra cosa en vez de T0 se pondria su valor
-
+// x02 = [CA1s;CB1s;CC1s;T0];  // Enfriamiento: T1s => T0 si fuera otra cosa en vez de T0 se pondria su valor
+x02 = [CA3s;CB3s;CC3s;T0];  //*optimizado el otro era a mitad del reactor 
 // TIEMPO DE RESIDENCIA
 N =400; tau2 = 0:TAU2/N:TAU2; // h
 l2 = 0:L2/N:L2; // dm
+l2s = l2 + lli; // dm, para que la grafica de l2 empiece desde el final de l1
 
 // RESOLVER
 x2 = ode(x02,0,tau2,f);
@@ -101,18 +121,18 @@ CC2 = x2(3,:); CC2s = CC2($)
 T2  = x2(4,:); T2s  = T2($)
 XA2 = 1 - CA2/CA0; XA2s = XA2($) //! se pone CA2/Ca0 por que es la conversion respecto a la entrada inicial para ver la conversion total del reactor y no de forma individual   
 
-
+disp('la conversion final del reactor 2 es = ', XA2s, 'mol/L')
 // GRÁFICAS
 scf(1); clf(1); 
-plot(l1,XA1,'m',l2,XA2,'m--');
+plot(l3,XA3,'m',l2s,XA2,'m--');
 xgrid; xlabel('l'); legend('XA1','XA2',-2,%f); 
 
 scf(2); clf(2); 
-plot(l1,T1,'r',l2,T2,'r--');
+plot(l3,T3,'r',l2s,T2,'r--');
 xgrid; xlabel('l'); legend('T1','T2',-2,%f); 
 
 scf(3); clf(3); 
-plot(T1,XA1,'mo-',T2,XA2,'m.-');
+plot(T3,XA3,'mo-',T2,XA2,'m.-');
 xgrid; xlabel('T'); legend('XA1','XA2',-2,%f); 
 
 scf(4);
@@ -130,9 +150,6 @@ end
 //dxa/dtau = (1/cao)/(-H*r/(RHO*CP)) =-rho*CP/H*CA0* por eso ambas rectas son cortantes 
 //buscar punto de inflexion 
 
-d2XA1 = diff(XA1,2); // segunda derivada de XA1
-indexXA1 = find(d2XA1(1:$-1).*d2XA1(2:$) < 0) + 1; // índice de los puntos de inflexión
-lli = l1(indexXA1)
-XA1i = XA1(indexXA1)
+
 scf(1); plot(lli,XA1i,'ro-');
 //despues usar ese punto para calcular la conversiona al cambiar la L 
