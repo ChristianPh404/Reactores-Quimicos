@@ -126,5 +126,5 @@ plot(t, T, 'k', t, TJ, 'm',t(indices), T(indices), 'r.',t(indextj), TJ(indextj),
 xlabel('Tiempo (h)');
 ylabel('Temperatura (K)');
 title('Temperatura del reactor y de la camisa');
-legend('T del reactor', 'T de la camisa', 'T > 320 K', 'TJ > 310 K', 'TJ máximo', 'T máximo');
+legend('T del reactor', 'T de la camisa', 'T > 320 K', 'TJ > 310 K', 'TJ máximo', 'T máximo', -2, %f);
 

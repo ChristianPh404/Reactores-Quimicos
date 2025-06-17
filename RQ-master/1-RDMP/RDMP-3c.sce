@@ -94,3 +94,5 @@ xgrid; xlabel('Sector'); ylabel('Ts');
 while Tmax> Tfin then Fs=Fs+0.01
 
 end
+
+//TODO Revisar  el bucle while .... 

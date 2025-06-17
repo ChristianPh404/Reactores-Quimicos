@@ -124,3 +124,6 @@ plot(CA,T,'bo-');
 
 a1 = gca;
 a1.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
+
+
+//!tiene un error revisar el script 
