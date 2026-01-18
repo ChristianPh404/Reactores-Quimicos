@@ -3,12 +3,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
 \usepackage{amsmath,amsfonts,amsthm,amssymb,mathtools}
-\usepackage[varbb]{newpxmath}
+%\usepackage[varbb]{newpxmath}
 \usepackage{xfrac}
 \usepackage[makeroom]{cancel}
 \usepackage{mathtools}
+\usepackage{lmodern}
 \usepackage{bookmark}
 \usepackage{enumitem}
 \usepackage{hyperref,theoremref}
@@ -745,11 +748,11 @@
 {\addvspace{30pt}%
 	\begin{tikzpicture}[remember picture, overlay]%
 		\draw[fill=doc!60,draw=doc!60] (-7,-.1) rectangle (-0.9,.5);%
-		\pgftext[left,x=-3.5cm,y=0.2cm]{\color{white}\Large\sc\bfseries Chapter\ \thecontentslabel};%
-	\end{tikzpicture}\color{doc!60}\large\sc\bfseries}%
+		\pgftext[left,x=-3.5cm,y=0.2cm]{\color{white}\Large\bfseries Chapter\ \thecontentslabel}%
+	\end{tikzpicture}\color{doc!60}\large\bfseries}%
 {}
 {}
-{\;\titlerule\;\large\sc\bfseries Page \thecontentspage
+{\;\titlerule\;\large\bfseries Page \thecontentspage
 	\begin{tikzpicture}[remember picture, overlay]
 		\draw[fill=doc!60,draw=doc!60] (2pt,0) rectangle (4,0.1pt);
 	\end{tikzpicture}}%
@@ -760,11 +763,17 @@
 {\hfill\small \thecontentspage}
 []
 
-\titlecontents*{subsection}[4.7pc] % Mayor indentación para subsecciones
-{\addvspace{1pt}\small} % Espaciado más limpio
+\titlecontents{subsection}[4.7pc] % Mayor indentación para subsecciones
+{\addvspace{1pt}\small\contentsmargin{2.5em}} % Espaciado más limpio
 {\thecontentslabel\quad} % Mostrar número de subsección (1.1.1, 1.1.2)
 {}
-{\hfill\small\thecontentspage\\} % Alinear el número de página correctamente
+{\titlerule*[1pc]{.}\contentspage} % Alinear el número de página correctamente con puntos
+
+\titlecontents{subsubsection}[6pc] % Mayor indentación para subsubsecciones
+{\addvspace{0pt}\footnotesize\contentsmargin{2.5em}}
+{\thecontentslabel\quad}
+{}
+{\titlerule*[1pc]{.}\contentspage}
 
 
 \makeatletter
@@ -772,10 +781,10 @@
 	\chapter*{%
 	  \vspace*{-20\p@}%
 	  \begin{tikzpicture}[remember picture, overlay]%
-		  \pgftext[right,x=15cm,y=0.2cm]{\color{doc!60}\Huge\sc\bfseries \contentsname};%
+		  \pgftext[right,x=15cm,y=0.2cm]{\color{doc!60}\Huge\bfseries \contentsname}%
 		  \draw[fill=doc!60,draw=doc!60] (13,-.75) rectangle (20,1);%
 		  \clip (13,-.75) rectangle (20,1);
-		  \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
+		  \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\bfseries \contentsname}%
 	  \end{tikzpicture}}%
 	\@starttoc{toc}}
 \makeatother
