@@ -1,7 +1,7 @@
 \chapter{Reactor Discontinuo Mezcla perfecta}
 \nt{\begin{raggedright}
-	en un reactor biologico tenemos que f/v velocidad de dilucion (D)mientras que en otros es v/f , en el primer caso es por que se tiene
-	en cuenta los caudales de salida frente los otros son de entrada, tiempos de residencia corto, en el segundo caso es tiempo espacia,
+	En un reactor biológico tenemos que f/v velocidad de dilución (D)mientras que en otros es v/f, en el primer caso, es porque se tiene
+	cuenta los caudales de salida frente los otros son de entrada, tiempos de residencia cortos, en el segundo caso es tiempo espacial,
 	teniendo en cuenta los caudales de entrada
 \end{raggedright}}
 \subsection{Isotermo}
@@ -20,17 +20,17 @@
 	\item \textbf{Calculo de Tiempo de residencia:} $\tau = \frac{V}{F}$
 \end{itemize}
 Dentro de los reactivos uno sera el limitante, en la etapa de diseño va referida al reactivo limitante (A)
-\textbf{Refiriendonos a la conversion puesto que es el parametro que mas informacion nos da:}
-ya que queremos un $\%$ minimo de conversion, se puede calcular como:
+\textbf{Refiriéndonos a la conversión, puesto que es el parámetro que más información nos da:}
+ya que queremos un $\%$ mínimo de conversión, se puede calcular como:
 \begin{equation}
 	X_A = \frac{N_{AR}-N_A}{N_{AR}} \rightarrow N_A = N_{AR} \cdot (1-X_A)
 \end{equation}
-en la etapa de diseño la masa dara el volumen y el balance entalpico como la temperatura es constante dara el diseño del intercambiador de calor.
-por tanto el objetivo a calcular es el tiempo de residencia.
+En la etapa de diseño la masa dará el volumen y el balance entálpico como la temperatura es constante dará el diseño del intercambiador de calor.
+Por tanto el objetivo a calcular es el tiempo de residencia.
 \begin{equation}
 	\frac{dN_A}{dt} = -r_A \cdot V
 \end{equation}
-pars transformar en conversion:
+Para transformar en conversión:
 \begin{equation}
 	X_A = \frac{N_{AR}-N_A}{N_{AR}} \rightarrow N_A = N_{AR} \cdot (1-X_A)
 \end{equation}
@@ -45,7 +45,7 @@ pars transformar en conversion:
 \end{equation}
 2 casos 
 \begin{itemize}
-	\item Fase liquida v =cte 
+	\item Fase líquida v =cte 
 	\begin{equation}
 		Tr = CAR \int_{XA0}^{XA} \frac{dxa}{ra}
 	\end{equation}
@@ -57,12 +57,12 @@ pars transformar en conversion:
 \end{raggedright}
 \nt{V  = VR (1 + CA + XA)}
 \mlenma{Para componentes que no sean referencia}{CB = CB0 -CA0 * XA \\
-en el TR el divisior ra seria k1 * CA que era CA0(1-xA)* lo definido arriba}
+en el TR el divisor ra sería k1 * CA que era CA0(1-xA)* lo definido arriba}
 \begin{raggedright}
 	\textbf{Funcionamiento:}
-\nt{Productividad = moles producto deseado /m3/s el tiempo de productividad depende del ciclo no es el de operacion del reactor sino que
-incluye el de limpieza acondicionado llenado..}
-Si ya esta diseñado y quiero que responda al funcionamiento y no al disño del reactor ci = f(t)
+\nt{Productividad = moles producto deseado /m3/s el tiempo de productividad depende del ciclo no es el de operación del reactor, sino que
+incluye el de limpieza acondicionado llenado...}
+Si ya está diseñado y quiero que responda al funcionamiento y no al diseño del reactor ci = f(t)
 \begin{equation}
 	\frac{dCA}{dt} = ra
 \end{equation}
@@ -75,14 +75,14 @@ Si ya esta diseñado y quiero que responda al funcionamiento y no al disño del 
 	\frac{dCC}{dt} = rc
 \end{equation}
 %! Eso para todos los balances ponerlo mas tarde en un multicol...
-teniendo V conocido que viene de la etapa de diseño y esta construido el intercambiador de calor y conociendo los parametros Tj T..
-La T define las constantes del proceso es decir las K que tambien seran conocidas.
-es decir el modelo se completa conociendo r1,r2,r3,ra,rb,rc....rf tambien se puede deducir de forma implicita que simplemente con
-los balances a f metiendo las cineticas de r1...r3 aunque recomienda ser explicito para luego poder variar el estudio del sistema.
-\subsubsection{Analisis de varibles}
-serian 15 ecuaciones las 6 de los componentes las 3 de reacciones y las 6 de los balances, el numero de variables. todas las concentraciones
+Teniendo V conocido que viene de la etapa de diseño y está construido el intercambiador de calor y conociendo los parámetros Tj T...
+La T define las constantes del proceso es decir las K que también serán conocidas.
+Es decir el modelo se completa conociendo r1,r2,r3,ra,rb,rc...rf. También se puede deducir de forma implícita que simplemente con
+los balances a f metiendo las cinéticas de r1...r3 aunque recomienda ser explícito para luego poder variar el estudio del sistema.
+\subsubsection{Análisis de variables}
+Serían 15 ecuaciones las 6 de los componentes las 3 de reacciones y las 6 de los balances, el número de variables. Todas las concentraciones
 todas las r y las constantes es decir k1 k2 k3 y k-3 
-numero de grados de libertad 4 es decir debe conocerse las 4 constantes cineticas a esa temperatura
+Número de grados de libertad 4 es decir debe conocerse las 4 constantes cinéticas a esa temperatura
 \clm{Prueba1}{}{Para el sistema de reacción en serie-paralelo
 \begin{gather*}
     2A + B \rightarrow P \\
@@ -106,7 +106,7 @@ Factor preexponencial = 4.15E5 s$^{-1}$\\
 Energía de activación = 11200 cal/mol\\
 Entalpía de reacción = -50400  cal/mol
 
-se lleva a cabo en un reactor discontinuo mezcla perfecta adiabático que se pone en marcha con 0.5 mol/L de A a 285 K.
+Se lleva a cabo en un reactor discontinuo mezcla perfecta adiabático que se pone en marcha con 0.5 mol/L de A a 285 K.
 Considerando para la mezcla reaccionante una capacidad calorífica de 0.9 cal/(g*K) y una densidad de 1070 g/L:
 \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\Alph*}]
 	\item Obtener la dinámica del proceso
@@ -120,7 +120,7 @@ Factor preexponencial = 2.2E4 s$^{-1}$\\
 Energía de activación = 41570  J/mol\\
 Entalpía de reacción = -5E5  J/mol
 
-se lleva a cabo durante 1500 s en un reactor discontinuo mezcla perfecta de 1 m$^3$ que dispone de una camisa de 4 m$^2$ a 283 K 
+Se lleva a cabo durante 1500 s en un reactor discontinuo mezcla perfecta de 1 m$^3$ que dispone de una camisa de 4 m$^2$ a 283 K 
 con un coeficiente global de transmisión de calor de 400 J/(m2·s·K).
 Considerando para la mezcla reaccionante una densidad de 980 kg/m$^3$ y una capacidad calorífica de 4200 J/(kg·K):
 \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\Alph*}]
@@ -239,12 +239,12 @@ k = 0.0231 min$^{-1}$  ,   (T = 280 K)
 Se lleva a cabo en disolución acuosa durante 100 min en un reactor discontinuo mezcla perfecta de 2500 L que dispone de una 
 camisa a 280 K capaz de refrigerar a 300 Kj/(min $\cdot$ K). El reactor se pone en marcha con 0.25 mol/L del compuesto A a 280 K.
 \begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
-	\item Obtener la dinámica del proceso considerando que el reactor alcanza una temperatura maxima de 290 K
+	\item Obtener la dinámica del proceso considerando que el reactor alcanza una temperatura máxima de 290 K
 	\item Determinar durante cuánto tiempo la temperatura está comprendida entre 284 y 288 K 
 \end{enumerate}}
 
 
-\qs{RDMP-O-2018}{En un reactor discontinuo mezcla perfecta en fase liquida tiene lugar la reacción quimica exotérmica
+\qs{RDMP-O-2018}{En un reactor discontinuo mezcla perfecta en fase líquida tiene lugar la reacción química exotérmica
 
 A $\rightarrow$ B
 Factor preexponencial = 2.5E4 s$^{-1}$\\
@@ -297,10 +297,10 @@ Se lleva a cabo un reactor discontinuo mezcla perfecta de 2000L equipado con una
 Puede suponerse una densidad de 0.9 Kg/L y una capacidad calorífica de 4500 J/(kg·K).
 \begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
 	\item Obtener la dinámica de la reacción hasta alcanzar el 95$\%$ de conversión, considerando que se pone en marcha a 360 K con 1 mol/L del compuesto A
-	\item Localizar el punto de inflexión en la evolucion temporal de la temperatura.
+	\item Localizar el punto de inflexión en la evolución temporal de la temperatura.
 \end{enumerate}}
 
-\qs{RDMP-E-2022}{Las siguientes reacciones químicas se llevan a cabo en disolución acuosa durante 2.5h en una reactor discontinuo mezcla perfecta
+\qs{RDMP-E-2022}{Las siguientes reacciones químicas se llevan a cabo en disolución acuosa durante 2.5h en un reactor discontinuo mezcla perfecta
 de 125 cm$^3$ que se pone en marcha a 310 K con 1 mmol/cm$^3$ del compuesto A:
 
 2A $\rightarrow$ B
@@ -329,7 +329,7 @@ Energía de activación = 1.5E4 kcal/kmol\\
 Entalpía de reacción = -3.5E4 kcal/kmol
 
 Se lleva a cabo durante 120h en un reactor discontinuo mezcla perfecta de 1 m$^3$ que contiene inicialmente 1 kmol/m$^3$ del compuesto A y 1.5 kmol/m$^3$ del compuesto B a 320 K.
-El reactor dispone de una camisa de 5 m$^2$ a 300 K con un coeficiente global de transmision de calor de 1.5 kcal/(kg·K).
+El reactor dispone de una camisa de 5 m$^2$ a 300 K con un coeficiente global de transmisión de calor de 1.5 kcal/(kg·K).
 
 Considerando para la mezcla reaccionante una densidad de 1200 kg/m$^3$ y una capacidad calorífica de 0.9 kcal/(kg·K):
 \begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
@@ -365,20 +365,20 @@ El reactor dispone de una camisa de 100 L capaz de transmitir calor a 1E4 cal/(m
 \qs{RDMP-O-2017}{En un reactor discontinuo mezcla perfecta se practica el equilibrio químico
 A + B $\rightleftarrows$ P 
 
-con generacion de calor pero sin transmisión. elaborar un script de scilab que permita obtener la dinamica del proceso y localizar una determinada conversión.}
+Con generación de calor, pero sin transmisión. Elaborar un script de Scilab que permita obtener la dinámica del proceso y localizar una determinada conversión.}
 
-\qs{RDMP-?-?}{La reacción quimica exotérmica\\
+\qs{RDMP-?-?}{La reacción química exotérmica\\
 A $\rightarrow$ B
 Factor preexponencial = 2.5E4 s$^{-1}$\\
 k = 1E8*exp(-8000/T) s$^{-1}$\\
 H = -2E5 J/mol
 
 Se lleva a cabo en fase acuosa en un reactor discontinuo de 10m$^3$ durante 10000s. El reactor se pone en marcha con una concentración inicial de A
-igual a 1000mol/m$^3$ y a 280 K. Se emplea una camisa de 1m$^3$ y 10m$^2$ que esta inicialmente a 280k y a la que se alimentan de 0.01m$^3$/s de agua a 280K. 
+igual a 1000mol/m$^3$ y a 280 K. Se emplea una camisa de 1m$^3$ y 10m$^2$ que está inicialmente a 280k y a la que se alimentan de 0.01m$^3$/s de agua a 280K. 
 El coeficiente global de transmisión de calor es de 400J/(m$^2$·s·K).
 
 \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\Alph*}]
-	\item Aportar scripts salidas en consola, graficas y comentarios para estudiar la dinamica del proceso
+	\item Aportar scripts salidas en consola, graficas y comentarios para estudiar la dinámica del proceso
 \end{enumerate}}
 
 %! ------------------------------------------------------------------------------------------

@@ -10,6 +10,6 @@
 \contentsline {subsubsection}{Calor intercambiado con el exterior}{7}{section*.4}%
 \contentsline {chapter}{\numberline {2}Reactor Discontinuo Mezcla perfecta}{9}{chapter.2}%
 \contentsline {subsection}{\numberline {2.0.1}Isotermo}{9}{subsection.2.0.1}%
-\contentsline {subsubsection}{Analisis de varibles}{10}{section*.5}%
+\contentsline {subsubsection}{Análisis de variables}{10}{section*.5}%
 \contentsline {chapter}{\numberline {3}Reactor Continuo Mezcla Perfecta}{17}{chapter.3}%
 \contentsfinish 

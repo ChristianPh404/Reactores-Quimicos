@@ -3,3 +3,14 @@
     "cSpell.language": "en,es",
     "latex-workshop.chktex.enabled": true
 }
+{
+    "ltex.language": "es-ES",
+    "ltex.enabledRules": {
+        "es": [
+            "MORFOLOGIK_RULE_ES"
+        ]
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.ltex": false
+    }
+}
