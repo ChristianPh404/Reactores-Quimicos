@@ -1,7 +1,7 @@
 \contentsline {chapter}{\numberline {1}Analisis}{2}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Caracterización de reactores}{2}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Reactores de mezcla perfecta}{3}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Reactor de flujo piston}{3}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.2}Reactor de flujo pistón}{3}{subsection.1.1.2}%
 \contentsline {section}{\numberline {1.2}Modelizacion de reactores}{4}{section.1.2}%
 \contentsline {subsection}{\numberline {1.2.1}Modelo de mezcla perfecta}{4}{subsection.1.2.1}%
 \contentsline {subsection}{\numberline {1.2.2}velocidades de reacción}{6}{subsection.1.2.2}%
