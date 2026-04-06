@@ -84,5 +84,52 @@
 \newcommand{\st}{\strut}
 \newcommand{\dps}[1]{\displaystyle{#1}}
 
-\newcommand{\sol}{\setlength{\parindent}{0cm}\textbf{\textit{Solution:}}\setlength{\parindent}{1cm} }
-\newcommand{\solve}[1]{\setlength{\parindent}{0cm}\textbf{\textit{Solution: }}\setlength{\parindent}{1cm}#1 \Qed}
+
+\newcommand{\solve}[1]{\setlength{\parindent}{0cm}\textbf{\textit{Solución: }}\setlength{\parindent}{1cm}#1 \Qed}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\newcommand{\Res}[1]{%
+    \begin{tikzpicture}[baseline=(formula.base)]
+        % 1. Recuadro principal (Verde claro)
+        \node[inner sep=20pt, fill=green!10, draw=black, thick, minimum width=8cm, minimum height=2.5cm] (box) {
+            $\displaystyle #1$
+        };
+
+        % 2. Parámetros de la "Cruz"
+        \def\posX{2.2cm}   % Distancia desde la izquierda
+        \def\posY{0.7cm}   % Distancia desde arriba (donde está la horizontal)
+        \def\extra{0.4cm}  % Cuánto sobresalen las líneas hacia afuera
+
+        % 3. LÍNEA HORIZONTAL (Sobresale hacia la derecha)
+        \draw[thick] ($(box.north west)-(0,\posY)$) -- ++(\posX ,0);
+
+        % 4. LÍNEA VERTICAL (Sobresale por ARRIBA, pero termina en la HORIZONTAL)
+        % Empieza en +extra (fuera) y termina exactamente en -\posY (en la línea)
+        \draw[thick] ($(box.north west)+(\posX,0)$) -- ($(box.north west)+(\posX,-\posY)$);
+
+        % 5. Texto "resultado" (Dentro del recuadro superior izquierdo)
+        \node[anchor=north west, font=\bfseries\small] at ([xshift=4pt, yshift=-2pt]box.north west) {Resultado:};
+
+        % Nodo auxiliar para centrado de la fórmula
+        \node (formula) at (box.center) {};
+    \end{tikzpicture}
+}

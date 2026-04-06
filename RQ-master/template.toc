@@ -1,3 +1,4 @@
+\babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1}Análisis}{2}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Caracterización de reactores}{2}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Reactores de mezcla perfecta}{3}{subsection.1.1.1}%
@@ -10,6 +11,9 @@
 \contentsline {subsubsection}{Calor intercambiado con el exterior}{7}{section*.4}%
 \contentsline {chapter}{\numberline {2}Reactor Discontinuo Mezcla perfecta}{9}{chapter.2}%
 \contentsline {subsection}{\numberline {2.0.1}Isotermo}{9}{subsection.2.0.1}%
-\contentsline {subsubsection}{Análisis de variables}{10}{section*.5}%
-\contentsline {chapter}{\numberline {3}Reactor Continuo Mezcla Perfecta}{17}{chapter.3}%
+\contentsline {subsection}{\numberline {2.0.2}Funcionamiento adiabático}{11}{subsection.2.0.2}%
+\contentsline {subsection}{\numberline {2.0.3}Funcionamiento no isotermo-no adiabático}{12}{subsection.2.0.3}%
+\contentsline {section}{\numberline {2.1}Progresión óptima de la temperatura}{13}{section.2.1}%
+\contentsline {subsubsection}{Análisis de variables}{16}{section*.7}%
+\contentsline {chapter}{\numberline {3}Reactor Continuo Mezcla Perfecta}{24}{chapter.3}%
 \contentsfinish 

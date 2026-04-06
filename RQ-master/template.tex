@@ -3,10 +3,32 @@
 \input{preamble} % revisar en preamble \setcounter{tocdepth}{3}
 \input{macros}
 \input{letterfonts}
-\usepackage{graphicx}
+\usepackage[utf8]{inputenc}  % para PDFLaTeX
+\usepackage[T1]{fontenc}
+
 \usepackage{chemfig}
 \usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{adjustbox}
+\usepackage{pdflscape}  % permite páginas horizontales que se ven rotadas en el PDF
+\usepackage[backend=biber, style=apa]{biblatex}
+\usepackage{caption}
+\usepackage[spanish]{babel}
+\usepackage{lmodern}
+\usepackage{multirow}
+\usepackage{csquotes}
+\usepackage{tikz}
 \usepackage{amsmath}
+\usepackage{minted}
+\usepackage{subcaption}
+\usepackage{float} % Para usar [H]
+\addto\captionsspanish{
+  \renewcommand{\contentsname}{Índice}
+}
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
 \title{\Huge{Reactores Químicos}\\Teoría y Ordenador}
 \author{\huge{Christian Pérez Hita}}
 \date{}
@@ -20,7 +42,7 @@
 
 \tableofcontents
 \pagebreak
-
+\graphicspath{ {./Imagenes/} }
 \include{Capitulos/analisis}
 \include{Capitulos/RDMP}
 \include{Capitulos/RCMP}
