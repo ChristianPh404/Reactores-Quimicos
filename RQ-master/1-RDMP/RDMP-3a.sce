@@ -54,7 +54,8 @@ T = x(2,:); Tfin = T($)
 
 [Tmax,indexTmax] = max(T)
 tTmax = t(indexTmax)
-disp(Tmax)
+disp(' La temperatura maxima es: '+string(Tmax)+' K')
+disp(' El tiempo en el que se alcanza la temperatura maxima es: '+string(tTmax)+' s')
 
 // GRÁFICAS
 scf(1); clf(1); 

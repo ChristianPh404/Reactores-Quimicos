@@ -1,0 +1,81 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{clear}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{clc}\PYG{p}{;}
+\PYG{c+c1}{// RDMP\PYGZhy{}4.sce}
+\PYG{c+c1}{// 2 A \PYGZlt{}=\PYGZgt{} B}
+\PYG{c+c1}{// Isotermo}
+
+\PYG{c+c1}{// SISTEMA DE ECUACIONES DIFERENCIALES}
+\PYG{k}{function}\PYG{+w}{ }dxdt\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nf}{f}\PYG{p}{(}t,x\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Variables diferenciales}
+\PYG{+w}{    }\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Velocidad de reacción}
+\PYG{+w}{    }\PYG{c+c1}{// r = rd \PYGZhy{} ri = kd*CA\PYGZca{}2 \PYGZhy{} ki*CB = kd*CA\PYGZca{}2 \PYGZhy{} kd*CB/Keq}
+\PYG{+w}{    }\PYG{n}{r}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{kd}\PYG{o}{*}\PYG{p}{(}\PYG{n}{CA}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{CB}\PYG{o}{/}\PYG{n}{Keq}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para A}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*CA)dt = \PYGZhy{}r*V}
+\PYG{+w}{    }\PYG{n}{dCAdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{r}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para B}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*CB)dt = r/2*V}
+\PYG{+w}{    }\PYG{n}{dCBdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{r}\PYG{o}{/}\PYG{l+m+mi}{2}
+\PYG{+w}{    }\PYG{c+c1}{// Derivadas}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCAdt}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCBdt}
+\PYG{k}{endfunction}
+
+\PYG{c+c1}{// CONSTANTES}
+\PYG{n}{T}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{420}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{n}{kd0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.4E12}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L/(mol*h)}
+\PYG{n}{E}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{105000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/mol}
+\PYG{n}{Keq0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{6.9E8}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L/mol}
+\PYG{n}{H}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{63000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/mol}
+\PYG{n}{R}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{8.314}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/(mol*K)}
+\PYG{n}{kd}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{kd0}\PYG{o}{*}\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{E}\PYG{o}{/}\PYG{p}{(}\PYG{n}{R}\PYG{o}{*}\PYG{n}{T}\PYG{p}{))}\PYG{+w}{   }\PYG{c+c1}{// Ecuación de Arrhenius}
+\PYG{n}{Keq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Keq0}\PYG{o}{*}\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{H}\PYG{o}{/}\PYG{p}{(}\PYG{n}{R}\PYG{o}{*}\PYG{n}{T}\PYG{p}{))}\PYG{+w}{ }\PYG{c+c1}{// Ecuación de Van\PYGZsq{}t Hoff}
+
+\PYG{c+c1}{// CONDICIONES INICIALES}
+\PYG{n}{CAini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CBini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{xini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CAini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CBini}\PYG{p}{];}
+
+\PYG{c+c1}{// TIEMPO}
+\PYG{n}{tfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{dt}\PYG{p}{:}\PYG{n}{tfin}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// h}
+
+\PYG{c+c1}{// RESOLVER}
+\PYG{n}{x}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ode}\PYG{p}{(}\PYG{n}{xini}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{f}\PYG{p}{);}
+\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CAfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CA}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{n}{CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CBfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CB}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Concentracion final de A: \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{CAfin}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZsq{} mol/L\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Concentracion final de B: \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{CBfin}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZsq{} mol/L\PYGZsq{}}\PYG{p}{);}
+
+\PYG{n}{dCAdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{diff}\PYG{p}{(}\PYG{n}{CA}\PYG{p}{)}\PYG{o}{/}\PYG{n}{dt}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dCBdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{diff}\PYG{p}{(}\PYG{n}{CB}\PYG{p}{)}\PYG{o}{/}\PYG{n}{dt}\PYG{p}{;}
+\PYG{n}{dCAdteq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1E\PYGZhy{}5}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dCBdteq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1E\PYGZhy{}5}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/(L*h)}
+\PYG{n}{indexCAeq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{find}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{dCAdt}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{n}{dCAdteq}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{indexCBeq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{find}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{dCBdt}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{n}{dCBdteq}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{tCAeq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYG{n}{indexCAeq}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{tCBeq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYG{n}{indexCBeq}\PYG{p}{);}
+\PYG{n}{CAeq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CA}\PYG{p}{(}\PYG{n}{indexCAeq}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{CBeq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CB}\PYG{p}{(}\PYG{n}{indexCBeq}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Tiempo de equilibrio para CA: \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{tCAeq}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZsq{} h\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Concentracion de equilibrio para CA: \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{CAeq}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZsq{} mol/L\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Tiempo de equilibrio para CB: \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{tCBeq}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZsq{} h\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Concentracion de equilibrio para CB: \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{CBeq}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZsq{} mol/L\PYGZsq{}}\PYG{p}{);}
+\PYG{n}{teq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{tCAeq}\PYG{p}{,}\PYG{n}{tCBeq}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Tiempo de equilibrio: \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{teq}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZsq{} h\PYGZsq{}}\PYG{p}{);}
+
+\PYG{n}{indexCACB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{find}\PYG{p}{(}\PYG{n}{CA}\PYG{o}{\PYGZlt{}}\PYG{n}{CB}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{tCACB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYG{n}{indexCACB}\PYG{p}{);}
+\PYG{n}{CACB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CA}\PYG{p}{(}\PYG{n}{indexCACB}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Tiempo en que CA = CB: \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{tCACB}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZsq{} h\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c+c1}{// GRÁFICAS}
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{CA}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{CB}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{tCAeq}\PYG{p}{,}\PYG{n}{CAeq}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}b.\PYGZsq{}}\PYG{p}{,}\PYG{n}{tCBeq}\PYG{p}{,}\PYG{n}{CBeq}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}g.\PYGZsq{}}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{tCACB}\PYG{p}{,}\PYG{n}{CACB}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}bo\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CA\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}CB\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYGZdl{}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{dCAdt}\PYG{p}{),}\PYG{n}{t}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYGZdl{}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{dCBdt}\PYG{p}{));}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{tCAeq}\PYG{p}{,}\PYG{n}{dCAdteq}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}b.\PYGZsq{}}\PYG{p}{,}\PYG{n}{tCBeq}\PYG{p}{,}\PYG{n}{dCBdteq}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}g.\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}|dCAdt|\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}|dCBdt|\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+\PYG{n}{a2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{gca}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{a2}\PYG{p}{.}\PYG{n}{log\PYGZus{}flags}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}nl\PYGZdq{}}\PYG{p}{;}
+\PYG{c+c1}{//! gca da el control de los ejes del grafico}
+\PYG{c+c1}{//! log\PYGZus{}flags = \PYGZdq{}nl\PYGZdq{} es para que el eje y sea logaritmico}
+\end{MintedVerbatim}

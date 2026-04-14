@@ -63,25 +63,25 @@ xgrid; xlabel('t'); legend('CA','CB','CC','CD',-2,%f);
 CAobj = 0.5;
 indexA = find(CA > CAobj);
 tA = dt*length(indexA)
-disp(tA,'tiempo para CA = 0.5 mol/L');
+disp('tiempo para CA = 0.5 mol/L ='+string(tA)+'min');
 plot(t(indexA),CA(indexA),'b.');
 
 CBlo = 0.15; CBup = 0.20;
 indexB = find(CB > CBlo & CB < CBup);
 tB = dt*length(indexB)
-disp(tB,'tiempo para 0.15 < CB < 0.20 mol/L');
+disp('tiempo para 0.15 < CB < 0.20 mol/L ='+string(tB)+'min');
 plot(t(indexB),CB(indexB),'g.');
 
 dCCdt = diff(CC)/dt;
 indexC = find(dCCdt > 0);
 tC = dt*length(indexC);
-disp(tC,'tiempo para dCCdt > 0');
+disp('tiempo para dCCdt > 0 ='+string(tC)+'min');
 plot(t(indexC),CC(indexC),'r.');
 
 indexD = find(CD == max(CA,CB,CC,CD));
 tD = dt*length(indexD);
 
 plot(t(indexD),CD(indexD),'c.');
-disp(tD,'tiempo para CD máximo');
+disp('tiempo para CD máximo ='+string(tD)+'min');
 indextD = find(CD > CA ,1);
-disp(t(indextD),'tiempo para CD > CA');
+disp('tiempo para CD > CA ='+string(t(indextD))+'min');

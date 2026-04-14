@@ -127,4 +127,3 @@ xlabel('Tiempo (h)');
 ylabel('Temperatura (K)');
 title('Temperatura del reactor y de la camisa');
 legend('T del reactor', 'T de la camisa', 'T > 320 K', 'TJ > 310 K', 'TJ máximo', 'T máximo', -2, %f);
-

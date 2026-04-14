@@ -70,11 +70,14 @@ tfin = 5; dt = 0.01; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
-CA = x(1,:); CAfin = CA($)
-CB = x(2,:); CBfin = CB($)
-Topt = diff(x(3,:))/dt; Toptfin = Topt($)
-XA = 1 - CA/CAini; XAfin = XA($)
-
+CA = x(1,:); CAfin = CA($);
+CB = x(2,:); CBfin = CB($);
+Topt = diff(x(3,:))/dt; Toptfin = Topt($);
+XA = 1 - CA/CAini; XAfin = XA($);
+disp("La concentracion final de A es: " + string(CAfin) + " mol/L")
+disp("La concentracion final de B es: " + string(CBfin) + " mol/L")
+disp("La conversion final de A es: " + string(XAfin*100) + " %")
+disp("La temperatura optima es: " + string(Toptfin) + " K")
 // GRÁFICAS
 scf(2); clf(2); 
 plot(t,XA,'m-');
@@ -87,6 +90,7 @@ xgrid; xlabel('t'); legend('Topt',-2,%f);
 indexTc = find(Topt<Tmax-1E-6,1);
 tTc = t(indexTc)
 Tc = Topt(indexTc)
+disp("La temperatura de control es: " + string(Tc) + " K")
+disp("El tiempo de control es: " + string(tTc) + " h")
 plot(tTc,Tc,'ro');
  //! probar para diferentes conversiones el grafico 1 
- 

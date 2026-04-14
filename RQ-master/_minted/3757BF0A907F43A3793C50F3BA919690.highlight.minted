@@ -1,0 +1,121 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//  d(V*CA)dt = \PYGZhy{}r*V consume a por eso es \PYGZhy{}r y el reacto de a es r lo consumido *v}
+\PYG{c+c1}{//  v es constante por lo que puede salir de la derivada}
+\PYG{c+c1}{//  dCAdt = \PYGZhy{}r}
+\PYG{c+c1}{//  Variables diferenciales como ya tenemos CA en una ec definida la ponemos como constante}
+\PYG{c+c1}{//  d(V*RHO*CP*T)dt  //\PYGZlt{}····(m·cp·t)//= \PYGZhy{}H*r*V ; el signo menos de la entalpia es por que al ser}
+\PYG{c+c1}{//  exotermica por convenio la h es negativa y como tiene que aumentar}
+\PYG{c+c1}{//  la temperatura es necesario para \PYGZhy{}·\PYGZhy{}=*  // dTdt  = \PYGZhy{}H*r/(RHO*CP)}
+
+\PYG{c+c1}{// si la reaccion es irreversible no se suele poner los balances de materia del producto}
+\PYG{c+c1}{// se puede hacer aunque no sea necesario ya que la potencia de calculo no la complica}
+
+\PYG{c+c1}{// en los ejercicios nunca vamos  a tener que realizar cambios de unidades pero si poner las unidades}
+\PYG{c+c1}{// constante que buscar siempre la r es decir tenerlas tabuladas}
+
+\PYG{c+c1}{// el tiempo no nos lo da el ejercicio ponemos un numero provisional de prueba y error}
+
+\PYG{c+c1}{// xgrid; xlabel(\PYGZsq{}t\PYGZsq{}); legend(\PYGZsq{}CA\PYGZsq{},\PYGZhy{}2,\PYGZpc{}f);}
+\PYG{c+c1}{// xgrid; xlabel(\PYGZsq{}t\PYGZsq{}); legend(\PYGZsq{}XA\PYGZsq{},\PYGZhy{}2,\PYGZpc{}f);}
+\PYG{c+c1}{// plot(t,T,\PYGZsq{}r\PYGZhy{}\PYGZsq{},tXAobj,TXAobj,\PYGZsq{}ro\PYGZsq{});}
+\PYG{c+c1}{// xgrid; xlabel(\PYGZsq{}t\PYGZsq{}); legend(\PYGZsq{}T\PYGZsq{},\PYGZhy{}2,\PYGZpc{}f);// el ,\PYGZhy{}2 es la posicion arriba izquiera fuera}
+\PYG{c+c1}{// el \PYGZhy{}3 es abajo izquierda fuera del grafico , el \PYGZpc{}f es para eliminar la caja de la leyenda}
+
+
+\PYG{n+nb}{clear}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{clc}\PYG{p}{;}
+\PYG{c+c1}{// RDMP\PYGZhy{}2.sce}
+\PYG{c+c1}{// A =\PYGZgt{} B}
+\PYG{c+c1}{// Adiabático}
+
+\PYG{c+c1}{// SISTEMA DE ECUACIONES DIFERENCIALES}
+\PYG{k}{function}\PYG{+w}{ }dxdt\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nf}{f}\PYG{p}{(}t, x\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{T}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Ecuación de Arrhenius}
+\PYG{+w}{    }\PYG{n}{k}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k0}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{E}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{R}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{));}
+
+\PYG{+w}{    }\PYG{c+c1}{// Velocidad de reacción}
+\PYG{+w}{    }\PYG{n}{r}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{CA}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para A}
+\PYG{+w}{    }\PYG{n}{dCAdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{r}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Balance de energía}
+\PYG{+w}{    }\PYG{n}{dTdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{H}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{r}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{RHO}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{CP}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Retornar como columna}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{dCAdt}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dTdt}\PYG{p}{];}
+\PYG{k}{endfunction}
+
+\PYG{c+c1}{// CONSTANTES}
+\PYG{n}{CP}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.9}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// cal/(g*K)}
+\PYG{n}{RHO}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1070}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// g/L}
+\PYG{n}{H}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{50400}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// cal/mol  //* Reacción exotérmica ya que la entalpia de reaccion tiene signo negativo}
+\PYG{n}{k0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{4.15E5}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// s\PYGZhy{}1}
+\PYG{n}{E}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{11200}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// cal/mol}
+\PYG{n}{R}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.987}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// cal/(mol*K)}
+
+
+
+\PYG{c+c1}{// CONDICIONES INICIALES}
+\PYG{n}{CAini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{Tini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{285}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{n}{xini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CAini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{Tini}\PYG{p}{];}
+
+\PYG{c+c1}{// TIEMPO INICIAL}
+\PYG{n}{tfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{50}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{n}{XAobj}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.90}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Conversión objetivo}
+\PYG{n}{XAalcanzado}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Variable para comprobar si se alcanza XAobj}
+\PYG{n}{tfinal\PYGZus{}max}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{10000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Tiempo máximo permitido}
+\PYG{n}{t}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{dt}\PYG{p}{:}\PYG{n}{tfin}\PYG{p}{;}
+
+\PYG{c+c1}{// SOLVER}
+\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{XAalcanzado}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{XAobj}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{tfin}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{tfinal\PYGZus{}max}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{x}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ode}\PYG{p}{(}\PYG{n}{xini}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Extraer valores de concentración y temperatura}
+\PYG{+w}{    }\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{:);}
+\PYG{+w}{    }\PYG{n}{T}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{:);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Calcular conversión}
+\PYG{+w}{    }\PYG{n}{XA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{CA}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{CAini}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Revisar si se alcanzó el valor objetivo}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{XA}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{p}{=}\PYG{+w}{ }\PYG{n}{XAobj}\PYG{+w}{ }\PYG{n+nb}{then}
+\PYG{+w}{        }\PYG{n}{XAalcanzado}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{XA}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{break}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Termina el bucle si se alcanza la conversión objetivo}
+\PYG{+w}{    }\PYG{k}{else}
+\PYG{+w}{        }\PYG{c+c1}{// Aumentar el tiempo de simulación si no se alcanza XAobj}
+\PYG{+w}{        }\PYG{n}{tfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{tfin}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{50}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{t}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{dt}\PYG{p}{:}\PYG{n}{tfin}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{end}
+\PYG{k}{end}
+
+\PYG{c+c1}{// Encontrar el tiempo en que se alcanza XAobj}
+\PYG{n}{indexXAobj}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{find}\PYG{p}{(}\PYG{n}{XA}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{p}{=}\PYG{+w}{ }\PYG{n}{XAobj}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{k}{if}\PYG{+w}{ }\PYG{n}{indexXAobj}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{[]}\PYG{+w}{ }\PYG{n+nb}{then}
+\PYG{+w}{    }\PYG{n}{tXAobj}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYG{n}{indexXAobj}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{TXAobj}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{(}\PYG{n}{indexXAobj}\PYG{p}{);}
+\PYG{k}{else}
+\PYG{+w}{    }\PYG{n}{tXAobj}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{NaN}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{TXAobj}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{NaN}\PYG{p}{;}
+\PYG{k}{end}
+
+\PYG{c+c1}{// GRÁFICAS}
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{CA}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}b\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CA\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{XA}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}m\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{tXAobj}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{XAobj}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}mo\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}XA\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}r\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{tXAobj}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{TXAobj}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}T\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}la conversion de A es de \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{XAalcanzado}\PYG{o}{*}\PYG{l+m+mi}{100}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZsq{}\PYGZpc{}\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}la temperatura en la que se alcanza el 90\PYGZpc{} de conversion es de \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{TXAobj}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZsq{} K\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}el tiempo en el que se alcanza el 90\PYGZpc{} de conversion es de \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{tXAobj}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZsq{} s\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}el tiempo maximo permitido es de \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{tfinal\PYGZus{}max}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZsq{} s\PYGZsq{}}\PYG{p}{);}
+\end{MintedVerbatim}

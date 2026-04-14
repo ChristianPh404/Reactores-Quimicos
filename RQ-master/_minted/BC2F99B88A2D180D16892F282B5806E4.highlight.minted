@@ -1,0 +1,108 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{+w}{  }\PYG{n+nb}{clear}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{clc}\PYG{p}{;}
+\PYG{c+c1}{// RDMP\PYGZhy{}MULT\PYGZhy{}2.sce}
+\PYG{c+c1}{// 1) A =\PYGZgt{} B}
+\PYG{c+c1}{// 2) A =\PYGZgt{} C}
+\PYG{c+c1}{// 3) B =\PYGZgt{} D*}
+\PYG{c+c1}{// No adiabático}
+
+\PYG{c+c1}{// SISTEMA DE ECUACIONES DIFERENCIALES}
+\PYG{k}{function}\PYG{+w}{ }dxdt\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nf}{f}\PYG{p}{(}t,x\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Variables diferenciales}
+\PYG{+w}{    }\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{CC}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{CD}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{T}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Ecuaciones de Arrhenius}
+\PYG{+w}{    }\PYG{n}{k1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1500}\PYG{o}{/}\PYG{n}{T}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{  }\PYG{l+m+mi}{6}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{//h\PYGZhy{}1}
+\PYG{+w}{    }\PYG{n}{k2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4000}\PYG{o}{/}\PYG{n}{T}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{12}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{//h\PYGZhy{}1}
+\PYG{+w}{    }\PYG{n}{k3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3000}\PYG{o}{/}\PYG{n}{T}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{//h\PYGZhy{}1}
+\PYG{+w}{    }\PYG{c+c1}{// Velocidades de reacción}
+\PYG{+w}{    }\PYG{n}{r1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k1}\PYG{o}{*}\PYG{n}{CA}
+\PYG{+w}{    }\PYG{n}{r2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k2}\PYG{o}{*}\PYG{n}{CA}
+\PYG{+w}{    }\PYG{n}{r3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k3}\PYG{o}{*}\PYG{n}{CB}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para A}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*CA)dt = (\PYGZhy{}r1\PYGZhy{}r2)*V}
+\PYG{+w}{    }\PYG{n}{dCAdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{r1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{r2}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para B}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*CB)dt = (r1\PYGZhy{}r3)*V}
+\PYG{+w}{    }\PYG{n}{dCBdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{  }\PYG{n}{r1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{r3}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para C}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*CC)dt = r2*V}
+\PYG{+w}{    }\PYG{n}{dCCdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{  }\PYG{n}{r2}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para D}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*CD)dt = r3*V}
+\PYG{+w}{    }\PYG{n}{dCDdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{  }\PYG{n}{r3}
+\PYG{+w}{    }\PYG{c+c1}{// Temperatura de la camisa}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{tfin}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{n+nb}{then}\PYG{+w}{ }\PYG{n}{TJ}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{TJ1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{else}\PYG{+w}{ }\PYG{n}{TJ}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{TJ2}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{end}
+\PYG{+w}{    }\PYG{c+c1}{// Calor transferido del reactor a la camisa}
+\PYG{+w}{    }\PYG{n}{Q}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{U}\PYG{o}{*}\PYG{n}{A}\PYG{o}{*}\PYG{p}{(}\PYG{n}{TJ}\PYG{o}{\PYGZhy{}}\PYG{n}{T}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de energía}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*RHO*CP*T) = Q}
+\PYG{+w}{    }\PYG{n}{dTdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Q}\PYG{o}{/}\PYG{p}{(}\PYG{n}{V}\PYG{o}{*}\PYG{n}{RHO}\PYG{o}{*}\PYG{n}{CP}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Derivadas}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCAdt}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCBdt}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCCdt}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCDdt}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dTdt}
+\PYG{k}{endfunction}
+
+\PYG{c+c1}{// CONSTANTES}
+\PYG{n}{V}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// m3}
+\PYG{n}{A}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// m2}
+\PYG{n}{U}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// kcal/(h*m2*K)}
+\PYG{n}{RHO}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// kg/m3}
+\PYG{n}{CP}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// kcal/(kg*K)}
+\PYG{n}{Tcold}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{293}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{Thot}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{353}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+
+\PYG{c+c1}{// Operación de la camisa}
+\PYG{c+c1}{//! Esta para una operacion en exclusiva la del caso 1 probar a meter en un bucle for para encontrar la maxima}
+\PYG{n}{op}\PYG{+w}{ }\PYG{p}{=}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{n+nb}{select}\PYG{+w}{ }\PYG{n}{op}
+\PYG{+w}{    }\PYG{k}{case}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{n+nb}{then}\PYG{+w}{ }\PYG{n}{TJ1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Tcold}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{TJ2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Tcold}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{+w}{    }\PYG{k}{case}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{n+nb}{then}\PYG{+w}{ }\PYG{n}{TJ1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Thot}\PYG{p}{;}\PYG{+w}{  }\PYG{n}{TJ2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Thot}\PYG{p}{;}\PYG{+w}{  }\PYG{c+c1}{// K}
+\PYG{+w}{    }\PYG{k}{case}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{n+nb}{then}\PYG{+w}{ }\PYG{n}{TJ1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Tcold}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{TJ2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Thot}\PYG{p}{;}\PYG{+w}{  }\PYG{c+c1}{// K}
+\PYG{+w}{    }\PYG{k}{case}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{+w}{ }\PYG{n+nb}{then}\PYG{+w}{ }\PYG{n}{TJ1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Thot}\PYG{p}{;}\PYG{+w}{  }\PYG{n}{TJ2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Tcold}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{k}{end}
+
+\PYG{c+c1}{// CONDICIONES INICIALES}
+\PYG{n}{CAini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CBini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CCini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CDini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{Tini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{303}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//K}
+\PYG{n}{xini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CAini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CBini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CCini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CDini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{Tini}\PYG{p}{];}
+
+\PYG{c+c1}{// TIEMPO}
+\PYG{n}{tfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.01}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{dt}\PYG{p}{:}\PYG{n}{tfin}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//h}
+
+\PYG{c+c1}{// RESOLVER}
+\PYG{n}{x}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ode}\PYG{p}{(}\PYG{n}{xini}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{f}\PYG{p}{);}
+\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CAfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CA}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{n}{CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CBfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CB}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{n}{CC}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CCfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CC}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{n}{CD}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CDfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CD}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{n}{T}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{Tfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CAfin \PYGZsq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{CAfin}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{} mol/L\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CBfin \PYGZsq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{CBfin}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{} mol/L\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CCfin \PYGZsq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{CCfin}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{} mol/L\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CDfin \PYGZsq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{CDfin}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{} mol/L\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Tfin \PYGZsq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{Tfin}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{} K\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c+c1}{// GRÁFICAS}
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{CA}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{CB}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{CC}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{CD}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CA\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}CB\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}CC\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}CD\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{T}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}T\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}
+\PYG{n}{bar}\PYG{p}{(}\PYG{n}{op}\PYG{p}{,[}\PYG{n}{CAfin}\PYG{p}{,}\PYG{n}{CBfin}\PYG{p}{,}\PYG{n}{CCfin}\PYG{p}{,}\PYG{n}{CDfin}\PYG{p}{],}\PYG{l+s}{\PYGZsq{}stacked\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}op\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CA\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}CB\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}CC\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}CD\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+
+\PYG{c+c1}{//* Probar a hacer graficas para las concentraciones a diferentes T con el bucle for dentro}
+\end{MintedVerbatim}

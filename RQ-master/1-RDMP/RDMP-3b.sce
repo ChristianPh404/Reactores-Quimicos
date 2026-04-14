@@ -60,13 +60,15 @@ tfin = 1500; dt = 1; t = 0:dt:tfin; // s
 
 // RESOLVER
 x = ode(xini,0,t,f);
-CA = x(1,:); CAfin = CA($)
-T = x(2,:); Tfin = T($)
-TJ = x(3,:); TJfin = TJ($)
-
-[Tmax,indexTmax] = max(T)
-tTmax = t(indexTmax)
-
+CA = x(1,:); CAfin = CA($);
+T = x(2,:); Tfin = T($);
+TJ = x(3,:); TJfin = TJ($);
+disp("La concentracion final de A es: "+ string(CAfin) + " mol/m3")
+disp("La temperatura final del reactor es: "+ string(Tfin) + " K")
+disp("La temperatura final de la camisa es: "+ string(TJfin) + " K")
+[Tmax,indexTmax] = max(T);
+tTmax = t(indexTmax);
+disp("La temperatura maxima es: "+ string(Tmax) + " K" + " y se alcanza en el instante " + string(tTmax) + " s")
 // GRÁFICAS
 scf(1); clf(1);
 plot(t,CA);

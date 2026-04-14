@@ -324,29 +324,9 @@ Normalmente, fijaremos la conversión de equilibrio y existen 2 opciones o fijar
      & T_{\text{opt}} = \frac{E_i-E_d}{R \cdot \ln\left(\frac{{X_A/(1 - X_A)}}{\dfrac{A_d E_d}{A_i E_i}}\right)}
   \end{align*}
 }
-\nt{Productividad = moles producto deseado /$m^3$/s el tiempo de productividad depende del ciclo no es el de operación del reactor, sino que
-  incluye el de limpieza acondicionado llenado...}
-Si ya está diseñado y quiero que responda al funcionamiento y no al diseño del reactor ci = f(t)
-\begin{equation}
-  \frac{dCA}{dt} = ra
-\end{equation}
+\nt{Productividad = moles producto deseado /$m^3$/s el tiempo de productividad depende del ciclo no es el de \\
+  Si ya está diseñado y quiero que responda al funcionamiento y no al diseño del reactor ci = f(t)}
 
-\begin{equation}
-  \frac{dCB}{dt} = rb
-\end{equation}
-
-\begin{equation}
-  \frac{dCC}{dt} = rc
-\end{equation}
-%! Eso para todos los balances ponerlo mas tarde en un multicol...
-Teniendo V conocido que viene de la etapa de diseño y está construido el intercambiador de calor y conociendo los parámetros Tj T...
-La T define las constantes del proceso es decir las K que también serán conocidas.
-Es decir el modelo se completa conociendo r1,r2,r3,ra,rb,rc...rf. También se puede deducir de forma implícita que simplemente con
-los balances a f metiendo las cinéticas de r1...r3 aunque recomienda ser explícito para luego poder variar el estudio del sistema.
-\subsubsection{Análisis de variables}
-Serían 15 ecuaciones las 6 de los componentes las 3 de reacciones y las 6 de los balances, el número de variables. Todas las concentraciones
-todas las r y las constantes es decir k1 k2 k3 y k-3
-Número de grados de libertad 4 es decir debe conocerse las 4 constantes cinéticas a esa temperatura
 \clm{Prueba 1}{}{Para el sistema de reacción en serie-paralelo
   \begin{gather*}
     2A + B \rightarrow P \\
@@ -355,6 +335,39 @@ Número de grados de libertad 4 es decir debe conocerse las 4 constantes cinéti
 
   Propón el modelo que permita calcular la evolución de las concentraciones de todos los componentes y la temperatura cuando en un RDMP a) adiabático, b) no isotermo-no adiabático.
   En cada caso realiza el análisis de variables indicando los datos que deben determinarse para la resolución del modelo.}
+\solve{}
+Primero definimos la constante cinetica de velocidad:
+\begin{align*}
+  r_1 = k_1 \cdot C_A^2 \cdot C_B \\
+  \vspace{1em}
+  r_2 = k_2 \cdot C_P \cdot C_B
+\end{align*}
+despues definimos los balances de materia:
+\begin{alignat*}{2}
+  \frac{dC_A}{dt} & = r_A & \hspace{4em} r_A & = -2r_1      \\
+  \frac{dC_B}{dt} & = r_B & \hspace{4em} r_B & = -r_1 - r_2 \\
+  \frac{dC_P}{dt} & = r_P & \hspace{4em} r_P & = r_1 - r_2  \\
+  \frac{dC_Q}{dt} & = r_Q & \hspace{4em} r_Q & = r_2
+\end{alignat*}
+Ademas hay que tener en cuenta que la constante de velocidad $k_i$ cumple la ecuacion de arrhenius:
+\begin{equation}
+  k_i = A_i \cdot exp\left(\frac{-E_i}{RT}\right)
+\end{equation}
+\begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\Alph*}]
+  \item \begin{equation*}
+          \frac{dT}{dt} = \frac{\Delta H_1 r_1 + \Delta H_2 r_2}{\rho \cdot C_p}
+        \end{equation*}
+  \item \begin{equation*}
+          \frac{dT}{dt} = \frac{\Delta H_1 r_1 + \Delta H_2 r_2}{\rho \cdot C_p} + \frac{U \cdot A\cdot (T_j - T)}{\rho \cdot C_p \cdot V}
+        \end{equation*}
+\end{enumerate}
+\vspace{1em}
+\begin{flushleft}
+  Número de ecuaciones 13, Número de variables 19 ($C_A$,$C_B$,$C_P$,$C_Q$,$r_1$,$r_2$,$r_A$,$r_B$,$r_P$,$r_Q$,$k_1$,$k_2$,$k_A$,$k_B$,$k_P$,$k_Q$,$T$)\\
+  Grados de libertar = 19-13=6, para el segundo caso tambien es necesario conocer U, A, $T_j$ y V. es decir 23 variables en total y 10 grados de libertad.
+\end{flushleft}
+\section{Problemas Practicos-Scilab}
+\newpage %! Revisar en otro momento si es necesario eliminarlo
 \qs{RDMP-1}{En un reactor discontinuo mezcla perfecta isotermo, se lleva a cabo la siguiente reacción química:
   A $\rightarrow$ B \\
   Constante de velocidad = 0.5 h$^{-1}$
@@ -363,7 +376,7 @@ Número de grados de libertad 4 es decir debe conocerse las 4 constantes cinéti
     \item Obtener la dinámica durante 5 h de reacción, es decir, la evolución temporal de las concentraciones de A y B, así como de la conversión
   \end{enumerate}}
 \solve{}
-\begin{minted}[fontsize=\small, linenos]{matlab}
+\begin{minted}[fontsize=\small, linenos]{scilab}
 clear; clc; 
 // RDMP-1.sce
 // A => B
@@ -467,7 +480,168 @@ disp('Conversión final de A: '+string(XAfin)+' mol/L');
     \item Obtener la dinámica del proceso
     \item Determinar la temperatura cuando se alcanza el 90$\%$ de conversión
   \end{enumerate}}
+\newpage
+\solve{}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+//  d(V*CA)dt = -r*V consume a por eso es -r y el reacto de a es r lo consumido *v
+//  v es constante por lo que puede salir de la derivada
+//  dCAdt = -r  
+//  Variables diferenciales como ya tenemos CA en una ec definida la ponemos como constante 
+//  d(V*RHO*CP*T)dt  //<····(m·cp·t)//= -H*r*V ; el signo menos de la entalpia es por que al ser 
+//  exotermica por convenio la h es negativa y como tiene que aumentar 
+//  la temperatura es necesario para -·-=*  // dTdt  = -H*r/(RHO*CP)   
 
+// si la reaccion es irreversible no se suele poner los balances de materia del producto 
+// se puede hacer aunque no sea necesario ya que la potencia de calculo no la complica
+
+// en los ejercicios nunca vamos  a tener que realizar cambios de unidades pero si poner las unidades
+// constante que buscar siempre la r es decir tenerlas tabuladas
+
+// el tiempo no nos lo da el ejercicio ponemos un numero provisional de prueba y error
+
+// xgrid; xlabel('t'); legend('CA',-2,%f);
+// xgrid; xlabel('t'); legend('XA',-2,%f);
+// plot(t,T,'r-',tXAobj,TXAobj,'ro');
+// xgrid; xlabel('t'); legend('T',-2,%f);// el ,-2 es la posicion arriba izquiera fuera
+// el -3 es abajo izquierda fuera del grafico , el %f es para eliminar la caja de la leyenda
+
+
+clear; clc;
+// RDMP-2.sce
+// A => B
+// Adiabático
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t, x)
+    CA = x(1);
+    T  = x(2);
+    
+    // Ecuación de Arrhenius
+    k = k0 * exp(-E / (R * T));
+    
+    // Velocidad de reacción
+    r = k * CA;
+    
+    // Balance de materia para A
+    dCAdt = -r;
+    
+    // Balance de energía
+    dTdt = -H * r / (RHO * CP);
+    
+    // Retornar como columna
+    dxdt = [dCAdt; dTdt]; 
+endfunction
+
+// CONSTANTES
+CP = 0.9; // cal/(g*K)
+RHO = 1070; // g/L
+H = -50400; // cal/mol  //* Reacción exotérmica ya que la entalpia de reaccion tiene signo negativo
+k0 = 4.15E5; // s-1
+E = 11200; // cal/mol
+R = 1.987; // cal/(mol*K)
+
+
+
+// CONDICIONES INICIALES
+CAini = 0.5; // mol/L
+Tini = 285; // K
+xini = [CAini; Tini];
+
+// TIEMPO INICIAL
+tfin = 50; dt = 1;
+XAobj = 0.90; // Conversión objetivo
+XAalcanzado = 0; // Variable para comprobar si se alcanza XAobj
+tfinal_max = 10000; // Tiempo máximo permitido
+t = 0:dt:tfin; 
+
+// SOLVER
+while (XAalcanzado < XAobj & tfin < tfinal_max)
+    x = ode(xini, 0, t, f);
+    
+    // Extraer valores de concentración y temperatura
+    CA = x(1, :);
+    T = x(2, :);
+    
+    // Calcular conversión
+    XA = 1 - CA / CAini;
+    
+    // Revisar si se alcanzó el valor objetivo
+    if max(XA) >= XAobj then
+        XAalcanzado = max(XA);
+        break; // Termina el bucle si se alcanza la conversión objetivo
+    else
+        // Aumentar el tiempo de simulación si no se alcanza XAobj
+        tfin = tfin + 50;
+        t = 0:dt:tfin;
+    end
+end
+
+// Encontrar el tiempo en que se alcanza XAobj
+indexXAobj = find(XA >= XAobj, 1);
+if indexXAobj <> [] then
+    tXAobj = t(indexXAobj);
+    TXAobj = T(indexXAobj);
+else
+    tXAobj = NaN;
+    TXAobj = NaN;
+end
+
+// GRÁFICAS
+scf(1); clf(1); 
+plot(t, CA, 'b');
+xgrid; xlabel('t'); legend('CA', -2, %f);
+
+scf(2); clf(2); 
+plot(t, XA, 'm-', tXAobj, XAobj, 'mo');
+xgrid; xlabel('t'); legend('XA', -2, %f);
+
+scf(3); clf(3); 
+plot(t, T, 'r-', tXAobj, TXAobj, 'ro');
+xgrid; xlabel('t'); legend('T', -2, %f);
+disp('la conversion de A es de '+string(XAalcanzado*100)+'%');
+disp('la temperatura en la que se alcanza el 90% de conversion es de '+string(TXAobj)+' K');
+disp('el tiempo en el que se alcanza el 90% de conversion es de '+string(tXAobj)+' s');
+disp('el tiempo maximo permitido es de '+string(tfinal_max)+' s');
+\end{minted}
+\Res{\begin{array}{l}
+    \text{la conversion de A es de 90.551024\%}                                        \\
+    \text{la temperatura en la que se alcanza el 90\% de conversion es de 308.55992 K} \\
+    \text{el tiempo en el que se alcanza el 90\% de conversion es de 839 s}            \\
+    \text{el tiempo maximo permitido es de 10000 s}                                    \\
+  \end{array}}
+% --- FIGURA INDEPENDIENTE (Imagen A) ---
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{RDMP_2.1.png} % Ajusta el tamaño a tu gusto
+  \caption{Concentración de A}
+  \label{fig:RDMP-2_1}
+\end{figure}
+
+% --- FIGURA CON SUBPLOTS (Imágenes B y C) ---
+\begin{figure}[H]
+  \centering
+  % El makebox permite que las imágenes se expandan hacia los márgenes simétricamente
+  \makebox[\textwidth][c]{
+    \begin{subfigure}[b]{0.6\textwidth} % Aumentado un ~10-12% respecto al original
+      \centering
+      \includegraphics[width=\linewidth]{RDMP_2.2.png}
+      \caption{Conversión de A}
+      \label{fig:RDMP-2_2}
+    \end{subfigure}
+
+    \hspace{1em} % Pequeño espacio de separación
+
+    \begin{subfigure}[b]{0.6\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{RDMP_2.3.png}
+      \caption{Temperatura}
+      \label{fig:RDMP-2_3}
+    \end{subfigure}
+  }
+  \vspace{1ex}
+  \caption{Evolución de la conversión y temperatura en el reactor}
+  \label{fig:RDMP-subplots}
+\end{figure}
 \qs{RDMP-3a}{La reacción química
   A $\rightarrow$ B
 
@@ -482,7 +656,108 @@ disp('Conversión final de A: '+string(XAfin)+' mol/L');
     \item Obtener la dinámica del proceso si el reactor se pone en marcha con 500 mol/m$^3$ de A a 283 K
     \item Localizar el instante de temperatura máxima
   \end{enumerate}}
+\solve{}
+\begin{minted}[fontsize=\small, linenos]{scilab}
 
+  clear; clc; 
+// RDMP-3a.sce
+// A => B
+// No adiabático: camisa a temperatura constante
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t,x)
+    // Variables diferenciales
+    CA = x(1)
+    T  = x(2)
+    // Ecuación de Arrhenius
+    k = k0*exp(-E/(R*T))
+    // Velocidad de reacción
+    r = k*CA
+    // Calor transferido del reactor a la camisa
+    Q = U*A*(T-TJ)
+    // Balance de materia para A
+    // d(V*CA)dt = -r*V
+    dCAdt = -r                             
+    // Balance de energía no hay entrada ni salida solo generacion 
+    //consideracion camisas en reactores y serpentines refrigeran por ello el signo -
+    // y ponemos -Q que hay que calcularlo (linea 16)
+    // d(V*RHO*CP*T)dt = -H*r*V - Q
+    dTdt = -H*r/(RHO*CP) -  Q/(V*RHO*CP)   
+    // Derivadas
+    dxdt(1) = dCAdt
+    dxdt(2) = dTdt
+endfunction
+
+// CONSTANTES
+V = 1; // m3
+RHO = 980; // kg/m3
+CP = 4200; // J/(kg*K)
+U = 400; // J/(m2*s*K)
+A = 4; // m2
+TJ = 283; // K
+H = -5E5; // J/mol
+k0 = 2.2E4; // s-1
+E = 41570; // J/mol
+R = 8.314; // J/(mol*K)
+
+// CONDICIONES INICIALES
+CAini = 500; // mol/m3
+Tini = 283; // K
+xini = [CAini; Tini];
+
+// TIEMPO
+tfin = 1500; dt = 1; t = 0:dt:tfin; // s
+
+// RESOLVER
+x = ode(xini,0,t,f);
+CA = x(1,:); CAfin = CA($)
+T = x(2,:); Tfin = T($)
+
+[Tmax,indexTmax] = max(T)
+tTmax = t(indexTmax)
+disp(' La temperatura maxima es: '+string(Tmax)+' K')
+disp(' El tiempo en el que se alcanza la temperatura maxima es: '+string(tTmax)+' s')
+
+// GRÁFICAS
+scf(1); clf(1); 
+plot(t,CA);
+xgrid; xlabel('t'); legend('CA',-2,%f);
+
+scf(2); clf(2); 
+plot(t,T,'r-',tTmax,Tmax,'ro');
+xgrid; xlabel('t'); legend('T',-2,%f);
+\end{minted}
+\Res{
+  \begin{array}{l}
+    \text{La temperatura maxima es: 329.26838 K} \\
+    \text{El tiempo en el que se alcanza la temperatura maxima es: 1191 s}
+  \end{array}
+}
+
+\begin{figure}[H]
+  \centering
+  % El makebox permite que las imágenes se expandan hacia los márgenes simétricamente
+  \makebox[\textwidth][c]{
+    \begin{subfigure}[b]{0.6\textwidth} % Aumentado un ~10-12% respecto al original
+      \centering
+      \includegraphics[width=\linewidth]{RDMP_3.1A.png}
+      \caption{Conversión de A}
+      \label{fig:RDMP-3.1A}
+    \end{subfigure}
+
+    \hspace{1em} % Pequeño espacio de separación
+
+    \begin{subfigure}[b]{0.6\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{RDMP_3.2A.png}
+      \caption{Temperatura}
+      \label{fig:RDMP-3.2}
+    \end{subfigure}
+  }
+  \vspace{1ex}
+  \caption{Evolución de la conversión y temperatura en el reactor}
+  \label{fig:RDMP-3A-subplots}
+\end{figure}
 \qs{RDMP-3b}{La reacción química
   A $\rightarrow$ B
 
@@ -498,7 +773,126 @@ disp('Conversión final de A: '+string(XAfin)+' mol/L');
     \item Obtener la dinámica del proceso si el reactor se pone en marcha con 500 mol/m$^3$ de A a 283 K
     \item Determinar el caudal de agua que debe circular por la camisa para que la temperatura del reactor no supere en ningún momento los 330 K
   \end{enumerate}}
+\begin{minted}[fontsize= \small, linenos]{scilab}
+  clear; clc; 
+// RDMP-3b.sce
+// A => B
+// No adiabático: camisa a temperatura variable
 
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t,x)
+    // Variables diferenciales
+    CA = x(1)
+    T  = x(2)
+    TJ = x(3)
+    // Ecuación de Arrhenius
+    k  = k0*exp(-E/(R*T))
+    // Velocidad de reacción
+    r  = k*CA
+    // Calor transferido del reactor a la camisa
+    Q  = U*A*(T-TJ)
+    // Balance de materia para A (no hace falta el balance para b)
+    // d(V*CA)dt = -r*V
+    dCAdt = -r  
+    // Balance de energía en el reactor
+    // d(V*RHO*CP*T)dt = -H*r*V - Q
+    dTdt  = -H*r/(RHO*CP)  - Q/(V*RHO*CP)
+    // Balance de energía en la camisa
+    // d(VJ*RHOJ*CPJ*TJ)dt =  FJ*RHOJ*CPJ*TJ0 - FJ*RHOJ*CPJ*TJ + Q
+    //hay 2 terminos sale la constante por lo que queda la derivada de TJ que es x(3)
+    dTJdt = FJ*(TJ0-TJ)/VJ + Q/(VJ*RHOJ*CPJ)  
+    // Derivadas
+    dxdt(1) = dCAdt
+    dxdt(2) = dTdt
+    dxdt(3) = dTJdt
+endfunction
+
+// CONSTANTES
+V = 1; // m3
+RHO = 980; // kg/m3
+CP = 4200; // J/(kg*K)
+U = 400; // J/(m2*s*K)
+A = 4; // m2
+VJ = 0.1; // m3
+FJ = 6.15E-3; //m3/s
+TJ0 = 283 // // K
+RHOJ = 1000; // kg/m3
+CPJ = 4180; //J/(kg*K)
+H = -5E5; // J/mol
+k0 = 2.2E4; // s-1
+E = 41570; // J/mol
+R = 8.314; // J/(mol*K)
+
+// CONDICIONES INICIALES
+CAini = 500; // mol/m3
+Tini = 283; // K
+TJini = 283; // K
+//el valor inicial de la camisa no nos lo dice asi que supones 283
+//asumimos que inicialmente el reactor y la camisa estan a la misma T
+xini = [CAini; Tini; TJini];
+
+// TIEMPO
+tfin = 1500; dt = 1; t = 0:dt:tfin; // s
+
+// RESOLVER
+x = ode(xini,0,t,f);
+CA = x(1,:); CAfin = CA($);
+T = x(2,:); Tfin = T($);
+TJ = x(3,:); TJfin = TJ($);
+disp("La concentracion final de A es: "+ string(CAfin) + " mol/m3")
+disp("La temperatura final del reactor es: "+ string(Tfin) + " K")
+disp("La temperatura final de la camisa es: "+ string(TJfin) + " K")
+[Tmax,indexTmax] = max(T);
+tTmax = t(indexTmax);
+disp("La temperatura maxima es: "+ string(Tmax) + " K" + " y se alcanza en el instante " + string(tTmax) + " s")
+// GRÁFICAS
+scf(1); clf(1);
+plot(t,CA);
+xgrid; xlabel('t'); legend('CA',-2,%f);
+
+scf(2); clf(2);
+plot(t,T,'r-',t,TJ,'r:',tTmax,Tmax,'ro');
+xgrid; xlabel('t'); legend('T','TJ',-2,%f);
+
+scf(3); 
+plot(FJ,Tmax,'ro');
+xgrid; xlabel('FJ'); ylabel('Tmax');
+
+//para saber el caudal de tj lo cambiamos pot tanteo por intuicion ya que queremos que tmax sea la 
+//t final o haciendo un bucle probar en casa bucle para calcular el caudal necesario
+//que mantenga el reactor por debajo de 330º
+//if tmax> T  then  Fj=FJi+0.01meter tambien un epsilon <E2 como criterio de parada /break
+//y un numero maximo de iteraciones n  entre la linea 33 y 69 
+\end{minted}
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{RDMP_3.1BREAL.png}
+    \caption{Conversión de A vs t}
+    \label{fig:RDMP-3.1BREAL}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{RDMP_3.2BREAL.png}
+    \caption{Temperaturas vs t}
+    \label{fig:RDMP-3.2BREAL}
+  \end{subfigure}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.65\textwidth]{RDMP_3.3BREAL.png}
+  \caption{Temperatura}
+  \label{fig:RDMP-3.3BREAL}
+\end{figure}
+\Res{
+  \begin{array}{l}
+    \text{La concentracion final de A es: } 4.4895026 \text{ mol/m}^3 \\
+    \text{La temperatura final del reactor es: } 327.25683 \text{ K}  \\
+    \text{La temperatura final de la camisa es: } 285.605 \text{ K}   \\
+    \text{La temperatura maxima es: } 329.99939 \text{ K y se alcanza en el instante } 1192 \text{ s}
+  \end{array}
+}
+\newpage
 \qs{RDMP-3c}{La reacción química
   A $\rightarrow$ B
 
@@ -513,7 +907,202 @@ disp('Conversión final de A: '+string(XAfin)+' mol/L');
   \begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
     \item Obtener la dinámica del proceso si el reactor se pone en marcha con 500 mol/m$^3$ de A a 283 K
   \end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+clear; clc; 
+// RDMP-3c.sce
+// A => B
+// No adiabático: serpentín
+//matiz ejercicio dificil 
+// SECTORES
+N = 10; // divisiones del serpentín
 
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t,x)
+    // Variables diferenciales
+    Ts = x(1:N)
+    CA = x(N+1)
+    T  = x(N+2)
+    // Calor transferido del reactor al serpentín
+    i = 1:N; Q(i) = U*As*(T-Ts(i));
+    // Balance de energía en el serpentín
+    // d(Vs*RHOs*CPs*Ts(i))dt =  Fs*RHOs*CPs*Ts(i-1) - Fs*RHOs*CPs*Ts(i) + Q(i)
+    // Sector 1 como no puede ser i-1  tiene su propio balance abajo
+    dTsdt(1) = Fs*(Ts0-Ts(1))/Vs + Q(1)/(Vs*RHOs*CPs)
+    // Resto de sectores
+    i = 2:N; dTsdt(i) = Fs*(Ts(i-1)-Ts(i))/Vs + Q(i)/(Vs*RHOs*CPs)
+    // Ecuación de Arrhenius
+    k = k0*exp(-E/(R*T))
+    // Velocidad de reacción
+    r = k*CA
+    // Balance de materia para A
+    // d(V*CA)dt = -r*V
+    dCAdt = -r  
+    // Balance de energía en el reactor
+    // d(V*RHO*CP*T)dt = -H*r*V - Q
+    dTdt  = -H*r/(RHO*CP) - sum(Q)/(V*RHO*CP)  
+    // Derivadas
+    dxdt(1:N) = dTsdt
+    dxdt(N+1) = dCAdt
+    dxdt(N+2) = dTdt
+endfunction
+
+// CONSTANTES
+V = 1; // m3
+RHO = 980; // kg/m3
+CP = 4200; //J/(kg*K)
+
+U = 400; // J/(m2*s*K)
+Ds = 0.1; // m
+Lstot = 13; // m
+Vstot = %pi/4*Ds^2*Lstot // m3 (volumen de sector total)
+Astot = %pi*Ds*Lstot  // m2
+Vs = Vstot/N;  // m3 (volumen de sector)
+As = Astot/N;  // m2 (area de sector)
+Fs = 1E-3; //m3/s (flujo serpentin)
+Ts0 = 283; // K
+RHOs = 1000; // kg/m3
+CPs = 4180; //J/(kg*K)
+
+H = -5E5; // J/mol
+k0 = 2.2E4; // s-1
+E = 41570; // J/mol
+R = 8.314; // J/(mol*K)
+
+// CONDICIONES INICIALES
+i = 1:N; Tsini(i) = 283; // K iniciando todos los sectores a t inciial 
+CAini = 500; // mol/m3
+Tini = 283; // K
+xini = [Tsini; CAini; Tini];
+
+// TIEMPO
+tfin = 1500; dt = 1; t = 0:dt:tfin; // s
+
+// RESOLVER
+x = ode(xini,0,t,f);
+disp(size(x))
+Ts = x(1:N,:); Tsfin = Ts(:,$);
+CA = x(N+1,:); CAfin = CA($);
+T  = x(N+2,:); Tfin = T($);
+
+[Tmax,indexTmax] = max(T);
+tTmax = t(indexTmax);
+
+// GRÁFICAS
+scf(1); clf(1);
+plot(t,CA);
+xgrid; xlabel('t'); legend('CA',-2,%f);
+
+scf(2); clf(2);
+plot(t,T,'r-',t,Ts,'r:',tTmax,Tmax,'ro');
+xgrid; xlabel('t'); legend('T','Ts',-2,%f);
+
+scf(3); clf(3);
+plot(Tsini,'ro-');      // t=0
+plot(Ts(:,$/2),'ro-');  // t=tfin/2
+plot(Tsfin,'ro-');      // t=tfin
+xgrid; xlabel('Sector'); ylabel('Ts');
+
+disp("El volumen del serpentín es:" + string(Vstot) + "m3")
+disp("El area del serpentín es:" + string(Astot) + "m2")
+disp("el volumen del sector es:" + string(Vs) + "m3")
+disp("el area del sector es:" + string(As) + "m2")
+disp("la temperatura de salida de los sectores del serpetin son:")
+for i = 1:N+1 
+    if i < N+1 then 
+        disp("la temperatura de salida del sector " + string(i) + " es:" + string(Tsfin(i)) + "K")
+    else 
+        disp("la temperatura de salida del reactor es:" + string(Tfin) + "K")
+    end
+end
+disp("la temperatura maxima en el reactor es:" + string(Tmax) + "K" +" que se da a los " + string(indexTmax) + "s del inicio del proceso")
+disp("el tiempo en el que se alcanza la temperatura maxima es:" + string(tTmax) + "s")
+
+// Si quiero que el refrigerante sea el necesario para que Tmax = Tfin
+// ITERACIÓN SOBRE Fs
+tol = 1e-2;        // tolerancia (K)
+max_iter = 1000;    // seguridad
+iter = 0;
+
+while iter < max_iter
+    
+    // Resolver sistema
+    x = ode(xini,0,t,f);
+    
+    Ts = x(1:N,:);
+    CA = x(N+1,:);
+    T  = x(N+2,:);
+    
+    Tfin = T($);
+    Tmax = max(T);
+    
+    // Condición de convergencia
+    if abs(Tmax - Tfin) < tol then
+        break
+    end
+    
+    // Ajuste de Fs
+    if Tmax > Tfin then
+        // sobreenfriando → demasiado refrigerante
+        Fs = Fs - Fs/70;
+    else
+        // falta refrigeración
+        Fs = Fs + Fs/70;
+    end
+    
+    iter = iter + 1;
+end
+
+disp("Fs óptimo aproximado: " + string(Fs))
+disp("Iteraciones: " + string(iter))
+disp("Tmax = " + string(Tmax) + "K" + " Tfin = " + string(Tfin) + "K" + " Diferencia = " + string(abs(Tmax - Tfin)) + "K")
+\end{minted}
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{RDMP_3.1CREAL.png}
+    \caption{Conversión de A vs t}
+    \label{fig:RDMP-3.1CREAL}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{RDMP_3.2CREAL.png}
+    \caption{Temperaturas vs t}
+    \label{fig:RDMP-3.2CREAL}
+  \end{subfigure}
+  \label{fig:RDMP-3CREAL}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{RDMP_3.3CREAL.png}
+  \caption{Temperatura}
+  \label{fig:RDMP-3.3CREAL}
+\end{figure}
+\Res{
+  \begin{array}{l}
+    12.   1501.                                                                                                  \\
+    \text{El volumen del serpentín es:}0.1021018\text{m}3                                                        \\
+    \text{El area del serpentín es:}4.0840704\text{m}2                                                           \\
+    \text{el volumen del sector es:}0.0102102\text{m}3                                                           \\
+    \text{el area del sector es:}0.408407\text{m}2                                                               \\
+    \text{la temperatura de salida de los sectores del serpetin son:}                                            \\
+    \text{la temperatura de salida del sector 1 es:}284.72647\text{K}                                            \\
+    \text{la temperatura de salida del sector 2 es:}286.39235\text{K}                                            \\
+    \text{la temperatura de salida del sector 3 es:}287.99969\text{K}                                            \\
+    \text{la temperatura de salida del sector 4 es:}289.5505\text{K}                                             \\
+    \text{la temperatura de salida del sector 5 es:}291.04671\text{K}                                            \\
+    \text{la temperatura de salida del sector 6 es:}292.49017\text{K}                                            \\
+    \text{la temperatura de salida del sector 7 es:}293.88269\text{K}                                            \\
+    \text{la temperatura de salida del sector 8 es:}295.226\text{K}                                              \\
+    \text{la temperatura de salida del sector 9 es:}296.52177\text{K}                                            \\
+    \text{la temperatura de salida del sector 10 es:}297.77162\text{K}                                           \\
+    \text{la temperatura de salida del reactor es:}328.78124\text{K}                                             \\
+    \text{la temperatura maxima en el reactor es:}331.28838\text{K que se da a los 1199s del inicio del proceso} \\
+    \text{el tiempo en el que se alcanza la temperatura maxima es:}1198\text{s}                                  \\
+    \text{Fs óptimo aproximado: }5.637\text{D-10}                                                                \\
+    \text{Iteraciones: }1000                                                                                     \\
+    \text{Tmax = }338.2411\text{K Tfin = }338.22913\text{K Diferencia = }0.0119664\text{K}                       \\
+  \end{array}
+}
 \qs{RDMP-4}{El equilibrio químico
   2A $\rightleftarrows$  B
 
@@ -528,7 +1117,116 @@ disp('Conversión final de A: '+string(XAfin)+' mol/L');
     \item Determinar cuándo se alcanza el equilibrio, definido por unas derivadas absolutas de las concentraciones inferiores a 1E-5 mol/(L·h)
     \item Localizar el momento en el que las concentraciones de A y B se igualan
   \end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+clear; clc; 
+// RDMP-4.sce
+// 2 A <=> B
+// Isotermo
 
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t,x)
+    // Variables diferenciales
+    CA = x(1)
+    CB = x(2)
+    // Velocidad de reacción
+    // r = rd - ri = kd*CA^2 - ki*CB = kd*CA^2 - kd*CB/Keq
+    r = kd*(CA^2 - CB/Keq)
+    // Balance de materia para A
+    // d(V*CA)dt = -r*V
+    dCAdt = -r 
+    // Balance de materia para B
+    // d(V*CB)dt = r/2*V
+    dCBdt = r/2
+    // Derivadas
+    dxdt(1) = dCAdt
+    dxdt(2) = dCBdt
+endfunction
+
+// CONSTANTES
+T = 420; // K
+kd0 = 1.4E12; // L/(mol*h)
+E = 105000; // J/mol
+Keq0 = 6.9E8; // L/mol
+H = 63000; // J/mol
+R = 8.314; // J/(mol*K)
+kd = kd0*exp(-E/(R*T))   // Ecuación de Arrhenius
+Keq = Keq0*exp(-H/(R*T)) // Ecuación de Van't Hoff
+
+// CONDICIONES INICIALES
+CAini = 5; CBini = 0; // mol/L
+xini = [CAini; CBini];
+
+// TIEMPO
+tfin = 100; dt = 0.1; t = 0:dt:tfin; // h
+
+// RESOLVER
+x = ode(xini,0,t,f);
+CA = x(1,:); CAfin = CA($);
+CB = x(2,:); CBfin = CB($);
+disp('Concentracion final de A: '+string(CAfin)+' mol/L');
+disp('Concentracion final de B: '+string(CBfin)+' mol/L');
+
+dCAdt = diff(CA)/dt; dCBdt = diff(CB)/dt; 
+dCAdteq = 1E-5; dCBdteq = 1E-5; // mol/(L*h)
+indexCAeq = find(abs(dCAdt)<dCAdteq,1); indexCBeq = find(abs(dCBdt)<dCBdteq,1);
+tCAeq = t(indexCAeq), tCBeq = t(indexCBeq);
+CAeq = CA(indexCAeq), CBeq = CB(indexCBeq);
+disp('Tiempo de equilibrio para CA: '+string(tCAeq)+' h');
+disp('Concentracion de equilibrio para CA: '+string(CAeq)+' mol/L');
+disp('Tiempo de equilibrio para CB: '+string(tCBeq)+' h');
+disp('Concentracion de equilibrio para CB: '+string(CBeq)+' mol/L');
+teq = max(tCAeq,tCBeq);
+disp('Tiempo de equilibrio: '+string(teq)+' h');
+
+indexCACB = find(CA<CB,1);
+tCACB = t(indexCACB);
+CACB = CA(indexCACB);
+disp('Tiempo en que CA = CB: '+string(tCACB)+' h');
+
+// GRÁFICAS
+scf(1); clf(1); 
+plot(t,CA,t,CB);
+plot(tCAeq,CAeq,'b.',tCBeq,CBeq,'g.');
+plot(tCACB,CACB,'bo');
+xgrid; xlabel('t'); legend('CA','CB',-2,%f);
+
+scf(2); clf(2); 
+plot(t(1:$-1),abs(dCAdt),t(1:$-1),abs(dCBdt));
+plot(tCAeq,dCAdteq,'b.',tCBeq,dCBdteq,'g.'); 
+xgrid; xlabel('t'); legend('|dCAdt|','|dCBdt|',-2,%f);
+a2 = gca; a2.log_flags = "nl";
+//! gca da el control de los ejes del grafico
+//! log_flags = "nl" es para que el eje y sea logaritmico
+\end{minted}
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{RDMP_4.1.png}
+    \caption{Temperaturas vs t}
+    \label{fig:RDMP-4.1}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{RDMP_4.2.png}
+    \caption{Temperaturas vs t}
+    \label{fig:RDMP-4.2}
+  \end{subfigure}
+  \caption{Dinámica del proceso}
+  \label{fig:RDMP-4}
+\end{figure}
+\Res{
+  \begin{array}{l}
+    \text{Concentracion final de A: }0.4738786\text{ mol/L}            \\
+    \text{Concentracion final de B: }2.2630607\text{ mol/L}            \\
+    \text{Tiempo de equilibrio para CA: }75.6\text{ h}                 \\
+    \text{Concentracion de equilibrio para CA: }0.473956\text{ mol/L}  \\
+    \text{Tiempo de equilibrio para CB: }69.9\text{ h}                 \\
+    \text{Concentracion de equilibrio para CB: }2.2629811\text{ mol/L} \\
+    \text{Tiempo de equilibrio: }75.6\text{ h}                         \\
+    \text{Tiempo en que CA = CB: }3.4\text{ h}                         \\
+  \end{array}
+}
 \qs{RDMP-5}{El equilibrio químico
 
   A + B  $\rightleftarrows$  C
@@ -545,7 +1243,147 @@ disp('Conversión final de A: '+string(XAfin)+' mol/L');
     \item Determinar cuándo se alcanza el equilibrio, definido por una derivada absoluta de la temperatura inferior a 1E-3 K/h
     \item Estudiar la influencia de la temperatura inicial en la conversión de equilibrio y en el tiempo necesario para alcanzar el 50$\%$ de conversión
   \end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+    clear; clc; 
+// RDMP-5.sce
+// A + B <=> C
+// Adiabático
 
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t,x)
+    // Variables diferenciales
+    CA = x(1)
+    CB = x(2)
+    CC = x(3)
+    T  = x(4)
+    // Ecuación de Arrhenius
+    kd = kd0*exp(-E/(R*T))
+    // Ecuación de Van't Hoff
+    Keq = Keq0*exp(-H/(R*T))
+    // Velocidad de reacción
+    // r = rd - ri = kd*CA*CB - ki*CC = kd*CA*CB - kd*CC/Keq
+    r = kd*(CA*CB - CC/Keq)
+    // Balance de materia para A
+    // d(V*CA)dt = -r*V
+    dCAdt = -r
+    // Balance de materia para B
+    // d(V*CB)dt = -r*V
+    dCBdt = -r
+    // Balance de materia para C
+    // d(V*CC)dt =  r*V
+    dCCdt = r
+    // Balance de energía
+    // d(V*RHO*CP*T)dt = -H*r*V
+    dTdt  = -H*r/(RHO*CP) // Balance de energía
+    // Derivadas
+    dxdt(1) = dCAdt
+    dxdt(2) = dCBdt
+    dxdt(3) = dCCdt
+    dxdt(4) = dTdt
+endfunction
+
+// CONSTANTES
+H = -136400; // J/mol
+RHO = 1150; // g/L
+CP = 3.8; // J/(g*K)
+kd0 = 1.75E8; // L/(mol*h)
+E = 62350; // J/mol
+Keq0 = 8.25E-22; // L/mol
+R = 8.314; // J/(mol*K)
+
+// CONDICIONES INICIALES
+CAini = 1; CBini = 2; CCini = 0; // mol/L
+Tini = 300; // K
+xini = [CAini; CBini; CCini; Tini];
+
+// TIEMPO
+dt = 0.1; tfin = 500; t = 0:dt:tfin; // h
+
+// RESOLVER
+x = ode(xini,0,t,f);
+CA = x(1,:); CAfin = CA($);
+CB = x(2,:); CBfin = CB($);
+CC = x(3,:); CCfin = CC($);
+T  = x(4,:); Tfin  = T($);
+XA = 1 - CA/CAini; XAfin = XA($);
+disp('Concentración final de A: '+string(CAfin)+' mol/L');
+disp('Concentración final de B: '+string(CBfin)+' mol/L');
+disp('Concentración final de C: '+string(CCfin)+' mol/L');
+disp('Conversión final de A: '+string(XAfin)+' mol/L');
+disp('Temperatura final: '+string(Tfin)+' K');
+
+
+dTdt = diff(T)/dt;
+dTdteq = 1E-3; // K/h
+indexTeq = find(abs(dTdt)<dTdteq,1);
+tTeq = t(indexTeq)
+Teq = T(indexTeq)
+
+// GRÁFICAS
+scf(1); clf(1); 
+plot(t,CA,t,CB,t,CC); 
+xgrid; xlabel('t'); legend('CA','CB','CC',-2,%f);
+
+scf(2); clf(2); 
+plot(t,T,'r-',tTeq,Teq,'r.');
+xgrid; xlabel('t'); legend('T',-2,%f);
+
+XATeq = XA(indexTeq)
+XAobj = 0.5;
+indexXAobj = find(XA>XAobj,1);
+tXAobj = t(indexXAobj)
+
+scf(3); clf(3); 
+plot(t,XA,'m-',tTeq,XATeq,'m.',tXAobj,XAobj,'mo');
+xgrid; xlabel('t'); legend('XA',-2,%f);
+
+scf(4);
+subplot(211); plot(Tini,XATeq,'mo');
+xgrid; xlabel('Tini'); ylabel('XATeq');
+subplot(212); plot(Tini,tXAobj,'go');
+xgrid; xlabel('Tini'); ylabel('tXAobj');
+\end{minted}
+\Res{\vspace{1em}
+  \begin{array}{l}
+    \text{Concentración final de A: 0.1425428 mol/L} \\
+    \text{Concentración final de B: 1.1425428 mol/L} \\
+    \text{Concentración final de C: 0.8574572 mol/L} \\
+    \text{Conversión final de A: 0.8574572 mol/L}    \\
+    \text{Temperatura final: 326.76365 K}            \\
+  \end{array}
+}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.6\textwidth]{Imagenes/RDMP_3.1C.png}
+  \caption{Evolución de la conversión frente al tiempo en el reactor}
+  \label{fig:RDMP-3.1C}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagenes/RDMP_3.2C.png}
+    \caption{Temperatura frente tiempo}
+    \label{fig:RDMP-3.2C}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagenes/RDMP_3.3C.png}
+    \caption{Conversión frente tiempo}
+    \label{fig:RDMP-3.3C}
+  \end{subfigure}
+  \caption{Evolución de la conversión y temperatura en el reactor}
+  \label{fig:RDMP-comparacion}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.6\textwidth]{Imagenes/RDMP_3.4C.png}
+  \caption{Evolución de la conversión y temperatura en el reactor}
+  \label{fig:RDMP-3.4C}
+\end{figure}
 \qs{RDMP-6}{El equilibrio químico
 
   A $\rightleftarrows$ B
@@ -561,8 +1399,266 @@ disp('Conversión final de A: '+string(XAfin)+' mol/L');
     \item Para una conversión dada, obtener la relación entre temperatura y velocidad de reacción
     \item Determinar la progresión óptima de temperatura
   \end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+clear; clc; 
+// RDMP-6.sce
+// A <=> B
+// Progresión óptima de temperatura
 
-\qs{RDMP-MULT-1}{Un reactor discontinuo mezcla perfecta de 1 m$^3$ se pone en marcha a 303 K con 1 mol/L del compuesto A,
+// (a)
+
+// CONSTANTES
+kd0 = 1.94E15; ki0 = 6.26E19; // h-1
+Ed = 44500; Ei = 59500; // cal/mol
+R = 1.987; // cal/(mol*K)
+Tmin = 500.0; dT = 0.1; Tmax = 650.0; T = Tmin:dT:Tmax; // K
+kd = kd0*exp(-Ed./(R*T)); // Ecuación de Arrhenius directa
+ki = ki0*exp(-Ei./(R*T)); // Ecuación de Arrhenius inversa
+
+// CONDICIONES INICIALES
+CAini = 1; CBini = 0; // mol/L
+
+XA = 0.0;
+
+CA = CAini - CAini*XA
+CB = CBini + CAini*XA
+
+// Velocidad de reacción
+// r = rd - ri
+r = kd*CA - ki*CB;
+// Velocidad máxima
+[rmax,indexTopt] = max(r)
+// Temperatura óptima
+Topt = T(indexTopt)
+
+// GRÁFICAS
+scf(1);  
+plot(T,r,Topt,rmax,'bo');
+xgrid; xlabel('T'); ylabel('r');
+a1 = gca;
+a1.log_flags = "nl" ;
+
+// (b)
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t,x)
+    // Variables diferenciales
+    CA = x(1)
+    CB = x(2)
+    // Velocidad de reacción
+    // r = rd - ri
+    r = kd*CA - ki*CB
+    // Velocidad máxima
+    [rmax,indexTopt] = max(r)
+    // Temperatura óptima
+    Topt = T(indexTopt)
+    // Balance de materia para A
+    // d(V*CA)dt = -rmax*V
+    dCAdt = -rmax   
+    // Balance de materia para B
+    // d(V*CB)dt = rmax*V
+    dCBdt =  rmax   
+    // Derivadas
+    dxdt(1) = dCAdt
+    dxdt(2) = dCBdt
+    dxdt(3) = Topt  // Almacenar Topt
+endfunction
+
+// CONDICIONES INICIALES
+xini = [CAini; CBini; 0];
+
+// TIEMPO
+tfin = 5; dt = 0.01; t = 0:dt:tfin; // h
+
+// RESOLVER
+x = ode(xini,0,t,f);
+CA = x(1,:); CAfin = CA($);
+CB = x(2,:); CBfin = CB($);
+Topt = diff(x(3,:))/dt; Toptfin = Topt($);
+XA = 1 - CA/CAini; XAfin = XA($);
+disp("La concentracion final de A es: " + string(CAfin) + " mol/L")
+disp("La concentracion final de B es: " + string(CBfin) + " mol/L")
+disp("La conversion final de A es: " + string(XAfin*100) + " %")
+disp("La temperatura optima es: " + string(Toptfin) + " K")
+// GRÁFICAS
+scf(2); clf(2); 
+plot(t,XA,'m-');
+xgrid; xlabel('t'); legend('XA',-2,%f);
+
+scf(3); clf(3); 
+plot(t(1:$-1),Topt,'r-');
+xgrid; xlabel('t'); legend('Topt',-2,%f);
+
+indexTc = find(Topt<Tmax-1E-6,1);
+tTc = t(indexTc)
+Tc = Topt(indexTc)
+disp("La temperatura de control es: " + string(Tc) + " K")
+disp("El tiempo de control es: " + string(tTc) + " h")
+plot(tTc,Tc,'ro');
+ //! probar para diferentes conversiones el grafico 1 
+\end{minted}
+\nt{Revisar la linea de tTC y Tc ademas de revisar el ultimo comentario}
+\Res{
+  \begin{array}{l}
+    \text{  La concentracion final de A es: 0.1573513 mol/L} \\
+    \text{La concentracion final de B es: 0.8426487 mol/L}   \\
+    \text{La conversion final de A es: 0.8426487}            \\
+    \text{La temperatura optima es: 611.29273 K}             \\
+    \text{La temperatura de control es: 649.85498 K}         \\
+    \text{El tiempo de control es: 0.97 h}
+  \end{array}
+}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{Imagenes/RDMP_6.1.png}
+  \caption{Velocidad de reacción frente a la temperatura}
+  \label{fig:RDMP-6.1}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagenes/RDMP_6.2.png}
+    \caption{Conversión frente tiempo}
+    \label{fig:RDMP-6.2}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagenes/RDMP_6.3.png}
+    \caption{Temperatura frente tiempo}
+    \label{fig:RDMP-6.3}
+  \end{subfigure}
+  \label{fig:RDMP-6}
+\end{figure}
+\newpage
+\qs{RDMP-MULT-1}{En un reactor discontinuo mezcla perfecta, se llevan a cabo las siguientes reacciones químicas:
+
+  A $\rightarrow$ B  , k$_1$ = 0.01 min$^{-1}$\\
+  B $\rightarrow$ C  , k$_2$ = 0.01 min$^{-1}$\\
+  C $\rightarrow$ B  , k$_3$ = 0.05 min$^{-1}$\\
+  B $\rightarrow$ D  , k$_4$ = 0.02 min$^{-1}$
+
+  \begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
+    \item Obtener la dinámica de 500 min si la reacción se pone en marcha con 1 mol/L del compuesto A
+    \item Determinar durante cuánto tiempo:
+          \begin{itemize}
+            \item La concentración de A es mayor a 0.5 mol/L
+            \item La concentración de B está entre 0.15 y 0.20 mol/L
+            \item La concentración de C crece
+            \item La concentración de D es predomina
+          \end{itemize}
+  \end{enumerate}}
+
+\begin{minted}[fontsize=\small, linenos]{scilab}
+  clear; clc; 
+// RDMP-MULT-1.sce
+// 1) A => B
+// 2) B => C
+// 3) C => B
+// 4) B => D
+// Isotermo
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t,x)
+    // Variables diferenciales
+    CA = x(1)
+    CB = x(2)
+    CC = x(3)
+    CD = x(4)
+    // Velocidades de reacción
+    r1 = k1*CA
+    r2 = k2*CB
+    r3 = k3*CC
+    r4 = k4*CB
+    // Balance de materia para A
+    // d(V*CA)dt = -r1*V
+    dCAdt = -r1
+    // Balance de materia para B
+    // d(V*CB)dt = (r1-r2+r3-r4)*V
+    dCBdt = r1-r2+r3-r4
+    // Balance de materia para C
+    // d(V*CC)dt = (r2-r3)*V
+    dCCdt = r2-r3
+    // Balance de materia para D
+    // d(V*CD)dt = r4*V
+    dCDdt = r4
+    // Derivadas
+    dxdt(1) = dCAdt
+    dxdt(2) = dCBdt 
+    dxdt(3) = dCCdt
+    dxdt(4) = dCDdt
+endfunction
+
+// CONSTANTES
+k1 = 0.01; k2 = 0.01; k3 = 0.05; k4 = 0.02; //min-1
+
+// CONDICIONES INICIALES
+CAini = 1; CBini = 0; CCini = 0; CDini = 0; // mol/L
+xini = [CAini;CBini;CCini;CDini];
+
+// TIEMPO
+tfin = 500; dt = 0.1; t = 0:dt:tfin; //min
+
+// RESOLVER
+x = ode(xini,0,t,f);
+
+CA = x(1,:); CAfin = CA($)
+CB = x(2,:); CBfin = CB($)
+CC = x(3,:); CCfin = CC($) 
+CD = x(4,:); CDfin = CD($) 
+
+// GRÁFICAS
+scf(1); clf(1); 
+plot(t,CA,t,CB,t,CC,t,CD);
+xgrid; xlabel('t'); legend('CA','CB','CC','CD',-2,%f);
+
+CAobj = 0.5;
+indexA = find(CA > CAobj);
+tA = dt*length(indexA)
+disp('tiempo para CA = 0.5 mol/L ='+string(tA)+'min');
+plot(t(indexA),CA(indexA),'b.');
+
+CBlo = 0.15; CBup = 0.20;
+indexB = find(CB > CBlo & CB < CBup);
+tB = dt*length(indexB)
+disp('tiempo para 0.15 < CB < 0.20 mol/L ='+string(tB)+'min');
+plot(t(indexB),CB(indexB),'g.');
+
+dCCdt = diff(CC)/dt;
+indexC = find(dCCdt > 0);
+tC = dt*length(indexC);
+disp('tiempo para dCCdt > 0 ='+string(tC)+'min');
+plot(t(indexC),CC(indexC),'r.');
+
+indexD = find(CD == max(CA,CB,CC,CD));
+tD = dt*length(indexD);
+
+plot(t(indexD),CD(indexD),'c.');
+disp('tiempo para CD máximo ='+string(tD)+'min');
+indextD = find(CD > CA ,1);
+disp('tiempo para CD > CA ='+string(t(indextD))+'min');
+\end{minted}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{Imagenes/RDMP_Multi_1.png}
+  \caption{Evolución de la concentración frente al tiempo en el reactor}
+  \label{fig:RDMP-MULT-1}
+\end{figure}
+\Res{
+  \begin{array}{l}
+    \text{tiempo para CA = }0.5 \text{ mol/L =}69.4\text{min} \\
+    \text{tiempo para 0.15 < CB < 0.20 mol/L =}65.8\text{min} \\
+    \text{tiempo para dCCdt > 0 =}98.4\text{min}              \\
+    \text{tiempo para CD máximo =}400.2\text{min}             \\
+    \text{tiempo para CD > CA =}99.9\text{min}
+  \end{array}
+}
+\newpage
+
+\qs{RDMP-MULT-2}{Un reactor discontinuo mezcla perfecta de 1 m$^3$ se pone en marcha a 303 K con 1 mol/L del compuesto A,
   transcurriendo las siguientes reacciones químicas en disolución acuosa sin generación apreciable de calor durante 2 h:
 
   A $\rightarrow$ B  , k$_1$ = exp(-1500/T +\hspace{0.5\baselineskip}  6) h$^{-1}$\\
@@ -572,19 +1668,146 @@ disp('Conversión final de A: '+string(XAfin)+' mol/L');
   \begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
     \item Considerando que D es el compuesto deseado, determinar cómo debe operar la camisa
   \end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+  clear; clc; 
+// RDMP-MULT-2.sce
+// 1) A => B
+// 2) A => C
+// 3) B => D*
+// No adiabático
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t,x)
+    // Variables diferenciales
+    CA = x(1)
+    CB = x(2)
+    CC = x(3)
+    CD = x(4)
+    T  = x(5)
+    // Ecuaciones de Arrhenius
+    k1 = exp(-1500/T +  6); //h-1
+    k2 = exp(-4000/T + 12); //h-1
+    k3 = exp(-3000/T + 10); //h-1
+    // Velocidades de reacción    
+    r1 = k1*CA
+    r2 = k2*CA
+    r3 = k3*CB
+    // Balance de materia para A
+    // d(V*CA)dt = (-r1-r2)*V
+    dCAdt = -r1 - r2
+    // Balance de materia para B
+    // d(V*CB)dt = (r1-r3)*V
+    dCBdt =  r1 - r3
+    // Balance de materia para C
+    // d(V*CC)dt = r2*V
+    dCCdt =  r2
+    // Balance de materia para D
+    // d(V*CD)dt = r3*V
+    dCDdt =  r3
+    // Temperatura de la camisa
+    if t < tfin/2 then TJ = TJ1;
+        else TJ = TJ2;
+    end
+    // Calor transferido del reactor a la camisa
+    Q = U*A*(TJ-T)
+    // Balance de energía 
+    // d(V*RHO*CP*T) = Q
+    dTdt = Q/(V*RHO*CP) 
+    // Derivadas
+    dxdt(1) = dCAdt
+    dxdt(2) = dCBdt
+    dxdt(3) = dCCdt
+    dxdt(4) = dCDdt
+    dxdt(5) = dTdt
+endfunction
+
+// CONSTANTES
+V = 1; // m3
+A = 5; // m2
+U = 1000; // kcal/(h*m2*K)
+RHO = 1000; // kg/m3
+CP = 1; // kcal/(kg*K)
+Tcold = 293; Thot = 353; // K 
+
+// Operación de la camisa
+//! Esta para una operacion en exclusiva la del caso 1 probar a meter en un bucle for para encontrar la maxima 
+op =1;
+select op
+    case 1 then TJ1 = Tcold; TJ2 = Tcold; // K
+    case 2 then TJ1 = Thot;  TJ2 = Thot;  // K
+    case 3 then TJ1 = Tcold; TJ2 = Thot;  // K
+    case 4 then TJ1 = Thot;  TJ2 = Tcold; // K
+end
+
+// CONDICIONES INICIALES
+CAini = 1; CBini = 0; CCini = 0; CDini = 0; // mol/L
+Tini = 303; //K
+xini = [CAini; CBini; CCini; CDini; Tini];
+
+// TIEMPO
+tfin = 2; dt = 0.01; t = 0:dt:tfin; //h
+
+// RESOLVER
+x = ode(xini,0,t,f);
+CA = x(1,:); CAfin = CA($);
+CB = x(2,:); CBfin = CB($);
+CC = x(3,:); CCfin = CC($);
+CD = x(4,:); CDfin = CD($);
+T  = x(5,:); Tfin = T($);
+disp('CAfin ' + string(CAfin) + ' mol/L');
+disp('CBfin ' + string(CBfin) + ' mol/L');
+disp('CCfin ' + string(CCfin) + ' mol/L');
+disp('CDfin ' + string(CDfin) + ' mol/L');
+disp('Tfin ' + string(Tfin) + ' K');
+
+// GRÁFICAS
+scf(1);clf(1);
+plot(t,CA,t,CB,t,CC,t,CD);
+xgrid; xlabel('t'); legend('CA','CB','CC','CD',-2,%f);
+
+scf(2);clf(2);
+plot(t,T);
+xgrid; xlabel('t'); legend('T',-2,%f);
+
+scf(3);
+bar(op,[CAfin,CBfin,CCfin,CDfin],'stacked');
+xgrid; xlabel('op'); legend('CA','CB','CC','CD',-2,%f);
 
 
-\qs{RDMP-MULT-1}{Un reactor discontinuo mezcla perfecta de 1 m$^3$ se pone en marcha a 303 K con 1 mol/L del compuesto A,
-  transcurriendo las siguientes reacciones químicas en disolución acuosa sin generación apreciable de calor durante 2 h:
-
-  A $\rightarrow$ B  , k$_1$ = exp(-1500/T +\hspace{0.5\baselineskip}  6) h$^{-1}$\\
-  A $\rightarrow$ C  , k$_2$ = exp(-4000/T + 12) h$^{-1}$\\
-  B $\rightarrow$ D  , k$_3$ = exp(-3000/T + 10) h$^{-1}$
-
-  \begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
-    \item Considerando que D es el compuesto deseado, determinar cómo debe operar la camisa
-  \end{enumerate}}
-
+//* Probar a hacer graficas para las concentraciones a diferentes T con el bucle for dentro 
+\end{minted}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.65\textwidth]{Imagenes/RDMP_Multi_2.1.png}
+  \caption{Evolución de la concentración frente al tiempo en el reactor}
+  \label{fig:RDMP-MULT-2.1}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagenes/RDMP_Multi_2.2.png}
+    \caption{Evolución de la Temperatura frente al tiempo en el reactor}
+    \label{fig:RDMP-MULT-2.2}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagenes/RDMP_Multi_2.3.png}
+    \caption{Concentraciones finales en funcion de la operacion de la camisa}
+    \label{fig:RDMP-MULT-2.3}
+  \end{subfigure}
+\end{figure}
+\Res{
+  \begin{array}{l}
+    \text{CAfin } 0.0049216 \text{ mol/L} \\
+    \text{CBfin } 0.2559964 \text{ mol/L} \\
+    \text{CCfin } 0.0810131 \text{ mol/L} \\
+    \text{CDfin } 0.658069 \text{ mol/L}  \\
+    \text{Tfin } 293.00045 \text{ K}
+  \end{array}
+}
+\newpage
 \qs{RDMP-O-2023}{La reacción química exotérmica
 
   A $\rightarrow$ B
@@ -598,7 +1821,167 @@ disp('Conversión final de A: '+string(XAfin)+' mol/L');
     \item Determinar durante cuánto tiempo la temperatura está comprendida entre 284 y 288 K
   \end{enumerate}}
 
+\qs{RDMP-O-2024}{Las siguientes reacciones químicas tienen lugar en disolución acuosa:
 
+  \begin{align*}
+    2A & \rightarrow B
+       & k_1           & = 1.2\cdot 10^{16}\,\exp\left(-\frac{14500}{T}\right)\ \text{L}/(\text{h}\cdot\text{mol})
+       & \Delta H_1    & = -29000\ \text{cal/mol}                                                                  \\[0.5em]
+    A  & \rightarrow C
+       & k_2           & = 9.4\cdot 10^{12}\,\exp\left(-\frac{10600}{T}\right)\ \text{h}^{-1}
+       & \Delta H_2    & = -23000\ \text{cal/mol}
+  \end{align*}
+
+  Las reacciones se llevan a cabo en un reactor discontinuo de mezcla perfecta de $0.1\ \text{L}$,
+  encamisado a $320\ \text{K}$. La reacción transcurre durante $50\ \text{h}$ tras ponerse en marcha
+  con $5\ \text{mol/L}$ del compuesto A a $320\ \text{K}$.
+
+  Se sabe que el reactor alcanza una temperatura máxima de $335\ \text{K}$.
+
+  \textbf{Determinar:}
+  \begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\alph*}]
+    \item El tiempo necesario para alcanzar el $80\%$ de conversión.
+    \item El instante en el que se alcanza la temperatura máxima.
+  \end{enumerate}
+}
+\begin{minted}[fontsize = \small , linenos]{scilab}
+clear; clc;
+// 2024-06-10-A.sce
+
+// RDMP-MULT
+// 1) 2 A => B
+// 2)   A => C 
+// No adiabático
+
+function dxdt=f(t, x) 
+//Variables diferenciales 
+CA = x(1) 
+CB = x(2) 
+CC = x(3) 
+T = x(4) 
+//Ecuación de Arrhenius 
+k1 = 1.2E16*exp(-14500/T) 
+k2 = 9.4E12*exp(-10600/T) 
+//Coeficiente transmisión de calor  
+//1/UA = 1/hi  
+//1/UA = 1/(m*CP*(T-TJ)) 
+//1/UA = 1/(RHO*F*CP*(T-TJ)) 
+//1/UA = 1/(RHO*V*CA0*CP*(T-TJ)) 
+UA = RHO*CA0*CP*(T-TJ); 
+//Ecuación de velocidad de reacción 
+r1 = k1*CA^2 
+r2 = k2*CA 
+//Calor transferido 
+Q= UA*(T-TJ) 
+//Balance de materia para A  
+//dCAdt = -rA*V 
+dCAdt = -r1-r2 
+//Balance de materia para B  
+//dCBdt = rB*V 
+dCBdt = r1 
+//Balance de materia para C  
+//dCCdt = rC*V 
+dCCdt = r2 
+//Balance de energía 
+//d(M*CP*T)dt = -H1*r1*V - H2*r2*V -Q/(RHO*CP*V) 
+dTdt = -H1*r1/(RHO*CP) - H2*r2/(RHO*CP) -Q/(RHO*CP*V) 
+//Derivadas 
+dxdt (1) = dCAdt  
+dxdt (2) = dCBdt  
+dxdt (3) = dCCdt  
+dxdt (4) = dTdt     
+endfunction 
+//Constantes 
+H1 = -29000; // cal/mol 
+H2 = -23000; // cal/mol 
+RHO = 1000; //g/L 
+CP = 1 ; //cal/(g*K) 
+V = 0.1; // L  
+TJ = 320; //K 
+CA0 = 5; //mol/L 
+//Tiempo 
+tfin = 50; dt = 0.1; t= 0:dt:tfin; //h 
+//Condiciones iniciales 
+CAini = 5; CBini = 0; CCini = 0; //mol/L 
+Tini = 320; //K 
+xini = [CAini; CBini; CCini; Tini]; 
+//Resolver 
+x = ode(xini, 0, t, f); 
+CA = x(1,:); CAfin = CA ($); 
+disp('La concentracion final de A es: ' + string(CAfin) + ' mol/L');
+CB = x(2,:); CBfin = CB($); 
+disp('La concentracion final de B es: ' + string(CBfin) + ' mol/L');
+CC = x(3,:); CCfin = CC ($); 
+disp('La concentracion final de C es: ' + string(CCfin) + ' mol/L');
+T = x(4,:); Tfin = T ($); 
+disp('La temperatura final es: ' + string(Tfin) + ' K');
+XA= 1-CA/CAini; XAfin = XA($); 
+disp('La conversion final de A es: ' + string(XAfin) + ' mol/L');
+XAobj = 0.80; 
+indexXAobj = find(XA>XAobj,1); 
+tXAobj = t(indexXAobj); 
+
+TXAobj = T(indexXAobj);
+disp('La conversion objetivo de A es: ' + string(XAobj) + ' mol/L' +'que se consigue a los ' + string(tXAobj) + ' h y a una temperatura de ' + string(TXAobj) + ' K');
+//Apartado B)  
+[Tmax, indexTmax] = max(T) ;
+tTmax = t(indexTmax) ;
+disp('La temperatura maxima es: ' + string(Tmax) + ' K' +' que se alcanza a los ' + string(tTmax) + ' h');
+//Gráficas 
+scf(1); clf(1) 
+plot(t,CA,t,CB,t,CC) 
+xgrid; xlabel('t');legend('CA','CB','CC',-2,%f); 
+scf(2); clf(2) 
+plot(t,T,'r-',tTmax,Tmax,'ro') 
+xgrid; xlabel('t');legend('T',-2,%f); 
+scf(3);clf(3) 
+plot(T,XA,'m-',TXAobj,XAobj,'mo')
+xgrid; xlabel('T');legend('XA',-2,%f); 
+scf(4);clf(4) 
+plot(t,XA,tXAobj,XAobj,'o') 
+xgrid; xlabel('t');legend('XA',-2,%f);
+\end{minted}
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagenes/RDMP_O_24_1.png}
+    \caption{Concentraciones frente a tiempo en el reactor}
+    \label{fig:RDMP_O_24_1}
+  \end{subfigure}
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagenes/RDMP_O_2024_2.png}
+    \caption{Temperatura frente a tiempo en el reactor}
+    \label{fig:RDMP_O_24_2}
+  \end{subfigure}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagenes/RDMP_O_24_3.png}
+    \caption{Conversión de A frente a temperatura}
+    \label{fig:RDMP_O_24_3}
+  \end{subfigure}
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagenes/RDMP_O_2024_4.png}
+    \caption{Conversión de A frente a tiempo}
+    \label{fig:RDMP_O_24_4}
+  \end{subfigure}
+\end{figure}
+\Res{
+  \begin{array}{l}
+    \text{La concentracion final de A es: } 0.6773902 \text{ mol/L}                                                          \\
+    \text{La concentracion final de B es: } 0.0787956 \text{ mol/L}                                                          \\
+    \text{La concentracion final de C es: } 4.2438141 \text{ mol/L}                                                          \\
+    \text{La temperatura final es: } 320.11088 \text{ K}                                                                     \\
+    \text{La conversion final de A es: } 0.864522 \text{ mol/L}                                                              \\
+    \text{La conversion objetivo de A es: } 0.8 \text{ mol/Lque se consigue a los 40.2 h y a una temperatura de 320.13476 K} \\
+    \text{La temperatura maxima es: 320.30732 K que se alcanza a los 0.3 h}
+  \end{array}
+}
 \qs{RDMP-O-2018}{En un reactor discontinuo mezcla perfecta en fase líquida tiene lugar la reacción química exotérmica
 
   A $\rightarrow$ B
@@ -625,10 +2008,10 @@ disp('Conversión final de A: '+string(XAfin)+' mol/L');
 \qs{¿RDMP-O-?}{Las siguientes reacciones químicas se llevan a cabo en un reactor discontinuo mezcla perfecta.
 
   \begin{align*}
-    A      & \rightarrow X     & k_1 & = 1 \text{ min}^{-1}                            \\
-    2X + Y & \rightarrow 3X    & k_2 & = 1 \text{ L}^2/(\text{mol}^2 \cdot \text{min}) \\
-    B + X  & \rightarrow Y + D & k_3 & = 1 \text{ L}/(\text{mol} \cdot \text{min})     \\
-    X      & \rightarrow E     & k_4 & = 1 \text{ min}^{-1}
+     & A      & \rightarrow X     & k_1 & = 1 \text{ min}^{-1}                            \\
+     & 2X + Y & \rightarrow 3X    & k_2 & = 1 \text{ L}^2/(\text{mol}^2 \cdot \text{min}) \\
+     & B + X  & \rightarrow Y + D & k_3 & = 1 \text{ L}/(\text{mol} \cdot \text{min})     \\
+     & X      & \rightarrow E     & k_4 & = 1 \text{ min}^{-1}
   \end{align*}
 
   Las concentraciones de los compuestos A y B (que están en exceso en todo momento) pueden considerarse constantes e iguales a 1.5 y 3 mol/L, respectivamente.
@@ -736,6 +2119,185 @@ disp('Conversión final de A: '+string(XAfin)+' mol/L');
     \item Aportar scripts salidas en consola, graficas y comentarios para estudiar la dinámica del proceso
   \end{enumerate}}
 
-%! ------------------------------------------------------------------------------------------
-%! -------------------------------------------RCMP-------------------------------------------
-%! ------------------------------------------------------------------------------------------
+
+
+\qs{RDMP-O-2025}{En un reactor discontinuo mezcla perfecta de 1 m$^3$, que se pone en marcha con 1000 mol/m$^3$ del compuesto A a 300 K, transcurren durante 12 h las siguientes reacciones químicas en disolución acuosa:
+
+  \begin{center}
+    \small
+    \begin{tabular}{l l l l}
+      $A \rightarrow B$ & $k_1 = \exp(-2500/T + 8)$  & h$^{-1}$ & $\Delta H_{r1} = -75$ kJ/mol \\
+      $B \rightarrow C$ & $k_2 = \exp(-6000/T + 17)$ & h$^{-1}$ & $\Delta H_{r2} = -50$ kJ/mol
+    \end{tabular}
+  \end{center}
+
+  El reactor dispone de una camisa de 0.1 m$^3$, inicialmente a 300 K y capaz de transmitir calor a 200 kJ/(h$\cdot$K). Durante el primer tercio de la operación, por la camisa circulan 0.01 m$^3$/h de agua a 300 K. El tiempo restante, circulan 0.05 m$^3$/h a 280 K.
+
+  Determinar:
+  \begin{enumerate}[label=\bfseries\small\Alph*)]
+    \item Las concentraciones finales de cada compuesto.
+    \item La concentración máxima del compuesto B.
+    \item Durante cuánto tiempo la temperatura del reactor es superior a 320 K.
+    \item Durante cuánto tiempo la temperatura de la camisa es superior a 310 K.
+    \item En qué momento el calor transferido del reactor a la camisa es máximo.
+  \end{enumerate}}
+
+\begin{minted}[fontsize = \small, linenos]{scilab}
+clear; clc;
+// 2024-06-10-A.sce
+
+// RDMP-MULT
+// 1)   A => B
+// 2)   B => C   B> C
+// No adiabático
+
+// SISTEMA DE ECUACIONES ALGEBRAICAS
+function dxdt = f(t,x)
+    // Variables 
+    CA = x(1);
+    CB = x(2);
+    CC = x(3);
+    T  = x(4);
+    TJ = x(5);
+
+    // Ecuaciones de Arrhenius
+    k1 = exp(-2500/T+8); // L/(h·mol)
+    k2 = exp(-6000/T+17); // h-1
+
+    // Velocidades de reacción
+    r1 = k1*CA;
+    r2 = k2*CB;
+
+    // Balance de materia para A
+    dCAdt = - r1;
+
+    // Balance de materia para B
+    dCBdt = r1 - r2;
+
+    // Balance de materia para C
+    dCCdt = r2;
+    // Selección de condiciones de operación
+    if t < tfin/3 then
+        TJ0 = 300;
+        Fj = 0.01;
+    else
+        TJ0 = 280;
+        Fj = 0.05;
+    end
+    // Calor transferido del reactor a la camisa
+    Q = UA*(T-TJ)
+
+    // Balance de energía
+    dTdt =  - (H1*r1 + H2*r2)/(RHO*CP) - Q/(V*RHO*CP);
+    dTjdt= Fj*(TJ0-TJ)/vj+Q/(vj*RHOj*cpj)
+
+    // Derivadas
+    dxdt(1) = dCAdt;
+    dxdt(2) = dCBdt;
+    dxdt(3) = dCCdt;
+    dxdt(4) = dTdt;
+    dxdt(5) = dTjdt;
+endfunction
+
+// CONSTANTES
+V    = 1; // m^3
+H1   = -75; // kj/mol
+H2   = -50; // Kj/mol
+UA   = 200; // Kj/(h*K) 
+vj   = 0.1; // m^3
+CP   = 4.186; // Kj/(kg*K)
+cpj  = 4.186;//kj/kg*k
+RHO  = 1000; // kg/m^3
+RHOj = 1000; // kg/m^3
+
+
+// CONDICIONES INICIALES
+CAini = 1000; // mol/m^3
+CBini = 0; // mol/m^3
+CCini = 0; // mol/m^3   
+Tini  = 300; // K
+TJini = 300; // K
+xini  = [CAini;CBini;CCini;Tini;TJini];
+
+// TIEMPO
+tfin = 12; dt = 0.01; t = 0:dt:tfin; // h
+
+// RESOLVER
+x = ode(xini,0,t,f);
+CA = x(1,:); CAfin = CA($);
+CB = x(2,:); CBfin = CB($);
+CC = x(3,:); CCfin = CC($);
+T  = x(4,:); Tfin = T($);
+TJ = x(5,:); TJfin = TJ($);
+//! Apartado A
+disp("CA final: " + string(CAfin) + " mol/m^3");
+disp("CB final: " + string(CBfin) + " mol/m^3");
+disp("CC final: " + string(CCfin) + " mol/m^3");
+disp("T final: " + string(Tfin) + " K");
+disp("TJ final: " + string(TJfin) + " K");
+
+//! Apartado B 
+[CBmax, indexCB] = max(CB);
+disp("CB max: " + string(CBmax) + " mol/m^3");
+// Graficar
+
+scf(1); clf(1);
+plot(t,CA,'r',t,CB,'g',t,CC,'b',t(indexCB),CB(indexCB),'k*'); // Graficar CA, CB, CC y el máximo de CB
+xlabel('Tiempo (h)');
+ylabel('Concentración (mol/m^3)');
+legend('CA','CB','CC','CB máximo');
+//!Apartado C
+indices = find(T > 320); // Todos los índices donde T > 320
+if indices <> [] then
+    tiempo_T_superior_320 = length(indices) * dt;
+    disp("Tiempo total en que T > 320 K: " + string(tiempo_T_superior_320) + " h");
+end
+//!Apartado D 
+// seria de la siguiente manera
+
+indextj = find(TJ > 310); // Todos los índices donde TJ > 310
+if indextj <> [] then
+    tiempo_T_superior_310 = length(indextj) * dt;
+    disp("Tiempo total en que TJ > 310 K: " + string(tiempo_T_superior_310) + " h");
+end
+// Apartado E TJ máximo
+indexTJmax = find(TJ == max(TJ)); // Índice donde TJ es máximo
+disp("TJ máximo: " + string(TJ(indexTJmax)) + " K en el tiempo: " + string(t(indexTJmax)) + " h");
+indexTmax = find(T == max(T)); // Índice donde T es máximo
+disp("T máximo: " + string(T(indexTmax)) + " K en el tiempo: " + string(t(indexTmax)) + " h");
+// Graficar Temp/tiempo
+scf(2); clf(2);
+plot(t, T, 'k', t, TJ, 'm',t(indices), T(indices), 'r.',t(indextj), TJ(indextj), 'b.',t(indexTJmax),TJ(indexTJmax),'r*',t(indexTmax),T(indexTmax),'b*'); 
+xlabel('Tiempo (h)');
+ylabel('Temperatura (K)');
+title('Temperatura del reactor y de la camisa');
+legend('T del reactor', 'T de la camisa', 'T > 320 K', 'TJ > 310 K', 'TJ máximo', 'T máximo', -2, %f);
+\end{minted}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.65\linewidth]{Imagenes/RDMP_Multi_2025_1.png}
+  \caption{Concentraciones frente a tiempo en el reactor}
+  \label{fig:RDMP_Multi_2025_1}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.8\linewidth]{Imagenes/RDMP_Multi_2025_2.png}
+  \caption{Temperatura frente a tiempo en el reactor}
+  \label{fig:RDMP_Multi_2025_2}
+\end{figure}
+\clearpage
+
+\Res{
+  \begin{array}{l}
+    \text{CA final: } 0.0008511 \text{ mol/m}^3                       \\
+    \text{CB final: } 158.52581 \text{ mol/m}^3                       \\
+    \text{CC final: } 841.47334 \text{ mol/m}^3                       \\
+    \text{T final: } 319.16721 \text{ K}                              \\
+    \text{TJ final: } 299.42458 \text{ K}                             \\
+    \text{CB max: } 755.08351 \text{ mol/m}^3                         \\
+    \text{Tiempo total en que T > 320 K: } 6.66 \text{ h}             \\
+    \text{Tiempo total en que TJ > 310 K: } 1.14 \text{ h}            \\
+    \text{TJ máximo: } 312.50198 \text{ K en el tiempo: } 4 \text{ h} \\
+    \text{T máximo: } 321.33188 \text{ K en el tiempo: } 6.52 \text{ h}
+  \end{array}
+}

@@ -1,0 +1,149 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{clear}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{clc}\PYG{p}{;}
+\PYG{c+c1}{// RDMP\PYGZhy{}3c.sce}
+\PYG{c+c1}{// A =\PYGZgt{} B}
+\PYG{c+c1}{// No adiabático: serpentín}
+\PYG{c+c1}{//matiz ejercicio dificil}
+\PYG{c+c1}{// SECTORES}
+\PYG{n}{N}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// divisiones del serpentín}
+
+\PYG{c+c1}{// SISTEMA DE ECUACIONES DIFERENCIALES}
+\PYG{k}{function}\PYG{+w}{ }dxdt\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nf}{f}\PYG{p}{(}t,x\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Variables diferenciales}
+\PYG{+w}{    }\PYG{n}{Ts}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{N}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{n}{N}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{T}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{n}{N}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Calor transferido del reactor al serpentín}
+\PYG{+w}{    }\PYG{n}{i}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{N}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{Q}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{U}\PYG{o}{*}\PYG{n}{As}\PYG{o}{*}\PYG{p}{(}\PYG{n}{T}\PYG{o}{\PYGZhy{}}\PYG{n}{Ts}\PYG{p}{(}\PYG{n}{i}\PYG{p}{));}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de energía en el serpentín}
+\PYG{+w}{    }\PYG{c+c1}{// d(Vs*RHOs*CPs*Ts(i))dt =  Fs*RHOs*CPs*Ts(i\PYGZhy{}1) \PYGZhy{} Fs*RHOs*CPs*Ts(i) + Q(i)}
+\PYG{+w}{    }\PYG{c+c1}{// Sector 1 como no puede ser i\PYGZhy{}1  tiene su propio balance abajo}
+\PYG{+w}{    }\PYG{n}{dTsdt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Fs}\PYG{o}{*}\PYG{p}{(}\PYG{n}{Ts0}\PYG{o}{\PYGZhy{}}\PYG{n}{Ts}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{))}\PYG{o}{/}\PYG{n}{Vs}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{Q}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{n}{Vs}\PYG{o}{*}\PYG{n}{RHOs}\PYG{o}{*}\PYG{n}{CPs}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Resto de sectores}
+\PYG{+w}{    }\PYG{n}{i}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{:}\PYG{n}{N}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dTsdt}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Fs}\PYG{o}{*}\PYG{p}{(}\PYG{n}{Ts}\PYG{p}{(}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{Ts}\PYG{p}{(}\PYG{n}{i}\PYG{p}{))}\PYG{o}{/}\PYG{n}{Vs}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{Q}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{n}{Vs}\PYG{o}{*}\PYG{n}{RHOs}\PYG{o}{*}\PYG{n}{CPs}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Ecuación de Arrhenius}
+\PYG{+w}{    }\PYG{n}{k}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k0}\PYG{o}{*}\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{E}\PYG{o}{/}\PYG{p}{(}\PYG{n}{R}\PYG{o}{*}\PYG{n}{T}\PYG{p}{))}
+\PYG{+w}{    }\PYG{c+c1}{// Velocidad de reacción}
+\PYG{+w}{    }\PYG{n}{r}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{o}{*}\PYG{n}{CA}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para A}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*CA)dt = \PYGZhy{}r*V}
+\PYG{+w}{    }\PYG{n}{dCAdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{r}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de energía en el reactor}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*RHO*CP*T)dt = \PYGZhy{}H*r*V \PYGZhy{} Q}
+\PYG{+w}{    }\PYG{n}{dTdt}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{H}\PYG{o}{*}\PYG{n}{r}\PYG{o}{/}\PYG{p}{(}\PYG{n}{RHO}\PYG{o}{*}\PYG{n}{CP}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{Q}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{n}{V}\PYG{o}{*}\PYG{n}{RHO}\PYG{o}{*}\PYG{n}{CP}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Derivadas}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{N}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dTsdt}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{n}{N}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCAdt}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{n}{N}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dTdt}
+\PYG{k}{endfunction}
+
+\PYG{c+c1}{// CONSTANTES}
+\PYG{n}{V}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// m3}
+\PYG{n}{RHO}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{980}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// kg/m3}
+\PYG{n}{CP}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{4200}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//J/(kg*K)}
+
+\PYG{n}{U}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{400}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/(m2*s*K)}
+\PYG{n}{Ds}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// m}
+\PYG{n}{Lstot}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{13}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// m}
+\PYG{n}{Vstot}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+no}{\PYGZpc{}pi}\PYG{o}{/}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{Ds}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{Lstot}\PYG{+w}{ }\PYG{c+c1}{// m3 (volumen de sector total)}
+\PYG{n}{Astot}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+no}{\PYGZpc{}pi}\PYG{o}{*}\PYG{n}{Ds}\PYG{o}{*}\PYG{n}{Lstot}\PYG{+w}{  }\PYG{c+c1}{// m2}
+\PYG{n}{Vs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Vstot}\PYG{o}{/}\PYG{n}{N}\PYG{p}{;}\PYG{+w}{  }\PYG{c+c1}{// m3 (volumen de sector)}
+\PYG{n}{As}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Astot}\PYG{o}{/}\PYG{n}{N}\PYG{p}{;}\PYG{+w}{  }\PYG{c+c1}{// m2 (area de sector)}
+\PYG{n}{Fs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1E\PYGZhy{}3}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//m3/s (flujo serpentin)}
+\PYG{n}{Ts0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{283}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{n}{RHOs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// kg/m3}
+\PYG{n}{CPs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{4180}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//J/(kg*K)}
+
+\PYG{n}{H}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{5E5}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/mol}
+\PYG{n}{k0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{2.2E4}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// s\PYGZhy{}1}
+\PYG{n}{E}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{41570}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/mol}
+\PYG{n}{R}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{8.314}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/(mol*K)}
+
+\PYG{c+c1}{// CONDICIONES INICIALES}
+\PYG{n}{i}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{N}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{Tsini}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{283}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K iniciando todos los sectores a t inciial}
+\PYG{n}{CAini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{500}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/m3}
+\PYG{n}{Tini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{283}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{n}{xini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{Tsini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CAini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{Tini}\PYG{p}{];}
+
+\PYG{c+c1}{// TIEMPO}
+\PYG{n}{tfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1500}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{dt}\PYG{p}{:}\PYG{n}{tfin}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// s}
+
+\PYG{c+c1}{// RESOLVER}
+\PYG{n}{x}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ode}\PYG{p}{(}\PYG{n}{xini}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{f}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{n+nb}{size}\PYG{p}{(}\PYG{n}{x}\PYG{p}{))}
+\PYG{n}{Ts}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{N}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{Tsfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Ts}\PYG{p}{(:,}\PYGZdl{}\PYG{p}{);}
+\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{n}{N}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CAfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CA}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{n}{T}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{n}{N}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{Tfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+
+\PYG{p}{[}\PYG{n}{Tmax}\PYG{p}{,}\PYG{n}{indexTmax}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{T}\PYG{p}{);}
+\PYG{n}{tTmax}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYG{n}{indexTmax}\PYG{p}{);}
+
+\PYG{c+c1}{// GRÁFICAS}
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{CA}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CA\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{T}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}r\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{Ts}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}r:\PYGZsq{}}\PYG{p}{,}\PYG{n}{tTmax}\PYG{p}{,}\PYG{n}{Tmax}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}T\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}Ts\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{Tsini}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}ro\PYGZhy{}\PYGZsq{}}\PYG{p}{);}\PYG{+w}{      }\PYG{c+c1}{// t=0}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{Ts}\PYG{p}{(:,}\PYGZdl{}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{),}\PYG{l+s}{\PYGZsq{}ro\PYGZhy{}\PYGZsq{}}\PYG{p}{);}\PYG{+w}{  }\PYG{c+c1}{// t=tfin/2}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{Tsfin}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}ro\PYGZhy{}\PYGZsq{}}\PYG{p}{);}\PYG{+w}{      }\PYG{c+c1}{// t=tfin}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Sector\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Ts\PYGZsq{}}\PYG{p}{);}
+
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}El volumen del serpentín es:\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{Vstot}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}m3\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}El area del serpentín es:\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{Astot}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}m2\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}el volumen del sector es:\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{Vs}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}m3\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}el area del sector es:\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{As}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}m2\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}la temperatura de salida de los sectores del serpetin son:\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{N}\PYG{o}{+}\PYG{l+m+mi}{1}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{N}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{n+nb}{then}
+\PYG{+w}{        }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}la temperatura de salida del sector \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} es:\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{Tsfin}\PYG{p}{(}\PYG{n}{i}\PYG{p}{))}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}K\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{else}
+\PYG{+w}{        }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}la temperatura de salida del reactor es:\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{Tfin}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}K\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{end}
+\PYG{k}{end}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}la temperatura maxima en el reactor es:\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{Tmax}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}K\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{l+s}{\PYGZdq{} que se da a los \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{indexTmax}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}s del inicio del proceso\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}el tiempo en el que se alcanza la temperatura maxima es:\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{tTmax}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}s\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{// Si quiero que el refrigerante sea el necesario para que Tmax = Tfin}
+\PYG{c+c1}{// ITERACIÓN SOBRE Fs}
+\PYG{n}{tol}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1e\PYGZhy{}2}\PYG{p}{;}\PYG{+w}{        }\PYG{c+c1}{// tolerancia (K)}
+\PYG{n}{max\PYGZus{}iter}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1000}\PYG{p}{;}\PYG{+w}{    }\PYG{c+c1}{// seguridad}
+\PYG{n}{iter}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+
+\PYG{k}{while}\PYG{+w}{ }\PYG{n}{iter}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{max\PYGZus{}iter}
+
+\PYG{+w}{    }\PYG{c+c1}{// Resolver sistema}
+\PYG{+w}{    }\PYG{n}{x}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ode}\PYG{p}{(}\PYG{n}{xini}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{f}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{n}{Ts}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{N}\PYG{p}{,:);}
+\PYG{+w}{    }\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{n}{N}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,:);}
+\PYG{+w}{    }\PYG{n}{T}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{n}{N}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{,:);}
+
+\PYG{+w}{    }\PYG{n}{Tfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{Tmax}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{T}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Condición de convergencia}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{Tmax}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{Tfin}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{tol}\PYG{+w}{ }\PYG{n+nb}{then}
+\PYG{+w}{        }\PYG{k}{break}
+\PYG{+w}{    }\PYG{k}{end}
+
+\PYG{+w}{    }\PYG{c+c1}{// Ajuste de Fs}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{n}{Tmax}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Tfin}\PYG{+w}{ }\PYG{n+nb}{then}
+\PYG{+w}{        }\PYG{c+c1}{// sobreenfriando → demasiado refrigerante}
+\PYG{+w}{        }\PYG{n}{Fs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Fs}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{Fs}\PYG{o}{/}\PYG{l+m+mi}{70}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{else}
+\PYG{+w}{        }\PYG{c+c1}{// falta refrigeración}
+\PYG{+w}{        }\PYG{n}{Fs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Fs}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{Fs}\PYG{o}{/}\PYG{l+m+mi}{70}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{end}
+
+\PYG{+w}{    }\PYG{n}{iter}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{iter}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{k}{end}
+
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Fs óptimo aproximado: \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{Fs}\PYG{p}{))}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Iteraciones: \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{iter}\PYG{p}{))}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Tmax = \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{Tmax}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}K\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} Tfin = \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{Tfin}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}K\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} Diferencia = \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{Tmax}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{Tfin}\PYG{p}{))}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}K\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

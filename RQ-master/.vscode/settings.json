@@ -8,7 +8,7 @@
         ]
     },
     "editor.codeActionsOnSave": {
-        "source.fixAll.ltex": false
+        "source.fixAll.ltex": "never"
     },
     "latex-workshop.latex.tools": [
         {

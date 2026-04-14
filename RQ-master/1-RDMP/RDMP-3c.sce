@@ -46,8 +46,8 @@ Ds = 0.1; // m
 Lstot = 13; // m
 Vstot = %pi/4*Ds^2*Lstot // m3 (volumen de sector total)
 Astot = %pi*Ds*Lstot  // m2
-Vs = Vstot/N  // m3 (volumen de sector)
-As = Astot/N  // m2 (area de sector)
+Vs = Vstot/N;  // m3 (volumen de sector)
+As = Astot/N;  // m2 (area de sector)
 Fs = 1E-3; //m3/s (flujo serpentin)
 Ts0 = 283; // K
 RHOs = 1000; // kg/m3
@@ -70,12 +70,12 @@ tfin = 1500; dt = 1; t = 0:dt:tfin; // s
 // RESOLVER
 x = ode(xini,0,t,f);
 disp(size(x))
-Ts = x(1:N,:); Tsfin = Ts(:,$)
-CA = x(N+1,:); CAfin = CA($)
-T  = x(N+2,:); Tfin = T($)
+Ts = x(1:N,:); Tsfin = Ts(:,$);
+CA = x(N+1,:); CAfin = CA($);
+T  = x(N+2,:); Tfin = T($);
 
-[Tmax,indexTmax] = max(T)
-tTmax = t(indexTmax)
+[Tmax,indexTmax] = max(T);
+tTmax = t(indexTmax);
 
 // GRÁFICAS
 scf(1); clf(1);
@@ -91,8 +91,57 @@ plot(Tsini,'ro-');      // t=0
 plot(Ts(:,$/2),'ro-');  // t=tfin/2
 plot(Tsfin,'ro-');      // t=tfin
 xgrid; xlabel('Sector'); ylabel('Ts');
-while Tmax> Tfin then Fs=Fs+0.01
 
+disp("El volumen del serpentín es:" + string(Vstot) + "m3")
+disp("El area del serpentín es:" + string(Astot) + "m2")
+disp("el volumen del sector es:" + string(Vs) + "m3")
+disp("el area del sector es:" + string(As) + "m2")
+disp("la temperatura de salida de los sectores del serpetin son:")
+for i = 1:N+1 
+    if i < N+1 then 
+        disp("la temperatura de salida del sector " + string(i) + " es:" + string(Tsfin(i)) + "K")
+    else 
+        disp("la temperatura de salida del reactor es:" + string(Tfin) + "K")
+    end
+end
+disp("la temperatura maxima en el reactor es:" + string(Tmax) + "K" +" que se da a los " + string(indexTmax) + "s del inicio del proceso")
+disp("el tiempo en el que se alcanza la temperatura maxima es:" + string(tTmax) + "s")
+
+// Si quiero que el refrigerante sea el necesario para que Tmax = Tfin
+// ITERACIÓN SOBRE Fs
+tol = 1e-2;        // tolerancia (K)
+max_iter = 1000;    // seguridad
+iter = 0;
+
+while iter < max_iter
+    
+    // Resolver sistema
+    x = ode(xini,0,t,f);
+    
+    Ts = x(1:N,:);
+    CA = x(N+1,:);
+    T  = x(N+2,:);
+    
+    Tfin = T($);
+    Tmax = max(T);
+    
+    // Condición de convergencia
+    if abs(Tmax - Tfin) < tol then
+        break
+    end
+    
+    // Ajuste de Fs
+    if Tmax > Tfin then
+        // sobreenfriando → demasiado refrigerante
+        Fs = Fs - Fs/70;
+    else
+        // falta refrigeración
+        Fs = Fs + Fs/70;
+    end
+    
+    iter = iter + 1;
 end
 
-//TODO Revisar  el bucle while .... 
+disp("Fs óptimo aproximado: " + string(Fs))
+disp("Iteraciones: " + string(iter))
+disp("Tmax = " + string(Tmax) + "K" + " Tfin = " + string(Tfin) + "K" + " Diferencia = " + string(abs(Tmax - Tfin)) + "K")
