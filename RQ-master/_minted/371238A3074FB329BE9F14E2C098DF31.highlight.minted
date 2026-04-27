@@ -1,0 +1,127 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{+w}{  }\PYG{n+nb}{clear}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{clc}\PYG{p}{;}
+\PYG{c+c1}{// RDMP\PYGZhy{}O\PYGZhy{}2022.sce}
+\PYG{c+c1}{// A \PYGZlt{}=\PYGZgt{} B}
+\PYG{c+c1}{// Reacción reversible exotérmica en reactor discontinuo mezcla perfecta}
+
+\PYG{k}{function}\PYG{+w}{ }dxdt\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nf}{f}\PYG{p}{(}t,x\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Variables de estado}
+\PYG{+w}{    }\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{T}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Ecuaciones de la cinética (Arrhenius y Van\PYGZsq{}t Hoff)}
+\PYG{+w}{    }\PYG{n}{k}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{A0}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{Ea}\PYG{o}{/}\PYG{p}{(}\PYG{n}{R}\PYG{o}{*}\PYG{n}{T}\PYG{p}{));}
+\PYG{+w}{    }\PYG{n}{Keq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Keq0}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{H}\PYG{o}{/}\PYG{p}{(}\PYG{n}{R}\PYG{o}{*}\PYG{n}{T}\PYG{p}{));}
+\PYG{+w}{    }\PYG{c+c1}{// Ecuación de velocidad reacción elemental}
+\PYG{+w}{    }\PYG{n}{r}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{CA}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{CB}\PYG{o}{/}\PYG{n}{Keq}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Calor extraído (flujo de energía térmica a la camisa)}
+\PYG{+w}{    }\PYG{n}{Q}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{UA}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{T}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{Tj}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Balances}
+\PYG{+w}{    }\PYG{n}{dCAdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{r}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{dCBdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{r}\PYG{p}{;}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*rho*Cp*T)/dt = \PYGZhy{}H*r*V \PYGZhy{} Q}
+\PYG{+w}{    }\PYG{n}{dTdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{H}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{r}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{rho}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{Cp}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{Q}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{V}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{rho}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{Cp}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Vector de derivadas}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCAdt}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCBdt}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dTdt}\PYG{p}{;}
+\PYG{k}{endfunction}
+
+\PYG{c+c1}{// Constantes dadas por el problema}
+\PYG{n}{A0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{9.1E14}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// min\PYGZhy{}1}
+\PYG{n}{Keq0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{4.21E\PYGZhy{}5}\PYG{p}{;}
+\PYG{n}{Ea}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.12E5}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/mol}
+\PYG{n}{H}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.46E5}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/mol}
+\PYG{n}{R}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{8.314}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/(mol K)}
+
+\PYG{n}{V}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{2000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L}
+\PYG{n}{Tj}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{280}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{n}{UA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1500}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/(min K)}
+\PYG{n}{rho}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.9}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// kg/L}
+\PYG{n}{Cp}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{4500}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/(kg K)}
+
+\PYG{c+c1}{// Condiciones iniciales}
+\PYG{n}{CAini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{CBini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{Tini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{360}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{n}{xini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CAini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CBini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{Tini}\PYG{p}{];}
+
+\PYG{c+c1}{// Configuración del tiempo (lo ponemos alto para asegurar que llegue a la conversión)}
+\PYG{n}{tfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{5000}\PYG{p}{;}
+\PYG{n}{dt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{p}{;}
+\PYG{n}{t}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{dt}\PYG{p}{:}\PYG{n}{tfin}\PYG{p}{;}
+
+\PYG{c+c1}{// Resolución numérica de la ODE}
+\PYG{n}{x}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ode}\PYG{p}{(}\PYG{n}{xini}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{);}
+\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,:);}
+\PYG{n}{CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,:);}
+\PYG{n}{T}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,:);}
+\PYG{n}{XA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{CA}\PYG{o}{/}\PYG{n}{CAini}\PYG{p}{;}
+
+\PYG{c+c1}{// RESULTADOS}
+\PYG{c+c1}{// === Apartado A ===}
+\PYG{n}{XAobj}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.95}\PYG{p}{;}
+\PYG{n}{index\PYGZus{}95}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{find}\PYG{p}{(}\PYG{n}{XA}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{p}{=}\PYG{+w}{ }\PYG{n}{XAobj}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{);}
+
+\PYG{k}{if}\PYG{+w}{ }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{index\PYGZus{}95}\PYG{p}{)}\PYG{+w}{ }\PYG{n+nb}{then}
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}No se alcanza el 95\PYGZpc{} de conversión en \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{tfin}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} min\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{t\PYGZus{}95}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{index\PYGZus{}95}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{t}\PYG{p}{);}
+\PYG{k}{else}
+\PYG{+w}{    }\PYG{n}{t\PYGZus{}95}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYG{n}{index\PYGZus{}95}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{T\PYGZus{}95}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{(}\PYG{n}{index\PYGZus{}95}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=== Apartado A ===\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}El 95\PYGZpc{} de conversión se alcanza en el tiempo t = \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{t\PYGZus{}95}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} min\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Temperatura en este punto = \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{T\PYGZus{}95}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} K\PYGZdq{}}\PYG{p}{);}
+\PYG{k}{end}
+
+\PYG{c+c1}{// Acotamos los datos hasta el 95\PYGZpc{} para unicamente mostrar hasta el 95\PYGZpc{}}
+\PYG{n}{t\PYGZus{}graf}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{index\PYGZus{}95}\PYG{p}{);}
+\PYG{n}{CA\PYGZus{}graf}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CA}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{index\PYGZus{}95}\PYG{p}{);}
+\PYG{n}{CB\PYGZus{}graf}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CB}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{index\PYGZus{}95}\PYG{p}{);}
+\PYG{n}{T\PYGZus{}graf}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{index\PYGZus{}95}\PYG{p}{);}
+\PYG{n}{XA\PYGZus{}graf}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{XA}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{index\PYGZus{}95}\PYG{p}{);}
+
+\PYG{c+c1}{// === Apartado B ===}
+\PYG{c+c1}{// Punto de inflexión en la evolución temporal de la temperatura (donde la derivada cambia)}
+\PYG{n}{dTdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{diff}\PYG{p}{(}\PYG{n}{T\PYGZus{}graf}\PYG{p}{)}\PYG{o}{/}\PYG{n}{dt}\PYG{p}{;}
+\PYG{p}{[}\PYG{n}{max\PYGZus{}dTdt}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{index\PYGZus{}inflexion}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{dTdt}\PYG{p}{);}
+\PYG{n}{t\PYGZus{}inflexion}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t\PYGZus{}graf}\PYG{p}{(}\PYG{n}{index\PYGZus{}inflexion}\PYG{p}{);}
+\PYG{n}{T\PYGZus{}inflexion}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T\PYGZus{}graf}\PYG{p}{(}\PYG{n}{index\PYGZus{}inflexion}\PYG{p}{);}
+
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=== Apartado B ===\PYGZdq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}El punto de inflexión en temperatura ocurre en t = \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{t\PYGZus{}inflexion}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} min\PYGZdq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Temperatura en el punto de inflexión = \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{T\PYGZus{}inflexion}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} K\PYGZdq{}}\PYG{p}{);}
+\PYG{c+c1}{//Bonus donde CA = CB}
+\PYG{n}{index\PYGZus{}CA\PYGZus{}CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{find}\PYG{p}{(}\PYG{n}{CA}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{CB}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{k}{if}\PYG{+w}{ }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{index\PYGZus{}CA\PYGZus{}CB}\PYG{p}{)}\PYG{+w}{ }\PYG{n+nb}{then}
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}No se alcanza la igualdad de concentraciones en \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{tfin}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} min\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{t\PYGZus{}CA\PYGZus{}CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{index\PYGZus{}CA\PYGZus{}CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{t}\PYG{p}{);}
+\PYG{k}{else}
+\PYG{+w}{    }\PYG{n}{t\PYGZus{}CA\PYGZus{}CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYG{n}{index\PYGZus{}CA\PYGZus{}CB}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{T\PYGZus{}CA\PYGZus{}CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{(}\PYG{n}{index\PYGZus{}CA\PYGZus{}CB}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=== Apartado Bonus ===\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}La igualdad de concentraciones se alcanza en el tiempo t = \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{t\PYGZus{}CA\PYGZus{}CB}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} min\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} y la concentracion es = \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{CA}\PYG{p}{(}\PYG{n}{index\PYGZus{}CA\PYGZus{}CB}\PYG{p}{)));}
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Temperatura en este punto = \PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{T\PYGZus{}CA\PYGZus{}CB}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} K\PYGZdq{}}\PYG{p}{);}
+\PYG{k}{end}
+\PYG{c+c1}{// Gráficas}
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t\PYGZus{}graf}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{CA\PYGZus{}graf}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}b\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t\PYGZus{}graf}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{CB\PYGZus{}graf}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}m\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t\PYGZus{}CA\PYGZus{}CB}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{CA}\PYG{p}{(}\PYG{n}{index\PYGZus{}CA\PYGZus{}CB}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}ko\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Tiempo (min)\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Concentración (mol/L)\PYGZsq{}}\PYG{p}{);}
+\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CA\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}CB\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}CA=CB\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t\PYGZus{}graf}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{T\PYGZus{}graf}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}r\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t\PYGZus{}inflexion}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{T\PYGZus{}inflexion}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}ko\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Tiempo (min)\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Temperatura (K)\PYGZsq{}}\PYG{p}{);}
+\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}T\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}Punto Inflexión\PYGZsq{}}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t\PYGZus{}graf}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{XA\PYGZus{}graf}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}g\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t\PYGZus{}graf}\PYG{p}{(}\PYGZdl{}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{XA\PYGZus{}graf}\PYG{p}{(}\PYGZdl{}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Tiempo (min)\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Conversión XA\PYGZsq{}}\PYG{p}{);}
+\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}XA\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}95\PYGZpc{}\PYGZsq{}}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{);}
+\end{MintedVerbatim}

@@ -55,14 +55,14 @@ tfin = 100; dt = 0.1; t = 0:dt:tfin; // min
 x = ode(xini,0,t,f);
 CA = x(1,:); CAfin = CA($)
 T = x(2,:); Tfin = T($)
-
-[Tmax,indexTmax] = max(T)
-tTmax = t(indexTmax)
+disp("CA: " + string(CAfin) + " mol/L" + " a la temperatura de " + string(Tfin) + " K" + " en el tiempo " + string(tfin) + " min");
+[Tmax,indexTmax] = max(T);
+tTmax = t(indexTmax);
 
 Ta = 284; Tb = 288;
 indexTab = find(T > Ta & T < Tb);
-tTab = dt*length(indexTab)
-
+tTab = dt*length(indexTab);
+disp("Tiempo en que T está entre " + string(Ta) + " K y " + string(Tb) + " K: " + string(tTab) + " min");
 // GRÁFICAS
 scf(1); clf(1); 
 plot(t,CA);
