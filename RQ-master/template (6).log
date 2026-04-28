@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  29 APR 2026 00:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  28 APR 2026 23:13
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1883,12 +1883,12 @@ Cap\'{\i }tulo 1.
 
 
 {E:/Latex/fonts/enc/dvips/newpx/px-lms.enc}]
-<./Imagenes/RMP.PNG, id=146, 1312.905pt x 402.90524pt>
+<./Imagenes/RMP.PNG, id=143, 1312.905pt x 402.90524pt>
 File: ./Imagenes/RMP.PNG Graphic file (type png)
 <use ./Imagenes/RMP.PNG>
 Package pdftex.def Info: ./Imagenes/RMP.PNG  used on input line 48.
 (pdftex.def)             Requested size: 491.43513pt x 150.81244pt.
-<./Imagenes/RFP.png, id=148, 615.4995pt x 316.18124pt>
+<./Imagenes/RFP.png, id=145, 615.4995pt x 316.18124pt>
 File: ./Imagenes/RFP.png Graphic file (type png)
 <use ./Imagenes/RFP.png>
 Package pdftex.def Info: ./Imagenes/RFP.png  used on input line 57.
@@ -1915,7 +1915,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--11
 
 
 ] [10] [11] [12] [13]
-<./Imagenes/irreversible.jpg, id=309, 616.704pt x 336.65775pt>
+<./Imagenes/irreversible.jpg, id=306, 616.704pt x 336.65775pt>
 File: ./Imagenes/irreversible.jpg Graphic file (type jpg)
 <use ./Imagenes/irreversible.jpg>
 Package pdftex.def Info: ./Imagenes/irreversible.jpg  used on input line 302.
@@ -1928,10 +1928,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 \pydata@fh@0=\write8
 \openout8 = `_66F6181BCB4CFF4CD38FBC804A036DB6.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260429002722 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
+runsystem(latexminted config  --timestamp 20260428231317 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
 
  (_66F6181BCB4CFF4CD38FBC804A036DB6.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260429002722 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
+runsystem(latexminted cleanconfig  --timestamp 20260428231317 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
 
  (_minted/default.style.minted) (_minted/56873C1834805CA11618C54BD25FCEA2.highlight.minted
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1.
@@ -1944,29 +1944,29 @@ LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 4
  (E:\Latex\tex/latex/lm\ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [17{E:/Latex/fonts/enc/dvips/lm/lm-ts1.enc}])
-<./Imagenes/RDMP_1.1.png, id=364, 345.08925pt x 268.6035pt>
+<./Imagenes/RDMP_1.1.png, id=361, 345.08925pt x 268.6035pt>
 File: ./Imagenes/RDMP_1.1.png Graphic file (type png)
 <use ./Imagenes/RDMP_1.1.png>
 Package pdftex.def Info: ./Imagenes/RDMP_1.1.png  used on input line 463.
 (pdftex.def)             Requested size: 294.86407pt x 229.52722pt.
-<./Imagenes/RDMP_1.2.png, id=365, 324.0105pt x 269.808pt>
+<./Imagenes/RDMP_1.2.png, id=362, 324.0105pt x 269.808pt>
 File: ./Imagenes/RDMP_1.2.png Graphic file (type png)
 <use ./Imagenes/RDMP_1.2.png>
 Package pdftex.def Info: ./Imagenes/RDMP_1.2.png  used on input line 463.
 (pdftex.def)             Requested size: 294.86407pt x 245.54213pt.
  [18 <./Imagenes/RDMP_1.1.png> <./Imagenes/RDMP_1.2.png>] (_minted/3757BF0A907F43A3793C50F3BA919690.highlight.minted [19])
-<./Imagenes/RDMP_2.1.png, id=382, 1169.5695pt x 493.24275pt>
+<./Imagenes/RDMP_2.1.png, id=379, 1169.5695pt x 493.24275pt>
 File: ./Imagenes/RDMP_2.1.png Graphic file (type png)
 <use ./Imagenes/RDMP_2.1.png>
 Package pdftex.def Info: ./Imagenes/RDMP_2.1.png  used on input line 615.
 (pdftex.def)             Requested size: 491.43513pt x 207.25085pt.
  [20]
-<./Imagenes/RDMP_2.2.png, id=387, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_2.2.png, id=384, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_2.2.png Graphic file (type png)
 <use ./Imagenes/RDMP_2.2.png>
 Package pdftex.def Info: ./Imagenes/RDMP_2.2.png  used on input line 640.
 (pdftex.def)             Requested size: 294.86407pt x 222.3582pt.
-<./Imagenes/RDMP_2.3.png, id=388, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_2.3.png, id=385, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_2.3.png Graphic file (type png)
 <use ./Imagenes/RDMP_2.3.png>
 Package pdftex.def Info: ./Imagenes/RDMP_2.3.png  used on input line 640.
@@ -1975,23 +1975,23 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 65
  (E:\Latex\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [21 <./Imagenes/RDMP_2.1.png> <./Imagenes/RDMP_2.2.png> <./Imagenes/RDMP_2.3.png>] (_minted/243B8E281F5EAE91C0E3BFAE12B56019.highlight.minted [22])
-<./Imagenes/RDMP_3.1A.png, id=406, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.1A.png, id=403, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.1A.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.1A.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.1A.png  used on input line 756.
 (pdftex.def)             Requested size: 294.86407pt x 222.3582pt.
-<./Imagenes/RDMP_3.2A.png, id=407, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.2A.png, id=404, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.2A.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.2A.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.2A.png  used on input line 756.
 (pdftex.def)             Requested size: 294.86407pt x 222.3582pt.
  [23 <./Imagenes/RDMP_3.1A.png> <./Imagenes/RDMP_3.2A.png>] (_minted/AD67DD0C2BD6FE7DA621B83B30B3B5E9.highlight.minted [24])
-<./Imagenes/RDMP_3.1BREAL.png, id=423, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.1BREAL.png, id=420, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.1BREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.1BREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.1BREAL.png  used on input line 870.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<./Imagenes/RDMP_3.2BREAL.png, id=424, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.2BREAL.png, id=421, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.2BREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.2BREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.2BREAL.png  used on input line 876.
@@ -2000,7 +2000,7 @@ Package pdftex.def Info: ./Imagenes/RDMP_3.2BREAL.png  used on input line 876.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./Imagenes/RDMP_3.3BREAL.png, id=425, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.3BREAL.png, id=422, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.3BREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.3BREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.3BREAL.png  used on input line 883.
@@ -2009,44 +2009,44 @@ Package pdftex.def Info: ./Imagenes/RDMP_3.3BREAL.png  used on input line 883.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [25] (_minted/581BD93202BD91AE29B565EA9BA48035.highlight.minted [26 <./Imagenes/RDMP_3.1BREAL.png> <./Imagenes/RDMP_3.2BREAL.png> <./Imagenes/RDMP_3.3BREAL.png>] [27] [28])
-<./Imagenes/RDMP_3.1CREAL.png, id=450, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.1CREAL.png, id=447, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.1CREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.1CREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.1CREAL.png  used on input line 1062.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<./Imagenes/RDMP_3.2CREAL.png, id=451, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.2CREAL.png, id=448, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.2CREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.2CREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.2CREAL.png  used on input line 1068.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<./Imagenes/RDMP_3.3CREAL.png, id=452, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.3CREAL.png, id=449, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.3CREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.3CREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.3CREAL.png  used on input line 1076.
 (pdftex.def)             Requested size: 245.71756pt x 185.29262pt.
  [29 <./Imagenes/RDMP_3.1CREAL.png> <./Imagenes/RDMP_3.2CREAL.png> <./Imagenes/RDMP_3.3CREAL.png>] (_minted/4D176DB2E0761A35BF6D7251059E4601.highlight.minted [30] [31])
-<./Imagenes/RDMP_4.1.png, id=475, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_4.1.png, id=472, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_4.1.png Graphic file (type png)
 <use ./Imagenes/RDMP_4.1.png>
 Package pdftex.def Info: ./Imagenes/RDMP_4.1.png  used on input line 1207.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<./Imagenes/RDMP_4.2.png, id=476, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_4.2.png, id=473, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_4.2.png Graphic file (type png)
 <use ./Imagenes/RDMP_4.2.png>
 Package pdftex.def Info: ./Imagenes/RDMP_4.2.png  used on input line 1213.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
  (_minted/FD178409D409C590958A971051173CC5.highlight.minted [32 <./Imagenes/RDMP_4.1.png> <./Imagenes/RDMP_4.2.png>] [33])
-<Imagenes/RDMP_3.1C.png, id=492, 721.69624pt x 451.6875pt>
+<Imagenes/RDMP_3.1C.png, id=489, 721.69624pt x 451.6875pt>
 File: Imagenes/RDMP_3.1C.png Graphic file (type png)
 <use Imagenes/RDMP_3.1C.png>
 Package pdftex.def Info: Imagenes/RDMP_3.1C.png  used on input line 1358.
 (pdftex.def)             Requested size: 294.86407pt x 184.5452pt.
-<Imagenes/RDMP_3.2C.png, id=493, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_3.2C.png, id=490, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_3.2C.png Graphic file (type png)
 <use Imagenes/RDMP_3.2C.png>
 Package pdftex.def Info: Imagenes/RDMP_3.2C.png  used on input line 1368.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_3.3C.png, id=494, 699.61375pt x 451.6875pt>
+<Imagenes/RDMP_3.3C.png, id=491, 699.61375pt x 451.6875pt>
 File: Imagenes/RDMP_3.3C.png Graphic file (type png)
 <use Imagenes/RDMP_3.3C.png>
 Package pdftex.def Info: Imagenes/RDMP_3.3C.png  used on input line 1375.
@@ -2055,7 +2055,7 @@ Package pdftex.def Info: Imagenes/RDMP_3.3C.png  used on input line 1375.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagenes/RDMP_3.4C.png, id=495, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_3.4C.png, id=492, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_3.4C.png Graphic file (type png)
 <use Imagenes/RDMP_3.4C.png>
 Package pdftex.def Info: Imagenes/RDMP_3.4C.png  used on input line 1384.
@@ -2064,7 +2064,7 @@ Package pdftex.def Info: Imagenes/RDMP_3.4C.png  used on input line 1384.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [34 <./Imagenes/RDMP_3.1C.png>] [35 <./Imagenes/RDMP_3.2C.png> <./Imagenes/RDMP_3.3C.png> <./Imagenes/RDMP_3.4C.png>] (_minted/732E1D0A90F59CF17DD79B6EFB1CDBB0.highlight.minted [36])
-<Imagenes/RDMP_6.1.png, id=528, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_6.1.png, id=525, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_6.1.png Graphic file (type png)
 <use Imagenes/RDMP_6.1.png>
 Package pdftex.def Info: Imagenes/RDMP_6.1.png  used on input line 1515.
@@ -2073,12 +2073,12 @@ Package pdftex.def Info: Imagenes/RDMP_6.1.png  used on input line 1515.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagenes/RDMP_6.2.png, id=529, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_6.2.png, id=526, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_6.2.png Graphic file (type png)
 <use Imagenes/RDMP_6.2.png>
 Package pdftex.def Info: Imagenes/RDMP_6.2.png  used on input line 1525.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_6.3.png, id=530, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_6.3.png, id=527, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_6.3.png Graphic file (type png)
 <use Imagenes/RDMP_6.3.png>
 Package pdftex.def Info: Imagenes/RDMP_6.3.png  used on input line 1532.
@@ -2087,13 +2087,13 @@ Package pdftex.def Info: Imagenes/RDMP_6.3.png  used on input line 1532.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [37] (_minted/C3A945E8F4F58CC8B21363289B70249D.highlight.minted [38 <./Imagenes/RDMP_6.1.png> <./Imagenes/RDMP_6.2.png> <./Imagenes/RDMP_6.3.png>] [39])
-<Imagenes/RDMP_Multi_1.png, id=551, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_1.png, id=548, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_1.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_1.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_1.png  used on input line 1648.
 (pdftex.def)             Requested size: 245.71756pt x 185.29262pt.
  [40 <./Imagenes/RDMP_Multi_1.png>] (_minted/BC2F99B88A2D180D16892F282B5806E4.highlight.minted [41])
-<Imagenes/RDMP_Multi_2.1.png, id=564, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2.1.png, id=561, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2.1.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2.1.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2.1.png  used on input line 1783.
@@ -2102,12 +2102,12 @@ Package pdftex.def Info: Imagenes/RDMP_Multi_2.1.png  used on input line 1783.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagenes/RDMP_Multi_2.2.png, id=565, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2.2.png, id=562, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2.2.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2.2.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2.2.png  used on input line 1791.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_Multi_2.3.png, id=566, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2.3.png, id=563, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2.3.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2.3.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2.3.png  used on input line 1798.
@@ -2116,17 +2116,17 @@ Package pdftex.def Info: Imagenes/RDMP_Multi_2.3.png  used on input line 1798.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [42] [43 <./Imagenes/RDMP_Multi_2.1.png> <./Imagenes/RDMP_Multi_2.2.png> <./Imagenes/RDMP_Multi_2.3.png>] (_minted/03C4318A5467A7CE8429216174D9C4BF.highlight.minted [44])
-<Imagenes/RDMP_2023_1.png, id=588, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_2023_1.png, id=585, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_2023_1.png Graphic file (type png)
 <use Imagenes/RDMP_2023_1.png>
 Package pdftex.def Info: Imagenes/RDMP_2023_1.png  used on input line 1913.
 (pdftex.def)             Requested size: 270.29082pt x 203.82188pt.
-<Imagenes/RDMP_2023_2.png, id=589, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_2023_2.png, id=586, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_2023_2.png Graphic file (type png)
 <use Imagenes/RDMP_2023_2.png>
 Package pdftex.def Info: Imagenes/RDMP_2023_2.png  used on input line 1921.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_2023_3.png, id=590, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_2023_3.png, id=587, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_2023_3.png Graphic file (type png)
 <use Imagenes/RDMP_2023_3.png>
 Package pdftex.def Info: Imagenes/RDMP_2023_3.png  used on input line 1928.
@@ -2136,22 +2136,22 @@ Package pdftex.def Info: Imagenes/RDMP_2023_3.png  used on input line 1928.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [45 <./Imagenes/RDMP_2023_1.png>] (_minted/2EBF330970D9BFEB19DC561845D7FA08.highlight.minted [46 <./Imagenes/RDMP_2023_2.png> <./Imagenes/RDMP_2023_3.png>] [47])
-<Imagenes/RDMP_O_24_1.png, id=611, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_O_24_1.png, id=608, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_O_24_1.png Graphic file (type png)
 <use Imagenes/RDMP_O_24_1.png>
 Package pdftex.def Info: Imagenes/RDMP_O_24_1.png  used on input line 2057.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP_O_2024_2.png, id=612, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_O_2024_2.png, id=609, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_O_2024_2.png Graphic file (type png)
 <use Imagenes/RDMP_O_2024_2.png>
 Package pdftex.def Info: Imagenes/RDMP_O_2024_2.png  used on input line 2063.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP_O_24_3.png, id=613, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_O_24_3.png, id=610, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_O_24_3.png Graphic file (type png)
 <use Imagenes/RDMP_O_24_3.png>
 Package pdftex.def Info: Imagenes/RDMP_O_24_3.png  used on input line 2072.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP_O_2024_4.png, id=614, 612.2875pt x 450.68375pt>
+<Imagenes/RDMP_O_2024_4.png, id=611, 612.2875pt x 450.68375pt>
 File: Imagenes/RDMP_O_2024_4.png Graphic file (type png)
 <use Imagenes/RDMP_O_2024_4.png>
 Package pdftex.def Info: Imagenes/RDMP_O_2024_4.png  used on input line 2078.
@@ -2162,28 +2162,102 @@ Overfull \hbox (28.68205pt too wide) in paragraph at lines 2093--2113
  []
 
 [48 <./Imagenes/RDMP_O_24_1.png> <./Imagenes/RDMP_O_2024_2.png> <./Imagenes/RDMP_O_24_3.png> <./Imagenes/RDMP_O_2024_4.png>] (_minted/D5980F0048C765B30D9F7031E4E90473.highlight.minted [49])
-<Imagenes/RDMP-O-2018-1.png, id=634, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2018-1.png, id=631, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2018-1.png Graphic file (type png)
 <use Imagenes/RDMP-O-2018-1.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2018-1.png  used on input line 2227.
 (pdftex.def)             Requested size: 319.42982pt x 240.88042pt.
  [50]
-<Imagenes/RDMP-O-2018-2.png, id=639, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2018-2.png, id=636, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2018-2.png Graphic file (type png)
 <use Imagenes/RDMP-O-2018-2.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2018-2.png  used on input line 2234.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP-O-2018-3.png, id=640, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2018-3.png, id=637, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2018-3.png Graphic file (type png)
 <use Imagenes/RDMP-O-2018-3.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2018-3.png  used on input line 2240.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
  [51 <./Imagenes/RDMP-O-2018-1.png> <./Imagenes/RDMP-O-2018-2.png> <./Imagenes/RDMP-O-2018-3.png>] (_minted/371238A3074FB329BE9F14E2C098DF31.highlight.minted [52] [53])
-<Imagenes/RDMP-O-2022-1.png, id=661, 1159.33125pt x 695.59875pt>
+<Imagenes/RDMP-O-2022-1.png, id=658, 1159.33125pt x 695.59875pt>
 File: Imagenes/RDMP-O-2022-1.png Graphic file (type png)
 <use Imagenes/RDMP-O-2022-1.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2022-1.png  used on input line 2404.
 (pdftex.def)             Requested size: 417.72285pt x 250.62764pt.
-<Imagenes/RDMP-O-2022-2.png, id=662, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2022-2.png, id=659, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2022-2.png Graphic file (type png)
-<use Imagenes/RDMP-O
+<use Imagenes/RDMP-O-2022-2.png>
+Package pdftex.def Info: Imagenes/RDMP-O-2022-2.png  used on input line 2411.
+(pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
+<Imagenes/RDMP-O-2022-3.png, id=660, 612.2875pt x 461.725pt>
+File: Imagenes/RDMP-O-2022-3.png Graphic file (type png)
+<use Imagenes/RDMP-O-2022-3.png>
+Package pdftex.def Info: Imagenes/RDMP-O-2022-3.png  used on input line 2417.
+(pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
+
+Overfull \hbox (2.79308pt too wide) in paragraph at lines 2401--2422
+[] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[54 <./Imagenes/RDMP-O-2022-1.png>] (_minted/5EF6FC2FF8579DD62004C48844C195CB.highlight.minted [55 <./Imagenes/RDMP-O-2022-2.png> <./Imagenes/RDMP-O-2022-3.png>] [56])
+Overfull \hbox (9.41168pt too wide) in paragraph at lines 2583--2584
+[][] 
+ []
+
+[57]
+<Imagenes/RDMP_E_2022_1.png, id=686, 612.2875pt x 461.725pt>
+File: Imagenes/RDMP_E_2022_1.png Graphic file (type png)
+<use Imagenes/RDMP_E_2022_1.png>
+Package pdftex.def Info: Imagenes/RDMP_E_2022_1.png  used on input line 2588.
+(pdftex.def)             Requested size: 245.71756pt x 185.29262pt.
+<Imagenes/RDMP_E_2022_2.png, id=687, 612.2875pt x 461.725pt>
+File: Imagenes/RDMP_E_2022_2.png Graphic file (type png)
+<use Imagenes/RDMP_E_2022_2.png>
+Package pdftex.def Info: Imagenes/RDMP_E_2022_2.png  used on input line 2594.
+(pdftex.def)             Requested size: 245.71756pt x 185.29262pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 2586--2598
+[][] [] 
+ []
+
+(_minted/2D0BFB172FED9883BE8FBA2656CBB786.highlight.minted [58 <./Imagenes/RDMP_E_2022_1.png> <./Imagenes/RDMP_E_2022_2.png>] [59])
+<Imagenes/RDMP_Unk_1.png, id=707, 612.2875pt x 461.725pt>
+File: Imagenes/RDMP_Unk_1.png Graphic file (type png)
+<use Imagenes/RDMP_Unk_1.png>
+Package pdftex.def Info: Imagenes/RDMP_Unk_1.png  used on input line 2770.
+(pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
+<Imagenes/RDMP_Unk_2.png, id=708, 612.2875pt x 461.725pt>
+File: Imagenes/RDMP_Unk_2.png Graphic file (type png)
+<use Imagenes/RDMP_Unk_2.png>
+Package pdftex.def Info: Imagenes/RDMP_Unk_2.png  used on input line 2776.
+(pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
+<Imagenes/RDMP_Unk_3.png, id=709, 612.2875pt x 461.725pt>
+File: Imagenes/RDMP_Unk_3.png Graphic file (type png)
+<use Imagenes/RDMP_Unk_3.png>
+Package pdftex.def Info: Imagenes/RDMP_Unk_3.png  used on input line 2784.
+(pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
+<Imagenes/RDMP_Unk_4.png, id=710, 612.2875pt x 461.725pt>
+File: Imagenes/RDMP_Unk_4.png Graphic file (type png)
+<use Imagenes/RDMP_Unk_4.png>
+Package pdftex.def Info: Imagenes/RDMP_Unk_4.png  used on input line 2790.
+(pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
+ [60] [61 <./Imagenes/RDMP_Unk_1.png> <./Imagenes/RDMP_Unk_2.png> <./Imagenes/RDMP_Unk_3.png> <./Imagenes/RDMP_Unk_4.png>] (_minted/441924DF6B7101484B18D6361126C343.highlight.minted [62] [63] [64])
+<Imagenes/RDMP-E-2020-1.png, id=742, 612.2875pt x 461.725pt>
+File: Imagenes/RDMP-E-2020-1.png Graphic file (type png)
+<use Imagenes/RDMP-E-2020-1.png>
+Package pdftex.def Info: Imagenes/RDMP-E-2020-1.png  used on input line 3015.
+(pdftex.def)             Requested size: 240.80591pt x 181.58678pt.
+<Imagenes/RDMP-E-2020-2.png, id=743, 612.2875pt x 461.725pt>
+File: Imagenes/RDMP-E-2020-2.png Graphic file (type png)
+<use Imagenes/RDMP-E-2020-2.png>
+Package pdftex.def Info: Imagenes/RDMP-E-2020-2.png  used on input line 3021.
+(pdftex.def)             Requested size: 240.80591pt x 181.58678pt.
+<Imagenes/RDMP-E-2020-3.png, id=744, 612.2875pt x 461.725pt>
+File: Imagenes/RDMP-E-2020-3.png Graphic file (type png)
+<use Imagenes/RDMP-E-2020-3.png>
+Package pdftex.def Info: Imagenes/RDMP-E-2020-3.png  used on input line 3028.
+(pdftex.def)             Requested size: 393.1496pt x 296.47525pt.
+ [65 <./Imagenes/RDMP-E-2020-1.png> <./Imagenes/RDMP-E-2020-2.png>] (_minted/0D0E7AD49D5B60767BD90C74EA6EFD23.highlight.minted [66 <./Imagenes/RDMP-E-2020-3.png>] [67]) (_minted/B269AB082C0DD4D6DDC52ED80D5CFEF0.highli

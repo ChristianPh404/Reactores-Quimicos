@@ -1,0 +1,131 @@
+\chapter{Reactor Continuo Flujo Pistón}
+\begin{flushleft}
+    Se analiza ahora el reactor continuo de flujo de pistón (PFR). Al igual que en otros reactores, su estudio se realiza en tres casos: isotermo, adiabático y no isotermo no adiabático, obteniendo en cada uno las ecuaciones de diseño correspondientes.
+    \vspace{1em}
+    El PFR presenta una configuración tubular, donde existen perfiles de concentración y temperatura a lo largo del reactor. A diferencia de los reactores de mezcla perfecta, no hay homogeneización global.
+    \vspace{1em}
+    Por ello, los balances de materia y energía no se pueden plantear sobre todo el volumen, sino sobre un elemento diferencial de volumen $dV$, donde las condiciones pueden considerarse uniformes.
+    \vspace{1em}
+    Así, el modelo del reactor se obtiene a partir de balances diferenciales aplicados a un elemento de volumen del reactor.
+\end{flushleft}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Imagenes/PFR.png}
+    \caption{Reactor Continuo Flujo Pistón}
+    \label{fig:PFR}
+\end{figure}
+\begin{flushleft}
+    En un reactor de flujo de pistón, el elemento diferencial de volumen puede expresarse como: \[dV = A\,dz\]
+    donde $dz$ es el diferencial axial y $A$ el área transversal del tubo.
+    \vspace{1em}
+\end{flushleft}
+\section{Isotermo}
+\begin{flushleft}
+    En condiciones isotermas (temperatura constante), el modelo del reactor se basa únicamente en balances de materia, ya que el balance de energía no es necesario para la modelización (solo para el diseño térmico).\\
+    \vspace{1em}
+    Considerando una única reacción independiente $A \rightarrow P$, el análisis se centra en el reactivo limitante y en la variable conversión $X_A$.\\
+    \vspace{1em}
+    Por tanto, el modelo del reactor isotermo se obtiene a partir del balance de materia diferencial aplicado al reactivo $A$.
+\end{flushleft}
+\dfn{Balance de materia}{
+    \begin{equation}
+        \frac{dN_A}{dt} = \cancelto{0}{n_A} - (\cancelto{0}{n_A} + dn_A) - r_A\cdot dV \quad \text{\scriptsize en estado estacionario $\frac{dN_A}{dt}=0$} \rightarrow -dn_A = r_A\cdot dV\\
+    \end{equation}
+}
+por tanto si lo ponemos en función de la conversión queda:
+
+\begin{equation}
+    n_A = n_{AR}(1-X_A)  \rightarrow dn_A = -n_{AR}dX_A
+\end{equation}
+\nt{basicamente se ha derivado la definicion de conversión}
+\begin{equation}
+    \int_{0}^{V}dV= n_{AR}\int_{X_{A0}}^{X_{AS}}\frac{dX_A}{-r_A} \rightarrow \boxed{V = n_{AR}\int_{X_{A0}}^{X_{AS}}\frac{dX_A}{-r_A}}
+\end{equation}
+si a esta expresión la dividimos por el caudal:
+\begin{equation}
+    \textcolor{darkgreen}{\frac{V}{F}} = \textcolor{blue}{\frac{n_{AR}}{F}} \int_{X_{A0}}^{X_{AS}} \frac{dX_A}{-r_A} \rightarrow \boxed{\textcolor{darkgreen}{\tau} = \textcolor{blue}{C_{AR}}\int_{X_{A0}}^{X_{AS}}\frac{dX_A}{-r_A}}
+\end{equation}
+\begin{flushleft}
+    Aunque el reactor discontinuo de mezcla perfecta y el reactor continuo de flujo de pistón son cinéticamente equivalentes (requieren el mismo volumen para una conversión dada), presentan diferencias en productividad.
+
+    En el reactor continuo (PFR), el tiempo característico es el tiempo espacial $\tau$, que determina directamente la producción.
+
+    En cambio, en el reactor discontinuo, el tiempo total de proceso incluye:
+    \begin{itemize}
+        \item Tiempo de reacción
+        \item Tiempo de carga
+        \item Tiempo de descarga
+        \item Tiempo de limpieza
+    \end{itemize}
+
+    Por tanto, el tiempo efectivo de producción es mayor, reduciendo la productividad.
+
+    En consecuencia, aunque ambos reactores sean equivalentes desde el punto de vista cinético, el reactor continuo de flujo de pistón resulta más productivo al no requerir tiempos de maniobra.
+\end{flushleft}
+
+\noindent si tuviesemos r reacciones independientes y un numero de componentes i, se generalizaria a:
+
+\begin{align}
+    -dn_i           & = r_i \cdot dV                                                               \\
+    F \cdot dc_i    & = -r_i \cdot dV \;=\; -r_i \cdot S \cdot dz                                  \\
+    \frac{dC_i}{dz} & = -r_i \cdot \frac{S}{F}
+    \;\;\leftrightarrow\;\;
+    \frac{F}{S} = V    \text{\scriptsize(velocidad media de circulción de la mezcla reaccionante)} \\
+    \frac{dC_i}{dz} & = -\frac{r_i}{V}
+\end{align}
+
+\section{adiabático}
+
+\begin{flushleft}
+    En el funcionamiento adiabático de un reactor de flujo de pistón (PFR), se plantean el balance de materia y el balance entálpico.
+
+    Considerando una única reacción $A \rightarrow P$ y trabajando con la conversión $X_A$ como variable de diseño:
+
+    \begin{itemize}
+        \item El balance de materia se aplica al reactivo limitante.
+        \item El balance entálpico incluye los términos de entrada, salida y generación (debido a la reacción).
+    \end{itemize}
+    \begin{align}
+        \frac{dN_A}{dt}                   & = n_A - (n_A + dn_A) - r_A \cdot dV                                & \text{\scriptsize balance de materia} \label{eq:materia}  \\[10pt]
+        \frac{d}{dt}(M \cdot c_p \cdot T) & = m \cdot c_p \cdot (T - (T + dT)) + \Delta H_A \cdot r_A \cdot dV & \text{\scriptsize balance de entalpía} \label{eq:energia}
+    \end{align}
+    En estado estacionario, los términos de acumulación se anulan, simplificando ambos balances.
+    \begin{align}
+        \frac{dN_A}{dt}                 & = - r_A \cdot dV                  &  & \text{balance de materia}  \\
+        m \cdot c_p \cdot \frac{dT}{dt} & = - \Delta H_A \cdot r_A \cdot dV &  & \text{balance de entalpía}
+    \end{align}
+    \cor{diferencial de volumen}{
+        \begin{equation}
+            dV = S\cdot dz = \frac{\pi}{4}\cdot D^2\cdot dz
+        \end{equation}
+    }
+    y el diferencial de caudal molar puede escribirse en función de la conversión.
+
+    Al combinar ambos balances y realizar las sustituciones correspondientes, se obtiene que en condiciones adiabáticas:
+    \begin{align}
+        n_{AR} \cdot \textcolor{red}{dX_A} & = r_A \cdot \frac{\pi}{4}\cdot D^2\cdot \textcolor{blue}{dz}  & \longrightarrow  \frac{\textcolor{red}{dX_A}}{\textcolor{blue}{dz}}  = \frac{r_A}{n_{AR}}     \cdot    \frac{\pi}{4}   \cdot D^2 \\
+        m \cdot c_p \cdot dT               & = -\Delta H_A \cdot dn_A = \Delta H_A \cdot n_{AR} \cdot dX_A
+    \end{align}
+    Si reordenamos la Ec. 4.15:
+    \begin{equation*}
+        dT = \frac{\Delta H_{A}\cdot n_{AR}}{m \cdot c_p} \cdot dX_A \rightarrow \underbrace{\int_{T_{0}}^{T}dT}_{T-T_0} = \frac{\Delta H_{A}\cdot n_{AR}}{m \cdot c_p} \underbrace{\int_{XA0}^{X_{A}} dX_A}_{X_A-X_{A0}}
+    \end{equation*}
+
+    de esta forma si despejamos, podemos observar que queda la temperatura como una funcion de la conversión con una relación lineal:
+
+    \begin{equation*}
+        T = T_{0} + \frac{\Delta H_{A}\cdot C_{AR}}{\rho \cdot c_p} \cdot (X_A-X_{A0})
+    \end{equation*}
+    si de la Ec.4.14 despejamos dz, se puede calcular la longitud del reactor necesaria para una determinada conversión:
+
+    \begin{equation*}
+        dz = \frac{n_{AR}}{\frac{\pi}{4}D^2} \cdot \frac{dX_A}{r_A} \longrightarrow  \int_{0}^{L}dz = \frac{n_{AR}}{\frac{\pi}{4}D^2} \int_{X_{A0}}^{X_{AS}}\frac{dX_A}{r_A} \implies \textcolor{blue}{L} = \frac{\textcolor{darkgreen}{n_{AR}}}{\textcolor{blue}{\frac{\pi}{4}D^2}} \int_{X_{A0}}^{X_{AS}}\frac{dX_A}{r_A}
+    \end{equation*}
+    normalmente, mas que interesar la longitud del reactor, interesa el volumen por tanto cabe recordar que\\
+    $V=\frac{\pi}{4}D^2 L$, de esta forma obtenemos:
+    \begin{equation}
+        \textcolor{darkgreen}{\tau} = \frac{\textcolor{blue}{V}}{\textcolor{darkgreen}{F_R}} = \frac{\textcolor{blue}{L \cdot \frac{\pi}{4}D^2}}{F_R} = \textcolor{darkgreen}{C_{AR}} \int_{X_{A0}}^{X_{AS}}\frac{dX_A}{r_A}
+    \end{equation}
+    Como se puede observar el cálculo del volumen (o longitud) necesario para alcanzar una conversión dada es análogo al caso del reactor discontinuo en régimen adiabático, ya que ambos son cinéticamente equivalentes.
+\end{flushleft}
+\section{no isotermo}

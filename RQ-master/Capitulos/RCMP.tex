@@ -203,7 +203,71 @@ si representamos estas expresiónes en funcion del estado estacionario que se ll
 	\caption{Multiplicidad de estados estacionarios para cinetica de inhibición}
 	\label{fig:inhibicion}
 \end{figure}
+
 tambien se podria obtener un plano de fases solucionando el modelo con las condiciones iniciales.
+\subsection{Bateria de tanques en serie}
+\begin{flushleft}
+	En una batería de $N$ tanques en serie, el volumen total $V$ se reparte en $N$ tanques de volumen $v_i$. El tiempo espacial de cada tanque es:
+	\[
+		\tau_i = \frac{v_i}{F}
+	\]
+	y el tiempo espacial global:
+	\[
+		\tau = N\,\tau_i
+	\]
+
+	Cada tanque recibe como alimentación la corriente de salida del anterior. Así:
+	\begin{itemize}
+		\item Tanque 1: entrada con conversión $x_{A0}$, salida $x_{A1}$.
+		\item Tanque 2: entrada $x_{A1}$, salida $x_{A2}$.
+		\item $\dots$
+		\item Tanque $n$: entrada $x_{A(n-1)}$, salida $x_{An}$ (o $x_{As}$).
+	\end{itemize}
+
+	El caudal $F$ se mantiene constante en todos los tanques, mientras que la conversión aumenta progresivamente a lo largo de la serie, de acuerdo con la ecuación de diseño (ec. 3.10).
+\end{flushleft}
+\begin{equation}
+	\tau_i = \frac{v_i}{F} \rightarrow \tau = \frac{V}{F} = n\cdot \frac{v_i}{F} = n\cdot \tau_i
+\end{equation}
+
+\begin{equation}
+	\frac{\tau_i}{C_{AR}} = \frac{x_{A1}-x_{A0}}{(-r_{A})_1} = \frac{x_{A2}-x_{A1}}{(-r_{A})_2} = \dots = \frac{x_{An}-x_{A(n-1)}}{(-r_{A})_n}
+\end{equation}
+\vspace{1em}
+\noindent se nos pueden presentar dos casos fundamentalmente:
+\begin{itemize}
+	\item que conozcamos el numero de tanques con el que vayamos a trabajar es decir N
+	\item lo que conocemos es la conversión a la entrada $x_{AO}$ queremos una determinada conversion a la salida $x_{An}$
+\end{itemize}
+\begin{flushleft}
+	Para el cálculo en una batería de $N$ tanques en serie, se puede resolver el problema de forma secuencial. Conocido el tiempo espacial $\tau_i$ y la conversión de entrada, se calcula la conversión a la salida de cada tanque de manera sucesiva: $x_{A1}$, $x_{A2}$, ..., hasta $x_{AN}$.
+
+	En diseño (segundo caso), se suele suponer un número de tanques $N$ y un $\tau_i$, y realizar el cálculo en sentido inverso: partiendo de la conversión de salida conocida, se determinan las conversiones intermedias hasta obtener la conversión de entrada $x_{A0}$.
+
+	Si la conversión calculada $x_{A0}$ no coincide con la requerida:
+	\begin{itemize}
+		\item Si $x_{A0}$ calculada es mayor, faltan tanques $\Rightarrow$ aumentar $N$.
+		\item Si $x_{A0}$ calculada es menor, sobran tanques $\Rightarrow$ disminuir $N$.
+	\end{itemize}
+
+	Se itera hasta que la conversión calculada coincide con la especificada.
+\end{flushleft}
+
+\mlenma{Ventajas y desventajas de la batería de tanques}{
+	La principal ventaja es que genera un perfil de concentraciones: cada reactor trabaja a mayor concentración que el siguiente, lo que implica mayores velocidades de reacción y, por tanto, mayor rendimiento global.
+
+	Para un mismo volumen total:
+	\begin{itemize}
+		\item 1 tanque $\Rightarrow$ menor conversión.
+		\item Varios tanques $\Rightarrow$ mayor conversión.
+		\item $N \to \infty$ $\Rightarrow$ comportamiento de reactor flujo pistón.
+	\end{itemize}
+
+	Como desventaja, requiere más equipos, mayor complejidad de operación y mayor coste.
+
+	Además, permite operar distintas etapas en condiciones diferentes (temperatura, pH), lo cual es útil en procesos con múltiples reacciones.
+}
+
 \qs{RCMP-E-2023}{El equilibrio químico en disolución acuosa:
 
 	A + B  $\rightleftarrows$  C
