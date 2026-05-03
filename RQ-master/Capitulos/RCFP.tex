@@ -29,7 +29,8 @@
 \end{flushleft}
 \dfn{Balance de materia}{
     \begin{equation}
-        \frac{dN_A}{dt} = \cancelto{0}{n_A} - (\cancelto{0}{n_A} + dn_A) - r_A\cdot dV \quad \text{\scriptsize en estado estacionario $\frac{dN_A}{dt}=0$} \rightarrow -dn_A = r_A\cdot dV\\
+        \frac{dN_A}{dt} = \cancelto{0}{n_A} - (\cancelto{0}{n_A} + dn_A) - r_A\cdot dV \quad \text{\scriptsize en estado estacionario $\frac{dN_A}{dt}=0$} \rightarrow -dn_A = r_A\cdot dV
+        \label{eq:RCFP_balance_isotermo}
     \end{equation}
 }
 por tanto si lo ponemos en función de la conversión queda:
@@ -40,10 +41,12 @@ por tanto si lo ponemos en función de la conversión queda:
 \nt{basicamente se ha derivado la definicion de conversión}
 \begin{equation}
     \int_{0}^{V}dV= n_{AR}\int_{X_{A0}}^{X_{AS}}\frac{dX_A}{-r_A} \rightarrow \boxed{V = n_{AR}\int_{X_{A0}}^{X_{AS}}\frac{dX_A}{-r_A}}
+    \label{eq:RCFP_V}
 \end{equation}
 si a esta expresión la dividimos por el caudal:
 \begin{equation}
     \textcolor{darkgreen}{\frac{V}{F}} = \textcolor{blue}{\frac{n_{AR}}{F}} \int_{X_{A0}}^{X_{AS}} \frac{dX_A}{-r_A} \rightarrow \boxed{\textcolor{darkgreen}{\tau} = \textcolor{blue}{C_{AR}}\int_{X_{A0}}^{X_{AS}}\frac{dX_A}{-r_A}}
+    \label{eq:RCFP_tau}
 \end{equation}
 \begin{flushleft}
     Aunque el reactor discontinuo de mezcla perfecta y el reactor continuo de flujo de pistón son cinéticamente equivalentes (requieren el mismo volumen para una conversión dada), presentan diferencias en productividad.
@@ -103,10 +106,10 @@ si a esta expresión la dividimos por el caudal:
 
     Al combinar ambos balances y realizar las sustituciones correspondientes, se obtiene que en condiciones adiabáticas:
     \begin{align}
-        n_{AR} \cdot \textcolor{red}{dX_A} & = r_A \cdot \frac{\pi}{4}\cdot D^2\cdot \textcolor{blue}{dz}  & \longrightarrow  \frac{\textcolor{red}{dX_A}}{\textcolor{blue}{dz}}  = \frac{r_A}{n_{AR}}     \cdot    \frac{\pi}{4}   \cdot D^2 \\
-        m \cdot c_p \cdot dT               & = -\Delta H_A \cdot dn_A = \Delta H_A \cdot n_{AR} \cdot dX_A
+        n_{AR} \cdot \textcolor{red}{dX_A} & = r_A \cdot \frac{\pi}{4}\cdot D^2\cdot \textcolor{blue}{dz}                       & \longrightarrow  \frac{\textcolor{red}{dX_A}}{\textcolor{blue}{dz}}  = \frac{r_A}{n_{AR}}     \cdot    \frac{\pi}{4}   \cdot D^2 \label{eq:RCFP_4_14} \\
+        m \cdot c_p \cdot dT               & = -\Delta H_A \cdot dn_A = \Delta H_A \cdot n_{AR} \cdot dX_A \label{eq:RCFP_4_15}
     \end{align}
-    Si reordenamos la Ec. 4.15:
+    Si reordenamos la Ec.~\eqref{eq:RCFP_4_15}:
     \begin{equation*}
         dT = \frac{\Delta H_{A}\cdot n_{AR}}{m \cdot c_p} \cdot dX_A \rightarrow \underbrace{\int_{T_{0}}^{T}dT}_{T-T_0} = \frac{\Delta H_{A}\cdot n_{AR}}{m \cdot c_p} \underbrace{\int_{XA0}^{X_{A}} dX_A}_{X_A-X_{A0}}
     \end{equation*}
@@ -116,7 +119,7 @@ si a esta expresión la dividimos por el caudal:
     \begin{equation*}
         T = T_{0} + \frac{\Delta H_{A}\cdot C_{AR}}{\rho \cdot c_p} \cdot (X_A-X_{A0})
     \end{equation*}
-    si de la Ec.4.14 despejamos dz, se puede calcular la longitud del reactor necesaria para una determinada conversión:
+    si de la Ec.~\eqref{eq:RCFP_4_14} despejamos $dz$, se puede calcular la longitud del reactor necesaria para una determinada conversión:
 
     \begin{equation*}
         dz = \frac{n_{AR}}{\frac{\pi}{4}D^2} \cdot \frac{dX_A}{r_A} \longrightarrow  \int_{0}^{L}dz = \frac{n_{AR}}{\frac{\pi}{4}D^2} \int_{X_{A0}}^{X_{AS}}\frac{dX_A}{r_A} \implies \textcolor{blue}{L} = \frac{\textcolor{darkgreen}{n_{AR}}}{\textcolor{blue}{\frac{\pi}{4}D^2}} \int_{X_{A0}}^{X_{AS}}\frac{dX_A}{r_A}
@@ -215,7 +218,7 @@ si a esta expresión la dividimos por el caudal:
     X_{Ae} = \frac{\cancel{C_{AR}} \cdot (1+R) - \cancel{C_{AR}}(1-X_{A0}) - R \cdot \cancel{C_{AR}}(1-X_{AS})}{\cancel{C_{AR}} \cdot (1+R)} = \frac{\cancel{\textcolor{red}{1}} + \cancel{\textcolor{blue}{R}} - \cancel{\textcolor{red}{1}} + X_{A0} - \cancel{\textcolor{blue}{R}} + R \cdot X_{AS}}{1+R} = \boxed{\frac{X_{A0} + R \cdot X_{AS}}{1+R}}
 \end{equation*}
 \vspace{1em}
-\noindent Si introducimos esta ultima expresión en la ecuacion que previamente habiamos obtenido en el RCFP isotermo, es decir Ec.4.3 y 4.4 se obtiene que:
+\noindent Si introducimos esta última expresión en la ecuación que previamente habíamos obtenido en el RCFP isotermo, es decir las Ecs.~\eqref{eq:RCFP_V} y \eqref{eq:RCFP_tau}, se obtiene que:
 
 \begin{equation}
     \tau = (1+R) \cdot C_{AR} \int_{X_{Ae}}^{X_{AS}}\frac{dX_A}{r_A} \quad \longrightarrow \quad \tau = \int_{\scalebox{1}{$\frac{X_{A0} + R \cdot X_{AS}}{1+R}$}}^{X_{AS}}\frac{dX_A}{r_A}
@@ -391,7 +394,7 @@ si a esta expresión la dividimos por el caudal:
         \caption{Batería de tanques en serie.}
     \end{minipage}
 \end{figure}
-\noindent Donde se puede apreciar perfectamente que el area ocupada por el RCMP (rectangulos rojos) es mayor que para el RCFP (area verde) que es el area de la integral, para una cinetica potencial, y conforme aumentamos la cantidad de tanques en serie el area ocupada por los tanques en serie tiende a parecerse al area ocupada por el RCFP.
+\noindent Donde se puede apreciar perfectamente que el área ocupada por el RCMP (rectángulos rojos) es mayor que para el RCFP (área verde) que es el área de la integral, para una cinética potencial, y conforme aumentamos la cantidad de tanques en serie el área ocupada por los tanques en serie tiende a parecerse al área ocupada por el RCFP.
 \subsubsection{Cinética de inhibición}
 
 \begin{figure}[h!]
@@ -488,7 +491,7 @@ si a esta expresión la dividimos por el caudal:
     \end{minipage}
 \end{figure}
 \begin{flushleft}
-    Estas gráficas son representativas de cinéticas con inhibición. De su análisis se desprende que, a bajas conversiones, el reactor de mezcla perfecta (RCMP) resulta más eficiente que el reactor de flujo en pistón (RCFP). Sin embargo, a conversiones suficientemente elevadas, el RCFP pasa a ser la opción más adecuada. Este comportamiento contrasta con el observado en reacciones de orden positivo (n > 0), donde el RCFP es sistemáticamente más eficiente.\\
+    Estas gráficas son representativas de cinéticas con inhibición. De su análisis se desprende que, a bajas conversiones, el reactor de mezcla perfecta (RCMP) resulta más eficiente que el reactor de flujo en pistón (RCFP). Sin embargo, a conversiones suficientemente elevadas, el RCFP pasa a ser la opción más adecuada. Este comportamiento contrasta con el observado en reacciones de orden positivo ($n > 0$), donde el RCFP es sistemáticamente más eficiente.\\
 
     En el caso de reacciones autocatalíticas, es necesario que exista inicialmente cierta cantidad de producto en la alimentación para que la reacción tenga lugar. Por ello, un RCFP no puede operar con una alimentación de reactante puro sin una adición continua de producto, lo que introduce una clara ventaja para configuraciones con recirculación.
 
@@ -499,15 +502,15 @@ si a esta expresión la dividimos por el caudal:
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{comun.png}
-    \caption{posible configuración de reactores para optimizar el rendimiento}
+    \caption{Posible configuración de reactores para optimizar el rendimiento.}
 \end{figure}
-Esta podria ser una configuración de reactores para optimizar el rendimiento, aunque no sea la mejor en el caso de que operar un reactor flujo pistón resulte inconveniente por cualquier motivo, y tener los fucientes tanques en serie no sea viable economicamente.
+Esta podría ser una configuración de reactores para optimizar el rendimiento, aunque no sea la mejor en el caso de que operar un reactor de flujo pistón resulte inconveniente por cualquier motivo, y tener los suficientes tanques en serie no sea viable económicamente.
 \section{Estado no estacionario}
-\noindent Por ultimo vamos a estudiar el caso de que el estado no sea estacionario, partiendo de las ecuaciones del flujo de piston que ya vimos Ec. 4.1
+\noindent Por último, vamos a estudiar el caso de que el estado no sea estacionario, partiendo de las ecuaciones del flujo de pistón que ya vimos en la Ec.~\eqref{eq:RCFP_balance_isotermo}.
 \begin{equation}
     \frac{dN_A}{dt} = \cancelto{0}{n_A} - (\cancelto{0}{n_A} + dn_A) - r_A\cdot dV \rightarrow \frac{dN_i}{dt} = -dn_i + r_i \cdot dV
 \end{equation}
-que realmennte quedaria si lo expresamos en forma de variacion de concentracion es la siguiente ecuación:
+que realmente quedaría, si lo expresamos en forma de variación de concentración, en la siguiente ecuación:
 \begin{equation*}
     \begin{aligned}
         \text{1. Balance original:} \quad   & \frac{dN_i}{dt} = n_i - (n_i + dn_i) + r_i dV                                         \\
@@ -519,4 +522,369 @@ que realmennte quedaria si lo expresamos en forma de variacion de concentracion 
 \begin{equation}
     \frac{\partial C_i}{\partial t} = -F\cdot \frac{\partial C_i}{\partial V} +r_i
 \end{equation}
-\nt{los moles son variacion de volumen por variacion de contracion, caudal molar es caudal volumetrico por concentracion y la variación de volumen la hemos sacado del termino de acumulación y va diviendo el resto de terminos}
+\nt{Los moles son la variación de volumen por la variación de concentración, el caudal molar es el caudal volumétrico por la concentración, y la variación de volumen la hemos sacado del término de acumulación y pasa dividiendo al resto de términos.}
+\noindent Como ya se ha visto que el diferencial de volumen es el área transversal por el diferencial de $z$, queda de la siguiente forma:
+\begin{equation}
+    \frac{\partial C_i}{\partial t} = -\frac{F}{S}\frac{\partial C_i}{\partial z} +r_i
+\end{equation}
+De forma análoga, para el caso del balance entálpico tenemos:
+\begin{equation*}
+    \begin{alignedat}{2}
+         & \text{1. Balance inicial:} \quad     &  & \frac{d}{dt}(M c_p T) = m c_p (T - (T + dT)) + \sum_{k=1}^{n} \Delta H_k r_k dV + Q(T)                                                                                        \\[10pt]
+         & \text{2. Simplificación:} \quad      &  & \frac{d}{dt}(M c_p T) = -m c_p dT + \sum_{k=1}^{n} \Delta H_k r_k dV + Q(T)                                                                                                   \\[10pt]
+         & \text{3. Cambio de variables:} \quad &  & \left(\rho S dz\right) c_p \frac{\partial T}{\partial t} = -\left(\rho F\right) c_p \frac{\partial T}{\partial z} dz + \sum_{k=1}^{n} \Delta H_k r_k \left(S dz\right) + Q(T) \\[10pt]
+         & \text{4. División por } S dz: \quad  &  & \rho c_p \frac{\partial T}{\partial t} = -\frac{F \rho c_p}{S} \frac{\partial T}{\partial z} + \sum_{k=1}^{n} \Delta H_k r_k + \frac{Q(T)}{S dz}
+    \end{alignedat}
+\end{equation*}
+\nt{recordando que para el cambio de variable:
+    \begin{equation*}
+        \begin{alignedat}{2}
+            M & = \rho \cdot dV = \rho \cdot S \cdot dz & \quad & \text{\scriptsize{($M$ es la masa)}}         \\
+            m & = \rho \cdot F                          & \quad & \text{\scriptsize{($m$ es el flujo másico)}}
+        \end{alignedat}
+    \end{equation*}
+}
+\dfn{Ecuaciones genéricas}{
+    \begin{align*}
+        \frac{\partial C_i}{\partial t}        & = -F\cdot \frac{\partial C_i}{\partial V} +r_i                                                            \\
+        \rho c_p \frac{\partial T}{\partial t} & = -\frac{F \rho c_p}{S} \frac{\partial T}{\partial z} + \sum_{k=1}^{n} \Delta H_k r_k + \frac{Q(T)}{S dz}
+    \end{align*}
+
+}
+
+\vspace{1em}
+\subsubsection{Simulación de tanques agitados o aproximación por segmentos finitos}
+\vspace{1em}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+            cylinder line/.style={draw=green!70!black, thick},
+            label style/.style={green!70!black, font=\small},
+            arrow style/.style={double, -latex, red, thick},
+            eq style/.style={green!70!black, font=\small, align=center},
+            blue label/.style={blue, font=\small}
+        ]
+
+        % --- CILINDRO SUPERIOR (VISIÓN GENERAL) ---
+        \foreach \i/\txt in {0/1, 1/, 2/, 3/n, 4/, 5/N} {
+                \coordinate (T\i) at (\i, 1);
+                \coordinate (B\i) at (\i, 0);
+
+                \ifnum\i<6
+                    \draw[cylinder line] (T\i) -- ++(1,0);
+                    \draw[cylinder line] (B\i) -- ++(1,0);
+                \fi
+
+                \draw[cylinder line] (T\i) to[out=-20, in=20, distance=0.25cm] (B\i);
+                \node[label style] at (\i+0.5, 0.5) {\txt};
+            }
+        % Cierres elípticos
+        \draw[cylinder line] (0,1) to[out=160, in=200, distance=0.25cm] (0,0);
+        \draw[cylinder line] (6,1) to[out=-20, in=20, distance=0.25cm] (6,0);
+
+        % Llave Delta z
+        \draw [decorate, decoration={brace, amplitude=4pt, mirror, raise=2pt}, label style]
+        (0,0) -- (1,0) node [midway, yshift=-12pt] {$\Delta z$};
+
+        % --- FLECHA ROJA DE UNIÓN ---
+        \draw[arrow style] (3,-0.5) -- (3,-1.2);
+
+        % --- DETALLE DEL NODO (ZOOM ABAJO CON 3 SECCIONES) ---
+        \begin{scope}[shift={(3, -2.5)}]
+            % Definición de fronteras para 3 secciones
+            % x=-1.5 (inicio), x=-0.5 (separación), x=0.5 (separación), x=1.5 (fin)
+
+            % Líneas horizontales largas
+            \draw[cylinder line] (-1.5, 0.6) -- (1.5, 0.6);
+            \draw[cylinder line] (-1.5, -0.6) -- (1.5, -0.6);
+
+            % Caras de las secciones
+            \foreach \x/\labeltext in {-1.5/{n-1}, -0.5/{}, 0.5/{}, 1.5/{n+1}} {
+            \draw[cylinder line] (\x, 0.6) to[out=-20, in=20, distance=0.15cm] (\x, -0.6);
+            }
+
+            % Cara inicial cerrada (izquierda)
+            \draw[cylinder line] (-1.5, 0.6) to[out=160, in=200, distance=0.15cm] (-1.5, -0.6);
+
+            % Etiquetas de las secciones centradas en cada tanque
+            \node[blue label] at (-1, 0) {$n-1$};
+            \node[blue label] at (0, 0) {$n$};
+            \node[blue label] at (1, 0) {$n+1$};
+
+            % Flechas de flujo centradas verticalmente
+            \draw[blue, thick, -latex] (-3.0, 0) -- (-1.8, 0) node[pos=0, left] {entrada};
+            \draw[blue, thick, -latex] (1.8, 0) -- (3.0, 0) node[pos=1, right] {salida};
+
+            % --- ECUACIONES DESPLAZADAS ---
+            % Izquierda (Entrada al nodo n)
+            \node[eq style] at (-5.5, 0) {
+                $\displaystyle \frac{C_{i,n-1} + C_{i,n}}{2}$ \\[10pt]
+                $\displaystyle \frac{T_{n-1} + T_n}{2}$
+            };
+
+            % Derecha (Salida del nodo n)
+            \node[eq style] at (5.5, 0) {
+                $\displaystyle \frac{C_{i,n} + C_{i,n+1}}{2}$ \\[10pt]
+                $\displaystyle \frac{T_n + T_{n+1}}{2}$
+            };
+        \end{scope}
+
+    \end{tikzpicture}
+    \caption{Esquematización en dinámico del reactor de flujo pistón.}
+    \label{fig:rcfp-dinamico}
+\end{figure}
+\begin{flushleft}
+    La forma de abordar su resolución consiste en aproximar el término diferencial axial como $\partial z\approx \Delta z$. De este modo, el reactor puede modelarse como una batería de tanques agitados ideales (RCMP) dispuestos en serie.\\
+
+    Para ello, se divide el reactor en pequeños segmentos o “anillos” de longitud $\Delta z$. En cada uno de estos elementos diferenciales se aplican los balances de materia y energía como si se tratara de un reactor perfectamente agitado. Gracias a la capacidad de cálculo actual, es posible considerar valores de $\Delta z$ lo suficientemente pequeños como para obtener una aproximación muy precisa del comportamiento continuo del reactor.
+
+    En consecuencia, los balances de componentes se formulan para cada uno de estos segmentos discretizados como:
+\end{flushleft}
+\begin{equation}
+    \begin{alignedat}{2}
+         & \underbrace{\Delta V \frac{d C_{i,n}}{d t}}_{\text{Acumulación}} &  & = \underbrace{F \cdot C_{i,n-1}}_{\text{Entrada}} - \underbrace{F \cdot C_{i,n}}_{\text{Salida}} + \underbrace{\Delta V \cdot r_{i,n}}_{\text{Generación}}
+    \end{alignedat}
+\end{equation}
+
+\noindent Si a esta expresión la dividimos por $\Delta V$, obtendremos los balances de componentes genéricos, donde $i$ será el número de componentes y $n$ los segmentos en que hemos dividido el reactor.
+\begin{equation}
+    \frac{d C_{i,n}}{d t}=\frac{C_{i,n-1}-C_{i,n}}{\tau_n}+r_{i,n}
+    \label{eq:rcfp-discreto}
+\end{equation}
+
+\noindent De forma análoga, para el balance de energía tenemos:
+\begin{equation}
+    \begin{alignedat}{2}
+         & \text{1. Balance inicial:} \quad                                 &  & \Delta V \cdot \rho \cdot c_p \cdot \frac{dT_n}{dt} = F \cdot \rho \cdot c_p (T_{n-1} - T_n) + \Delta V \sum \Delta H_k \cdot r_k + Q(T)                                                                                                                                                                                                        \\[10pt]
+         & \text{2. Dividir por } \textcolor{red}{\Delta V \rho c_p}: \quad &  & \frac{dT_n}{dt} = \frac{F \cdot \cancel{\rho \cdot c_p} (T_{n-1} - T_n)}{\textcolor{red}{\Delta V} \cdot \cancel{\textcolor{red}{\rho \cdot c_p}}} + \frac{\cancel{\Delta V} \sum \Delta H_k \cdot r_k}{\cancel{\textcolor{red}{\Delta V}} \cdot \textcolor{red}{\rho \cdot c_p}} + \frac{Q(T)}{\textcolor{red}{\Delta V \cdot \rho \cdot c_p}} \\[10pt]
+         & \text{3. Simplificar términos:} \quad                            &  & \frac{dT_n}{dt} = \frac{F}{\Delta V} (T_{n-1} - T_n) + \frac{\sum \Delta H_k \cdot r_k}{\rho \cdot c_p} + \frac{Q(T)}{\Delta V \cdot \rho \cdot c_p}                                                                                                                                                                                            \\[10pt]
+         & \text{4. Aplicar } \tau_n = \frac{\Delta V}{F}: \quad            &  & \frac{dT_n}{dt} = \frac{T_{n-1} - T_n}{\tau_n} + \frac{\sum \Delta H_k \cdot r_k}{\rho \cdot c_p} + \frac{Q(T)}{\Delta V \cdot \rho \cdot c_p}
+    \end{alignedat}
+\end{equation}
+
+\nt{donde se tendria $P\cdot N$ balances de componente y $N$ balances de energia.}
+
+\noindent Otros autores, como Fogler, proponen una formulación alternativa en la que el término convectivo no se evalúa únicamente en el nodo anterior \(n-1\), sino como un promedio entre nodos adyacentes, tal y como se muestra en la Figura \ref{fig:rcfp-dinamico}. De este modo, el balance de materia queda:
+\vspace{1em}
+\begin{equation}
+    \Delta V \,\frac{d C_{i,n}}{d t}
+    =
+    \frac{F}{2}\left(C_{i,n-1}+C_{i,n}\right)
+    -
+    \frac{F}{2}\left(C_{i,n}+C_{i,n+1}\right)
+    +
+    \Delta V\, r_{i,n}
+    \label{eq:rcfp-discreto2}
+\end{equation}
+\vspace{0.5em}
+\noindent Expresándolo en términos del tiempo espacial \( \tau_n = \frac{\Delta V}{F} \), se obtiene la forma discreta:
+\vspace{0.5em}
+
+\begin{equation}
+    \frac{d C_{i,n}}{d t}
+    =
+    \frac{C_{i,n-1}+C_{i,n}}{2\tau_n}
+    -
+    \frac{C_{i,n}+C_{i,n+1}}{2\tau_n}
+    +
+    r_{i,n}
+    \label{eq:rcfp-discreto3}
+\end{equation}
+
+\vspace{0.5em}
+\noindent De forma análoga, el balance de energía (entalpía) se escribe como:
+
+\vspace{0.5em}
+
+\begin{equation}
+    \frac{dT_n}{dt}
+    =
+    \frac{T_{n-1}+T_n}{2\tau_n}
+    -
+    \frac{T_n+T_{n+1}}{2\tau_n}
+    +
+    \frac{\sum_k \Delta H_k \, r_{k,n}}{\rho \, c_p}
+    +
+    \frac{Q(T_n)}{\Delta V \, \rho \, c_p}
+    \label{eq:rcfp-discreto4}
+\end{equation}
+
+\vspace{0.5em}
+
+\noindent que, tras simplificación de los términos convectivos, puede expresarse como:
+
+\vspace{0.5em}
+
+\begin{equation}
+    \frac{dT_n}{dt}
+    =
+    \frac{T_{n-1}-T_{n+1}}{2\tau_n}
+    +
+    \frac{\sum_k \Delta H_k \, r_{k,n}}{\rho \, c_p}
+    +
+    \frac{Q(T_n)}{\Delta V \, \rho \, c_p}
+    \label{eq:rcfp-discreto5}
+\end{equation}
+\newpage
+\section{Modelo de dispersión axial}
+\begin{flushleft}
+    El modelo de dispersión axial considera un reactor con mezcla radial perfecta pero axial parcial. Según la \textbf{Ley de Fick}, los gradientes de concentración activan un transporte difusivo que, al oponerse al flujo principal, genera una \textbf{retromezcla (backmixing)} de productos hacia la entrada, alejando al sistema del comportamiento ideal de flujo pistón.
+\end{flushleft}
+\begin{equation}
+    \frac{c_n - c_{n-1}}{\Delta z}
+    \;\xleftarrow{\text{Entrada}}\;
+    \boxed{
+        \frac{\partial C}{\partial t}
+        =
+        -\frac{\partial}{\partial z}
+        \left( D \frac{\partial C}{\partial z} \right)
+    }
+    \;\xrightarrow{\text{Salida}}\;
+    \frac{c_{n+1} - c_n}{\Delta z}
+\end{equation}
+
+\nt{Importante: Este fenómeno es significativo cuando la difusividad de los reactivos es pequeña. Si la difusividad fuera nula ($D=0$), el sistema trabajaría en condiciones ideales de Reactor de Flujo Pistón (RCFP).}
+
+\subsubsection*{Parámetros Adimensionales}
+
+\noindent el perfil de concentraciones se expresa en función de grupos adimensionales que cuantifican la desviación de la idealidad:
+
+\begin{itemize}
+    \item \textbf{Parámetros Adimensionales:}
+\end{itemize}
+
+\noindent
+\begin{minipage}{0.5\textwidth}
+    \centering
+    \textbf{Módulo de dispersión ($N_D$)}
+    \[ N_D = \frac{D}{v \cdot L} \]
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+    \centering
+    \textbf{Número de Péclet ($Pe$)}
+    \[ Pe = \frac{v \cdot L}{D} \]
+\end{minipage}
+\nt{siendo $D$ el coeficiente de difusión, $v$ la velocidad de paso (de la mezcla reaccionante) $L$ la longitud del reactor.}
+\vspace{0.5cm}
+\subsubsection*{Casos Límite}
+
+\noindent El comportamiento del reactor depende del valor de $Pe$. En la figura \ref{fig:dispersion_mecanismo} se puede ver como funciona el mecanismo de dispersión axial y en la figura \ref{fig:dispersion_peclet} como varia en función del número de Péclet.
+
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item \textbf{Mezcla completa ($Pe=0$)}: $D \to \infty$. Perfil \textbf{aplanado} (comportamiento RTCA).
+        \item \textbf{Flujo pistón ($Pe \to$ inf)}: $D=0$. Sin dispersión axial. Perfil \textbf{ideal} (RFP).
+    \end{enumerate}
+\end{multicols}
+
+\begin{figure}[htbp]
+    \centering
+    % --- PRIMER SUBPLOT: Mecanismo de Dispersión ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.9]
+            % Ejes y etiquetas
+            \draw[thick, green!70!black, ->] (0,0) -- (5.5,0) node[right, black] {$z$};
+            \draw[thick, green!70!black, ->] (0,0) -- (0,3.5) node[above, black] {$C_i$};
+            \node[below, green!70!black] at (0,0) {$0$};
+            \node[below, green!70!black] at (5,0) {$L$};
+
+            % --- PERFIL REACTIVO (R) ---
+            \draw[ultra thick, blue] (0,3.2) .. controls (1,2) and (3,0.3) .. (5,0.25) node[right] {\textcolor{blue}{\textbf{R}}}
+            node[pos=0.3, red, rotate=30] (puntoR1) {$+$}
+            node[pos=0.45, red, rotate=30] (puntoR2) {$+$};
+
+            % --- PERFIL PRODUCTO (P) ---
+            \draw[ultra thick, black] (0,0.2) .. controls (1.5,0.5) and (3.5,2.2) .. (5,3.2) node[right] {\textbf{P}}
+            node[pos=0.7, red, rotate=30] (puntoP1) {$+$}
+            node[pos=0.85, red, rotate=30] (puntoP2) {$+$};
+
+            % --- FLECHAS ---
+            \draw[red, thick, -Stealth] (puntoR1.center) -- (puntoR2 |- puntoR1.center);
+            \draw[red, thick, -Stealth] (puntoP2.center) -- (puntoP1 |- puntoP2.center);
+
+            % Nota aclaratoria
+            \node[anchor=north, font=\scriptsize, draw=gray!30, fill=gray!5, rounded corners, inner sep=4pt, text width=4.8cm, align=center] at (2.75, -0.6) {
+                \textbf{Dispersión axial:} El aspa indica la posición local y la flecha el sentido del transporte difusivo neto.
+            };
+        \end{tikzpicture}
+        \vspace{0.4cm}
+        \caption{Mecanismo de dispersión y retromezcla local.}
+        \label{fig:dispersion_mecanismo}
+    \end{subfigure}%
+    \hfill
+    % --- SEGUNDO SUBPLOT: Perfiles según Pe ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                    width=\textwidth,
+                    height=5.8cm,
+                    xlabel={Posición axial adim. ($z/L$)},
+                    ylabel={Concentración adim. ($C/C_0$)},
+                    xmin=0, xmax=1,
+                    ymin=0, ymax=1.2,
+                    % Leyenda dentro del gráfico (esquina superior derecha)
+                    legend style={at={(0.97,0.97)}, anchor=north east, font=\tiny, row sep=-2pt},
+                    grid=both,
+                    grid style={line width=.1pt, draw=gray!10},
+                    major grid style={line width=.2pt,draw=gray!50},
+                ]
+
+                % Caso Pe = 0 (RTCA -> perfil plano)
+                \addplot[ultra thick, blue, dashed, domain=0:1, samples=2] {0.5};
+                \addlegendentry{$Pe = 0$ (RTCA)}
+
+                % Dispersión parcial: Pe bajo (más mezclado, caída suave)
+                \addplot[ultra thick, orange, domain=0:1, samples=50] {0.7 * exp(-0.8*x)};
+                \addlegendentry{$Pe$ bajo}
+
+                % Dispersión parcial: Pe alto (menos mezclado, caída fuerte)
+                \addplot[ultra thick, darkgreen, domain=0:1, samples=50] {0.9 * exp(-1.8*x)};
+                \addlegendentry{$Pe$ alto}
+
+                % Caso Pe -> infinito (RFP -> gradiente ideal)
+                \addplot[ultra thick, red, domain=0:1, samples=100] {exp(-3.5*x)};
+                \addlegendentry{\mbox{$Pe \to \infty$} (RFP)}
+
+
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Efecto del Número de Péclet ($Pe$) en el perfil de concentración.}
+        \label{fig:dispersion_peclet}
+    \end{subfigure}
+
+    \caption{Análisis del modelo de dispersión axial.}
+    \label{fig:dispersion_global}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{Balance de materia original (Discreto)}: Partimos del balance en un elemento de volumen $\Delta V$ para el nodo $n$, considerando transporte por flujo (convección), dispersión axial (difusión) y reacción química:
+          \begin{equation}
+              \Delta V \frac{dC_{i,n}}{dt} = F \cdot (C_{i,n-1} - C_{i,n}) + S \cdot D \cdot \left( \frac{C_{i,n-1} - C_{i,n}}{\Delta z} - \frac{C_{i,n} - C_{i,n+1}}{\Delta z} \right) + \Delta V r_{i,n}
+          \end{equation}
+
+    \item \textbf{Simplificación de la ecuación temporal}: Dividimos por $\Delta V$. Como $\Delta V = S \cdot \Delta z$, el coeficiente de dispersión se simplifica a $\frac{S \cdot D}{S \cdot \Delta z} = \frac{D}{\Delta z}$:
+          \begin{equation}
+              \frac{dC_{i,n}}{dt} = \frac{F}{\Delta V} (C_{i,n-1} - C_{i,n}) + \frac{D}{\Delta z} \left( \frac{C_{i,n-1} - 2C_{i,n} + C_{i,n+1}}{\Delta z} \right) + r_{i,n}
+          \end{equation}
+
+    \item \textbf{Definición de variables adimensionales}: Aplicamos las sustituciones para normalizar la expresión:
+          \begin{multicols}{3}
+              \begin{itemize}
+                  \item $\bar{C}_i = \frac{C_i}{C_{i,0}}$
+                  \item $\overline{\Delta z} = \frac{\Delta z}{L}$
+                  \item $\theta = \frac{t}{\tau}$
+              \end{itemize}
+          \end{multicols}
+
+    \item \textbf{Ecuación final adimensional}: Sustituyendo las variables y usando $\tau = \frac{L}{v}$, obtenemos la expresión final del modelo:
+          \begin{equation}
+              \frac{d\bar{C}_{i,n}}{d\theta} = \frac{\bar{C}_{i,n-1} - \bar{C}_{i,n}}{\overline{\Delta z}} + \frac{D}{v \cdot L} \left( \frac{\bar{C}_{i,n-1} - 2\bar{C}_{i,n} + \bar{C}_{i,n+1}}{\langle (\Delta z)^2 \rangle} \right) + \frac{L}{v \cdot C_{i,0}} \cdot r_{i,n}
+          \end{equation}
+\end{enumerate}
+
+\vspace{0.3cm}
+\nt{\textit{Nota: El término $\frac{D}{v \cdot L}$ corresponde al \textbf{Módulo de Dispersión axial ($N_D$)}, equivalente a $1/Pe$.}}
+\section{Scilab}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  3 MAY 2026 02:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  3 MAY 2026 22:44
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1582,6 +1582,10 @@ Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@cntb=\count658
 \multirow@dima=\skip109
 \bigstrutjot=\dimen390
+) (E:\Latex\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (E:\Latex\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarybabel.code.tex
+File: tikzlibrarybabel.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (E:\Latex\tex/latex/minted\minted.sty
 Package: minted 2026/03/03 v3.8.0 Yet another Pygments shim for LaTeX
  (E:\Latex\tex/generic/catchfile\catchfile.sty
@@ -1694,44 +1698,44 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
  (Capitulos/analisis.aux) (Capitulos/RDMP.aux) (Capitulos/RCMP.aux) (Capitulos/RCFP.aux))
 \openout1 = `template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 36.
-LaTeX Font Info:    Trying to load font information for OML+npxmi on input line 36.
+LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 37.
+LaTeX Font Info:    Trying to load font information for OML+npxmi on input line 37.
  (E:\Latex\tex/latex/newpx\omlnpxmi.fd
 File: omlnpxmi.fd 2013/03/21 Fontinst v1.933 font definitions for OML/npxmi.
 )
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/npxexa/m/n on input line 36.
-LaTeX Font Info:    Trying to load font information for U+npxexa on input line 36.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/npxexa/m/n on input line 37.
+LaTeX Font Info:    Trying to load font information for U+npxexa on input line 37.
  (E:\Latex\tex/latex/newpx\unpxexa.fd
 File: unpxexa.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxexa.
 )
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for LMS/npxsy/m/n on input line 36.
-LaTeX Font Info:    Trying to load font information for LMS+npxsy on input line 36.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for LMS/npxsy/m/n on input line 37.
+LaTeX Font Info:    Trying to load font information for LMS+npxsy on input line 37.
  (E:\Latex\tex/latex/newpx\lmsnpxsy.fd
 File: lmsnpxsy.fd 2016/07/04 Fontinst v1.933 font definitions for LMS/npxsy.
 )
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for LMX/npxexx/m/n on input line 36.
-LaTeX Font Info:    Trying to load font information for LMX+npxexx on input line 36.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for LMX/npxexx/m/n on input line 37.
+LaTeX Font Info:    Trying to load font information for LMX+npxexx on input line 37.
  (E:\Latex\tex/latex/newpx\lmxnpxexx.fd
 File: lmxnpxexx.fd 2016/07/04 Fontinst v1.933 font definitions for LMX/npxexx.
 )
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
  (E:\Latex\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count694
@@ -1751,8 +1755,8 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (E:\Latex\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Redefining \. on input line 36.
-LaTeX Info: Redefining \% on input line 36.
+LaTeX Info: Redefining \. on input line 37.
+LaTeX Info: Redefining \% on input line 37.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1788,16 +1792,16 @@ LaTeX Info: Redefining \% on input line 36.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Command `\dddot' is already robust on input line 36.
-LaTeX Info: Command `\ddddot' is already robust on input line 36.
-Package hyperref Info: Link coloring ON on input line 36.
+LaTeX Info: Command `\dddot' is already robust on input line 37.
+LaTeX Info: Command `\ddddot' is already robust on input line 37.
+Package hyperref Info: Link coloring ON on input line 37.
 \c@lstlisting=\count700
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 (E:\Latex\tex/latex/translations/dicts\translations-basic-dictionary-spanish.trsl
 File: translations-basic-dictionary-spanish.trsl (spanish translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `spanish'. on input line 36.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `spanish'. on input line 37.
 Package biblatex Info: Trying to load language 'spanish' -> 'spanish-apa'...
 Package biblatex Info: ... file 'spanish-apa.lbx' found.
  (E:\Latex\tex/latex/biblatex-apa\spanish-apa.lbx
@@ -1820,31 +1824,31 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'template.bbl' found.
  (template.bbl)
-Package biblatex Info: Reference section=0 on input line 36.
-Package biblatex Info: Reference segment=0 on input line 36.
+Package biblatex Info: Reference section=0 on input line 37.
+Package biblatex Info: Reference segment=0 on input line 37.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 39.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 40.
  (E:\Latex\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 39.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
  (E:\Latex\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 39.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
  (E:\Latex\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+npxmia on input line 39.
+LaTeX Font Info:    Trying to load font information for U+npxmia on input line 40.
  (E:\Latex\tex/latex/newpx\unpxmia.fd
 File: unpxmia.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxmia.
 )
-LaTeX Font Info:    Trying to load font information for U+npxsym on input line 39.
+LaTeX Font Info:    Trying to load font information for U+npxsym on input line 40.
  (E:\Latex\tex/latex/newpx\unpxsym.fd
 File: unpxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/npxsym.
 )
-LaTeX Font Info:    Trying to load font information for U+npxsyc on input line 39.
+LaTeX Font Info:    Trying to load font information for U+npxsyc on input line 40.
  (E:\Latex\tex/latex/newpx\unpxsyc.fd
 File: unpxsyc.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxsyc.
 ) [1
@@ -1852,7 +1856,7 @@ File: unpxsyc.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxsyc.
 {C:/Users/chris/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{E:/Latex/fonts/enc/dvips/lm/lm-ec.enc}]
 
 LaTeX Font Warning: Font shape `T1/lmr/bx/sc' undefined
-(Font)              using `T1/lmr/bx/n' instead on input line 43.
+(Font)              using `T1/lmr/bx/n' instead on input line 44.
 
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1922,6 +1926,11 @@ Overfull \hbox (10.0pt too wide) detected at line 35
  []\T1/lmr/m/n/10 90
  []
 
+
+Overfull \hbox (10.0pt too wide) detected at line 37
+ []\T1/lmr/m/n/10 92
+ []
+
 )
 \tf@toc=\write7
 \openout7 = `template.toc'.
@@ -1935,12 +1944,12 @@ Cap\'{\i }tulo 1.
 
 
 {E:/Latex/fonts/enc/dvips/newpx/px-lms.enc}]
-<./Imagenes/RMP.PNG, id=169, 1312.905pt x 402.90524pt>
+<./Imagenes/RMP.PNG, id=177, 1312.905pt x 402.90524pt>
 File: ./Imagenes/RMP.PNG Graphic file (type png)
 <use ./Imagenes/RMP.PNG>
 Package pdftex.def Info: ./Imagenes/RMP.PNG  used on input line 48.
 (pdftex.def)             Requested size: 491.43513pt x 150.81244pt.
-<./Imagenes/RFP.png, id=171, 615.4995pt x 316.18124pt>
+<./Imagenes/RFP.png, id=179, 615.4995pt x 316.18124pt>
 File: ./Imagenes/RFP.png Graphic file (type png)
 <use ./Imagenes/RFP.png>
 Package pdftex.def Info: ./Imagenes/RFP.png  used on input line 57.
@@ -1967,7 +1976,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--11
 
 
 ] [11] [12] [13] [14]
-<./Imagenes/irreversible.jpg, id=332, 616.704pt x 336.65775pt>
+<./Imagenes/irreversible.jpg, id=340, 616.704pt x 336.65775pt>
 File: ./Imagenes/irreversible.jpg Graphic file (type jpg)
 <use ./Imagenes/irreversible.jpg>
 Package pdftex.def Info: ./Imagenes/irreversible.jpg  used on input line 302.
@@ -1980,10 +1989,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 \pydata@fh@0=\write8
 \openout8 = `_66F6181BCB4CFF4CD38FBC804A036DB6.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260503024139 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
+runsystem(latexminted config  --timestamp 20260503224437 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
 
  (_66F6181BCB4CFF4CD38FBC804A036DB6.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260503024139 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
+runsystem(latexminted cleanconfig  --timestamp 20260503224437 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
 
  (_minted/default.style.minted) (_minted/56873C1834805CA11618C54BD25FCEA2.highlight.minted
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1.
@@ -1996,29 +2005,29 @@ LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 4
  (E:\Latex\tex/latex/lm\ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [18{E:/Latex/fonts/enc/dvips/lm/lm-ts1.enc}])
-<./Imagenes/RDMP_1.1.png, id=388, 345.08925pt x 268.6035pt>
+<./Imagenes/RDMP_1.1.png, id=396, 345.08925pt x 268.6035pt>
 File: ./Imagenes/RDMP_1.1.png Graphic file (type png)
 <use ./Imagenes/RDMP_1.1.png>
 Package pdftex.def Info: ./Imagenes/RDMP_1.1.png  used on input line 463.
 (pdftex.def)             Requested size: 294.86407pt x 229.52722pt.
-<./Imagenes/RDMP_1.2.png, id=389, 324.0105pt x 269.808pt>
+<./Imagenes/RDMP_1.2.png, id=397, 324.0105pt x 269.808pt>
 File: ./Imagenes/RDMP_1.2.png Graphic file (type png)
 <use ./Imagenes/RDMP_1.2.png>
 Package pdftex.def Info: ./Imagenes/RDMP_1.2.png  used on input line 463.
 (pdftex.def)             Requested size: 294.86407pt x 245.54213pt.
  [19 <./Imagenes/RDMP_1.1.png> <./Imagenes/RDMP_1.2.png>] (_minted/3757BF0A907F43A3793C50F3BA919690.highlight.minted [20])
-<./Imagenes/RDMP_2.1.png, id=405, 1169.5695pt x 493.24275pt>
+<./Imagenes/RDMP_2.1.png, id=413, 1169.5695pt x 493.24275pt>
 File: ./Imagenes/RDMP_2.1.png Graphic file (type png)
 <use ./Imagenes/RDMP_2.1.png>
 Package pdftex.def Info: ./Imagenes/RDMP_2.1.png  used on input line 615.
 (pdftex.def)             Requested size: 491.43513pt x 207.25085pt.
  [21]
-<./Imagenes/RDMP_2.2.png, id=410, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_2.2.png, id=418, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_2.2.png Graphic file (type png)
 <use ./Imagenes/RDMP_2.2.png>
 Package pdftex.def Info: ./Imagenes/RDMP_2.2.png  used on input line 640.
 (pdftex.def)             Requested size: 294.86407pt x 222.3582pt.
-<./Imagenes/RDMP_2.3.png, id=411, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_2.3.png, id=419, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_2.3.png Graphic file (type png)
 <use ./Imagenes/RDMP_2.3.png>
 Package pdftex.def Info: ./Imagenes/RDMP_2.3.png  used on input line 640.
@@ -2027,23 +2036,23 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 65
  (E:\Latex\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [22 <./Imagenes/RDMP_2.1.png> <./Imagenes/RDMP_2.2.png> <./Imagenes/RDMP_2.3.png>] (_minted/243B8E281F5EAE91C0E3BFAE12B56019.highlight.minted [23])
-<./Imagenes/RDMP_3.1A.png, id=429, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.1A.png, id=437, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.1A.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.1A.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.1A.png  used on input line 756.
 (pdftex.def)             Requested size: 294.86407pt x 222.3582pt.
-<./Imagenes/RDMP_3.2A.png, id=430, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.2A.png, id=438, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.2A.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.2A.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.2A.png  used on input line 756.
 (pdftex.def)             Requested size: 294.86407pt x 222.3582pt.
  [24 <./Imagenes/RDMP_3.1A.png> <./Imagenes/RDMP_3.2A.png>] (_minted/AD67DD0C2BD6FE7DA621B83B30B3B5E9.highlight.minted [25])
-<./Imagenes/RDMP_3.1BREAL.png, id=446, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.1BREAL.png, id=454, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.1BREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.1BREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.1BREAL.png  used on input line 870.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<./Imagenes/RDMP_3.2BREAL.png, id=447, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.2BREAL.png, id=455, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.2BREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.2BREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.2BREAL.png  used on input line 876.
@@ -2052,7 +2061,7 @@ Package pdftex.def Info: ./Imagenes/RDMP_3.2BREAL.png  used on input line 876.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./Imagenes/RDMP_3.3BREAL.png, id=448, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.3BREAL.png, id=456, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.3BREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.3BREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.3BREAL.png  used on input line 883.
@@ -2061,44 +2070,44 @@ Package pdftex.def Info: ./Imagenes/RDMP_3.3BREAL.png  used on input line 883.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [26] (_minted/581BD93202BD91AE29B565EA9BA48035.highlight.minted [27 <./Imagenes/RDMP_3.1BREAL.png> <./Imagenes/RDMP_3.2BREAL.png> <./Imagenes/RDMP_3.3BREAL.png>] [28] [29])
-<./Imagenes/RDMP_3.1CREAL.png, id=473, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.1CREAL.png, id=481, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.1CREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.1CREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.1CREAL.png  used on input line 1062.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<./Imagenes/RDMP_3.2CREAL.png, id=474, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.2CREAL.png, id=482, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.2CREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.2CREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.2CREAL.png  used on input line 1068.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<./Imagenes/RDMP_3.3CREAL.png, id=475, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.3CREAL.png, id=483, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.3CREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.3CREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.3CREAL.png  used on input line 1076.
 (pdftex.def)             Requested size: 245.71756pt x 185.29262pt.
  [30 <./Imagenes/RDMP_3.1CREAL.png> <./Imagenes/RDMP_3.2CREAL.png> <./Imagenes/RDMP_3.3CREAL.png>] (_minted/4D176DB2E0761A35BF6D7251059E4601.highlight.minted [31] [32])
-<./Imagenes/RDMP_4.1.png, id=498, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_4.1.png, id=506, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_4.1.png Graphic file (type png)
 <use ./Imagenes/RDMP_4.1.png>
 Package pdftex.def Info: ./Imagenes/RDMP_4.1.png  used on input line 1207.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<./Imagenes/RDMP_4.2.png, id=499, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_4.2.png, id=507, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_4.2.png Graphic file (type png)
 <use ./Imagenes/RDMP_4.2.png>
 Package pdftex.def Info: ./Imagenes/RDMP_4.2.png  used on input line 1213.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
  (_minted/FD178409D409C590958A971051173CC5.highlight.minted [33 <./Imagenes/RDMP_4.1.png> <./Imagenes/RDMP_4.2.png>] [34])
-<Imagenes/RDMP_3.1C.png, id=515, 721.69624pt x 451.6875pt>
+<Imagenes/RDMP_3.1C.png, id=523, 721.69624pt x 451.6875pt>
 File: Imagenes/RDMP_3.1C.png Graphic file (type png)
 <use Imagenes/RDMP_3.1C.png>
 Package pdftex.def Info: Imagenes/RDMP_3.1C.png  used on input line 1358.
 (pdftex.def)             Requested size: 294.86407pt x 184.5452pt.
-<Imagenes/RDMP_3.2C.png, id=516, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_3.2C.png, id=524, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_3.2C.png Graphic file (type png)
 <use Imagenes/RDMP_3.2C.png>
 Package pdftex.def Info: Imagenes/RDMP_3.2C.png  used on input line 1368.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_3.3C.png, id=517, 699.61375pt x 451.6875pt>
+<Imagenes/RDMP_3.3C.png, id=525, 699.61375pt x 451.6875pt>
 File: Imagenes/RDMP_3.3C.png Graphic file (type png)
 <use Imagenes/RDMP_3.3C.png>
 Package pdftex.def Info: Imagenes/RDMP_3.3C.png  used on input line 1375.
@@ -2107,7 +2116,7 @@ Package pdftex.def Info: Imagenes/RDMP_3.3C.png  used on input line 1375.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagenes/RDMP_3.4C.png, id=518, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_3.4C.png, id=526, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_3.4C.png Graphic file (type png)
 <use Imagenes/RDMP_3.4C.png>
 Package pdftex.def Info: Imagenes/RDMP_3.4C.png  used on input line 1384.
@@ -2116,7 +2125,7 @@ Package pdftex.def Info: Imagenes/RDMP_3.4C.png  used on input line 1384.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [35 <./Imagenes/RDMP_3.1C.png>] [36 <./Imagenes/RDMP_3.2C.png> <./Imagenes/RDMP_3.3C.png> <./Imagenes/RDMP_3.4C.png>] (_minted/732E1D0A90F59CF17DD79B6EFB1CDBB0.highlight.minted [37])
-<Imagenes/RDMP_6.1.png, id=551, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_6.1.png, id=559, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_6.1.png Graphic file (type png)
 <use Imagenes/RDMP_6.1.png>
 Package pdftex.def Info: Imagenes/RDMP_6.1.png  used on input line 1515.
@@ -2125,12 +2134,12 @@ Package pdftex.def Info: Imagenes/RDMP_6.1.png  used on input line 1515.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagenes/RDMP_6.2.png, id=552, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_6.2.png, id=560, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_6.2.png Graphic file (type png)
 <use Imagenes/RDMP_6.2.png>
 Package pdftex.def Info: Imagenes/RDMP_6.2.png  used on input line 1525.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_6.3.png, id=553, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_6.3.png, id=561, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_6.3.png Graphic file (type png)
 <use Imagenes/RDMP_6.3.png>
 Package pdftex.def Info: Imagenes/RDMP_6.3.png  used on input line 1532.
@@ -2139,13 +2148,13 @@ Package pdftex.def Info: Imagenes/RDMP_6.3.png  used on input line 1532.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [38] (_minted/C3A945E8F4F58CC8B21363289B70249D.highlight.minted [39 <./Imagenes/RDMP_6.1.png> <./Imagenes/RDMP_6.2.png> <./Imagenes/RDMP_6.3.png>] [40])
-<Imagenes/RDMP_Multi_1.png, id=574, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_1.png, id=582, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_1.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_1.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_1.png  used on input line 1648.
 (pdftex.def)             Requested size: 245.71756pt x 185.29262pt.
  [41 <./Imagenes/RDMP_Multi_1.png>] (_minted/BC2F99B88A2D180D16892F282B5806E4.highlight.minted [42])
-<Imagenes/RDMP_Multi_2.1.png, id=588, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2.1.png, id=596, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2.1.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2.1.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2.1.png  used on input line 1783.
@@ -2154,12 +2163,12 @@ Package pdftex.def Info: Imagenes/RDMP_Multi_2.1.png  used on input line 1783.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagenes/RDMP_Multi_2.2.png, id=589, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2.2.png, id=597, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2.2.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2.2.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2.2.png  used on input line 1791.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_Multi_2.3.png, id=590, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2.3.png, id=598, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2.3.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2.3.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2.3.png  used on input line 1798.
@@ -2168,17 +2177,17 @@ Package pdftex.def Info: Imagenes/RDMP_Multi_2.3.png  used on input line 1798.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [43] [44 <./Imagenes/RDMP_Multi_2.1.png> <./Imagenes/RDMP_Multi_2.2.png> <./Imagenes/RDMP_Multi_2.3.png>] (_minted/03C4318A5467A7CE8429216174D9C4BF.highlight.minted [45])
-<Imagenes/RDMP_2023_1.png, id=611, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_2023_1.png, id=619, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_2023_1.png Graphic file (type png)
 <use Imagenes/RDMP_2023_1.png>
 Package pdftex.def Info: Imagenes/RDMP_2023_1.png  used on input line 1913.
 (pdftex.def)             Requested size: 270.29082pt x 203.82188pt.
-<Imagenes/RDMP_2023_2.png, id=612, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_2023_2.png, id=620, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_2023_2.png Graphic file (type png)
 <use Imagenes/RDMP_2023_2.png>
 Package pdftex.def Info: Imagenes/RDMP_2023_2.png  used on input line 1921.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_2023_3.png, id=613, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_2023_3.png, id=621, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_2023_3.png Graphic file (type png)
 <use Imagenes/RDMP_2023_3.png>
 Package pdftex.def Info: Imagenes/RDMP_2023_3.png  used on input line 1928.
@@ -2188,22 +2197,22 @@ Package pdftex.def Info: Imagenes/RDMP_2023_3.png  used on input line 1928.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [46 <./Imagenes/RDMP_2023_1.png>] (_minted/2EBF330970D9BFEB19DC561845D7FA08.highlight.minted [47 <./Imagenes/RDMP_2023_2.png> <./Imagenes/RDMP_2023_3.png>] [48])
-<Imagenes/RDMP_O_24_1.png, id=635, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_O_24_1.png, id=643, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_O_24_1.png Graphic file (type png)
 <use Imagenes/RDMP_O_24_1.png>
 Package pdftex.def Info: Imagenes/RDMP_O_24_1.png  used on input line 2057.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP_O_2024_2.png, id=636, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_O_2024_2.png, id=644, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_O_2024_2.png Graphic file (type png)
 <use Imagenes/RDMP_O_2024_2.png>
 Package pdftex.def Info: Imagenes/RDMP_O_2024_2.png  used on input line 2063.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP_O_24_3.png, id=637, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_O_24_3.png, id=645, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_O_24_3.png Graphic file (type png)
 <use Imagenes/RDMP_O_24_3.png>
 Package pdftex.def Info: Imagenes/RDMP_O_24_3.png  used on input line 2072.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP_O_2024_4.png, id=638, 612.2875pt x 450.68375pt>
+<Imagenes/RDMP_O_2024_4.png, id=646, 612.2875pt x 450.68375pt>
 File: Imagenes/RDMP_O_2024_4.png Graphic file (type png)
 <use Imagenes/RDMP_O_2024_4.png>
 Package pdftex.def Info: Imagenes/RDMP_O_2024_4.png  used on input line 2078.
@@ -2214,34 +2223,34 @@ Overfull \hbox (28.68205pt too wide) in paragraph at lines 2093--2113
  []
 
 [49 <./Imagenes/RDMP_O_24_1.png> <./Imagenes/RDMP_O_2024_2.png> <./Imagenes/RDMP_O_24_3.png> <./Imagenes/RDMP_O_2024_4.png>] (_minted/D5980F0048C765B30D9F7031E4E90473.highlight.minted [50])
-<Imagenes/RDMP-O-2018-1.png, id=657, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2018-1.png, id=665, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2018-1.png Graphic file (type png)
 <use Imagenes/RDMP-O-2018-1.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2018-1.png  used on input line 2227.
 (pdftex.def)             Requested size: 319.42982pt x 240.88042pt.
  [51]
-<Imagenes/RDMP-O-2018-2.png, id=662, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2018-2.png, id=670, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2018-2.png Graphic file (type png)
 <use Imagenes/RDMP-O-2018-2.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2018-2.png  used on input line 2234.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP-O-2018-3.png, id=663, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2018-3.png, id=671, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2018-3.png Graphic file (type png)
 <use Imagenes/RDMP-O-2018-3.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2018-3.png  used on input line 2240.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
  [52 <./Imagenes/RDMP-O-2018-1.png> <./Imagenes/RDMP-O-2018-2.png> <./Imagenes/RDMP-O-2018-3.png>] (_minted/371238A3074FB329BE9F14E2C098DF31.highlight.minted [53] [54])
-<Imagenes/RDMP-O-2022-1.png, id=685, 1159.33125pt x 695.59875pt>
+<Imagenes/RDMP-O-2022-1.png, id=693, 1159.33125pt x 695.59875pt>
 File: Imagenes/RDMP-O-2022-1.png Graphic file (type png)
 <use Imagenes/RDMP-O-2022-1.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2022-1.png  used on input line 2404.
 (pdftex.def)             Requested size: 417.72285pt x 250.62764pt.
-<Imagenes/RDMP-O-2022-2.png, id=686, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2022-2.png, id=694, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2022-2.png Graphic file (type png)
 <use Imagenes/RDMP-O-2022-2.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2022-2.png  used on input line 2411.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP-O-2022-3.png, id=687, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2022-3.png, id=695, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2022-3.png Graphic file (type png)
 <use Imagenes/RDMP-O-2022-3.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2022-3.png  used on input line 2417.
@@ -2260,12 +2269,12 @@ Overfull \hbox (9.41168pt too wide) in paragraph at lines 2583--2584
  []
 
 [58]
-<Imagenes/RDMP_E_2022_1.png, id=712, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_E_2022_1.png, id=720, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_E_2022_1.png Graphic file (type png)
 <use Imagenes/RDMP_E_2022_1.png>
 Package pdftex.def Info: Imagenes/RDMP_E_2022_1.png  used on input line 2588.
 (pdftex.def)             Requested size: 245.71756pt x 185.29262pt.
-<Imagenes/RDMP_E_2022_2.png, id=713, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_E_2022_2.png, id=721, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_E_2022_2.png Graphic file (type png)
 <use Imagenes/RDMP_E_2022_2.png>
 Package pdftex.def Info: Imagenes/RDMP_E_2022_2.png  used on input line 2594.
@@ -2276,44 +2285,44 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 2586--2598
  []
 
 (_minted/2D0BFB172FED9883BE8FBA2656CBB786.highlight.minted [59 <./Imagenes/RDMP_E_2022_1.png> <./Imagenes/RDMP_E_2022_2.png>] [60])
-<Imagenes/RDMP_Unk_1.png, id=734, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Unk_1.png, id=742, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Unk_1.png Graphic file (type png)
 <use Imagenes/RDMP_Unk_1.png>
 Package pdftex.def Info: Imagenes/RDMP_Unk_1.png  used on input line 2770.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_Unk_2.png, id=735, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Unk_2.png, id=743, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Unk_2.png Graphic file (type png)
 <use Imagenes/RDMP_Unk_2.png>
 Package pdftex.def Info: Imagenes/RDMP_Unk_2.png  used on input line 2776.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_Unk_3.png, id=736, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Unk_3.png, id=744, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Unk_3.png Graphic file (type png)
 <use Imagenes/RDMP_Unk_3.png>
 Package pdftex.def Info: Imagenes/RDMP_Unk_3.png  used on input line 2784.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_Unk_4.png, id=737, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Unk_4.png, id=745, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Unk_4.png Graphic file (type png)
 <use Imagenes/RDMP_Unk_4.png>
 Package pdftex.def Info: Imagenes/RDMP_Unk_4.png  used on input line 2790.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
  [61] [62 <./Imagenes/RDMP_Unk_1.png> <./Imagenes/RDMP_Unk_2.png> <./Imagenes/RDMP_Unk_3.png> <./Imagenes/RDMP_Unk_4.png>] (_minted/441924DF6B7101484B18D6361126C343.highlight.minted [63] [64] [65])
-<Imagenes/RDMP-E-2020-1.png, id=768, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-E-2020-1.png, id=776, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-E-2020-1.png Graphic file (type png)
 <use Imagenes/RDMP-E-2020-1.png>
 Package pdftex.def Info: Imagenes/RDMP-E-2020-1.png  used on input line 3015.
 (pdftex.def)             Requested size: 240.80591pt x 181.58678pt.
-<Imagenes/RDMP-E-2020-2.png, id=769, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-E-2020-2.png, id=777, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-E-2020-2.png Graphic file (type png)
 <use Imagenes/RDMP-E-2020-2.png>
 Package pdftex.def Info: Imagenes/RDMP-E-2020-2.png  used on input line 3021.
 (pdftex.def)             Requested size: 240.80591pt x 181.58678pt.
-<Imagenes/RDMP-E-2020-3.png, id=770, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-E-2020-3.png, id=778, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-E-2020-3.png Graphic file (type png)
 <use Imagenes/RDMP-E-2020-3.png>
 Package pdftex.def Info: Imagenes/RDMP-E-2020-3.png  used on input line 3028.
 (pdftex.def)             Requested size: 393.1496pt x 296.47525pt.
  [66 <./Imagenes/RDMP-E-2020-1.png> <./Imagenes/RDMP-E-2020-2.png>] (_minted/0D0E7AD49D5B60767BD90C74EA6EFD23.highlight.minted [67 <./Imagenes/RDMP-E-2020-3.png>] [68]) (_minted/B269AB082C0DD4D6DDC52ED80D5CFEF0.highlight.minted [69] [70])
-<Imagenes/RDMP_Multi_2025_1.png, id=806, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2025_1.png, id=814, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2025_1.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2025_1.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2025_1.png  used on input line 3303.
@@ -2322,7 +2331,7 @@ Package pdftex.def Info: Imagenes/RDMP_Multi_2025_1.png  used on input line 3303
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagenes/RDMP_Multi_2025_2.png, id=807, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2025_2.png, id=815, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2025_2.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2025_2.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2025_2.png  used on input line 3309.
@@ -2343,18 +2352,18 @@ Cap\'{\i }tulo 3.
 
 
 ] [75] [76]
-<Imagenes/sigmoidal.png, id=867, 506.49225pt x 230.66174pt>
+<Imagenes/sigmoidal.png, id=875, 506.49225pt x 230.66174pt>
 File: Imagenes/sigmoidal.png Graphic file (type png)
 <use Imagenes/sigmoidal.png>
 Package pdftex.def Info: Imagenes/sigmoidal.png  used on input line 132.
 (pdftex.def)             Requested size: 344.00308pt x 156.6684pt.
-<Imagenes/sigmo.png, id=868, 1268.74pt x 846.16125pt>
+<Imagenes/sigmo.png, id=876, 1268.74pt x 846.16125pt>
 File: Imagenes/sigmo.png Graphic file (type png)
 <use Imagenes/sigmo.png>
 Package pdftex.def Info: Imagenes/sigmo.png  used on input line 148.
 (pdftex.def)             Requested size: 344.00308pt x 229.42203pt.
  [77 <./Imagenes/sigmoidal.png> <./Imagenes/sigmo.png>] [78]
-<Imagenes/inhibicion.png, id=893, 1027.84pt x 745.78625pt>
+<Imagenes/inhibicion.png, id=901, 1027.84pt x 745.78625pt>
 File: Imagenes/inhibicion.png Graphic file (type png)
 <use Imagenes/inhibicion.png>
 Package pdftex.def Info: Imagenes/inhibicion.png  used on input line 202.
@@ -2364,7 +2373,7 @@ Package pdftex.def Info: Imagenes/inhibicion.png  used on input line 202.
 
  (Capitulos/RCFP.tex
 Cap\'{\i }tulo 4.
-<Imagenes/PFR.png, id=943, 3729.935pt x 1124.2pt>
+<Imagenes/PFR.png, id=951, 3729.935pt x 1124.2pt>
 File: Imagenes/PFR.png Graphic file (type png)
 <use Imagenes/PFR.png>
 Package pdftex.def Info: Imagenes/PFR.png  used on input line 13.
@@ -2375,13 +2384,13 @@ Package pdftex.def Info: Imagenes/PFR.png  used on input line 13.
 
 
  <./Imagenes/PFR.png>] [84] [85]
-<./Imagenes/PFR_recirculacion.png, id=985, 585.387pt x 141.52875pt>
+<./Imagenes/PFR_recirculacion.png, id=995, 585.387pt x 141.52875pt>
 File: ./Imagenes/PFR_recirculacion.png Graphic file (type png)
 <use ./Imagenes/PFR_recirculacion.png>
-Package pdftex.def Info: ./Imagenes/PFR_recirculacion.png  used on input line 182.
+Package pdftex.def Info: ./Imagenes/PFR_recirculacion.png  used on input line 185.
 (pdftex.def)             Requested size: 368.57634pt x 89.11174pt.
  [86] [87 <./Imagenes/PFR_recirculacion.png>] [88] [89]
-Package pgfplots info on input line 348: fill between: activating layered graphics
+Package pgfplots info on input line 351: fill between: activating layered graphics
 \pgf@layerbox@axis background=\box172
 \pgf@layerboxsaved@axis background=\box173
 \pgf@layerbox@axis grid=\box174
@@ -2398,20 +2407,20 @@ Package pgfplots info on input line 348: fill between: activating layered graphi
 \pgf@layerboxsaved@axis descriptions=\box185
 \pgf@layerbox@axis foreground=\box186
 \pgf@layerboxsaved@axis foreground=\box187
-Package pgfplots info on input line 348: Setting layers 'axis background,axis grid,axis ticks,axis lines,axis tick labels,pre main,main,axis descriptions,axis foreground'...
-Package pgfplots info on input line 389: fill between: activating layered graphics
-Package pgfplots info on input line 389: Setting layers 'axis background,axis grid,axis ticks,axis lines,axis tick labels,pre main,main,axis descriptions,axis foreground'...
-Package pgfplots info on input line 441: fill between: activating layered graphics
-Package pgfplots info on input line 441: Setting layers 'axis background,axis grid,axis ticks,axis lines,axis tick labels,pre main,main,axis descriptions,axis foreground'...
-Package pgfplots info on input line 485: fill between: activating layered graphics
-Package pgfplots info on input line 485: Setting layers 'axis background,axis grid,axis ticks,axis lines,axis tick labels,pre main,main,axis descriptions,axis foreground'...
+Package pgfplots info on input line 351: Setting layers 'axis background,axis grid,axis ticks,axis lines,axis tick labels,pre main,main,axis descriptions,axis foreground'...
+Package pgfplots info on input line 392: fill between: activating layered graphics
+Package pgfplots info on input line 392: Setting layers 'axis background,axis grid,axis ticks,axis lines,axis tick labels,pre main,main,axis descriptions,axis foreground'...
+Package pgfplots info on input line 444: fill between: activating layered graphics
+Package pgfplots info on input line 444: Setting layers 'axis background,axis grid,axis ticks,axis lines,axis tick labels,pre main,main,axis descriptions,axis foreground'...
+Package pgfplots info on input line 488: fill between: activating layered graphics
+Package pgfplots info on input line 488: Setting layers 'axis background,axis grid,axis ticks,axis lines,axis tick labels,pre main,main,axis descriptions,axis foreground'...
  [90]
-<./Imagenes/comun.png, id=1043, 2802.47pt x 1541.76pt>
+<./Imagenes/comun.png, id=1055, 2802.47pt x 1541.76pt>
 File: ./Imagenes/comun.png Graphic file (type png)
 <use ./Imagenes/comun.png>
-Package pdftex.def Info: ./Imagenes/comun.png  used on input line 501.
+Package pdftex.def Info: ./Imagenes/comun.png  used on input line 504.
 (pdftex.def)             Requested size: 294.86407pt x 162.20717pt.
-) [91 <./Imagenes/comun.png>] (template.aux
+ [91 <./Imagenes/comun.png>] [92] [93] [94]) [95] (template.aux
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
@@ -2429,17 +2438,17 @@ Package logreq Info: Writing requests to 'template.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 71126 strings out of 467871
- 1627645 string characters out of 5435692
- 2817523 words of memory out of 5000000
- 98432 multiletter control sequences out of 15000+600000
- 806443 words of font info for 229 fonts, out of 8000000 for 9000
+ 71500 strings out of 467871
+ 1635116 string characters out of 5435692
+ 2820845 words of memory out of 5000000
+ 98768 multiletter control sequences out of 15000+600000
+ 807062 words of font info for 231 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  103i,21n,121p,983b,3307s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<E:/Latex/fonts/type1/public/newpx/NewPXMI.pfb><E:/Latex/fonts/type1/public/newpx/NewPXMI_gnu.pfb><E:/Latex/fonts/type1/public/amsfonts/latxfont/line10.pfb><E:/Latex/fonts/type1/public/lm/lmbx10.pfb><E:/Latex/fonts/type1/public/lm/lmbx12.pfb><E:/Latex/fonts/type1/public/lm/lmbx8.pfb><E:/Latex/fonts/type1/public/lm/lmbx9.pfb><E:/Latex/fonts/type1/public/lm/lmbxi10.pfb><E:/Latex/fonts/type1/public/lm/lmr10.pfb><E:/Latex/fonts/type1/public/lm/lmr12.pfb><E:/Latex/fonts/type1/public/lm/lmr17.pfb><E:/Latex/fonts/type1/public/lm/lmr5.pfb><E:/Latex/fonts/type1/public/lm/lmr6.pfb><E:/Latex/fonts/type1/public/lm/lmr7.pfb><E:/Latex/fonts/type1/public/lm/lmr9.pfb><E:/Latex/fonts/type1/public/lm/lmri10.pfb><E:/Latex/fonts/type1/public/lm/lmss10.pfb><E:/Latex/fonts/type1/public/lm/lmssbx10.pfb><E:/Latex/fonts/type1/public/lm/lmtk10.pfb><E:/Latex/fonts/type1/public/lm/lmtt9.pfb><E:/Latex/fonts/type1/public/lm/lmtti10.pfb><E:/Latex/fonts/type1/public/newpx/pxmiaX.pfb><E:/Latex/fonts/type1/public/newpx/pxsys.pfb><E:/Latex/fonts/type1/public/newtx/txexas.pfb><E:/Latex/fonts/type1/public/newtx/txexs.pfb><E:/Latex/fonts/type1/public/newtx/txsym.pfb>
-Output written on template.pdf (92 pages, 7181777 bytes).
+<E:/Latex/fonts/type1/public/newpx/NewPXMI.pfb><E:/Latex/fonts/type1/public/newpx/NewPXMI_gnu.pfb><E:/Latex/fonts/type1/public/amsfonts/latxfont/line10.pfb><E:/Latex/fonts/type1/public/lm/lmbx10.pfb><E:/Latex/fonts/type1/public/lm/lmbx12.pfb><E:/Latex/fonts/type1/public/lm/lmbx7.pfb><E:/Latex/fonts/type1/public/lm/lmbx8.pfb><E:/Latex/fonts/type1/public/lm/lmbx9.pfb><E:/Latex/fonts/type1/public/lm/lmbxi10.pfb><E:/Latex/fonts/type1/public/lm/lmr10.pfb><E:/Latex/fonts/type1/public/lm/lmr12.pfb><E:/Latex/fonts/type1/public/lm/lmr17.pfb><E:/Latex/fonts/type1/public/lm/lmr5.pfb><E:/Latex/fonts/type1/public/lm/lmr6.pfb><E:/Latex/fonts/type1/public/lm/lmr7.pfb><E:/Latex/fonts/type1/public/lm/lmr9.pfb><E:/Latex/fonts/type1/public/lm/lmri10.pfb><E:/Latex/fonts/type1/public/lm/lmss10.pfb><E:/Latex/fonts/type1/public/lm/lmssbx10.pfb><E:/Latex/fonts/type1/public/lm/lmtk10.pfb><E:/Latex/fonts/type1/public/lm/lmtt9.pfb><E:/Latex/fonts/type1/public/lm/lmtti10.pfb><E:/Latex/fonts/type1/public/newpx/pxmiaX.pfb><E:/Latex/fonts/type1/public/newpx/pxsys.pfb><E:/Latex/fonts/type1/public/newtx/txexas.pfb><E:/Latex/fonts/type1/public/newtx/txexs.pfb><E:/Latex/fonts/type1/public/newtx/txsym.pfb>
+Output written on template.pdf (96 pages, 7256671 bytes).
 PDF statistics:
- 1374 PDF objects out of 1440 (max. 8388607)
- 405 named destinations out of 1000 (max. 500000)
- 1022 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1470 PDF objects out of 1728 (max. 8388607)
+ 435 named destinations out of 1000 (max. 500000)
+ 1106 words of extra memory for PDF output out of 10000 (max. 10000000)
 

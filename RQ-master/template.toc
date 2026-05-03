@@ -34,4 +34,7 @@
 \contentsline {subsubsection}{Cinética potencial}{90}{section*.43}%
 \contentsline {subsubsection}{Cinética de inhibición}{90}{section*.45}%
 \contentsline {section}{\numberline {4.5}Estado no estacionario}{91}{section.4.5}%
+\contentsline {subsubsection}{Simulación de tanques agitados o aproximación por segmentos finitos}{92}{section*.48}%
+\contentsline {section}{\numberline {4.6}Modelo de dispersión axial}{94}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Scilab}{95}{section.4.7}%
 \contentsfinish 

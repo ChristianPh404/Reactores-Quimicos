@@ -534,6 +534,10 @@ INPUT E:\Latex\tex\latex\caption\caption3.sty
 INPUT E:\Latex\tex\latex\caption\caption3.sty
 INPUT E:\Latex\tex\latex\multirow\multirow.sty
 INPUT E:\Latex\tex\latex\multirow\multirow.sty
+INPUT E:\Latex\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarypositioning.code.tex
+INPUT E:\Latex\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarypositioning.code.tex
+INPUT E:\Latex\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarybabel.code.tex
+INPUT E:\Latex\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarybabel.code.tex
 INPUT E:\Latex\tex\latex\minted\minted.sty
 INPUT E:\Latex\tex\latex\minted\minted.sty
 INPUT E:\Latex\tex\generic\catchfile\catchfile.sty
@@ -1349,6 +1353,9 @@ INPUT .\Imagenes\comun.png
 INPUT .\Imagenes\comun.png
 INPUT .\Imagenes\comun.png
 INPUT .\Imagenes\comun.png
+INPUT E:\Latex\fonts\vf\public\newpx\zplmia.vf
+INPUT E:\Latex\fonts\tfm\public\newpx\pxmiaX.tfm
+INPUT E:\Latex\fonts\tfm\public\newtx\txmiaSTbb.tfm
 INPUT template.aux
 INPUT .\Capitulos\analisis.aux
 INPUT .\Capitulos\analisis.aux
@@ -1374,6 +1381,8 @@ INPUT E:\Latex\fonts\type1\public\lm\lmbx10.pfb
 INPUT E:\Latex\fonts\type1\public\lm\lmbx10.pfb
 INPUT E:\Latex\fonts\type1\public\lm\lmbx12.pfb
 INPUT E:\Latex\fonts\type1\public\lm\lmbx12.pfb
+INPUT E:\Latex\fonts\type1\public\lm\lmbx7.pfb
+INPUT E:\Latex\fonts\type1\public\lm\lmbx7.pfb
 INPUT E:\Latex\fonts\type1\public\lm\lmbx8.pfb
 INPUT E:\Latex\fonts\type1\public\lm\lmbx8.pfb
 INPUT E:\Latex\fonts\type1\public\lm\lmbx9.pfb
