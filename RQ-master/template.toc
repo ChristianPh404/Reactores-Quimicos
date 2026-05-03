@@ -1,31 +1,37 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {chapter}{\numberline {1}Análisis}{2}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Caracterización de reactores}{2}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Reactores de mezcla perfecta}{3}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Reactor de flujo pistón}{3}{subsection.1.1.2}%
-\contentsline {section}{\numberline {1.2}Modelización de reactores}{4}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Modelo de mezcla perfecta}{4}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Velocidades de reacción}{6}{subsection.1.2.2}%
-\contentsline {subsubsection}{Fase Líquida}{6}{section*.2}%
-\contentsline {subsubsection}{Fase Gaseosa}{7}{section*.3}%
-\contentsline {subsubsection}{Calor intercambiado con el exterior}{7}{section*.4}%
-\contentsline {chapter}{\numberline {2}Reactor Discontinuo Mezcla perfecta}{9}{chapter.2}%
-\contentsline {subsection}{\numberline {2.0.1}Isotermo}{9}{subsection.2.0.1}%
-\contentsline {subsection}{\numberline {2.0.2}Funcionamiento adiabático}{11}{subsection.2.0.2}%
-\contentsline {subsection}{\numberline {2.0.3}Funcionamiento no isotermo-no adiabático}{12}{subsection.2.0.3}%
-\contentsline {section}{\numberline {2.1}Progresión óptima de la temperatura}{13}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Problemas Practicos-Scilab}{16}{section.2.2}%
-\contentsline {chapter}{\numberline {3}Reactor Continuo Mezcla Perfecta}{73}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introducción}{73}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Isotermo}{73}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Adiabático}{74}{section.3.3}%
-\contentsline {section}{\numberline {3.4}No isotermo}{75}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Multiplicidad de estados estacionarios}{75}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Plano de fases}{77}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Sistema isotermo-cinético de inhibición}{77}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Bateria de tanques en serie}{78}{subsection.3.4.4}%
-\contentsline {chapter}{\numberline {4}Reactor Continuo Flujo Pistón}{82}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Isotermo}{82}{section.4.1}%
-\contentsline {section}{\numberline {4.2}adiabático}{83}{section.4.2}%
-\contentsline {section}{\numberline {4.3}no isotermo}{84}{section.4.3}%
+\contentsline {chapter}{\numberline {1}Análisis}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Caracterización de reactores}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Reactores de mezcla perfecta}{4}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Reactor de flujo pistón}{4}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Modelización de reactores}{5}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Modelo de mezcla perfecta}{5}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Velocidades de reacción}{7}{subsection.1.2.2}%
+\contentsline {subsubsection}{Fase Líquida}{7}{section*.2}%
+\contentsline {subsubsection}{Fase Gaseosa}{8}{section*.3}%
+\contentsline {subsubsection}{Calor intercambiado con el exterior}{8}{section*.4}%
+\contentsline {chapter}{\numberline {2}Reactor Discontinuo Mezcla perfecta}{10}{chapter.2}%
+\contentsline {subsection}{\numberline {2.0.1}Isotermo}{10}{subsection.2.0.1}%
+\contentsline {subsection}{\numberline {2.0.2}Funcionamiento adiabático}{12}{subsection.2.0.2}%
+\contentsline {subsection}{\numberline {2.0.3}Funcionamiento no isotermo-no adiabático}{13}{subsection.2.0.3}%
+\contentsline {section}{\numberline {2.1}Progresión óptima de la temperatura}{14}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Problemas Practicos-Scilab}{17}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Reactor Continuo Mezcla Perfecta}{74}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introducción}{74}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Isotermo}{74}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Adiabático}{75}{section.3.3}%
+\contentsline {section}{\numberline {3.4}No isotermo}{76}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Multiplicidad de estados estacionarios}{76}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Plano de fases}{78}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Sistema isotermo-cinético de inhibición}{78}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Bateria de tanques en serie}{79}{subsection.3.4.4}%
+\contentsline {chapter}{\numberline {4}Reactor Continuo Flujo Pistón}{83}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Isotermo}{83}{section.4.1}%
+\contentsline {section}{\numberline {4.2}adiabático}{84}{section.4.2}%
+\contentsline {section}{\numberline {4.3}no isotermo}{86}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Recirculación en el RCFP}{86}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Comparacion de funcionamiento de reactores}{88}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Graficos de Levenspiel}{89}{subsection.4.4.2}%
+\contentsline {subsubsection}{Cinética potencial}{90}{section*.43}%
+\contentsline {subsubsection}{Cinética de inhibición}{90}{section*.45}%
+\contentsline {section}{\numberline {4.5}Estado no estacionario}{91}{section.4.5}%
 \contentsfinish 

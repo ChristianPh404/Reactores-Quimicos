@@ -128,4 +128,395 @@ si a esta expresión la dividimos por el caudal:
     \end{equation}
     Como se puede observar el cálculo del volumen (o longitud) necesario para alcanzar una conversión dada es análogo al caso del reactor discontinuo en régimen adiabático, ya que ambos son cinéticamente equivalentes.
 \end{flushleft}
+\newpage
 \section{no isotermo}
+
+\begin{flushleft}
+    En el diseño del reactor continuo de flujo de pistón (PFR) en régimen no isotermo, ambos balances (materia y energía) están acoplados, ya que la temperatura afecta a la velocidad de reacción. El análisis se realiza mediante balances elementales de materia y energía aplicados a un diferencial de volumen $dV$.
+    \begin{align}
+        \frac{dn_A}{dt}                   & = \cancelto{0}{n_A} - (n_A + dn_A) - r_A \cdot dV                                               & \text{\scriptsize balance de materia}  \\[8pt]
+        \frac{d}{dt}(M \cdot c_p \cdot T) & = m \cdot c_p \cdot (T - (T + dT)) + \Delta H_A \cdot r_A \cdot dV + U \cdot dS_L \cdot (T_j-T) & \text{\scriptsize balance de entalpía}
+    \end{align}
+    \cor{En estado estacionario, la acumulación se anula y los balances se simplifican:}{
+        \begin{align}
+            \frac{dN_A}{dt}                 & = -r_A \cdot dV                                               \\
+            m \cdot c_p \cdot \frac{dT}{dt} & = -\Delta H_A \cdot r_A \cdot dV + U \cdot dS_L \cdot (T_j-T)
+        \end{align}
+    }
+    \nt{el termino $dS_L$ es el área de intercambio de calor del elemento diferencial dV}
+    donde de forma analoga al apartado anterior si volvemos a considerar que el diferencial del volumen es el are adel tubo por el diferencial de z, la definicion de conversion y teniendo en cuenta que el diferencial $dS_L$  quedan las siguientes expresiones:
+    \begin{align}
+        dV   & =  S\cdot dz = \frac{\pi}{4}\cdot D^2\cdot dz \\
+        dn_A & = - n_{AR}dX_A                                \\
+        dS_L & = \pi\cdot D\cdot dz
+    \end{align}
+    si estas ecuaciones son sustituidas en el balance de materia y en el balance entalpico, se obtienen las siguientes ecuaciones:
+    \begin{align}
+        n_{AR} \cdot dX_A    & = ra \cdot \frac{\pi}{4}D^2dz                                     \\
+        m \cdot c_p \cdot dT & = \Delta H_A \cdot n_{AR} \cdot dX_A + U \cdot dS_L \cdot (T_j-T)
+    \end{align}
+    y si hacemos un ultimo paso algebraico podemos obtener nuestras ecuaciones finales:
+    \begin{align}
+        \frac{dX_A}{dz}\; & =\; \frac{r_A}{n_{AR}}\,\frac{\pi D^2}{4}     \\
+        \frac{dT}{dz}\;   & =\; \frac{\Delta H_A}{m c_p}\,\frac{dX_A}{dz}
+        + \frac{U \pi D}{m c_p}\,(T_j - T)
+    \end{align}
+
+\end{flushleft}
+
+\section{Recirculación en el RCFP}
+
+\begin{flushleft}
+    Aunque no es un caso que se suela dar en la realidad, si que permite simular un grado de mezcla axial que aunque no se da en un reactor flujo de piston(reactor real con comportamiento idealizado), si que se puede dar en un reactor tubular con un comportamiento no-ideal.\\
+
+    Para ello es importante definir la recirculación como el caudal de recirculacion respecto al caudal de salida es decir:
+    \begin{equation*}
+        R = \frac{\text{caudal de recirculación}}{\text{caudal de salida}}=\frac{F_R}{F}
+    \end{equation*}
+
+    En la siguiente imagen se puede ver de una forma mas esquematica como funciona este sistema que nos ayudara a entender los balances de materia y entalpia:
+\end{flushleft}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{PFR_recirculacion.png}
+    \caption{Recirculación en el RCFP}
+    \label{fig:rcfp_recirculation}
+\end{figure}
+
+\noindent El cálculo de concentración y conversion a la entrada del reactor, se hace el balance al punto de mezcla y queda de la siguiente forma:
+\begin{equation}
+    F \cdot C_{A0} + \underbrace{F_R}_{R\cdot F} \cdot C_{AS} = \underbrace{F+F_R}_{F(1+R)} C_{Ae} \quad \longrightarrow \quad \cancelto{0}{F} \cdot C_{A0} + \cancelto{0}{F}\cdot R \cdot C_{AS} = \cancelto{0}{F}(1+R) C_{Ae}
+\end{equation}
+\begin{equation*}
+    \boxed{ \textcolor{darkgreen}{C_{Ae}} =\textcolor{blue}{ \frac{C_{A0}+R C_{AS}}{1+R}}}
+\end{equation*}
+
+\noindent Para el calculo de la conversión se usa el concepto de la conversion de referencia es decir
+\begin{equation*}
+    X_{Ae} = \frac{C_{AR}-\textcolor{darkgreen}{C_{Ae}}}{C_{AR}} = \frac{C_{AR}-\textcolor{blue}{ \frac{C_{A0}+R C_{AS}}{1+R}}}{C_{AR}}
+\end{equation*}
+\noindent Ahora operando para poner todas las concentraciones en funcion de la referencia se sigue modificando la expresión:
+\begin{equation*}
+    \frac{C_{AR}- \frac{C_{A0}+R \cdot C_{AS}}{\textcolor{blue}{1+R}}}{C_{AR}} = \frac{C_{AR}\cdot \textcolor{blue}{(1+R)} - (C_{A0} + R \cdot C_{AS})}{C_{AR}\cdot \textcolor{blue}{(1+R)}}
+\end{equation*}
+\begin{itemize}
+    \item Sustitución de concentraciones por conversión:
+          \begin{multicols}{2}
+              \begin{itemize}
+                  \item $C_{A0} = C_{AR}(1 - X_{A0})$
+                  \item $C_{AS} = C_{AR}(1 - X_{AS})$
+              \end{itemize}
+          \end{multicols}
+\end{itemize}
+
+\noindent de forma que queda la siguiente expresión:
+\begin{equation*}
+    X_{Ae} = \frac{\cancel{C_{AR}} \cdot (1+R) - \cancel{C_{AR}}(1-X_{A0}) - R \cdot \cancel{C_{AR}}(1-X_{AS})}{\cancel{C_{AR}} \cdot (1+R)} = \frac{\cancel{\textcolor{red}{1}} + \cancel{\textcolor{blue}{R}} - \cancel{\textcolor{red}{1}} + X_{A0} - \cancel{\textcolor{blue}{R}} + R \cdot X_{AS}}{1+R} = \boxed{\frac{X_{A0} + R \cdot X_{AS}}{1+R}}
+\end{equation*}
+\vspace{1em}
+\noindent Si introducimos esta ultima expresión en la ecuacion que previamente habiamos obtenido en el RCFP isotermo, es decir Ec.4.3 y 4.4 se obtiene que:
+
+\begin{equation}
+    \tau = (1+R) \cdot C_{AR} \int_{X_{Ae}}^{X_{AS}}\frac{dX_A}{r_A} \quad \longrightarrow \quad \tau = \int_{\scalebox{1}{$\frac{X_{A0} + R \cdot X_{AS}}{1+R}$}}^{X_{AS}}\frac{dX_A}{r_A}
+\end{equation}
+\newpage
+\subsection{Comparacion de funcionamiento de reactores}
+\noindent para una reacción sencilla $A \rightarrow P$ irreversible a temperatura constante, es decir en régimen isotermo, como ya hemos podido comprobar en apartados anteriores:
+
+\begin{itemize}
+    \item $r_a = -kCa^2$ es decir segundo orden
+    \item $\rho = cte$ es decir densidad constante
+    \item T = cte (es decir reactor isotermo)
+    \item k = $0.5 \, h^{-1}$
+\end{itemize}
+
+
+\noindent Para los distintiso reactores vamos a calcular el tiempo de reacción para conseguir una conversión del 90\%.
+
+\begin{enumerate}
+    \item \textbf{Reactor continuo mezcla perfecta (RCMP)}
+          \begin{equation*}
+              \tau = \frac{C_{A0}\cdot (X_{AS}-X_{A0})}{r_{AS}}
+          \end{equation*}
+          \Res{ \tau = \frac{C_{A0}(0.9-0)}{0.5\cdot C_{A0}(1-0.9)} = 18\text{h}}
+          \vspace{1em}
+    \item \textbf{Reactor continuo flujo pistón (RCFP)}
+          \begin{equation*}
+              \tau = C_{A0}\int_{X_{A0}}^{X_{AS}}\frac{dX_A}{r_A}
+          \end{equation*}
+          \Res{\tau = C_{A0}\int_{0}^{0.9}\frac{dX_A}{0.5\cdot C_{A0}(1-X_{A})}= 2\cdot \ln \left( \frac{1}{1-0.9} \right) = 4.6 \text{h}}
+          \vspace{1em}
+    \item \textbf{2 reactores continuos mezcla perfecta en serie}
+          \vspace{1em}
+
+          \Res{
+              \begin{array}{c}
+                  \tau_i = \frac{X_{A1}-0}{0.5\cdot(1-X_{A1})} = \frac{0.9- X_{A1}}{0.5\cdot(1-X_{A1})} \\[1em]
+                  X_{A1} = 0.684 \qquad \tau_i = 4.32 \text{ h} \qquad \tau = 2\tau_i = 8.64 \text{ h}
+              \end{array}
+          }
+    \item \textbf{3 reactores continuos mezcla perfecta en serie}
+
+          Para ello es necesario utilizar metodos iterativos, aprovechando los resultados previos, sabemos que el $\tau$ debe ser mayor al obtenido en el flujo de piston ya que cineticamente es el mas rapido, y menor al obtenido en 2 reactores en serie puesto que conforme a mas reactores en serie mas nos acercamos al flujo de piston es decir que los limites deben estar comprendidos entre 4.6h y 8.64h. Vamos a suponer un tiempo de reaccion de 6 horas. Por lo tanto el tiempo de reaccion de cada reactor es de $\tau_i = \frac{6}{3}=2h$.
+
+          \begin{equation*}
+              \tau_i = \frac{X_{A1}-X_{A0}}{0.5\cdot(1-X_{A1})} = \frac{X_{A2}-X_{A1}}{0.5\cdot(1-X_{A2})} = \frac{0.9-X_{A2}}{0.5\cdot(1-0.9)}
+          \end{equation*}
+          \begin{enumerate}
+              \item $\tau_i = 2\; h \rightarrow X_{A0}= 0.2$
+              \item $\tau_i = 2.2\; h \rightarrow X_{A0}= 0.074$
+              \item $\tau_i = 2.3\; h \rightarrow X_{A0}\approx 0 \rightarrow \tau = 6.9 \text{h}$
+          \end{enumerate}
+    \item \textbf{Reactor continuo flujo pistón con recirculación (RCFR)} con $R=1$
+          \begin{equation*}
+              \tau = (1+R) \cdot C_{A0}\int_{\scalebox{1}{$\frac{X_{A0} + R \cdot X_{AS}}{1+R}$}}^{X_{AS}}\frac{dX_A}{r_A}
+          \end{equation*}
+          \Res{ \tau = (1+R) \cdot C_{A0}\int_{\frac{0.9\cdot R}{1+R}}^{0.9}\frac{dX_A}{r_A} \rightarrow \tau = 2 \cdot (1+R)\ln\left(10 - \frac{9R}{1+R}\right)}
+          \nt{recordando que $r_A = k \cdot (C_{A0}(1-X_A))$  tal y como se veia en los primeros casos, si damos diferentes valores a R se obtienen los siguientes resultados:
+              \begin{multicols}{2}
+                  \begin{itemize}
+                      \item $R = 1 \rightarrow \tau = 6.82\text{h}$
+                      \item $R = 2 \rightarrow \tau = 8.32\text{h}$
+                      \item $R = 10 \rightarrow \tau = 13.15\text{h}$
+                      \item $R = 100 \rightarrow \tau = 17.24\text{h}$
+                  \end{itemize}
+              \end{multicols}}
+\end{enumerate}
+\solve{ }
+\noindent Para cinéticas potenciales la eficacia de los reactores es la siguiente:
+\begin{equation}
+    \boxed{\text{RCFP} > \text{3 RCMP} > \text{2 RCMP} > \text{RCMP}}
+\end{equation}
+\nt{Esto se debe a que el RCFP trabaja con perfil de concentraciones y por tanto con perfil de velocidades a lo largo del proceso.
+    Para el RCFP-R, dependerá del valor de R, si R s muy alto se acercará al RCMP, y si es más bajo estará más cerca del RCFP.}
+\subsection{Graficos de Levenspiel}
+\begin{flushleft}
+    Para ayudarnos a elegir el tipo de reactor idoneo para una reaccion es muy util el uso de graficos de Levenspiel en los que se representan la inversa de la velocidad de reacción en función de la conversión. Vamos a llegar a conclusiones muy similares a las obtenidas hasta ahora, que obviamente para cineticas potenciales seran las mismas, y simplemente es otra herramientra para justificar el funcionamiento de los reactores.\\
+    \vspace{0.5em}
+    en general tenemos que $r_A = f(C_{\text{reactivos}}) \rightarrow X_A\uparrow r_A\downarrow$
+\end{flushleft}
+
+\begin{equation}
+    \overbrace{\left( \frac{\tau}{C_{A0}} \right)_{MP} = \frac{X_{AS}}{(r_A)_S}}^{\textcolor{gray}{\text{RCMP}}} \quad \quad \overbrace{\left( \frac{\tau}{C_{A0}} \right)_{FP} = \int_{0}^{X_{AS}} \frac{dX_A}{r_A}}^{\textcolor{gray}{\text{RCFP}}}
+\end{equation}
+\newpage
+\subsubsection{Cinética potencial}
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.85]
+            \begin{axis}[
+                    axis lines = left,
+                    xlabel = {$X_A$},
+                    ylabel = {$1/r_A$},
+                    ylabel style={at={(ticklabel* cs:0.15)}, xshift=1.5em},
+                    xmin=0, xmax=1,
+                    ymin=0, ymax=10,
+                    xtick={0.8},
+                    xticklabels={$X_{AS}$},
+                    ytick={5},
+                    yticklabels={$1/r_{AS}$},
+                    extra y ticks={0}, % Para limpiar marcas innecesarias
+                    domain=0:0.9,
+                    samples=100,
+                    legend style={at={(0.02,1.05)}, anchor=north west},
+                    legend cell align={left},
+                    grid=none
+                ]
+                % Área RCMP (Rectángulo) dibujada al fondo
+                \draw[red, thick, fill=red, fill opacity=0.15] (axis cs:0,0) rectangle (axis cs:0.8,5);
+
+                % Curva cinética 1/r
+                \addplot [name path=curve, blue, thick, forget plot] {1/(1-x)};
+
+                % Área RCFP (Integral - Área bajo la curva) dibujada encima
+                \path[name path=axis] (axis cs:0,0) -- (axis cs:0.8,0);
+                \addplot [green!40, opacity=0.8, forget plot] fill between[of=curve and axis, soft clip={domain=0:0.8}];
+
+                % Leyendas
+                \addlegendimage{area legend, fill=green!40, draw=none, fill opacity=0.8}
+                \addlegendentry{$\tau$ RCFP}
+                \addlegendimage{area legend, fill=red, fill opacity=0.15, draw=red, thick}
+                \addlegendentry{$\tau$ RCMP}
+
+                % Líneas auxiliares
+                \draw[dashed] (axis cs:0.8,0) -- (axis cs:0.8,5);
+                \draw[dashed] (axis cs:0,5) -- (axis cs:0.8,5);
+
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Levenspiel: RCFP vs RCMP.}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.85]
+            \begin{axis}[
+                    axis lines = left,
+                    xlabel = {$X_A$},
+                    ylabel = {$1/r_A$},
+                    xmin=0, xmax=1,
+                    ymin=0, ymax=10,
+                    xtick={0, 0.2, 0.4, 0.6, 0.8},
+                    xticklabels={0, $X_1$, $X_2$, $X_3$, $X_{AS}$},
+                    ytick=\empty,
+                    domain=0:0.9,
+                    samples=100,
+                    legend style={at={(0.02,0.98)}, anchor=north west},
+                    legend cell align={left},
+                    grid=none
+                ]
+                % Tanques en serie (Rectángulos) al fondo
+                \draw[red!80, thick, fill=red, fill opacity=0.15] (axis cs:0,0) rectangle (axis cs:0.2,1.25);
+                \draw[red!80, thick, fill=red, fill opacity=0.15] (axis cs:0.2,0) rectangle (axis cs:0.4,1.66);
+                \draw[red!80, thick, fill=red, fill opacity=0.15] (axis cs:0.4,0) rectangle (axis cs:0.6,2.5);
+                \draw[red!80, thick, fill=red, fill opacity=0.15] (axis cs:0.6,0) rectangle (axis cs:0.8,5.0);
+
+                % Curva cinética
+                \addplot [name path=curve2, blue, thick, forget plot] {1/(1-x)};
+
+                % Área RCFP dibujada encima
+                \path[name path=axis2] (axis cs:0,0) -- (axis cs:0.8,0);
+                \addplot [green!40, opacity=0.8, forget plot] fill between[of=curve2 and axis2, soft clip={domain=0:0.8}];
+
+                % Leyendas
+                \addlegendimage{area legend, fill=green!40, draw=none, fill opacity=0.8}
+                \addlegendentry{$\tau$ RCFP}
+                \addlegendimage{area legend, fill=red, fill opacity=0.15, draw=red!80, thick}
+                \addlegendentry{$\tau$ Batería RCMP}
+
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Batería de tanques en serie.}
+    \end{minipage}
+\end{figure}
+\noindent Donde se puede apreciar perfectamente que el area ocupada por el RCMP (rectangulos rojos) es mayor que para el RCFP (area verde) que es el area de la integral, para una cinetica potencial, y conforme aumentamos la cantidad de tanques en serie el area ocupada por los tanques en serie tiende a parecerse al area ocupada por el RCFP.
+\subsubsection{Cinética de inhibición}
+
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.85]
+            \begin{axis}[
+                    axis lines = left,
+                    xlabel = {$X_A$},
+                    ylabel = {$1/r_A$},
+                    ylabel style={at={(ticklabel* cs:0.75)}, xshift=1.5em},
+                    xmin=0, xmax=1,
+                    ymin=0, ymax=10,
+                    xtick={0.4, 0.8},
+                    xticklabels={$X_{1A}$, $X_{2A}$},
+                    ytick={2},
+                    yticklabels={$(1/r_A)_{min}$},
+                    domain=0:0.9,
+                    samples=100,
+                    legend style={at={(0.5,1.15)}, anchor=north, legend columns=2},
+                    grid=none
+                ]
+                % Curva con mínimo (U-shape)
+                \addplot [name path=curve, red, very thick, forget plot] {20*(x-0.4)^2 + 2};
+
+                % Área RCMP (Rectángulo hasta el mínimo)
+                \draw[yellow!60, thick, fill=yellow, fill opacity=0.3] (axis cs:0,0) rectangle (axis cs:0.4,2);
+                \node at (axis cs:0.2,1) {\scriptsize $\theta_{MP}/C_{A0}$};
+
+                % Área RCFP (Integral desde el mínimo hasta X2A)
+                \path[name path=axis] (axis cs:0.4,0) -- (axis cs:0.8,0);
+                \addplot [green!50, opacity=0.7, forget plot] fill between[of=curve and axis, soft clip={domain=0.4:0.8}];
+                \node at (axis cs:0.6,1) {\scriptsize $\theta_{FP}/C_{A0}$};
+
+                % Leyendas
+                \addlegendimage{area legend, fill=yellow!30, draw=yellow, thick}
+                \addlegendentry{$\tau$ RCMP}
+                \addlegendimage{area legend, fill=green!50, draw=none, fill opacity=0.7}
+                \addlegendentry{$\tau$ RCFP}
+
+                \draw[dashed] (axis cs:0.4,0) -- (axis cs:0.4,2);
+                \draw[dashed] (axis cs:0.8,0) -- (axis cs:0.8,5.2);
+
+                \node[anchor=south] at (axis cs:0.45,6) {\small Posible rivalidad};
+                \node[anchor=north] at (axis cs:0.45,6) {\small con un RCFP-R};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Inhibición autocatalítica}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.85]
+            \begin{axis}[
+                    axis lines = left,
+                    xlabel = {$X_A$},
+                    ylabel = {$1/r_A$},
+                    xmin=0, xmax=1,
+                    ymin=0, ymax=10,
+                    xtick={0.2, 0.7},
+                    xticklabels={$X_{1A}$, $X_{2A}$},
+                    ytick=\empty,
+                    domain=0:0.9,
+                    samples=100,
+                    legend style={at={(0.5,1.15)}, anchor=north, legend columns=2},
+                    grid=none
+                ]
+                % Curva con MÁXIMO (Parábola invertida: -20*(x-0.45)^2 + 8)
+                \addplot [name path=curve2, red, very thick, forget plot] {-20*(x-0.45)^2 + 8};
+
+                % Área RCFP inicial (verde - Integral hasta X1A)
+                \path[name path=axis2] (axis cs:0,0) -- (axis cs:0.2,0);
+                \addplot [green!50, opacity=0.7, forget plot] fill between[of=curve2 and axis2, soft clip={domain=0:0.2}];
+                \node at (axis cs:0.1,2.5) {\scriptsize $\theta_{FP}/C_{A0}$};
+
+                % Área RCMP (Rectángulo amarillo entre X1A y X2A)
+                % Altura basada en f(X1A) para que toque la curva en el punto de entrada
+                \draw[yellow!60, thick, fill=yellow, fill opacity=0.3] (axis cs:0.2,0) rectangle (axis cs:0.7,6.75);
+                \node at (axis cs:0.45,3.5) {\scriptsize $\theta_{MP}/C_{A0}$};
+
+                % Leyendas
+                \addlegendimage{area legend, fill=green!50, draw=none, fill opacity=0.7}
+                \addlegendentry{$\tau$ RCFP}
+                \addlegendimage{area legend, fill=yellow!30, draw=yellow, thick}
+                \addlegendentry{$\tau$ RCMP}
+
+                % Líneas auxiliares
+                \draw[dashed] (axis cs:0.2,0) -- (axis cs:0.2,6.75);
+                \draw[dashed] (axis cs:0.7,0) -- (axis cs:0.7,6.75);
+
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Inhibición por sustratos (típico de bioreactores)}
+    \end{minipage}
+\end{figure}
+\begin{flushleft}
+    Estas gráficas son representativas de cinéticas con inhibición. De su análisis se desprende que, a bajas conversiones, el reactor de mezcla perfecta (RCMP) resulta más eficiente que el reactor de flujo en pistón (RCFP). Sin embargo, a conversiones suficientemente elevadas, el RCFP pasa a ser la opción más adecuada. Este comportamiento contrasta con el observado en reacciones de orden positivo (n > 0), donde el RCFP es sistemáticamente más eficiente.\\
+
+    En el caso de reacciones autocatalíticas, es necesario que exista inicialmente cierta cantidad de producto en la alimentación para que la reacción tenga lugar. Por ello, un RCFP no puede operar con una alimentación de reactante puro sin una adición continua de producto, lo que introduce una clara ventaja para configuraciones con recirculación.
+
+    \newpage
+
+    Además, para conversiones finales inferiores a la correspondiente al punto de velocidad máxima, el reactor de mezcla perfecta supera en rendimiento a cualquier reactor con recirculación. En cambio, para conversiones superiores a dicho punto, un reactor con recirculación adecuadamente dimensionado en términos de relación de recirculación resulta más eficiente que tanto el RCFP como el RCMP.
+\end{flushleft}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{comun.png}
+    \caption{posible configuración de reactores para optimizar el rendimiento}
+\end{figure}
+Esta podria ser una configuración de reactores para optimizar el rendimiento, aunque no sea la mejor en el caso de que operar un reactor flujo pistón resulte inconveniente por cualquier motivo, y tener los fucientes tanques en serie no sea viable economicamente.
+\section{Estado no estacionario}
+\noindent Por ultimo vamos a estudiar el caso de que el estado no sea estacionario, partiendo de las ecuaciones del flujo de piston que ya vimos Ec. 4.1
+\begin{equation}
+    \frac{dN_A}{dt} = \cancelto{0}{n_A} - (\cancelto{0}{n_A} + dn_A) - r_A\cdot dV \rightarrow \frac{dN_i}{dt} = -dn_i + r_i \cdot dV
+\end{equation}
+que realmennte quedaria si lo expresamos en forma de variacion de concentracion es la siguiente ecuación:
+\begin{equation*}
+    \begin{aligned}
+        \text{1. Balance original:} \quad   & \frac{dN_i}{dt} = n_i - (n_i + dn_i) + r_i dV                                         \\
+        \text{2. Simplificación:} \quad     & \frac{d(c_i dV)}{dt} = -dn_i + r_i dV                                                 \\
+        \text{3. Definición de } n_i: \quad & dV \frac{\partial c_i}{\partial t} = -\frac{\partial (F c_i)}{\partial V} dV + r_i dV \\
+        \text{4. Resultado final:} \quad    & \frac{\partial c_i}{\partial t} = -F \frac{\partial c_i}{\partial V} + r_i
+    \end{aligned}
+\end{equation*}
+\begin{equation}
+    \frac{\partial C_i}{\partial t} = -F\cdot \frac{\partial C_i}{\partial V} +r_i
+\end{equation}
+\nt{los moles son variacion de volumen por variacion de contracion, caudal molar es caudal volumetrico por concentracion y la variación de volumen la hemos sacado del termino de acumulación y va diviendo el resto de terminos}

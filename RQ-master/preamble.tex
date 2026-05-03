@@ -8,6 +8,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{graphicx}
+\usepackage{float}
 \graphicspath{ {./Imagenes/} }
 % Idioma español para nombres de elementos flotantes (Figura, Tabla, etc.)
 \usepackage[spanish]{babel}
@@ -155,10 +156,10 @@
 }
 
 %================================
-% Corollery
+% Corolario
 %================================
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=section]{Corollary}{Corollary}
+\newtcbtheorem[number within=section]{Corolario}{Corolario}
 {%
     enhanced
     ,breakable
@@ -177,7 +178,7 @@
 }
 {th}
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{corollary}{Corollary}
+\newtcbtheorem[number within=chapter]{corolario}{Corolario}
 {%
     enhanced
     ,breakable
@@ -598,7 +599,7 @@
 
 
 \newcommand{\thm}[2]{\begin{Theorem}{#1}{}#2\end{Theorem}}
-\newcommand{\cor}[2]{\begin{Corollary}{#1}{}#2\end{Corollary}}
+\newcommand{\cor}[2]{\begin{Corolario}{#1}{}#2\end{Corolario}}
 \newcommand{\mlenma}[2]{\begin{Lenma}{#1}{}#2\end{Lenma}}
 \newcommand{\mprop}[2]{\begin{Prop}{#1}{}#2\end{Prop}}
 \newcommand{\clm}[3]{\begin{claim}{#1}{#2}#3\end{claim}}
@@ -745,6 +746,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{fillbetween}
 \definecolor{doc}{RGB}{0,60,110}
 \usepackage{titletoc}
 \contentsmargin{0cm}
