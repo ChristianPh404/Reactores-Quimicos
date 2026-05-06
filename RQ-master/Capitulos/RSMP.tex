@@ -287,7 +287,7 @@ En un sistema de reacciones múltiples:
 \noindent En este caso, la selectividad global coincide con la instantánea evaluada a la concentración de salida, que es la más baja del sistema:
 
 \begin{equation}
-    S_G = \frac{1}{1 + \frac{k_1}{k_2\cdot C_{A0} \cdot (1-X_f)} }
+    S_G = \frac{1}{1 + \dfrac{k_1}{k_2\cdot C_{A0} \cdot (1-X_f)} }
 \end{equation}
 \begin{figure}[H]
     \begin{center}
@@ -328,3 +328,446 @@ En un sistema de reacciones múltiples:
 \end{figure}
 
 \nt{\textbf{Conclusión:} Cuando $n_1 > n_2$, el \textbf{RCFP} es superior al RCMP. Esto se debe a que el flujo pistón procesa el reactivo a concentraciones promedio más altas, lo cual favorece cinéticamente a la reacción de mayor orden (la deseada).}
+
+\section{Reacciones múltiples}
+\subsection{Reacciones en paralelo}
+
+\noindent Para un sistema de reacciones en paralelo donde el producto deseado es $P$:
+\begin{itemize}
+    \item $A \xrightarrow{k_1} P$ \hspace{5mm} $r_1 = r_P = k_1 \cdot C_A^{n_1}$
+    \item $A \xrightarrow{k_2} Q$ \hspace{5mm} $r_2 = r_Q = k_2 \cdot C_A^{n_2}$
+\end{itemize}
+
+\noindent \nt{La selectividad instantánea ($s$) es siempre función de la conversión (vía $C_A$) y de la temperatura (vía $k_i$).}
+
+\noindent Para analizar el sistema, seguimos este procedimiento:
+
+\begin{enumerate}
+    \item \textbf{Definición de selectividad instantánea:}
+          Representa la fracción de reactivo que se transforma en el producto deseado en un instante dado:
+          \begin{equation}
+              s = \frac{r_P}{r_A} = \frac{r_1}{r_1 + r_2}
+          \end{equation}
+
+    \item \textbf{Relación de velocidades:}
+          Dividimos numerador y denominador por $r_1$ para aislar el término de competencia:
+          \begin{equation}
+              s = \frac{1}{1 + \dfrac{r_2}{r_1}}
+          \end{equation}
+
+    \item \textbf{Sustitución de las leyes de velocidad:}
+          Expresamos la selectividad en función de la concentración de reactivo:
+          \begin{equation}
+              s = \frac{1}{1 + \dfrac{k_2}{k_1} C_A^{n_2 - n_1}}
+          \end{equation}
+
+    \item \textbf{Dependencia con la temperatura (Arrhenius):}
+          Sustituimos $k = k_0 \exp(-E_a/RT)$ para ver el efecto de la energía de activación:
+          \begin{equation}
+              s = \frac{1}{1 + \dfrac{k_{20}}{k_{10}} \cdot \exp \left( \dfrac{E_{a1} - E_{a2}}{RT} \right) \cdot C_A^{n_2 - n_1}}
+          \end{equation}
+\end{enumerate}
+
+\cor{Estrategias de Optimización}{Para maximizar la selectividad ($s \to 1$), debemos minimizar el término $\dfrac{r_2}{r_1}$ del denominador. Esto nos lleva a las siguientes condiciones de operación:
+    \begin{itemize}
+        \item \textbf{Efecto de la Temperatura ($T$):}
+              \begin{itemize}
+                  \item Si $E_{a1} > E_{a2}$: El término exponencial es positivo. Interesa aumentar el denominador de la fracción exponencial $\implies$ trabajar a \textbf{temperatura máxima}.
+                  \item Si $E_{a1} < E_{a2}$: El término exponencial es negativo. Interesa que el exponente sea lo más grande posible $\implies$ trabajar a \textbf{temperatura mínima}.
+              \end{itemize}
+        \item \textbf{Efecto de la Concentración ($C_A$):}
+              \begin{itemize}
+                  \item \textbf{Si $n_1 > n_2$}: El exponente $(n_2 - n_1)$ es negativo. Para minimizar el término de competencia en el denominador, se requiere trabajar a la \textbf{mayor concentración posible}.
+                        \begin{itemize}
+                            \item Esto favorece el uso de reactores que operen mediante \textbf{perfiles de concentración}, como el \textbf{RCFP} (espacial) o el \textbf{RDMP} (temporal).
+                            \item En estos equipos, el reactivo comienza con su concentración máxima ($C_{A0}$) y disminuye gradualmente, permitiendo que la mayor parte de la reacción ocurra a niveles de $C_A$ elevados, donde la reacción deseada es cinéticamente dominante.
+                        \end{itemize}
+
+                  \item \textbf{Si $n_1 < n_2$}: El exponente $(n_2 - n_1)$ es positivo. Para minimizar el término de la fracción, se requiere una \textbf{concentración baja}.
+                        \begin{itemize}
+                            \item Esto favorece al \textbf{RCMP}, ya que este reactor no presenta perfiles: todo el volumen del reactor se encuentra uniformemente a la concentración de salida ($C_{Af}$).
+                            \item Al ser $C_{Af}$ la concentración más baja alcanzada en el proceso, se consigue minimizar de forma constante la velocidad de la reacción secundaria frente a la principal.
+                        \end{itemize}
+              \end{itemize}
+    \end{itemize}
+}
+\subsection{Reacciones en serie}
+
+\begin{itemize}
+    \item $A \xrightarrow{k_1} P \xrightarrow{k_2} Q$
+    \item $r_1 = k_1 \cdot C_A$ (Formación de $P$ siendo este el producto deseado)
+    \item $r_2 = k_2 \cdot C_P$ (Consumo de $P$ para dar $Q$ siendo este el subproducto)
+\end{itemize}
+
+\noindent Expresándolo en función de la selectividad instantánea:
+
+\begin{enumerate}
+    \item \textbf{Definición de selectividad instantánea:}
+          Representa la velocidad neta de formación del producto deseado ($P$) respecto a la velocidad de desaparición del reactivo ($A$):
+          \begin{equation}
+              s = \frac{r_P}{r_A} = \frac{r_1 - r_2}{r_1} = 1 - \frac{r_2}{r_1}
+          \end{equation}
+
+    \item \textbf{Relación de velocidades y constantes:}
+          Sustituimos las leyes de velocidad para observar la dependencia con las concentraciones de las especies:
+          \begin{equation}
+              s = 1 - \frac{k_2 \cdot C_P}{k_1 \cdot C_A} = 1 - \frac{k_2}{k_1} \frac{C_P}{C_A}
+          \end{equation}
+
+    \item \textbf{Dependencia con la temperatura (Arrhenius):}
+          Aplicamos la relación de constantes según la energía de activación:
+          \begin{equation}
+              s = 1 - \frac{k_{20}}{k_{10}} \exp \left( \frac{E_{a1} - E_{a2}}{RT} \right) \cdot \frac{C_P}{C_A}
+          \end{equation}
+\end{enumerate}
+
+\cor{Estrategias de Optimización}{Para maximizar la selectividad ($s \to 1$), debemos minimizar el término de competencia $\frac{k_2}{k_1} \frac{C_P}{C_A}$. Esto condiciona la operación de la siguiente manera:
+
+    \begin{itemize}
+        \item \textbf{Efecto de la Temperatura ($T$)}:
+              \begin{itemize}
+                  \item Si $E_{a1} > E_{a2}$: El exponente es positivo. Interesa aumentar el denominador del exponente para que la fracción disminuya $\implies$ \textbf{Temperatura máxima}.
+                  \item Si $E_{a1} < E_{a2}$: El exponente es negativo. Para que el término sea lo más pequeño posible $\implies$ \textbf{Temperatura mínima}.
+              \end{itemize}
+
+        \item \textbf{Efecto de la Concentración y el Mezclado}:
+              En serie, el objetivo es evitar que el producto $P$ "vea" a su reactivo o permanezca demasiado tiempo expuesto a reaccionar.
+              \begin{itemize}
+                  \item \textbf{Uso de perfiles (RCFP/RDMP)}:
+                        \begin{itemize}
+                            \item Favorecen la selectividad porque el reactivo $A$ está muy concentrado al inicio, lo que hace que $r_1$ sea muy alta frente a $r_2$ (donde $C_P$ aún es baja).
+                            \item Al operar con \textbf{perfiles temporales o espaciales}, podemos detener la reacción (o sacar el producto) cuando $C_P$ alcanza su máximo, antes de que se degrade a $Q$.
+                        \end{itemize}
+
+                  \item \textbf{Desventaja del RCMP}:
+                        \begin{itemize}
+                            \item Es el reactor menos indicado para reacciones en serie.
+                            \item Debido al mezclado perfecto, el producto $P$ formado se mezcla inmediatamente con la corriente de salida donde hay poco $A$ y mucho $P$, favoreciendo la conversión de $P \to Q$.
+                            \item Trabajar a la concentración de salida (la más baja de $A$) penaliza drásticamente la selectividad instantánea.
+                        \end{itemize}
+              \end{itemize}
+    \end{itemize}
+}
+\newpage
+\subsection{Reacciones en paralelo con dos reactivos}
+
+\begin{itemize}
+    \item $A + B \xrightarrow{k_1} P$ (Deseado) \hspace{5mm} $r_1 = k_1 \cdot C_A^{n_1} \cdot C_B^{m_1}$
+    \item $A + B \xrightarrow{k_2} Q$ (No deseado) \hspace{5mm} $r_2 = k_2 \cdot C_A^{n_2} \cdot C_B^{m_2}$
+\end{itemize}
+
+\noindent Expresándolo en función de la selectividad instantánea:
+
+\begin{enumerate}
+    \item \textbf{Definición de selectividad instantánea:}
+          Relación entre la formación del producto deseado y el consumo total de reactivo:
+          \begin{equation}
+              s = \frac{r_P}{r_A} = \frac{r_1}{r_1 + r_2}
+          \end{equation}
+
+    \item \textbf{Relación de velocidades y potencias:}
+          Dividimos por $r_1$ para analizar el término de competencia exponencial:
+          \begin{equation}
+              s = \frac{1}{1 + \dfrac{r_2}{r_1}} = \frac{1}{1 + \dfrac{k_2}{k_1} \cdot C_A^{n_2-n_1} \cdot C_B^{m_2-m_1}}
+          \end{equation}
+
+    \item \textbf{Dependencia con la temperatura (Arrhenius):}
+          \begin{equation}
+              s = \frac{1}{1 + \dfrac{k_{20}}{k_{10}} \exp \left( \dfrac{E_{a1} - E_{a2}}{RT} \right) \cdot C_A^{n_2 - n_1} \cdot C_B^{m_2 - m_1}}
+          \end{equation}
+\end{enumerate}
+
+\cor{Optimización I: Efecto de la Temperatura}{
+    Para maximizar la selectividad ($s \to 1$), el objetivo es minimizar la fracción exponencial. El signo de la diferencia de energías de activación dicta la estrategia:
+    \begin{itemize}
+        \item \textbf{Si $E_{a1} > E_{a2}$}: El término $(E_{a1} - E_{a2}) > 0$. Para minimizar el exponente positivo, el denominador ($RT$) debe ser máximo $\implies$ \textbf{Temperatura máxima}.
+        \item \textbf{Si $E_{a1} < E_{a2}$}: El término $(E_{a1} - E_{a2}) < 0$. Para que la exponencial sea lo más pequeña posible, el valor absoluto del exponente debe ser grande con signo negativo $\implies$ \textbf{Temperatura mínima}.
+    \end{itemize}
+}
+
+\vspace{0.5cm}
+\begin{center}
+    \begin{tikzpicture}[node distance=2cm]
+        \node (start) [draw, fill=blue!10, rounded corners] {Análisis Energético};
+        \node (decide) [below of=start, yshift=0.5cm] {$\Delta E_a = E_{a1} - E_{a2}$};
+        \node (pos) [below left of=decide, xshift=-1cm] {\textbf{Positivo}: $T \uparrow$};
+        \node (neg) [below right of=decide, xshift=1cm] {\textbf{Negativo}: $T \downarrow$};
+        \draw [->, thick] (start) -- (decide);
+        \draw [->, thick] (decide) -| (pos);
+        \draw [->, thick] (decide) -| (neg);
+    \end{tikzpicture}
+    \par\vspace{0.3cm}
+    \textit{Esquema 1: Criterio de selección de temperatura según energías de activación.}
+\end{center}
+
+\vfill
+\begin{center}
+    \small \textit{Continúa en la siguiente página con el análisis de concentraciones y tipos de reactores.}
+\end{center}
+
+\newpage
+
+\cor{Optimización II: Efecto de las Concentraciones}{
+    La elección del reactor depende de los exponentes diferenciales $\Delta n = (n_2 - n_1)$ y $\Delta m = (m_2 - m_1)$. Buscamos que el producto $C_A^{\Delta n} \cdot C_B^{\Delta m}$ tienda a cero:
+
+    \begin{itemize}
+        \item \textbf{Caso 1: $\Delta n < 0$ y $\Delta m < 0$ ($n_1 > n_2$ y $m_1 > m_2$)}
+              \begin{itemize}
+                  \item \textbf{Lógica:} Exponentes negativos $\implies$ Interesa \textbf{$C_A$ alta y $C_B$ alta}.
+                  \item \textbf{Reactor:} \textbf{RCFP} o \textbf{RDMP} (mantienen perfiles elevados).
+              \end{itemize}
+
+        \item \textbf{Caso 2: $\Delta n > 0$ y $\Delta m > 0$ ($n_1 < n_2$ y $m_1 < m_2$)}
+              \begin{itemize}
+                  \item \textbf{Lógica:} Exponentes positivos $\implies$ Interesa \textbf{$C_A$ baja y $C_B$ baja}.
+                  \item \textbf{Reactor:} \textbf{RCMP} (opera siempre a concentración de salida).
+              \end{itemize}
+
+        \item \textbf{Caso 3: $\Delta n < 0$ y $\Delta m > 0$ ($n_1 > n_2$ y $m_1 < m_2$)}
+              \begin{itemize}
+                  \item \textbf{Lógica:} Interesa \textbf{$C_A$ ALTA} y \textbf{$C_B$ BAJA}.
+                  \item \textbf{Reactor:} \textbf{RSMP} (Semicontinuo de Mezcla Perfecta).
+                  \item \textbf{Operación:} Carga inicial de A; alimentación lenta ("gota a gota") de B.
+              \end{itemize}
+
+        \item \textbf{Caso 4: $\Delta n > 0$ y $\Delta m < 0$ ($n_1 < n_2$ y $m_1 > m_2$)}
+              \begin{itemize}
+                  \item \textbf{Lógica:} Interesa \textbf{$C_A$ BAJA} y \textbf{$C_B$ ALTA}.
+                  \item \textbf{Reactor:} \textbf{RSMP}.
+                  \item \textbf{Operación:} Carga inicial de B; alimentación lenta de A.
+              \end{itemize}
+    \end{itemize}
+}
+\vspace{0.8cm}
+\begin{center}
+    \begin{tikzpicture}[
+            node distance=1.8cm,
+            caja/.style={rectangle, draw=black!60, fill=white, thick, inner sep=8pt, text width=3.2cm, align=center, rounded corners=2pt},
+            flecha/.style={->, >=stealth, thick, gray!80},
+            eje/.style={->, >=latex, thin, gray!50} % Estilo para las flechas de guía finas
+        ]
+
+        % Ejes de guía (Cruz central)
+        \draw [eje] (0,-3) -- (0,3) node[above, black] {$\Delta m$};
+        \draw [eje] (-4.5,0) -- (4.5,0) node[right, black] {$\Delta n$};
+
+        % Nodo Central informativo
+        \node (centro) [circle, fill=white, draw=gray!30, font=\footnotesize, inner sep=2pt] {Elección};
+
+        % Caso 1: Arriba Izquierda (n1 > n2, m1 > m2) -> Delta n < 0, Delta m < 0
+        % Nota: En un eje real <0 es izquierda/abajo, lo situamos para que coincida visualmente
+        \node (caso1) [caja, xshift=-2.5cm, yshift=1.8cm] {
+            \textbf{Caso 1}\\ \scriptsize $\Delta n < 0, \Delta m < 0$\\ \vspace{1mm}
+            \color{green!50!black}\textbf{RCFP / RDMP}\\ \footnotesize ($C_A \uparrow, C_B \uparrow$)
+        };
+
+        % Caso 2: Abajo Derecha (n1 < n2, m1 < m2) -> Delta n > 0, Delta m > 0
+        \node (caso2) [caja, xshift=2.5cm, yshift=-1.8cm] {
+            \textbf{Caso 2}\\ \scriptsize $\Delta n > 0, \Delta m > 0$\\ \vspace{1mm}
+            \color{red!80!black}\textbf{RCMP}\\ \footnotesize ($C_A \downarrow, C_B \downarrow$)
+        };
+
+        % Caso 3: Arriba Derecha (n1 > n2, m1 < m2) -> Delta n < 0, Delta m > 0
+        \node (caso3) [caja, xshift=2.5cm, yshift=1.8cm] {
+            \textbf{Caso 3}\\ \scriptsize $\Delta n < 0, \Delta m > 0$\\ \vspace{1mm}
+            \color{blue!80!black}\textbf{RSMP}\\ \footnotesize ($C_A \uparrow, C_B \downarrow$)
+        };
+
+        % Caso 4: Abajo Izquierda (n1 < n2, m1 > m2) -> Delta n > 0, Delta m < 0
+        \node (caso4) [caja, xshift=-2.5cm, yshift=-1.8cm] {
+            \textbf{Caso 4}\\ \scriptsize $\Delta n > 0, \Delta m < 0$\\ \vspace{1mm}
+            \color{blue!80!black}\textbf{RSMP}\\ \footnotesize ($C_A \downarrow, C_B \uparrow$)
+        };
+
+    \end{tikzpicture}
+    \par\vspace{0.4cm}
+    \textit{Esquema 2: Mapa de decisión para reactores según los exponentes diferenciales.}
+\end{center}
+\newpage
+\subsection{Estrategias para Cinéticas Complejas y Órdenes Intermedios}
+\begin{enumerate}
+    \item \textbf{Selección según el Orden de Reacción Deseado:}
+          Cuando compiten tres reacciones en paralelo con órdenes distintos ($n_1 < n_2 < n_3$), el comportamiento de la selectividad respecto a la concentración de reactivo deja de ser lineal:
+
+          \begin{itemize}
+              \item \textbf{Si el producto deseado es el de mayor orden ($n_3$):}
+                    Interesa trabajar siempre a la \textbf{máxima concentración posible}. La mejor estrategia es un \textbf{RCFP} (o reactor tubular) operando con \textbf{conversiones bajas}, para asegurar que $C_A$ se mantenga lo más cerca posible de $C_{A0}$ en todo el trayecto.
+
+              \item \textbf{Si el producto deseado es el de menor orden ($n_1$):}
+                    Interesa trabajar a la \textbf{mínima concentración posible}. Lo ideal es un \textbf{RCMP} (tanque agitado) operando a \textbf{alta conversión}, de modo que la mezcla reaccione siempre a $C_{Af}$ (el punto más bajo).
+
+              \item \textbf{Si el producto deseado es el de orden intermedio ($n_2$):}
+                    Existe un compromiso cinético. Ni $C_A$ muy alta (favorecería a $n_3$) ni $C_A$ muy baja (favorecería a $n_1$) son óptimas. Se requiere operar a la \textbf{concentración óptima} ($C_{A, \text{ópt}}$), lo cual se logra con un \textbf{RCMP} diseñado para esa composición específica.
+          \end{itemize}
+\end{enumerate}
+
+\noindent Cuando la reacción deseada tiene un orden de reacción situado entre los órdenes de las reacciones secundarias, la selectividad no se maximiza ni a concentraciones muy altas ni muy bajas, sino en un valor intermedio.
+
+\subsubsection{Análisis Analítico del Máximo}
+\noindent Consideremos el sistema competitivo:
+\begin{itemize}
+    \item $A \xrightarrow{k_1} Q$ \hspace{1cm} $r_1 = r_Q = k_1 C_A$ \quad (Orden menor)
+    \item $A \xrightarrow{k_2} P$ \hspace{1cm} $r_2 = r_P = k_2 C_A^2$ \quad (\textbf{Deseado}, Orden intermedio)
+    \item $A \xrightarrow{k_3} S$ \hspace{1cm} $r_3 = r_S = k_3 C_A^3$ \quad (Orden mayor)
+\end{itemize}
+\noindent La selectividad instantánea $\phi$ se define como:
+\begin{equation}
+    \phi = \frac{k_2 C_A^2}{k_1 C_A + k_2 C_A^2 + k_3 C_A^3} = \frac{1}{\frac{k_1}{k_2} C_A^{-1} + 1 + \frac{k_3}{k_2} C_A}
+\end{equation}
+
+\noindent Aplicando la condición de máximo ($\frac{d\phi}{dC_A} = 0$):
+\begin{equation}
+    \frac{k_1}{k_2 C_A^2} = \frac{k_3}{k_2} \implies C_{A, \text{ópt}} = \sqrt{\frac{k_1}{k_3}}
+\end{equation}
+\nt{Este valor es independiente de $k_2$; la constante de la reacción deseada solo afecta a la magnitud de la selectividad, no a la posición del máximo.}
+\cor{Regla de Diseño}{
+    \textbf{Para maximizar la selectividad de un orden intermedio:}
+    Se debe utilizar un \textbf{RCMP} diseñado para operar exactamente a $C_{A, \text{ópt}}$. Un RCFP sería ineficiente aquí porque su perfil de concentración obligaría al reactivo a pasar por zonas de baja selectividad (concentraciones muy altas al inicio o muy bajas al final).
+}
+\nt{Si por requerimientos de producción se necesita una conversión final muy elevada que un solo RCMP no pueda alcanzar de forma eficiente (volumen excesivo), se podría recurrir a un tren de reactores. Sin embargo, debe tenerse en cuenta que cualquier etapa posterior al punto óptimo (como un RCFP) mejorará la conversión global, pero disminuirá la selectividad final, ya que operará fuera de la $C_{A,\text{ópt}}$.}
+\newpage
+\subsubsection{Minimización del Volumen Total (Tren de Reactores)}
+\noindent En sistemas donde la velocidad presenta un máximo (mínimo en la curva de Levenspiel), el dispositivo óptimo no es un único reactor, sino una combinación:
+\begin{itemize}
+    \item \textbf{Etapa 1 (RCMP):} Alcanza el punto de máxima velocidad sin pasar por las zonas lentas iniciales.
+    \item \textbf{Etapa 2 (RCFP):} Continúa la reacción desde el punto de máxima velocidad hasta la conversión final deseada, minimizando el volumen adicional necesario.
+\end{itemize}
+\begin{figure}
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    width=0.85\textwidth, height=7cm,
+                    xmin=0, xmax=1, ymin=0, ymax=10,
+                    xlabel={Conversión $X_A$},
+                    ylabel={$\frac{1}{-r_A}$},
+                    axis line style={ultra thick},
+                    % Marcas exactas según la imagen
+                    xtick={0, 0.4, 0.9},
+                    xticklabels={0, $X_{A1}$, $X_{Af}$},
+                    ytick=\empty,
+                    clip=false
+                ]
+                % 1. Definición matemática de la curva (Cinética no monótona)
+                \addplot[name path=curva, ultra thick, black, domain=0:1, samples=100]
+                {15*(x-0.4)^2 + 3};
+
+                % 2. Definición del suelo del eje X
+                \path[name path=suelo] (axis cs:0,0) -- (axis cs:1,0);
+
+                % --- CORRECCIÓN 1: VOLUMEN RCMP ---
+                % Dibujamos primero la caja azul sólida del RCMP para que sea el volumen real.
+                % Rectángulo desde (0,0) hasta (XA1, 1/-rA|XA1)
+                \draw[fill=blue!15, draw=none] (axis cs:0,0) rectangle (axis cs:0.4,3);
+
+                % --- CORRECCIÓN 2: VOLUMEN RCFP ---
+                % Usamos fill between de forma precisa SÓLO en el dominio del RCFP (de XA1 a XAf)
+                % Esto rellena el área bajo la curva verde tal como en la imagen.
+                \addplot[fill=green!15, draw=none] fill between[of=curva and suelo, soft clip={domain=0.4:0.9}];
+
+                % 3. Etiquetas de Volumen
+                \node[blue!70!black] at (axis cs:0.2, 1.5) {\textbf{V$_{RCMP}$}};
+                \node[green!50!black] at (axis cs:0.65, 1.5) {\textbf{V$_{RCFP}$}};
+
+                % 4. Líneas guía (dashed)
+                % Línea vertical en XA1
+                \draw[dashed, gray!80] (axis cs:0.4,0) -- (axis cs:0.4,3);
+                % Línea vertical en XAf
+                \draw[dashed, gray!80] (axis cs:0.9,0) -- (axis cs:0.9,7.3);
+                % Línea horizontal que define la altura del RCMP
+                \draw[dashed, gray!80] (axis cs:0,3) -- (axis cs:0.4,3);
+
+                % 5. Anotación del punto de máxima velocidad (mínimo de la curva)
+                \node[pin=90:{Máxima velocidad}] at (axis cs:0.4,3) {};
+
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+    \caption{Minimización de volumen total.}
+    \label{fig:minimizacion_volumen}
+\end{figure}
+
+\section{Modelización del RSMP}
+
+\noindent Para un sistema de reacciones en paralelo con dos reactivos, la estrategia de operación en un \textbf{RSMP} (Reactor Semicontinuo de Mezcla Perfecta) se fundamenta en el control de las concentraciones instantáneas mediante la alimentación selectiva.
+
+\noindent \textbf{Criterio de diseño:}
+Si deseamos favorecer la formación de $P$ frente a $Q$, y los órdenes de reacción cumplen que:
+\begin{itemize}
+    \item $n_1 < n_2 \implies$ Se requiere \textbf{baja concentración de A}.
+    \item $m_1 > m_2 \implies$ Se requiere \textbf{alta concentración de B}.
+\end{itemize}
+
+\noindent \textbf{Estrategia:} El reactor se carga inicialmente con todo el reactivo $B$ (asegurando $C_B$ máxima). El reactivo $A$ se añade gradualmente con un caudal $v_0$ y concentración $C_{A0}$, de modo que $A$ reaccione según entra, manteniéndose en niveles de concentración mínimos ($C_A \approx 0$).
+
+\begin{itemize}
+    \item $A + B \xrightarrow{k_1} P$ \hspace{1cm} $r_1 = k_1 C_A^{n_1} C_B^{m_1}$ \quad (Deseada)
+    \item $A + B \xrightarrow{k_2} Q$ \hspace{1cm} $r_2 = k_2 C_A^{n_2} C_B^{m_2}$ \quad (Secundaria)
+\end{itemize}
+\newpage
+\subsection{Modelo Isotermo}
+\noindent Asumiendo densidad constante y operación isoterma, el sistema de ecuaciones diferenciales que describe el proceso es:
+\nt{recordando que el numero de moles se relaciona con la concentración a través de $C_i = N_i / V$.}
+\begin{multicols}{2}
+    \begin{equation*}
+        \left\{
+        \begin{aligned}
+            \frac{dV}{dt}   & = F                        \\[6pt]
+            \frac{dN_A}{dt} & = F \cdot C_{A0} - (r_A) V \\[6pt]
+            \frac{dN_B}{dt} & = - (r_B) V                \\[6pt]
+            \frac{dN_P}{dt} & = (r_P) V                  \\[6pt]
+            \frac{dN_Q}{dt} & = (r_Q) V
+        \end{aligned}
+        \right.
+    \end{equation*}
+
+    \columnbreak
+
+    \begin{equation*}
+        \left\{
+        \begin{aligned}
+            r_1 & = k_1 C_A^{n_1} C_B^{m_1} \\[6pt]
+            r_2 & = k_2 C_A^{n_2} C_B^{m_2}
+        \end{aligned}
+        \right.
+    \end{equation*}
+
+    \vspace{10pt} % Espacio aumentado para centrar visualmente respecto a la izquierda
+
+    \begin{equation*}
+        \left\{
+        \begin{aligned}
+            r_A & = -(r_1 + r_2) \\[6pt]
+            r_B & = -(r_1 + r_2) \\[6pt]
+            r_P & = r_1          \\[6pt]
+            r_Q & = r_2
+        \end{aligned}
+        \right.
+    \end{equation*}
+\end{multicols}
+\noindent Si expresamos los balances en función de la concentración y recordando que el volumen no es constante y por ello:
+\begin{equation}
+    dN_i = d(V \cdot C_i) = V \cdot dC_i + C_i \cdot dV
+\end{equation}
+y por tanto para introducirlo respecto al tiempo en los balances:
+\begin{equation}
+    \frac{dN_i}{dt} = V \cdot \frac{dC_i}{dt} + C_i \cdot \textcolor{blue}{\frac{dV}{dt}}\hspace{3cm} \text{\scriptsize {$\frac{dV}{dt}$} representa la alimentación es decir F}
+\end{equation}
+\begin{equation}
+    \frac{dC_i}{dt} = \frac{1}{V} \left(\frac{dN_i}{dt} - C_i \cdot \textcolor{blue}{F}\right)
+\end{equation}
+\nt{se sustituyen los balances de materia de $N_i$ con la ecuación que obtuvimos antes es decir restando $F\cdot C_{i0}$ y diviendo por $V$}
+\vspace{1em}
+\dfn{Balances de materia en función de las concentraciones}{
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \(\displaystyle \frac{dV}{dt} = F \)
+
+            \item \(\displaystyle \frac{dC_A}{dt} = \frac{F(C_{A0}-C_A)}{V} + r_A \)
+
+            \item \(\displaystyle \frac{dC_B}{dt} = -\frac{F C_B}{V} + r_B \)
+
+            \item \(\displaystyle \frac{dC_P}{dt} = -\frac{F C_P}{V} + r_1 \)
+
+            \item \(\displaystyle \frac{dC_Q}{dt} = -\frac{F C_Q}{V} + r_2 \)
+        \end{itemize}
+    \end{multicols}}
