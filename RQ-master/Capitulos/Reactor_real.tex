@@ -93,7 +93,7 @@
 \noindent La relación entre ambas es evidente, una vez se han definido ambas funciones y teniendo claro lo que representan, pensando en el ejemplo de un sistema donde metemos unos elementos ese sistema esta en movimiento, y en un momento deben de salir del sistema, por tanto como se observa:
 
 \begin{equation}
-    \underbrace{E}_{\text{Edad salida}} = \underbrace{-\frac{dI}{d\theta}}_{\text{Variación edad interior}}
+    \underbrace{E}_{\text{Edad salida}} = \underbrace{-\frac{dI}{d\theta}}_{\text{Variación edad interior}} \label{eq:defE}
 \end{equation}
 \nt{El signo negativo indica que la fracción de elementos con una determinada edad en el interior disminuye a medida que estos abandonan el sistema (pasan a la corriente de salida).}
 \noindent Para obtener la relación acumulada, integramos la expresión diferencial considerando que en el instante inicial ($\theta = 0$), la fracción de elementos en el interior es la unidad ($I = 1$):
@@ -107,7 +107,7 @@
 \noindent Reordenando los términos, obtenemos la expresión final que relaciona ambas funciones de distribución:
 
 \begin{equation}
-    I = 1 - \int_{0}^{\theta} E \, d\theta
+    I = 1 - \int_{0}^{\theta} E \, d\theta    \label{eq:defI}
 \end{equation}
 \section{Aplicación de las funciones E y I}
 \subsection{Reactor continuo flujo de pistón}
@@ -454,14 +454,211 @@ Si ahora lo hacemos para la función E tenemos lo siguiente:
     \label{fig:experimento_estimulo_impulso}
 \end{figure}
 \begin{flushleft}
-    En este experimento, se inyecta de forma instantánea una cantidad total de trazador $M_B$ (moles) en la entrada del reactor.
-
-    La inyección debe ser lo suficientemente rápida como para que el trazador se distribuya uniformemente en el reactor antes de que comience el flujo.
-
-    Posteriormente, se mide la concentración instantánea de trazador en la salida $C_B(t)$ a medida que este fluye fuera del reactor.
+    En este experimento, se inyecta de forma instantánea una cantidad total de trazador $M_B$ (moles) en la entrada del reactor.\\
+    La inyección debe ser lo suficientemente rápida como para que el trazador se distribuya uniformemente en el reactor antes de que comience el flujo. Es decir en un instante llamado $\delta t$.
+    Posteriormente, se mide la concentración instantánea de trazador en la salida $C_B(t)$ a medida que este fluye fuera del reactor.\\
 
     A esta respuesta del sistema se le denomina \textbf{Función respuesta estímulo en impulso} ($I$, o simplemente curva $I$), y se define de forma adimensional como:
 \end{flushleft}
 \begin{equation}
     I(t) = \frac{C_B(t)}{C_{B0}} = \frac{C_B}{\dfrac{M_B}{V}}
 \end{equation}
+\noindent lo que ocurrira es que el tiempo partira en 0 hasta que se termine el estudio, la concentracion de B comenzara en 0, en un determinado momento llegara a su maximo y luego comenzara a disminuir hasta llegar a 0 ya que se ha metido un solo impulso es decir no es continuo, y la funcion respuesta
+estimulo en impulso le ocurrira lo mismo. aunque ya se ha definido en la ecuacion anterior esta bien recordar que:
+\dfn{}{
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item $C = \frac{C_B}{C_{BR}}$\\ es decir concentracion de B respecto a una concentracion de referencia.
+            \item $C = \frac{C_B}{M_B/V}$\\ la concentración de referencia sera los moles que hemos metido $M_B$ respecto al volumen del reactor $V$.
+        \end{itemize}
+    \end{multicols}
+}
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{ccc}
+        \hline
+        \textbf{Tiempo ($t$)} & \textbf{Concentración ($C_{B}$)} & \textbf{C}  \\
+        \hline
+        0                     & 0                                & 0           \\
+        $\vdots$              & $\vdots$                         & $\vdots$    \\
+        $t_i$                 & $C_{B,max}$                      & $C_{i,max}$ \\
+        $\vdots$              & $\vdots$                         & $\vdots$    \\
+        $t_{\infty}$          & 0                                & 0           \\
+        \hline
+    \end{tabular}
+    \caption{Datos experimentales de concentración y respuesta en impulso.}
+    \label{tab:concentracion_tiempo_impulso}
+\end{table}
+\subsubsection{Balance al estado no estacionario}
+\begin{alignat*}{3}
+     & \text{Balance: }                         &  & \frac{d}{dt} \left( \underbrace{\frac{m_B}{F \cdot \textcolor{red}{\cancel{\Delta t}}}}_{\text{conc. de B}} \underbrace{ \cdot V \cdot I(t) \cdot \textcolor{red}{\cancel{\Delta t}} }_{\text{Volumen}} \right) = -F \cdot C_B &       &                                                                                                                \\[12pt]
+     & \text{Agrupando } t_R:                   &  & \frac{d}{dt} \left( m_B \cdot \underbrace{\frac{V}{F}}_{t_R} \cdot I(t) \right) = -F \cdot C_B                                                                                                                                 &       &                                                                                                                \\[10pt]
+     & \text{Cambio de } dt \text{ a } d\theta: &  & m_B \cdot \cancel{t_R} \cdot \frac{dI}{\cancel{t_R} \cdot d\theta} = -F \cdot C_B                                                                                                                                              & \quad & \textcolor{gray}{\leftarrow \text{usando } dt = t_R d\theta}                                                   \\[10pt]
+     & \text{Normalizando: }                    &  & \underbrace{\frac{m_B}{ \textcolor{darkgreen}{F \cdot C_{BR}}}}_{t_R} \cdot \frac{dI}{d\theta} = -\frac{\cancel{F}\cdot C_B}{\cancel{F}\cdot C_{BR}}                                                                           & \quad & \textcolor{gray}{\leftarrow \text{recordando que: } C = C_B/C_{BR}}                                            \\[10pt]
+     & \text{recordando que:}                   &  & \frac{m_B}                            {F\cdot \underbrace{m_B/V}_{C_{BR}}}      = \frac{V}{F} = t_R                                                                                                                            &       &                                                                                                                \\[10pt]
+     & \text{Regla de la cadena: }              &  & t_R \cdot \left( \frac{dI}{d\theta} \cdot \textcolor{blue}{\frac{d\theta}{dt}} \right) = - \frac{C_B}{C_{BR}}\textcolor{gray}{\bigg]_C}                                                                                        &       &                                                                                                                \\[10pt]
+     & \text{Sustituyendo diferencial: }        &  & \cancel{t_R} \cdot \frac{dI}{d\theta} \cdot \textcolor{blue}{\frac{1}{\cancel{t_R}}} = -C                                                                                                                                      & \quad & \textcolor{gray}{\leftarrow \text{ya que } \theta = \frac{t}{t_R} \implies \frac{d\theta}{dt} = \frac{1}{t_R}} \\[10pt]
+     & \text{Relación final: }                  &  & -\frac{dI}{d\theta} = C = E \implies \mathbf{\color{red} E = C}                                                                                                                                                                & \quad & \implies    \boxed{I = 1 - \int_{0}^{\theta} C \, d\theta}                                                     \\[10pt]
+\end{alignat*}
+\nt{Se puede ver que E = C recordando la definición de E en la ecuación \eqref{eq:defE} y luego ver el resultado de la integral con la ecuación ~\eqref{eq:defI}.}
+\subsection{Aplicación de la función E}
+\noindent recordando que nuestra función E segun la delta de dirac para un reactor flujo pistón en $\theta$ = 1 salen todos los elementos tal y como se veia en la figura \ref{fig:distribucion_salida_impulso} y el caso contrario seria el mezcla perfecta. por tanto si aplicamos la varianza de la siguiente forma:
+\begin{equation}
+    \sigma^2 = \int_{0}^{\infty} \left( \theta - 1 \right)^2 E \, d\theta \label{eq:var_E}
+\end{equation}
+\noindent tendremos 2 casos:
+\begin{itemize}
+    \item Si \(\sigma^2 = 0\): el reactor es flujo pistón (todos los elementos salen al mismo tiempo).
+    \item Si \(\sigma^2 > 0\): el reactor presenta dispersión (los elementos salen en diferentes momentos).
+\end{itemize}
+\noindent Si expandimos la ecuación ~\eqref{eq:var_E} y trabajamos un poco con ella obtendremos:
+\begin{align*}
+    \sigma^2 & = \int_{0}^{\infty} \left( \theta^2 - 2\theta + 1 \right) E \, d\theta                                                                                        \\
+             & = \int_{0}^{\infty} \theta^2 E \, d\theta - \textcolor{darkgreen}{2 \int_{0}^{\infty} \theta E \, d\theta} + \textcolor{blue}{\int_{0}^{\infty} E \, d\theta} \\
+             & = \int_{0}^{\infty} \theta^2 E \, d\theta - 1
+\end{align*}
+\nt{recordando que la E lo que hacia era promediar la variable que tenia delante, es decir la $\theta$ de forma que simplemente se resta el \textcolor{darkgreen}{-2} con el \textcolor{blue}{+1.}}
+
+\begin{Definición}[colbacktitle=red!75!black]{Desviación del comportamiento de la idealidad}{}
+En reactores reales, el patrón de flujo se aparta del modelo ideal. Esta desviación se cuantifica mediante la varianza adimensional:
+
+\begin{center}
+    \begin{minipage}{0.45\textwidth}
+        \begin{equation}
+            \color{red} \sigma^2 = \int_{0}^{\infty} \theta^2 E \, d\theta - 1
+            \label{eq:varianza_adimensional}
+        \end{equation}
+
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=1]
+            % Nodos principales
+            \node[blue, font=\Large] (sigma) at (0, 0) {$\sigma^2$};
+            \node[blue, font=\Large] (cero) at (1.5, 1) {$0$};
+            \node[blue, font=\Large] (uno)  at (1.5, -1) {$1$};
+
+            % Flechas desde sigma
+            \draw[-stealth, thick, blue] (sigma.east) -- (cero.west);
+            \draw[-stealth, thick, blue] (sigma.east) -- (uno.west);
+
+            % Puntos verdes intermedios
+            \foreach \y in {0.6, 0.2, -0.2, -0.6} {
+                    \fill[green!60!black] (1.5, \y) circle (1.5pt);
+                }
+
+            % Símbolos de implicación
+            \node[blue, font=\Large] at (2.5, 1) {$\implies$};
+            \node[blue, font=\Large] at (2.5, -1) {$\implies$};
+
+            % Etiquetas finales
+            \node[blue, font=\Large, anchor=west] at (3.0, 1) {RCFP};
+            \node[red, font=\Large, anchor=west]  at (3.0, 0) {Flujo Real};
+            \node[blue, font=\Large, anchor=west] at (3.0, -1) {RCMP};
+        \end{tikzpicture}
+    \end{minipage}
+    \vspace{0.4cm}
+    \small\textit{Clasificación del régimen de flujo en función de la varianza adimensional.}
+\end{center}
+\end{Definición}
+\section{Modelización}
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[xscale=1, yscale=1]
+        % --- NIVEL 1: Varianza ---
+        \node[font=\Large] (sigma) at (0, 0) {$\sigma^2$};
+
+        % --- NIVEL 2: Valores 0 y 1 ---
+        \node[myb, font=\Large] (cero) at (1.4, 1.0) {$\approx 0$};
+        \node[myr, font=\Large] (uno)  at (1.4, -1.0) {$\approx 1$};
+
+        % Flechas nivel 1
+        \draw[-stealth, thick] (sigma.east) -- (cero.west);
+        \draw[-stealth, thick] (sigma.east) -- (uno.west);
+
+        % Símbolos de implicación
+        \node[myb, font=\Large] at (2.3, 1.0) {$\implies$};
+        \node[myr, font=\Large] at (2.3, -1.0) {$\implies$};
+
+        % --- NIVEL 3: Tipos de Reactor ---
+        \node[myb, font=\Large, anchor=west] (tubular) at (2.9, 1.0) {Reactor Tubular};
+        \node[myr, font=\Large, anchor=west] (tanque)  at (2.9, -1.0) {Reactor Tanque Agitado};
+
+        % --- NIVEL 4: Modelos (Ramificación del Tubular) ---
+        \node[myb, font=\large, anchor=west] (disp)  at (9.0, 1.6) {Modelo de Dispersión};
+        \node[myb, font=\large, anchor=west] (serie) at (9.0, 0.4) {Tanques en serie};
+
+        \draw[-stealth, thick, myb] (tubular.east) -- (disp.west);
+        \draw[-stealth, thick, myb] (tubular.east) -- (serie.west);
+
+        % --- NIVEL 5: Modelos (Ramificación del Tanque) ---
+        \node[myr, font=\large, anchor=west] (pfr_rec) at (9.0, -0.4) {PFR con recirculación};
+        \node[myr, font=\large, anchor=west] (mezcl)   at (9.0, -1.6) {Tanques mezclados};
+
+        \draw[-stealth, thick, myr] (tanque.east) -- (pfr_rec.west);
+        \draw[-stealth, thick, myr] (tanque.east) -- (mezcl.west);
+
+    \end{tikzpicture}
+    \caption{Relación entre la varianza adimensional, el tipo de reactor y sus modelos matemáticos asociados.}
+    \label{fig:modelizacion_sigma2_completo}
+\end{figure}
+
+\noindent De acuerdo con el grado de desviación de la idealidad (cuantificado por la varianza $\sigma^2$), se selecciona el modelo que mejor describa el patrón de flujo real del reactor:
+
+\begin{itemize}
+    \item \textbf{Reactores Tubulares:} Se modelan considerando una mezcla parcial. El modelo de \textit{tanques en serie} converge a un reactor de flujo pistón cuando el número de tanques $n \to \infty$; por tanto, un valor finito de $n$ describe la dispersión en un tubular. Alternativamente, se emplea el modelo de dispersión axial.
+    \item \textbf{Reactores de Tanque Agitado:} Se suelen modelar mediante flujo pistón con recirculación o configuraciones de tanques mezclados para capturar cortocircuitos o zonas muertas.
+\end{itemize}
+
+\subsection{Ecuaciones de Modelización según la Varianza}
+
+\begin{itemize}
+    \item \textbf{Modelo de dispersión axial:}
+          Se utiliza el número de dispersión ($N_D = D/uL$). Para recipientes abiertos:
+          \begin{equation}
+              \sigma^2_E = 2 N_D + 8 N_D^2
+          \end{equation}
+          O la expresión general (frecuentemente usada en recipientes cerrados):
+          \begin{equation}
+              \sigma^2_E = 2 N_D - 2 N_D^2 \left( 1 - \exp\left( -\frac{1}{N_D} \right) \right)
+          \end{equation}
+
+    \item \textbf{Modelo de tanques en serie:}
+          Donde $n$ es el número de tanques ideales en serie:
+          \begin{equation}
+              \sigma^2_E = \frac{1}{n}
+          \end{equation}
+
+    \item \textbf{Modelo de flujo pistón con recirculación:}
+          Relaciona la varianza con la relación de recirculación $R$:
+          \begin{equation}
+              \sigma^2_E = \frac{R}{(1+R)}
+          \end{equation}
+
+    \item \textbf{Diagnóstico de No Idealidades (Tanques mezclados):}
+          Permite identificar fallos en el diseño hidrodinámico:
+          \begin{itemize}
+              \item \textbf{Presencia de \textit{Bypass} (Cortocircuito):}
+                    Si el área bajo la curva es menor a la unidad:
+                    \begin{equation}
+                        \int_{0}^{\infty} E \, d\theta = 1 - X_{\text{bypass}}
+                    \end{equation}
+                    El porcentaje de elementos que no entran al reactor (\% \textit{bypass}) es $1 - \int_{0}^{\infty} E \, d\theta$.
+
+              \item \textbf{Volumen Estancado (Zonas muertas):}
+                    Se identifica mediante el primer momento de la curva:
+                    \begin{equation}
+                        \int_{0}^{\infty} \theta E \, d\theta = \frac{V_{activo}}{V_{total}}
+                    \end{equation}
+                    Si el resultado es menor que 1, el volumen estancado es $1 - \int_{0}^{\infty} \theta E \, d\theta$ (expresado en \%).
+          \end{itemize}
+
+    \item \textbf{Modelo de flujo segregado:}
+          Aplicable exclusivamente a sistemas lineales (cinéticas de primer orden). Permite predecir la conversión media promediando la concentración individual de los 'paquetes' de fluido según su tiempo de residencia y si comparamos su resultado con el resto de modelos dara un resultado similar al mas optimo posible:
+          \begin{equation}
+              \overline{C_A} = \int_{0}^{\infty} C_A(\theta) \cdot E(t) \, d\theta
+          \end{equation}
+          Este modelo proporciona el límite de rendimiento para sistemas con segregación completa.
+\end{itemize}
+\nt{En el caso de tener un volumen estancado, siempre debemos usar el modelo de diagnóstico de no idealidades (tanques mezclados). Aunque si la cinética es de primer orden también se podría usar el modelo de flujo segregado, ya que debería coincidir la conversión, es preferible el primer método debido a que nos permite calcular el porcentaje de \textit{bypass} y de volumen estancado.}

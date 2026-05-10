@@ -1,24 +1,24 @@
 # Fdb version 4
-["biber template"] 1778375486.72997 "template.bcf" "template.bbl" "template" 1778379970.53653 0
-  "template.bcf" 1778379969 133445 02a9ba96ac07f2e0f2fd275bf3dddd11 "pdflatex"
+["biber template"] 1778402974.92728 "template.bcf" "template.bbl" "template" 1778403565.83354 0
+  "template.bcf" 1778403564 133445 02a9ba96ac07f2e0f2fd275bf3dddd11 "pdflatex"
   (generated)
   "template.bbl"
   "template.blg"
   (rewritten before read)
-["pdflatex"] 1778379920.05971 "f:/universidad/3º/REACTORES/2025/RQ/Reactores-Quimicos/RQ-master/template.tex" "template.pdf" "template" 1778379970.53785 0
+["pdflatex"] 1778403510.83643 "f:/universidad/3º/REACTORES/2025/RQ/Reactores-Quimicos/RQ-master/template.tex" "template.pdf" "template" 1778403565.8347 0
   "C:/Users/chris/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1775497654 157476 836f50a025a0ef37f9a015bb4bf92ccc ""
   "C:/Users/chris/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1769385805 13316171 7305d42c292f6a5ffb8d47159f14eba4 ""
-  "Capitulos/RCFP.aux" 1778379964 11260 6243065229cd88930d03e998beae4b2d "pdflatex"
+  "Capitulos/RCFP.aux" 1778403558 11260 6243065229cd88930d03e998beae4b2d "pdflatex"
   "Capitulos/RCFP.tex" 1777841028 50258 1d4f6c61d261e5ec2f22dd3a4182972f ""
-  "Capitulos/RCMP.aux" 1778379941 8046 8cdc549db9536911835e9cf10a6596d6 "pdflatex"
+  "Capitulos/RCMP.aux" 1778403534 8046 8cdc549db9536911835e9cf10a6596d6 "pdflatex"
   "Capitulos/RCMP.tex" 1777409068 26062 4902f2f50ac55cb6a587446071764bc3 ""
-  "Capitulos/RDMP.aux" 1778379939 21295 004b8410a247399c0428f27d368b8660 "pdflatex"
+  "Capitulos/RDMP.aux" 1778403532 21295 004b8410a247399c0428f27d368b8660 "pdflatex"
   "Capitulos/RDMP.tex" 1776635231 124470 3cee3eb5b3c825ad7d84a086d293c17f ""
-  "Capitulos/RSMP.aux" 1778379968 10336 298b96ff3e9f84382fba825e2e0f2203 "pdflatex"
-  "Capitulos/RSMP.tex" 1778367130 41075 27af1f6fb9982acd0bfc8950bc79b089 ""
-  "Capitulos/Reactor_real.aux" 1778379969 10021 a3186845be7464c6804f911679e8aab2 "pdflatex"
-  "Capitulos/Reactor_real.tex" 1778379868 24671 418135ed58e45a2e3b46dcddc6f95be2 ""
-  "Capitulos/analisis.aux" 1778379926 7787 44d623ea53c6fdff61ef0f31acf57b58 "pdflatex"
+  "Capitulos/RSMP.aux" 1778403562 10336 298b96ff3e9f84382fba825e2e0f2203 "pdflatex"
+  "Capitulos/RSMP.tex" 1778388988 41075 27af1f6fb9982acd0bfc8950bc79b089 ""
+  "Capitulos/Reactor_real.aux" 1778403564 11704 75bf4d22901c97f11159e52015013f7f "pdflatex"
+  "Capitulos/Reactor_real.tex" 1778403509 38921 4da507f07212328e346ea1f5082eb708 ""
+  "Capitulos/analisis.aux" 1778403517 7787 44d623ea53c6fdff61ef0f31acf57b58 "pdflatex"
   "Capitulos/analisis.tex" 1773430547 15840 65cca0e6932d0b4d40beccac14b707c9 ""
   "E:/Latex/fonts/enc/dvips/lm/lm-ec.enc" 1256929440 2375 baa924870cfb487815765f9094cf3728 ""
   "E:/Latex/fonts/enc/dvips/lm/lm-rm.enc" 1256929440 2327 9d6df24f9c4f7368395224341a95523a ""
@@ -521,11 +521,11 @@
   "letterfonts.tex" 1722435450 8702 300377c5f733ebe6aa4b7f8e56db5921 ""
   "macros.tex" 1769419454 4796 d88d9ce7ebb09501b01486fea21fa3d0 ""
   "preamble.tex" 1777746312 22736 31573edf7d44e6bc60f5e0282eb12b84 ""
-  "template.aux" 1778379969 30693 957b17aa48a203da626aab84b3bae8da "pdflatex"
-  "template.bbl" 1778375489 0 d41d8cd98f00b204e9800998ecf8427e "biber template"
-  "template.run.xml" 1778379969 2306 ca83cf29a9137ce2d7f7679b8f8bcca2 "pdflatex"
+  "template.aux" 1778403564 32489 d8cc7a2bef679a593d993a5f21b5460d "pdflatex"
+  "template.bbl" 1778402978 0 d41d8cd98f00b204e9800998ecf8427e "biber template"
+  "template.run.xml" 1778403564 2306 ca83cf29a9137ce2d7f7679b8f8bcca2 "pdflatex"
   "template.tex" 1778367930 6234 6925b265007259818509c0e9d1f32abd ""
-  "template.toc" 1778379969 6328 36543be83958fabf6335cf435fe955bd "pdflatex"
+  "template.toc" 1778403564 6705 c4bcb2aec1037934d9aeb31bf356fccf "pdflatex"
   (generated)
   "Capitulos/RCFP.aux"
   "Capitulos/RCMP.aux"
