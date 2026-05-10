@@ -73,4 +73,5 @@
 \contentsline {subsection}{\numberline {6.3.3}Aplicación de la función E}{118}{subsection.6.3.3}%
 \contentsline {section}{\numberline {6.4}Modelización}{118}{section.6.4}%
 \contentsline {subsection}{\numberline {6.4.1}Ecuaciones de Modelización según la Varianza}{119}{subsection.6.4.1}%
+\contentsline {section}{\numberline {6.5}Modelo de flujo segregado}{120}{section.6.5}%
 \contentsfinish 
