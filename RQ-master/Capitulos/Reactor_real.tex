@@ -1,0 +1,467 @@
+\chapter{Análisis de reactores reales}
+\section{Funciones de Distribución de Edades}
+\begin{flushleft}
+    El comportamiento del flujo real en un sistema continuo se sitúa entre los dos límites ideales: el \textbf{Flujo en Pistón} (ausencia total de mezcla axial es decir $0\%$ de la mezcla) y la \textbf{Mezcla Perfecta} (mezcla instantánea y uniforme en todo el volumen es decir $100\%$ de la mezcla). Para caracterizar las desviaciones de la idealidad y cuantificar el grado de mezcla, se emplean las \textbf{Funciones de Danckwerts} o funciones de distribución de edades.
+
+    Considerando un sistema de volumen $V$ atravesado por una corriente de caudal volumétrico $v_0$ (o $F$), definimos los elementos de fluido bajo las siguientes premisas fundamentales:
+\end{flushleft}
+\begin{itemize}
+    \item \textbf{Identidad individual:} Los elementos son lo suficientemente pequeños para conservar su identidad durante su tránsito por el reactor (comportamiento de "paquete" de fluido).
+    \item \textbf{Continuidad macroscópica:} Los elementos son lo suficientemente grandes para que las propiedades intensivas ($\rho, C_i, T$) estén bien definidas y sigan las leyes del continuo.
+\end{itemize}
+
+
+
+\dfn{Distribución de Edades y Tiempos de Residencia}{
+    \begin{itemize}
+        \item \textbf{Edad ($t$):} Tiempo transcurrido desde que un elemento entra al sistema.
+        \item \textbf{Tiempo de residencia ($t_r$):} Edad de un elemento en el instante exacto en que abandona el sistema.
+
+        \item \textbf{Distribución en el interior, $I(t)$:}
+              \begin{equation*}
+                  I(t) = \frac{\text{Fracción de elementos en el interior de edad } t}{\text{Unidad de tiempo}} \quad \rightarrow \quad I(t)\,dt
+              \end{equation*}
+
+        \item \textbf{Distribución en la salida, $E(t)$:}
+              \begin{equation*}
+                  E(t) = \frac{\text{Fracción de elementos en la salida de edad } t}{\text{Unidad de tiempo}} \quad \rightarrow \quad E(t)\,dt
+              \end{equation*}
+              \nt{La función $E(t)$ es la que define propiamente la \textbf{RTD} (\textit{Residence Time Distribution}).}
+    \end{itemize}
+}
+\newpage
+\noindent Ambas funciones lo que representan son las fracciones de elementos de unidad t en el sistema tal y como se ve en el siguiente esquema:
+
+\begin{figure}[h]
+    \begin{center}
+        \begin{tikzpicture}[
+                node distance=2.5cm,
+                block/.style={rectangle, draw, fill=blue!10, thick, minimum width=3cm, minimum height=1.5cm, rounded corners},
+                arrow/.style={->, >=stealth, ultra thick, blue!70!black},
+                label_text/.style={font=\small\itshape, text width=4cm, align=center}
+            ]
+
+            % Nodo central (Sistema)
+            \node (sistema) [block] {\textbf{SISTEMA}};
+
+            % Flecha de entrada
+            \draw [arrow] (-3,0) -- (sistema.west) node[midway, above, black] {$I(t)$};
+
+            % Flecha de salida
+            \draw [arrow] (sistema.east) -- (3,0) node[midway, above, black] {$E(t)$};
+
+            % Explicaciones en la parte inferior
+            \node (descI) [below left=of sistema, xshift=1cm, yshift=1cm, label_text] {
+                $I(t)$: Fracción de elementos en el \textbf{interior} de edad $t$ por unidad de tiempo
+            };
+
+            \node (descE) [below right=of sistema, xshift=-1cm, yshift=1cm, label_text] {
+                $E(t)$: Fracción de elementos en la \textbf{salida} de edad $t$ por unidad de tiempo
+            };
+
+            % Líneas opcionales para conectar leyenda con flechas
+            \draw [dashed, gray] (-2.2,-0.2) -- (descI.north);
+            \draw [dashed, gray] (2.2,-0.2) -- (descE.north);
+        \end{tikzpicture}
+        \caption{Funciones de distribución de edades}
+        \label{fig:distribucion_edades}
+    \end{center}
+\end{figure}
+\noindent si hacemos la integral de ambas funciones en un intervalo se ve mas claramente:
+\begin{equation}
+    \int_{t_1}^{t_2} I(t) dt = \text{Fracción de volumen del sistema de edad comprendida entre } t_1 \text{ y } t_2
+\end{equation}
+\begin{equation}
+    \int_{t_1}^{t_2} E(t) dt = \text{Fracción de elementos en la salida de edad comprendida entre } t_1 \text{ y } t_2
+\end{equation}
+\noindent Y lo mismo ocurre si integramos en el tiempo total:
+\begin{equation}
+    \int_{0}^{\infty} I(t) dt = 1
+\end{equation}
+\begin{equation}
+    \int_{0}^{\infty} E(t) dt = 1
+\end{equation}
+\nt{Es obvio que si hacemos la integral de la funcion $I(t)\,dt$, entre 0 y infinito todos los elementos estan en el interior del sistema, y por tanto como es una fracción la función I es decir un tanto por uno, la integral debe de valer uno. Por otro lado, si hacemos la integral de la funcion $E(t)\,dt$, entre 0 y infinito estamos calculando la fracción de todos los elementos que salen del sistema en todos los tiempos es decir todos los estaran en la corriente de salida, por tanto la integral de la funcion E(t) también vale uno}
+\noindent Tambien es importante ver que cualquier magnitud que se promedie mediante la función $E(t)$lo que se esta calculando es su valor medio, es decir su valor ponderado y por tanto se puede hacer el siguiente calculo:
+\begin{equation}
+    t_R = \frac{V}{F} = \int_{0}^{\infty} t E(t) dt \text{ (tiempo de residencia)}
+\end{equation}
+\noindent Por otra parte si quisieramos que el tiempo fuera adimensional, lo que se haria seria:
+\begin{equation}
+    \theta = \frac{t}{t_R} \implies d\theta = I(\theta) = I(t)\cdot t_R , E(\theta) = E(t)\cdot t_R
+\end{equation}
+\noindent La relación entre ambas es evidente, una vez se han definido ambas funciones y teniendo claro lo que representan, pensando en el ejemplo de un sistema donde metemos unos elementos ese sistema esta en movimiento, y en un momento deben de salir del sistema, por tanto como se observa:
+
+\begin{equation}
+    \underbrace{E}_{\text{Edad salida}} = \underbrace{-\frac{dI}{d\theta}}_{\text{Variación edad interior}}
+\end{equation}
+\nt{El signo negativo indica que la fracción de elementos con una determinada edad en el interior disminuye a medida que estos abandonan el sistema (pasan a la corriente de salida).}
+\noindent Para obtener la relación acumulada, integramos la expresión diferencial considerando que en el instante inicial ($\theta = 0$), la fracción de elementos en el interior es la unidad ($I = 1$):
+
+\begin{align*}
+    \int_{1}^{I} dI          & = -\int_{0}^{\theta} E \, d\theta \quad \text{\scriptsize{Limite entre 1 y I}} \\[10pt]
+    \left[ I \right]_{1}^{I} & = -\int_{0}^{\theta} E \, d\theta                                              \\[10pt]
+    I - 1                    & = -\int_{0}^{\theta} E \, d\theta
+\end{align*}
+
+\noindent Reordenando los términos, obtenemos la expresión final que relaciona ambas funciones de distribución:
+
+\begin{equation}
+    I = 1 - \int_{0}^{\theta} E \, d\theta
+\end{equation}
+\section{Aplicación de las funciones E y I}
+\subsection{Reactor continuo flujo de pistón}
+\noindent entrarian a tiempo 0 iran avanzando a largo de todo el reactor y cuando el tiempo sea el de residencia esos elementos saldran del sistema, pero todos a la vez por tanto para cualquier tiempo inferior al tiempo de residencia todos los elementos estaran dentro del sistema y por tanto $I=1$, pero para cualquier tiempo superior al de residencia o dicho de forma $\theta>1$ no quedara ningun elemento dentro del sistema y por tanto $I=0$, esto matematicamente se conoce como la funcion en escalon unitario.
+\begin{figure}[htbp]
+    \centering
+    % Parte superior: Ecuaciones y condiciones
+    \begin{minipage}{0.4\textwidth}
+        \begin{align*}
+             & \text{Para } t \leq t_R \text{ ó } \theta \leq 1 \implies I = 1 \\
+             & \text{Para } t > t_R \text{ ó } \theta > 1 \implies I = 0
+        \end{align*}
+    \end{minipage}
+    \hfill
+    % Parte derecha: Representación gráfica con TikZ (MÁS ANCHA)
+    \begin{minipage}{0.55\textwidth}
+        \begin{tikzpicture}[xscale=1.5, yscale=0.8] % Aumentado xscale para ensanchar
+            % Ejes
+            \draw[->, thick] (0,0) -- (4.5,0) node[below] {$\theta$};
+            \draw[->, thick] (0,0) -- (0,3) node[left] {$I$};
+
+            % Curvas de dispersión (líneas verdes discontinuas)
+            \draw[green!60!black, thick, dashed] (0,2.4) .. controls (1.5,2.3) and (2.5,1.5) .. (3,0.1);
+            \draw[green!60!black, thick, dashed] (0,2.3) .. controls (1.2,2.1) and (2.0,1.0) .. (2.5,0.05);
+            \draw[green!60!black, thick, dashed] (0,2.2) .. controls (0.8,2.0) and (1.5,0.5) .. (2.0,0);
+
+            % Función escalón ideal (Flujo Pistón)
+            \draw[ultra thick] (0,2.5) -- (2.5,2.5); % El escalón ideal es una línea recta
+            \draw[ultra thick] (2.5,2.5) -- (2.5,0); % Cae verticalmente en theta=1 (escalado a 2.5)
+            \draw[ultra thick] (2.5,0) -- (4,0);
+
+            % Etiqueta del 1 en el eje theta (escalado para coincidir con el escalón)
+            \draw[blue, thick] (2.5,0.1) -- (2.5,-0.1) node[below] {$1$};
+
+            % Leyenda manual
+            \draw[fill=white, draw=black, thin] (2.6, 2.9) rectangle (4.4, 2.1);
+            \draw[ultra thick] (2.7, 2.7) -- (3.0, 2.7);
+            \node[right, font=\scriptsize] at (3.0, 2.7) {Flujo pistón};
+            \draw[green!60!black, thick, dashed] (2.7, 2.3) -- (3.0, 2.3);
+            \node[right, font=\scriptsize] at (3.0, 2.3) {Flujo no ideal};
+        \end{tikzpicture}
+    \end{minipage}
+
+    \caption{Representación de la función de distribución interna para flujo ideal y desviaciones por dispersión.}
+    \label{fig:distribucion_interna_escalon_ancha}
+\end{figure}
+
+\vspace{0.5cm}
+\begin{flushleft}
+    \textbf{Función en escalón unidad}
+\end{flushleft}
+\begin{equation}
+    \begin{aligned}
+        U(x - x_0) & = 0 \quad x < x_0 \\
+        U(x - x_0) & = 1 \quad x > x_0
+    \end{aligned}
+    \hspace{2cm}
+    \color{red} I = 1 - U(x - x_0)
+\end{equation}
+\noindent Donde tal y como se puede observar en la grafica anterior, se ve la idealización y aproximaciones del flujo pistón.
+Si ahora lo hacemos para la función E tenemos lo siguiente:
+\begin{figure}[htbp]
+    \centering
+    % Parte superior: Ecuaciones y condiciones para E
+    \begin{minipage}{0.4\textwidth}
+        \begin{align*}
+             & \text{Para } t = t_R \text{ ó } \theta = 1 \implies E = \infty  \\
+             & \text{Para } t \neq t_R \text{ ó } \theta \neq 1 \implies E = 0
+        \end{align*}
+    \end{minipage}
+    \hfill
+    % Parte derecha: Representación gráfica (Función Impulso y Dispersión)
+    \begin{minipage}{0.55\textwidth}
+        \begin{tikzpicture}[xscale=1.5, yscale=0.8]
+            % Ejes
+            \draw[->, thick] (0,0) -- (4.5,0) node[below] {$\theta$};
+            \draw[->, thick] (0,0) -- (0,3.5) node[left] {$E$};
+
+            % Curvas de dispersión (Campanas de Gauss - Líneas verdes discontinuas)
+            % Representan el flujo real alejándose de la idealidad
+            \draw[green!60!black, thick, dashed] (0.5,0) .. controls (2.2,0) and (2.2,2.8) .. (2.5,2.8) .. controls (2.8,2.8) and (2.8,0) .. (4.5,0);
+            \draw[green!60!black, thick, dashed] (1.2,0) .. controls (2.3,0) and (2.3,2.2) .. (2.5,2.2) .. controls (2.7,2.2) and (2.7,0) .. (3.8,0);
+            \draw[green!60!black, thick, dashed] (1.8,0) .. controls (2.4,0) and (2.4,1.5) .. (2.5,1.5) .. controls (2.6,1.5) and (2.6,0) .. (3.2,0);
+
+            % Función Impulso ideal (Delta de Dirac - Flujo Pistón)
+            \draw[ultra thick, blue!80!black, ->] (2.5,0) -- (2.5,3.2) node[above] {$\infty$};
+
+            % Etiqueta del 1 en el eje theta
+            \draw[blue, thick] (2.5,0.1) -- (2.5,-0.1) node[below] {$1$};
+
+            % Leyenda manual
+            \draw[fill=white, draw=black, thin] (2.6, 3.4) rectangle (4.4, 2.6);
+            \draw[ultra thick, blue!80!black, ->] (2.7, 3.2) -- (3.0, 3.2);
+            \node[right, font=\scriptsize] at (3.0, 3.2) {Flujo pistón};
+            \draw[green!60!black, thick, dashed] (2.7, 2.8) -- (3.0, 2.8);
+            \node[right, font=\scriptsize] at (3.0, 2.8) {Flujo no ideal};
+        \end{tikzpicture}
+    \end{minipage}
+
+    \caption{Representación de la función de distribución de salida ($E$) para flujo pistón ideal (impulso) y sistemas con dispersión (curvas de campana).}
+    \label{fig:distribucion_salida_impulso}
+\end{figure}
+
+\vspace{0.5cm}
+\begin{flushleft}
+    \textbf{Función impulso unidad o delta de Dirac}
+\end{flushleft}
+\begin{equation*}
+    \begin{aligned}
+        \delta(x - x_0) & = 0 \quad x \neq x_0   \\
+        \delta(x - x_0) & = \infty \quad x = x_0
+    \end{aligned}
+    \hspace{2cm}
+    \color{red} E = \delta(\theta - 1)
+\end{equation*}
+
+
+\nt{Como para cualquier t que sea el tiempo de residencia todos los elementos salen del sistema, y como todos salen en un instante, es decir, un punto, por eso la función E es infinito. Al ser en un instante (estaría dividido entre 0), el valor es $\infty$. Para cualquier otro tiempo $\theta \neq 1$, no quedará ningún elemento dentro del sistema y por tanto $E=0$.}
+\noindent La función impulso se representa matemáticamente como la delta de Dirac, es decir:
+\begin{equation}
+    \begin{cases}
+        \delta(x-x_0) = 0      & \quad x \neq x_0 \\
+        \delta(x-x_0) = \infty & \quad x = x_0
+    \end{cases}
+    \hspace{2cm}
+    \color{red} E = \delta(\theta - 1)
+\end{equation}
+
+\cor{Importante}{Representaciones de nuestros sistemas de la función E con un máximo en $\theta = 1$ nos indican que el reactor es de tipo ideal, es decir, flujo pistón. Los que estén próximos a ello serán reactores tubulares con comportamientos cercanos a la idealidad, es decir, al flujo pistón.}
+\subsection{Reactor continuo mezcla perfecta (RCMP)}
+\noindent En este reactor la mezcla es perfecta, es decir, hay una homogeneización completa en todo el sistema. Por tanto, la corriente de salida es idéntica a la del interior del reactor, por lo que la función E será idéntica a la I.
+\begin{figure}[htbp]
+    \centering
+
+    %==================== PARTE IZQUIERDA ====================
+    \begin{minipage}{0.4\textwidth}
+        \begin{align}
+            E                      & = I                                                                   \nonumber \\[6pt]
+            E                      & = -\frac{dI}{d\theta} \implies I = -\frac{dI}{d\theta} \label{eq:E_I}           \\[8pt]
+            d\theta                & = -\frac{dI}{I}                                                       \nonumber \\[8pt]
+            \theta                 & = -\ln I                                                              \nonumber \\[6pt]
+            \mathbf{\color{red} E} & \mathbf{\color{red} = I = \exp(-\theta)}
+        \end{align}
+
+    \end{minipage}
+    \hfill
+    %==================== GRAFICA ====================
+    \begin{minipage}{0.55\textwidth}
+
+        \begin{tikzpicture}[xscale=1.5,yscale=1.5]
+
+            %---------------- EJES ----------------
+            \draw[->, thick, blue!80!black]
+            (0,0) -- (3.5,0)
+            node[below, black] {$\theta$};
+
+            \draw[->, thick, blue!80!black]
+            (0,0) -- (0,1.5)
+            node[left, black] {$E,\ I$};
+
+            %---------------- CURVAS NO IDEALES ----------------
+            % Ahora parten desde el origen
+
+            \draw[green!60!black, dashed, thick]
+            (0,0)
+            .. controls (0.02,1.15) and (0.10,1.05)
+            .. (0.20,0.95)
+            .. controls (0.45,0.65) and (0.85,0.20)
+            .. (3,0);
+
+            \draw[green!60!black, dashed, thick]
+            (0,0)
+            .. controls (0.04,1.05) and (0.15,0.92)
+            .. (0.35,0.75)
+            .. controls (0.70,0.40) and (1.30,0.08)
+            .. (3,0);
+
+            \draw[green!60!black, dashed, thick]
+            (0,0)
+            .. controls (0.01,0.90) and (0.08,0.72)
+            .. (0.28,0.52)
+            .. controls (0.60,0.20) and (1.50,0.03)
+            .. (3,0);
+
+            %---------------- CURVA IDEAL ----------------
+            \draw[ultra thick, black]
+            (0,1.4)
+            .. controls (0.5,0.6) and (1.5,0.1)
+            .. (3,0);
+
+            %---------------- MARCA theta = 1 ----------------
+            \draw[blue, thick]
+            (2.5,0.05) -- (2.5,-0.05);
+
+            \node[below] at (2.5,-0.05) {$1$};
+
+            %---------------- LEYENDA ----------------
+            % Separada ligeramente para que no atraviesen el texto
+
+            \matrix[
+                draw,
+                fill=white,
+                font=\scriptsize,
+                anchor=north east,
+                row sep=2pt,
+                inner sep=4pt
+            ]
+            at (3.72,1.6)
+            {
+                \draw[ultra thick, black]
+                (0,0) -- (0.45,0);
+                 &
+                \node[anchor=west] {Comportamiento Ideal};
+                \\
+
+                \draw[green!60!black, thick, dashed]
+                (0,0) -- (0.45,0);
+                 &
+                \node[anchor=west] {Comportamiento No Ideal};
+                \\
+            };
+
+        \end{tikzpicture}
+
+    \end{minipage}
+
+    %==================== NOTA FUERA DE LA FIGURA ====================
+
+    \caption{
+        Distribución de edades en un RCMP. Comparación entre el comportamiento exponencial ideal y las desviaciones típicas representadas por las curvas no ideales.
+    }
+
+    \label{fig:RCMP_distribucion_final}
+
+\end{figure}
+
+%==================== NOTA EXTERNA ====================
+
+\vspace{0.3cm}
+
+\nt{En un reactor de mezcla perfecta ideal, la probabilidad de que un elemento de fluido salga ($E$) es exactamente igual a la fracción de elementos que aún permanecen en su interior ($I$).}
+\section{Experimentos estímulo-respuesta}
+
+\noindent En este apartado se estudia cómo determinar experimentalmente las funciones de distribución de edades ($E$ o $I$). El procedimiento estándar consiste en realizar experimentos de \textbf{estímulo-respuesta}, los cuales se basan en introducir una perturbación (trazador) en la entrada y analizar su evolución en la salida. Existen dos tipos principales:
+\begin{itemize}
+    \item Estimulo en \textbf{impulso} (inyección instantánea).
+    \item Estimulo en \textbf{escalón} (inyección continua).
+\end{itemize}
+
+\subsection{Estímulo en escalón o estímulo continuo}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[node distance=2cm, auto]
+        % El Reactor (Caja verde)
+        \draw[green!60!black, thick] (0,0) rectangle (2.5,1.8);
+        \node at (1.25,0.9) {\huge $V$};
+
+        % Corriente de entrada
+        \draw[->, thick, green!60!black] (-2,0.9) -- (0,0.9);
+        \node[anchor=east] at (-2,0.9) {\large $F$};
+        \node[below, red] at (-1.5,0.9) {$C_{B0}$};
+
+        % Inyección de trazador
+        \draw[->, thick, red] (-1.5,1.8) node[above] {$F_B$} -- (-1.5,0.9);
+
+        % Corriente de salida
+        \draw[->, thick, green!60!black] (2.5,0.9) -- (4.5,0.9);
+
+        % Indicador de medida
+        \draw[<-, thick, red] (2.5,1.1) .. controls (3,1.5) .. (3.5,1.5) node[right] {medir $C_B$};
+    \end{tikzpicture}
+    \caption{Esquema de un experimento de estímulo en escalón.}
+    \label{fig:experimento_estimulo_escalon}
+\end{figure}
+\begin{flushleft}
+    En este experimento, se mantiene un caudal constante $F$ de disolvente a través de un reactor de volumen $V$. En un instante determinado ($t=0$), se introduce de forma continua una corriente de trazador $B$ (sustancia inerte y fácilmente medible, por ejemplo, mediante colorimetría o conductividad).
+
+    Para no alterar la reología del sistema, el caudal del trazador ($F_B$) debe ser despreciable frente al caudal principal ($F_B \ll F$). La mezcla de ambas corrientes resulta en una concentración de entrada constante $C_{B0}$. A partir del inicio de la inyección, se monitoriza la concentración de salida $C_B(t)$ hasta que el sistema alcanza el estado estacionario, momento en el cual $C_B = C_{B0}$.
+
+    A esta respuesta del sistema se le denomina \textbf{Función respuesta estímulo en escalón} ($F_{ee}$ o simplemente curva $F$), y se define de forma adimensional como:
+\end{flushleft}
+\begin{equation}
+    \mathbf{F_{ee}(t) = \frac{C_B(t)}{C_{B0}}}
+\end{equation}
+
+\noindent Las condiciones experimentales que deben cumplirse son:
+\begin{itemize}
+    \item $F_B \ll F$ (Caudal de trazador despreciable).
+    \item $C_{B0}$: Concentración constante del trazador en la alimentación para $t \ge 0$.
+    \item $F_{ee} \in [0, 1]$ (Variable normalizada).
+\end{itemize}
+
+\noindent Los datos obtenidos se suelen tabular para su posterior tratamiento numérico:
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{ccc}
+        \hline
+        \textbf{Tiempo ($t$)} & \textbf{Concentración ($C_{B}$)} & \textbf{Función $F_{ee}$} \\ \hline
+        0                     & 0                                & 0                         \\
+        $t_i$                 & $C_{B,i}$                        & $C_{B,i}/C_{B0}$          \\
+        $\vdots$              & $\vdots$                         & $\vdots$                  \\
+        $t_{\infty}$          & $C_{B0}$                         & 1                         \\ \hline
+    \end{tabular}
+    \caption{Datos experimentales de concentración y respuesta en escalón.}
+    \label{tab:concentracion_tiempo}
+\end{table}
+\subsubsection{Balance al estado no estacionario}
+\begin{alignat}{2}
+     & \text{Balance: }                &  & \frac{d}{dt} \left( C_{B0} \cdot V \cdot \int_{0}^{t} I(t) \, dt \right) = F \cdot C_{B0} - F \cdot C_B \nonumber \\[10pt]
+     & \text{Derivando la integral: }  &  & C_{B0} \cdot V \cdot I(t) = F \cdot C_{B0} - F \cdot C_B                                                \nonumber \\[10pt]
+     & \text{Despejando } I(t):        &  & I(t) = \frac{F}{V} \frac{C_{B0}}{C_{B0}} - \frac{F}{V} \frac{C_B}{C_{B0}}                               \nonumber \\[10pt]
+     & \text{Sustituyendo } t_R = V/F: &  & I(t) = \frac{1}{t_R} - \frac{1}{t_R} F_{EE}                                                             \nonumber \\[10pt]
+     & \text{Resultado final: }        &  & \mathbf{\color{red} I = 1 - F_{EE}}
+\end{alignat}
+\noindent Ademas relacionando la función $E$ con la función $I$ tal y como se veia en ~\eqref{eq:E_I} tenemos que:
+\begin{equation}
+    E = -\frac{dI}{d\theta} = -\frac{dF_{EE}}{d\theta } \implies\boxed{E = \frac{dF_{EE}}{d\theta}}
+\end{equation}
+\subsection{Estímulo en impulso o estímulo instantáneo}
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[node distance=2cm, auto]
+        % El Reactor (Caja verde)
+        \draw[green!60!black, thick] (0,0) rectangle (2.5,1.8);
+        \node at (1.25,0.9) {\huge $V$};
+
+        % Corriente de entrada
+        \draw[->, thick, green!60!black] (-2,0.9) -- (0,0.9);
+        \node[anchor=east] at (-2,0.9) {\large $F$};
+        \node[below, red] at (-1.5,0.9) {$\delta t$};
+
+        % Inyección de trazador
+        \draw[->, thick, red] (-1.5,1.8) node[above] {$M_B$} -- (-1.5,0.9);
+
+        % Corriente de salida
+        \draw[->, thick, green!60!black] (2.5,0.9) -- (4.5,0.9);
+
+        % Indicador de medida
+        \draw[<-, thick, red] (2.5,1.1) .. controls (3,1.5) .. (3.5,1.5) node[right] {medir $C_B$};
+    \end{tikzpicture}
+    \caption{Esquema de un experimento de estímulo en impulso.}
+    \label{fig:experimento_estimulo_impulso}
+\end{figure}
+\begin{flushleft}
+    En este experimento, se inyecta de forma instantánea una cantidad total de trazador $M_B$ (moles) en la entrada del reactor.
+
+    La inyección debe ser lo suficientemente rápida como para que el trazador se distribuya uniformemente en el reactor antes de que comience el flujo.
+
+    Posteriormente, se mide la concentración instantánea de trazador en la salida $C_B(t)$ a medida que este fluye fuera del reactor.
+
+    A esta respuesta del sistema se le denomina \textbf{Función respuesta estímulo en impulso} ($I$, o simplemente curva $I$), y se define de forma adimensional como:
+\end{flushleft}
+\begin{equation}
+    I(t) = \frac{C_B(t)}{C_{B0}} = \frac{C_B}{\dfrac{M_B}{V}}
+\end{equation}
