@@ -700,3 +700,415 @@ En reactores reales, el patrón de flujo se aparta del modelo ideal. Esta desvia
      & \text{Forma exponencial:}                   &  & (1 - X_A) = \exp(-k \cdot t)                                       & \quad &                                                                        \\[10pt]
      & \text{Cambio a } \theta:                    &  & \mathbf{1 - X_A(\theta) = \exp(-k \cdot t_R \cdot \theta)}         & \quad & \textcolor{gray}{\leftarrow \text{usando } t = t_R \cdot \theta}       \\[10pt]
 \end{alignat*}
+\section{Ejemplos practicos}
+\subsection{Experimento en Escalón}
+
+\noindent normalmente nos daran el tiempo y la concentración, aunque no nos diran si es el ensayo en estimulo o en escalón se puede observar que la concentración llega a un valor estacionario y por tanto es un ensayo en escalón.
+\begin{table}[htbp]
+    \centering
+    \caption{Datos y cálculos del Experimento en Escalón.}
+    \label{tab:excel_escalon_nuevo}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{cccccccccccc}
+            \toprule
+            \textbf{$t$}                        & \textbf{$C_B$} & \textbf{$\theta$} & \textbf{$F_{ee}$} & \textbf{$1-F_{ee}$} & \textbf{$\theta_{medio}$} & \textbf{$E$} & \textbf{$\theta\cdot E$} & \textbf{$\theta^2\cdot E$} & \textbf{$\int E \, d\theta$} & \textbf{$\int \theta E \, d\theta$} & \textbf{$\int \theta^2 E \, d\theta$} \\
+            (min)                               & (mM)           &                   &                   &                     &                           &              &                          &                            &                              &                                     &                                       \\ \midrule
+            0                                   & 0              & 0                 & 0                 & 1                   & 0                         & 0.3          & 0                        & 0                          & -                            & -                                   & -                                     \\
+            2                                   & 3              & 0.2               & 0.06              & 0.94                & 0.1                       & 0.3          & 0.03                     & 0.003                      & 0.03                         & 0.0015                              & 0.00015                               \\
+            4                                   & 6              & 0.4               & 0.12              & 0.88                & 0.3                       & 0.3          & 0.09                     & 0.027                      & 0.06                         & 0.012                               & 0.003                                 \\
+            6                                   & 9              & 0.6               & 0.18              & 0.82                & 0.5                       & 0.3          & 0.15                     & 0.075                      & 0.06                         & 0.024                               & 0.0102                                \\
+            8                                   & 11             & 0.8               & 0.22              & 0.78                & 0.7                       & 0.2          & 0.14                     & 0.098                      & 0.05                         & 0.029                               & 0.0173                                \\
+            \rowcolor{blue!20} 10               & 16             & 1                 & 0.32              & 0.68                & 0.9                       & 0.5          & 0.45                     & 0.405                      & 0.07                         & 0.059                               & 0.0503                                \\
+            \rowcolor{red!20} 12                & 32             & 1.2               & 0.64              & 0.36                & 1.1                       & 1.6          & 1.76                     & 1.936                      & 0.21                         & 0.221                               & 0.2341                                \\
+            14                                  & 49             & 1.4               & 0.98              & 0.02                & 1.3                       & 1.7          & 2.21                     & 2.873                      & 0.33                         & 0.397                               & 0.4809                                \\
+            16                                  & 50             & 1.6               & 1                 & 0                   & 1.5                       & 0.1          & 0.15                     & 0.225                      & 0.18                         & 0.236                               & 0.3098                                \\
+            18                                  & 50             & 1.8               & 1                 & 0                   & 1.7                       & 0            & 0                        & 0                          & 0.01                         & 0.015                               & 0.0225                                \\
+            20                                  & 50             & 2                 & 1                 & 0                   & 1.9                       & 0            & 0                        & 0                          & 0                            & 0                                   & 0                                     \\ \midrule
+            \rowcolor{green!15} \textbf{$\sum$} &                &                   &                   &                     &                           &              &                          &                            & \textbf{1}                   & \textbf{0.9945}                     & \textbf{1.12825}                      \\ \bottomrule
+        \end{tabular}
+    }
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            \rowcolor{orange!20} \textbf{$V$}  & 40 \, \si{L}        \\ \hline
+            \rowcolor{orange!20} \textbf{$F$}  & 4 \, \si{L/min}     \\ \hline
+            \rowcolor{orange!20} \textbf{$FB$} & 0.2 \, \si{mol/min} \\ \hline
+        \end{tabular}
+        \caption{Datos dados por el enunciado del problema.}
+        \vspace{0.5cm}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            \rowcolor{orange!20} \textbf{$t_R$}    & \multicolumn{2}{c|}{10}                  \\ \hline
+            \rowcolor{orange!20} \textbf{$C_{B0}$} & 0.05 \si{mol/L}         & 50 \si{mMol/L} \\ \hline
+        \end{tabular}
+        \vspace{0.2cm}
+        \caption{Parámetros del experimento.}
+        \vspace{0.3cm}
+        \textbf{Nota:} $t_R = V/F$, $C_{B0} = F_{B}/F$
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.55\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.85]
+            \begin{axis}[
+                    xlabel={$\theta$},
+                    ylabel={$E(\theta)$},
+                    grid=major,
+                    xmin=0, xmax=2.2,
+                    ymin=-0.2, ymax=2,
+                    title={Curva de Distribución $E(\theta)$}
+                ]
+                \addplot[thick, blue,smooth, mark=*] coordinates {
+                        (0,0.3)(0.2,0.3)(0.4,0.3)(0.6,0.3)(0.8,0.2)(1,0.5)(1.2,1.6)(1.4,1.7)(1.6,0.1)(1.8,0)(2,0)
+                    };
+            \end{axis}
+        \end{tikzpicture}
+    \end{minipage}
+    \caption{Distribución de tiempos de residencia $E(\theta)$ obtenida a partir del escalón.}
+\end{figure}
+\newpage
+\nt{El dato de $E$ para $t=0$ ($E_0 = 0.3$) puede no suministrarse en el enunciado original. Sin embargo, analizando la tendencia del resto de los datos experimentales, se deduce que el experimento comienza efectivamente en ese valor, procediéndose a realizar la corrección necesaria.}
+\noindent lo primero que hacemos es dividir \textbf{$t/t_R$} y \textbf{$C_B/C_{B0}$} para obtener $\theta$ y $F_{EE}$ la funcion $E$ se obtiene como $E=dF_{EE}/d\theta$ de forma que se sigue el siguiente orden:
+\begin{enumerate}
+    \item Calcular el tiempo de residencia $t_R = V/F$
+
+    \item Obtener el tiempo adimensional $\theta = t/t_R$
+
+    \item Calcular la concentración inicial de B:
+          $C_{B0} = F_{B}/F$
+
+    \item Calcular la función de respuesta al estímulo escalón:
+          \textbf{$F_{EE} = C_{B}/C_{B0}$}
+
+    \item Calcular la función de distribución:
+          \textbf{$E = dF_{EE}/d\theta$}
+
+    \item Calcular $\theta \cdot E$ y $\theta^2 \cdot E$
+
+    \item Calcular las integrales mediante el método de los trapecios
+          (o trapecios acumulados para obtener directamente el sumatorio, que es lo que interesa)
+\end{enumerate}
+\noindent Procedemos a calcular un ejemplo:
+\ex{Las filas seleccionadas corresponden a las resaltadas en \textcolor{blue}{azul} y \textcolor{red}{rojo}:}{
+    \begin{enumerate}
+        \item \textbf{Tiempo de residencia:} $t_R = V/F = 40/4 = 10 \si{min}$
+        \item \textbf{Tiempo adimensional:} $\theta = t/t_R \implies \theta_{blue} = \textcolor{blue}{\frac{10}{10}=1}$ y $\theta_{red} = \textcolor{red}{\frac{12}{10}=1.2}$
+        \item \textbf{Concentración inicial de B:} $C_{B0} = F_{B}/F = \frac{0.2}{4} = 0.05 \si{mol/L} = 50 \si{mMol/L}$
+        \item \textbf{Respuesta al escalón:} $F_{EE} = C_{B}/C_{B0} \implies \textcolor{blue}{\frac{16}{50}=0.32}$ \quad y \quad $\textcolor{red}{\frac{32}{50}=0.64}$
+        \item \textbf{Función de distribución:} $E = \frac{dF_{EE}}{d\theta} = \frac{\textcolor{red}{0.64} - \textcolor{blue}{0.32}}{\textcolor{red}{1.2} - \textcolor{blue}{1}} = 1.6$ (para $t=12$).
+        \item \textbf{Cálculo de momentos:} Se usa el $\theta_{\text{medio}}$.
+              Resultados: $\textcolor{blue}{0.5,\ 0.45,\ 0.405}$ y $\textcolor{red}{1.6,\ 1.76,\ 1.936}$
+        \item \textbf{Integrales por trapecios:}
+              \begin{itemize}
+                  \item $\int E \, d\theta = \frac{(\textcolor{red}{1.6}+\textcolor{blue}{0.5})}{2} \cdot (\textcolor{red}{1.1}-\textcolor{blue}{0.9}) = \textcolor{red}{0.21}$
+                  \item $\int \theta E \, d\theta = \frac{(\textcolor{red}{1.76}+\textcolor{blue}{0.45})}{2} \cdot (\textcolor{red}{1.1}-\textcolor{blue}{0.9}) = \textcolor{red}{0.221}$
+                  \item $\int \theta^2 E \, d\theta = \frac{(\textcolor{red}{1.936}+\textcolor{blue}{0.405})}{2} \cdot (\textcolor{red}{1.1}-\textcolor{blue}{0.9}) = \textcolor{red}{0.2341}$
+              \end{itemize}
+        \item \textbf{Sumatorias finales:} Consultar la Tabla \ref{tab:excel_escalon_nuevo}.
+    \end{enumerate}
+}
+\subsubsection{Modelización}
+\noindent Aunque por la forma de la gráfica se identifica un reactor tubular, el análisis de los momentos confirma el diagnóstico:
+
+\begin{alignat*}{2}
+     & \text{Área total:}           &  & \int_{0}^{\infty} E \, d\theta = 1.00                                                                   \\
+     & \text{Primer momento:} \quad &  & \int_{0}^{\infty} \theta E \, d\theta = 0.9945 \approx 1
+    \quad \textcolor{gray}{(\text{Error } < 5\%, \text{ sin volumen muerto})}                                                                    \\
+     & \text{Varianza:}             &  & \sigma^2 = \int_{0}^{\infty} \theta^2 E \, d\theta - 1 = 1.12825 - 1 = 0.12825                          \\
+     & \text{Conclusión:}           &  & \sigma^2 \in (0; 0.5)\quad \xLongrightarrow{\hspace{1.4cm}} \boxed{\text{Reactor Tubular (Flujo Real)}}
+\end{alignat*}
+\section*{Deducción de la Conversión Acumulada (Orden 1)}
+
+\noindent Partimos del balance de materia para el componente $A$ en el tanque $i$-ésimo de una batería de $n$ tanques en serie de igual volumen:
+
+\begin{equation}
+    k \cdot \tau_i = \frac{X_{Ai} - X_{A,i-1}}{1 - X_{Ai}}
+\end{equation}
+
+\subsection*{1. Despeje de la conversión de salida ($X_{Ai}$)}
+
+Multiplicamos en cruz para eliminar el denominador:
+\begin{equation}
+    k \tau_i (1 - X_{Ai}) = X_{Ai} - X_{A,i-1}
+\end{equation}
+
+Agrupamos los términos que contienen $X_{Ai}$ en el lado derecho:
+\begin{equation}
+    k \tau_i + X_{A,i-1} = X_{Ai} + k \tau_i X_{Ai} \implies k \tau_i + X_{A,i-1} = X_{Ai}(1 + k \tau_i)
+\end{equation}
+
+Despejamos $X_{Ai}$:
+\begin{equation}
+    X_{Ai} = \frac{k \tau_i + X_{A,i-1}}{1 + k \tau_i}
+\end{equation}
+
+\subsection*{2. Transformación a la fracción no reaccionada ($1 - X_{Ai}$)}
+
+Para encontrar la forma recursiva, restamos ambos lados de la unidad:
+\begin{equation}
+    1 - X_{Ai} = 1 - \frac{k \tau_i + X_{A,i-1}}{1 + k \tau_i} = \frac{(1 + k \tau_i) - (k \tau_i + X_{A,i-1})}{1 + k \tau_i}
+\end{equation}
+
+Simplificando los términos $k \tau_i$:
+\begin{equation}
+    1 - X_{Ai} = \frac{1 - X_{A,i-1}}{1 + k \tau_i}
+\end{equation}
+
+\subsection*{3. Aplicación de la serie para $n$ tanques}
+
+\noindent Como la relación se repite para cada tanque desde $i=1$ hasta $n$, y sabiendo que a la entrada del primer tanque la conversión es nula ($X_{A0} = 0$):
+
+\begin{itemize}
+    \item \textbf{Tanque 1:} $(1 - X_{A1}) = \frac{1}{1 + k \tau_i}$
+    \item \textbf{Tanque 2:} $(1 - X_{A2}) = \frac{1 - X_{A1}}{1 + k \tau_i} = \frac{1}{(1 + k \tau_i)^2}$
+    \item \textbf{Tanque $n$:} $(1 - X_{An}) = \frac{1}{(1 + k \tau_i)^n}$
+\end{itemize}
+
+\subsection*{4. Expresión Final}
+
+\noindent Aplicando la resolución en cascada para una batería de $n=8$ tanques suponiendo $k\tau_i = 0.25$ al no disponer del dato:
+\begin{alignat*}{2}
+     & \text{Conversión tras el tanque 7:} \quad &  & X_{A7} = 1 - \frac{1}{(1 + 0.25)^7} = \mathbf{0.7903} \\
+     & \text{Conversión tras el tanque 8:}       &  & X_{AS} = 1 - \frac{1}{(1 + 0.25)^8} = \mathbf{0.8323}
+\end{alignat*}
+
+\noindent El salto de conversión en el último tanque es:
+\begin{equation}
+    \Delta X_A = X_{A8} - X_{A7} = 0.8323 - 0.7903 = 0.042 \implies \mathbf{4.2\%}
+\end{equation}
+
+\newpage
+\subsection{Experimento de Impulso}
+
+\nt{En este caso es conocido el tiempo y la concentración de B, pero se desconoce tanto el caudal como el volumen como el número de moles que se meten en la inyección del impulso}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Datos y cálculos del Experimento de Impulso.}
+    \label{tab:excel_impulso_nuevo}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{cccccccccccc}
+            \toprule
+            \textbf{$t$}                        & \textbf{$C_B$} & \textbf{$t\cdot C_B$} & \textbf{$\int t C_B \, dt$} & \textbf{$\int C_B \, dt$} & \textbf{$\theta$} & \textbf{$E$} & \textbf{$\theta\cdot E$} & \textbf{$\theta^2\cdot E$} & \textbf{$\int E \, d\theta$} & \textbf{$\int \theta E \, d\theta$} & \textbf{$\int \theta^2 E \, d\theta$} \\
+            (min)                               & (mg/L)         &                       &                             &                           &                   &              &                          &                            &                              &                                     &                                       \\ \midrule
+            0                                   & 0              & 0                     & -                           & -                         & 0                 & 0            & 0                        & 0                          & -                            & -                                   & -                                     \\
+            1                                   & 9              & 9                     & 4.5                         & 4.5                       & 0.066             & 0.085        & 0.006                    & 0.000                      & 0.003                        & 0.000                               & 0.000                                 \\
+            2                                   & 57             & 114                   & 61.5                        & 33                        & 0.132             & 0.540        & 0.071                    & 0.009                      & 0.021                        & 0.003                               & 0.000                                 \\
+            3                                   & 81             & 243                   & 178.5                       & 69                        & 0.198             & 0.767        & 0.152                    & 0.030                      & 0.043                        & 0.007                               & 0.001                                 \\
+            4                                   & 90             & 360                   & 301.5                       & 85.5                      & 0.264             & 0.853        & 0.225                    & 0.059                      & 0.053                        & 0.012                               & 0.003                                 \\
+            5                                   & 90             & 450                   & 405                         & 90                        & 0.330             & 0.853        & 0.281                    & 0.093                      & 0.056                        & 0.017                               & 0.005                                 \\
+            6                                   & 86             & 516                   & 483                         & 88                        & 0.396             & 0.815        & 0.322                    & 0.128                      & 0.055                        & 0.020                               & 0.007                                 \\
+            8                                   & 77             & 616                   & 1132                        & 163                       & 0.528             & 0.729        & 0.385                    & 0.203                      & 0.102                        & 0.047                               & 0.022                                 \\
+            10                                  & 67             & 670                   & 1286                        & 144                       & 0.660             & 0.635        & 0.419                    & 0.276                      & 0.090                        & 0.053                               & 0.032                                 \\
+            \rowcolor{blue!20} 15               & 47             & 705                   & 3437.5                      & 285                       & 0.989             & 0.445        & 0.440                    & 0.436                      & 0.178                        & 0.142                               & 0.117                                 \\
+            \rowcolor{red!20} 20                & 32             & 640                   & 3362.5                      & 197.5                     & 1.319             & 0.303        & 0.400                    & 0.528                      & 0.123                        & 0.139                               & 0.159                                 \\
+            30                                  & 15             & 450                   & 5450                        & 235                       & 1.979             & 0.142        & 0.281                    & 0.556                      & 0.147                        & 0.225                               & 0.357                                 \\
+            41                                  & 7              & 287                   & 4053.5                      & 121                       & 2.704             & 0.066        & 0.179                    & 0.485                      & 0.076                        & 0.167                               & 0.378                                 \\
+            52                                  & 3              & 156                   & 2436.5                      & 55                        & 3.430             & 0.028        & 0.097                    & 0.334                      & 0.034                        & 0.100                               & 0.297                                 \\
+            67                                  & 1              & 67                    & 1672.5                      & 30                        & 4.419             & 0.009        & 0.042                    & 0.185                      & 0.019                        & 0.069                               & 0.257                                 \\ \midrule
+            \rowcolor{green!15} \textbf{$\sum$} &                &                       & \textbf{24264.5}            & \textbf{1600.5}           &                   &              &                          &                            & \textbf{1}                   & \textbf{1}                          & \textbf{1.636}                        \\ \bottomrule
+        \end{tabular}
+    }
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            \rowcolor{orange!20} \textbf{$t_R$}    & 15.161  \\ \hline
+            \rowcolor{orange!20} \textbf{$C_{BR}$} & 105.570 \\ \hline
+        \end{tabular}
+
+        \vspace{0.5cm}
+        \begin{tabular}{|c|c|}
+            \hline
+            \rowcolor{orange!20} \textbf{$\sigma^2$} & 0.636 \\ \hline
+            \rowcolor{orange!20} \textbf{$R$}        & 1.747 \\ \hline
+        \end{tabular}
+        \vspace{0.2cm}
+        \caption{Parámetros del experimento.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.55\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.85]
+            \begin{axis}[
+                    xlabel={$\theta$},
+                    ylabel={$E(\theta)$},
+                    grid=major,
+                    xmin=0, xmax=5,
+                    ymin=0, ymax=1,
+                    title={Curva de Distribución $E(\theta)$}
+                ]
+                \addplot[thick, red, smooth, mark=*] coordinates {
+                        (0,0)(0.066,0.085)(0.132,0.54)(0.198,0.767)(0.264,0.853)(0.33,0.853)(0.396,0.815)(0.528,0.729)(0.66,0.635)(0.989,0.445)(1.319,0.303)(1.979,0.142)(2.704,0.066)(3.43,0.028)(4.42,0.009)
+                    };
+            \end{axis}
+        \end{tikzpicture}
+    \end{minipage}
+    \caption{Distribución de tiempos de residencia $E(\theta)$ obtenida a partir del impulso.}
+\end{figure}
+\nt{Aunque se aclara que es el experimento en impulso, se puede observar clarammente que partimos desde una concentración $C_B = 0$ y volvemos a dicho valor}
+\begin{alignat*}{2}
+     & \text{Normalización:}          &  & \int_{0}^{\infty} E \, d\theta = 1 \xLongrightarrow{\hspace{1cm}} \textcolor{gray}{\int_{0}^{\infty} C \, d\theta = 1}                                       \\[10pt]
+     & \text{Sustituyendo } E:        &  & \int_{0}^{\infty} \frac{C_B}{C_{BR}} \, d\theta = 1 \xLongrightarrow{\hspace{1cm}} \textcolor{gray}{\int_{0}^{\infty} \frac{C_B}{m_B/V} d\theta = 1}         \\[10pt]
+     & \text{Reordenando:}            &  & \int_{0}^{\infty} C_B \, d\theta = \frac{m_B}{F} \xLongrightarrow{\hspace{1cm}} \textcolor{gray}{C_{BR} = \frac{m_B}{V}}                                     \\[18pt]
+     & \text{Primer momento:}         &  & \int_{0}^{\infty} \theta E \, d\theta = 1 \xLongrightarrow{\hspace{1cm}} \textcolor{gray}{\int_{0}^{\infty} \theta C \, d\theta = 1}                         \\[10pt]
+     & \text{Sustituyendo variables:} &  & \int_{0}^{\infty} \frac{t}{t_R} \cdot \frac{C_B}{C_{BR}} \cdot \frac{dt}{t_R} = 1 \xLongrightarrow{\hspace{1cm}} \textcolor{gray}{\theta = \frac{t}{t_R}}    \\[10pt]
+     & \text{Agrupando términos:}     &  & \int_{0}^{\infty} t C_B dt = t_R^2 C_{BR} \xLongrightarrow{\hspace{1cm}} \textcolor{gray}{t_R^2 \frac{m_B}{V}}                                               \\[10pt]
+     & \text{Usando } t_R = V/F:      &  & \int_{0}^{\infty} t C_B dt = \frac{V^2}{F^2} \frac{m_B}{V} = \frac{m_B V}{F^2}                                                                               \\[18pt]
+     & \text{Finalmente:}             &  & \boxed{t_R = \frac{\int_{0}^{\infty} t C_B dt}{\int_{0}^{\infty} C_B dt}} \xLongrightarrow{\hspace{1cm}} \textcolor{gray}{\text{Tiempo medio de residencia}} \\[15pt]
+     & \text{Además:}                 &  & \boxed{C_{BR} = \frac{m_B/V}{F/V} = \frac{\int_{0}^{\infty} C_B dt}{t_R}}
+\end{alignat*}
+\ex{Las filas seleccionadas corresponden a las resaltadas en \textcolor{blue}{azul} y \textcolor{red}{rojo}:}{
+    \begin{enumerate}
+        \item \textbf{Tiempo de residencia:} $= \frac{\sum \int t C_B \, dt }{\sum \int C_B \, dt}=  24264.5/1600.5 = 15.161 \si{min}$
+        \item \textbf{Tiempo adimensional:} $\theta = t/t_R \implies \theta_{blue} = \textcolor{blue}{\frac{15}{15.161}=0.989}$ y $\theta_{red} = \textcolor{red}{\frac{20}{15.161}=1.319}$
+        \item \textbf{Concentración inicial de B:} $\frac{\sum \int C_B \,dt}{t_R} = \frac{1600.5}{15.161} = 105.570 \si{mMol/L}$
+        \item \textbf{Función de distribución:} $E = \frac{C_B}{C_{BR}} = \textcolor{red}{\frac{32}{105.57}}=0.303 \quad y \quad \textcolor{blue}{\frac{47}{105.57}}=0.445$
+        \item \textbf{Cálculo de momentos:} Se usa el $\theta_{\text{medio}}$.
+              Resultados: $\textcolor{blue}{0.445,\ 0.440,\ 0.436}$ y $\textcolor{red}{0.303,\ 0.400,\ 0.528}$
+        \item \textbf{Integrales por trapecios:}
+              \begin{itemize}
+                  \item $\int E \, d\theta = \frac{(\textcolor{red}{0.303}+\textcolor{blue}{0.445})}{2} \cdot (\textcolor{red}{1.319}-\textcolor{blue}{0.989}) = \textcolor{red}{0.173}$
+                  \item $\int \theta E \, d\theta = \frac{(\textcolor{red}{0.400}+\textcolor{blue}{0.440})}{2} \cdot (\textcolor{red}{1.319}-\textcolor{blue}{0.989}) = \textcolor{red}{0.221}$
+                  \item $\int \theta^2 E \, d\theta = \frac{(\textcolor{red}{0.528}+\textcolor{blue}{0.436})}{2} \cdot (\textcolor{red}{1.319}-\textcolor{blue}{0.989}) = \textcolor{red}{0.2341}$
+              \end{itemize}
+        \item \textbf{Sumatorias finales:} Consultar la Tabla \ref{tab:excel_impulso_nuevo}.
+    \end{enumerate}
+}
+\subsubsection{Modelización}
+\begin{alignat*}{2}
+     & \text{Área total:}           &  & \int_{0}^{\infty} E \, d\theta = 1.00                                                                  \\
+     & \text{Primer momento:} \quad &  & \int_{0}^{\infty} \theta E \, d\theta = 1                                                              \\
+     & \text{Varianza:}             &  & \sigma^2 = \int_{0}^{\infty} \theta^2 E \, d\theta - 1 = 1.636 - 1 = 0.636                             \\
+     & \text{Conclusión:}           &  & \sigma^2 \in (0.5; 1)\quad \xLongrightarrow{\hspace{1.4cm}} \boxed{\text{Reactor tipo tanque agitado}}
+\end{alignat*}
+\noindent la forma mas correcta de resolverlo, es mediante la modelización del reactor flujo pistón con recirculación, ya que agrega cierto grado de mezcla, y el de los tanques mezclados, al no tener un volumen estanco, no tiene sentido aplicarlo.
+\begin{equation}
+    \sigma^2 = \frac{R}{1+R} \implies R = 1.747
+\end{equation}
+\begin{equation}
+    \tau = (1+R) \cdot C_{AR} \int_{X_{Ae}}^{X_{As}} \frac{d_{XA}}{r_A} \implies \tau = (1+R) \int_{\dfrac{X_{AR}}{R+1}}^{X_{As}} \frac{d_{XA}}{k\cdot (1-X_A)}
+\end{equation}
+\noindent tal y como se explicaba en la ecuacíon %%! Terminar mañana 
+\newpage
+\subsection{Modelos Mezclados}
+
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption{Cálculos detallados para ejemplo de modelos mezclados}
+    \label{tab:excel_escalon}
+    \begin{tabular}{ccccccc}
+        \toprule
+        \textbf{$t$}                        & \textbf{$C_B$} & \textbf{$\theta$} & \textbf{$E(\theta)$} & \textbf{$\theta\cdot E$} & \textbf{$\int E \, d\theta$} & \textbf{$\int E\cdot\theta \, d\theta$} \\
+        (min)                               & (mg/L)         & ($t/t_R$)         & -                    & -                        & (Normalizado)                & (Momento)                               \\ \midrule
+        0                                   & -              & 0                 & 1                    & 0                        & -                            & -                                       \\
+        20                                  & 0.1            & 0.2083            & 0.8                  & 0.1667                   & 0.1875                       & 0.0174                                  \\
+        40                                  & 0.079          & 0.4167            & 0.632                & 0.2633                   & 0.1492                       & 0.0448                                  \\
+        60                                  & 0.063          & 0.625             & 0.504                & 0.315                    & 0.1183                       & 0.0602                                  \\
+        80                                  & 0.05           & 0.8333            & 0.4                  & 0.3333                   & 0.0942                       & 0.0675                                  \\
+        100                                 & 0.039          & 1.0417            & 0.312                & 0.325                    & 0.0742                       & 0.0686                                  \\
+        \rowcolor{blue!20} 120              & 0.031          & 1.25              & 0.248                & 0.31                     & 0.0583                       & 0.0661                                  \\
+        \rowcolor{red!20} 140               & 0.025          & 1.4583            & 0.2                  & 0.2917                   & 0.0467                       & 0.0627                                  \\
+        160                                 & 0.019          & 1.6667            & 0.152                & 0.2533                   & 0.0367                       & 0.0568                                  \\
+        180                                 & 0.015          & 1.875             & 0.12                 & 0.225                    & 0.0283                       & 0.0498                                  \\
+        200                                 & 0.012          & 2.0833            & 0.096                & 0.2                      & 0.0225                       & 0.0443                                  \\
+        228                                 & 0.01           & 2.375             & 0.08                 & 0.19                     & 0.0257                       & 0.0569                                  \\
+        240                                 & 0.008          & 2.5               & 0.064                & 0.16                     & 0.0090                       & 0.0219                                  \\
+        260                                 & 0.006          & 2.7083            & 0.048                & 0.13                     & 0.0117                       & 0.0302                                  \\
+        280                                 & 0.005          & 2.9167            & 0.04                 & 0.1167                   & 0.0092                       & 0.0257                                  \\
+        300                                 & 0.004          & 3.125             & 0.032                & 0.1                      & 0.0075                       & 0.0226                                  \\
+        360                                 & 0.002          & 3.75              & 0.016                & 0.06                     & 0.0150                       & 0.0500                                  \\
+        420                                 & 0.001          & 4.375             & 0.008                & 0.035                    & 0.0075                       & 0.0297                                  \\
+        480                                 & 0.0005         & 5                 & 0.004                & 0.02                     & 0.0038                       & 0.0172                                  \\ \midrule
+        \rowcolor{green!15} \textbf{$\sum$} &                &                   &                      &                          & \textbf{0.9051}              & \textbf{0.7923}                         \\ \bottomrule
+    \end{tabular}
+
+    \vspace{0.3cm}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            \rowcolor{orange!20} \textbf{$V$}   & 800 \\ \hline
+            \rowcolor{orange!20} \textbf{$F$}   & 500 \\ \hline
+            \rowcolor{orange!20} \textbf{$m_b$} & 100 \\ \hline
+        \end{tabular}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \begin{tabular}{|c|c|c|}
+            \hline
+            \rowcolor{orange!20} \textbf{$t_R$}    & 1.6                        & 96 \\ \hline
+            \rowcolor{orange!20} \textbf{$C_{B0}$} & \multicolumn{2}{c|}{0.125}      \\ \hline
+        \end{tabular}
+    \end{minipage}
+\end{table}
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.85]
+            \begin{axis}[
+                    xlabel={$\theta$},
+                    ylabel={$E(\theta)$},
+                    ymin=0, ymax=1.1,
+                    xmin=0, xmax=5.5,
+                    grid=major,
+                    title={Curva de Distribución $E(\theta)$}
+                ]
+                \addplot[thick, blue,smooth, mark=*] coordinates {
+                        (0, 1) (0.2083, 0.8) (0.4167, 0.632) (0.625, 0.504)
+                        (0.8333, 0.4) (1.0417, 0.312) (1.25, 0.248) (1.4583, 0.2)
+                        (1.6667, 0.152) (1.875, 0.12) (2.0833, 0.096) (2.375, 0.08)
+                        (2.5, 0.064) (2.7083, 0.048) (2.9167, 0.04) (3.125, 0.032)
+                        (3.75, 0.016) (4.375, 0.008) (5, 0.004)
+                    };
+            \end{axis}
+        \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.85]
+            \begin{axis}[
+                    ybar,
+                    symbolic x coords={Bypass, Vol. Muerto},
+                    xtick=data,
+                    ylabel={\%},
+                    ymin=0, ymax=25,
+                    nodes near coords,
+                    title={Desviaciones detectadas}
+                ]
+                \addplot[fill=orange!60] coordinates {(Bypass,9.49) (Vol. Muerto,20.77)};
+            \end{axis}
+        \end{tikzpicture}
+    \end{minipage}
+    \caption{Curva de distribución de tiempos de residencia $E(\theta)$ y comportamiento del reactor.}
+    \label{fig:comparativa_diagnostico}
+\end{figure}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Parámetro}                          & \textbf{Valor} \\ \midrule
+        Área $\int E \, d\theta$                    & 0.9051         \\
+        $\theta_{medio} = \int \theta E \, d\theta$ & 0.7923         \\ \midrule
+        \textbf{Resultados:}                        &                \\
+        \% Bypass ($1 - \text{Área}$)               & 9.49\%         \\
+        \% Vol. Muerto ($1 - \theta_{medio}$)       & 20.77\%        \\ \bottomrule
+    \end{tabular}
+    \caption{Resultados del diagnóstico hidrodinámico actualizados.}
+    \label{tab:diagnostico}
+\end{table}

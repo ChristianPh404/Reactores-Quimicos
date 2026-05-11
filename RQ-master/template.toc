@@ -74,4 +74,10 @@
 \contentsline {section}{\numberline {6.4}Modelización}{118}{section.6.4}%
 \contentsline {subsection}{\numberline {6.4.1}Ecuaciones de Modelización según la Varianza}{119}{subsection.6.4.1}%
 \contentsline {section}{\numberline {6.5}Modelo de flujo segregado}{120}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Ejemplos practicos}{121}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Experimento en Escalón}{121}{subsection.6.6.1}%
+\contentsline {subsubsection}{Modelización}{122}{section*.75}%
+\contentsline {subsection}{\numberline {6.6.2}Experimento de Impulso}{124}{subsection.6.6.2}%
+\contentsline {subsubsection}{Modelización}{126}{section*.83}%
+\contentsline {subsection}{\numberline {6.6.3}Modelos Mezclados}{127}{subsection.6.6.3}%
 \contentsfinish 

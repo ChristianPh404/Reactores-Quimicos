@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  10 MAY 2026 12:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  11 MAY 2026 03:17
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -839,40 +839,53 @@ File: tikzlibraryfadings.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 File: pgflibraryfadings.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))) (E:\Latex\tex/latex/tcolorbox\tcbposter.code.tex
 Library (tcolorbox): 'tcbposter.code.tex' version '6.9.0'
-)) (E:\Latex\tex/latex/varwidth\varwidth.sty
+)) (E:\Latex\tex/latex/colortbl\colortbl.sty
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
+ (E:\Latex\tex/latex/tools\array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen303
+\ar@mcellbox=\box87
+\extrarowheight=\dimen304
+\NC@list=\toks56
+\extratabsurround=\skip63
+\backup@length=\skip64
+\ar@cellbox=\box88
+)
+\everycr=\toks57
+\minrowclearance=\skip65
+\rownum=\count365
+) (E:\Latex\tex/latex/varwidth\varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box87
-\sift@deathcycles=\count365
-\@vwid@loff=\dimen303
-\@vwid@roff=\dimen304
+\@vwid@box=\box89
+\sift@deathcycles=\count366
+\@vwid@loff=\dimen305
+\@vwid@roff=\dimen306
 )
 ==> First Aid for varwidth.sty applied!
 (E:\Latex\tex/latex/tools\multicol.sty
 Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
-\c@tracingmulticols=\count366
-\mult@box=\box88
-\multicol@leftmargin=\dimen305
-\c@unbalance=\count367
-\c@collectmore=\count368
-\doublecol@number=\count369
-\multicoltolerance=\count370
-\multicolpretolerance=\count371
-\full@width=\dimen306
-\page@free=\dimen307
-\premulticols=\dimen308
-\postmulticols=\dimen309
-\multicolsep=\skip63
-\multicolbaselineskip=\skip64
-\partial@page=\box89
-\last@line=\box90
-\mc@boxedresult=\box91
-\maxbalancingoverflow=\dimen310
-\mult@rightbox=\box92
-\mult@grightbox=\box93
-\mult@firstbox=\box94
-\mult@gfirstbox=\box95
-\@tempa=\box96
-\@tempa=\box97
+\c@tracingmulticols=\count367
+\mult@box=\box90
+\multicol@leftmargin=\dimen307
+\c@unbalance=\count368
+\c@collectmore=\count369
+\doublecol@number=\count370
+\multicoltolerance=\count371
+\multicolpretolerance=\count372
+\full@width=\dimen308
+\page@free=\dimen309
+\premulticols=\dimen310
+\postmulticols=\dimen311
+\multicolsep=\skip66
+\multicolbaselineskip=\skip67
+\partial@page=\box91
+\last@line=\box92
+\mc@boxedresult=\box93
+\maxbalancingoverflow=\dimen312
+\mult@rightbox=\box94
+\mult@grightbox=\box95
+\mult@firstbox=\box96
+\mult@gfirstbox=\box97
 \@tempa=\box98
 \@tempa=\box99
 \@tempa=\box100
@@ -907,25 +920,18 @@ Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
 \@tempa=\box129
 \@tempa=\box130
 \@tempa=\box131
-\c@minrows=\count372
-\c@columnbadness=\count373
-\c@finalcolumnbadness=\count374
-\last@try=\dimen311
-\multicolovershoot=\dimen312
-\multicolundershoot=\dimen313
-\mult@nat@firstbox=\box132
-\colbreak@box=\box133
-\mc@col@check@num=\count375
-\g__mc_curr_col_int=\count376
-) (E:\Latex\tex/latex/tools\array.sty
-Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
-\col@sep=\dimen314
-\ar@mcellbox=\box134
-\extrarowheight=\dimen315
-\NC@list=\toks56
-\extratabsurround=\skip65
-\backup@length=\skip66
-\ar@cellbox=\box135
+\@tempa=\box132
+\@tempa=\box133
+\c@minrows=\count373
+\c@columnbadness=\count374
+\c@finalcolumnbadness=\count375
+\last@try=\dimen313
+\multicolovershoot=\dimen314
+\multicolundershoot=\dimen315
+\mult@nat@firstbox=\box134
+\colbreak@box=\box135
+\mc@col@check@num=\count376
+\g__mc_curr_col_int=\count377
 ) (E:\Latex\tex/latex/tikz-cd\tikz-cd.sty
 Package: tikz-cd 2021/05/04 v1.0 Commutative diagrams with TikZ
  (E:\Latex\tex/latex/tikz-cd\tikzlibrarycd.code.tex (E:\Latex\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarymatrix.code.tex
@@ -940,52 +946,52 @@ File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfarrowlinewidth=\dimen319
 ))) (E:\Latex\tex/latex/algorithm2e\algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count377
+\c@AlgoLine=\count378
  (E:\Latex\tex/latex/base\ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 )
-\algocf@hangindent=\skip67
+\algocf@hangindent=\skip68
  (E:\Latex\tex/latex/ifoddpage\ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count378
+\c@checkoddpage=\count379
 ) (E:\Latex\tex/latex/tools\xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 ) (E:\Latex\tex/latex/relsize\relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
-\skiptotal=\skip68
-\skiplinenumber=\skip69
-\skiprule=\skip70
-\skiphlne=\skip71
-\skiptext=\skip72
-\skiplength=\skip73
-\algomargin=\skip74
-\skipalgocfslide=\skip75
+\skiptotal=\skip69
+\skiplinenumber=\skip70
+\skiprule=\skip71
+\skiphlne=\skip72
+\skiptext=\skip73
+\skiplength=\skip74
+\algomargin=\skip75
+\skipalgocfslide=\skip76
 \algowidth=\dimen320
 \inoutsize=\dimen321
 \inoutindent=\dimen322
 \interspacetitleruled=\dimen323
 \interspacealgoruled=\dimen324
 \interspacetitleboxruled=\dimen325
-\algocf@ruledwidth=\skip76
+\algocf@ruledwidth=\skip77
 \algocf@inoutbox=\box136
 \algocf@inputbox=\box137
-\AlCapSkip=\skip77
-\AlCapHSkip=\skip78
-\algoskipindent=\skip79
+\AlCapSkip=\skip78
+\AlCapHSkip=\skip79
+\algoskipindent=\skip80
 \algocf@nlbox=\box138
 \algocf@hangingbox=\box139
 \algocf@untilbox=\box140
-\algocf@skipuntil=\skip80
+\algocf@skipuntil=\skip81
 \algocf@capbox=\box141
-\algocf@lcaptionbox=\skip81
-\algoheightruledefault=\skip82
-\algoheightrule=\skip83
-\algotitleheightruledefault=\skip84
-\algotitleheightrule=\skip85
-\c@algocfline=\count379
-\c@algocfproc=\count380
-\c@algocf=\count381
+\algocf@lcaptionbox=\skip82
+\algoheightruledefault=\skip83
+\algoheightrule=\skip84
+\algotitleheightruledefault=\skip85
+\algotitleheightrule=\skip86
+\c@algocfline=\count380
+\c@algocfproc=\count381
+\c@algocf=\count382
 \algocf@algoframe=\box142
 \algocf@algobox=\box143
 ) (E:\Latex\tex/latex/comment\comment.sty
@@ -1009,13 +1015,13 @@ Package: eso-pic 2025/12/10 v3.0d eso-pic (RN)
  (E:\Latex\tex/latex/pdfpages\pppdftex.def
 File: pppdftex.def 2025/07/23 v0.6g Pdfpages driver for pdfTeX (AM)
 )
-\pdfpages@includegraphics@status=\count382
+\pdfpages@includegraphics@status=\count383
 \AM@pagebox=\box144
-\AM@global@opts=\toks57
-\AM@pagecnt=\count383
-\AM@toc@title=\toks58
-\AM@lof@heading=\toks59
-\c@AM@survey=\count384
+\AM@global@opts=\toks58
+\AM@pagecnt=\count384
+\AM@toc@title=\toks59
+\AM@lof@heading=\toks60
+\c@AM@survey=\count385
 \AM@templatesizebox=\box145
 ) (E:\Latex\tex/latex/transparent\transparent.sty
 Package: transparent 2025-06-23 v1.6 Transparency with color stacks
@@ -1027,7 +1033,7 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 Package: expl3 2025-12-29 L3 programming layer (loader) 
  (E:\Latex\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count385
+\l__color_backend_stack_int=\count386
 ))
 Package: xparse 2025-10-09 L3 Experimental document command parser
 )
@@ -1045,7 +1051,7 @@ File: pgflibraryarrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfdecoratedinputsegmentcompleteddistance=\dimen334
 \pgfdecoratedinputsegmentremainingdistance=\dimen335
 \pgf@decorate@distancetomove=\dimen336
-\pgf@decorate@repeatstate=\count386
+\pgf@decorate@repeatstate=\count387
 \pgfdecorationsegmentamplitude=\dimen337
 \pgfdecorationsegmentlength=\dimen338
 )
@@ -1054,138 +1060,138 @@ File: pgflibraryarrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 File: tikzlibrarytrees.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
 \l__tikzsymbols_Moai_thickness_dim=\dimen339
-\l__tikzsymbols_Kochtopf_nr_arguments_int=\count387
-\l__tikzsymbols_Bratpfanne_nr_arguments_int=\count388
-\l__tikzsymbols_Schneebesen_nr_arguments_int=\count389
-\l__tikzsymbols_Sieb_nr_arguments_int=\count390
-\l__tikzsymbols_Purierstab_nr_arguments_int=\count391
-\l__tikzsymbols_Dreizack_nr_arguments_int=\count392
-\l__tikzsymbols_Backblech_nr_arguments_int=\count393
-\l__tikzsymbols_Ofen_nr_arguments_int=\count394
-\l__tikzsymbols_Pfanne_nr_arguments_int=\count395
-\l__tikzsymbols_Herd_nr_arguments_int=\count396
-\l__tikzsymbols_Saftpresse_nr_arguments_int=\count397
-\l__tikzsymbols_Schussel_nr_arguments_int=\count398
-\l__tikzsymbols_Schaler_nr_arguments_int=\count399
-\l__tikzsymbols_Reibe_nr_arguments_int=\count400
-\l__tikzsymbols_Flasche_nr_arguments_int=\count401
-\l__tikzsymbols_Nudelholz_nr_arguments_int=\count402
-\l__tikzsymbols_Knoblauchpresse_nr_arguments_int=\count403
-\l__tikzsymbols_Sadey_nr_arguments_int=\count404
-\l__tikzsymbols_dSadey_nr_arguments_int=\count405
-\l__tikzsymbols_Changey_nr_arguments_int=\count406
-\l__tikzsymbols_dChangey_nr_arguments_int=\count407
-\l__tikzsymbols_cChangey_nr_arguments_int=\count408
-\l__tikzsymbols_dcChangey_nr_arguments_int=\count409
-\l__tikzsymbols_Annoey_nr_arguments_int=\count410
-\l__tikzsymbols_dAnnoey_nr_arguments_int=\count411
-\l__tikzsymbols_Smiley_nr_arguments_int=\count412
-\l__tikzsymbols_dSmiley_nr_arguments_int=\count413
-\l__tikzsymbols_Laughey_nr_arguments_int=\count414
-\l__tikzsymbols_dLaughey_nr_arguments_int=\count415
-\l__tikzsymbols_Neutrey_nr_arguments_int=\count416
-\l__tikzsymbols_dNeutrey_nr_arguments_int=\count417
-\l__tikzsymbols_Winkey_nr_arguments_int=\count418
-\l__tikzsymbols_oldWinkey_nr_arguments_int=\count419
-\l__tikzsymbols_dWinkey_nr_arguments_int=\count420
-\l__tikzsymbols_olddWinkey_nr_arguments_int=\count421
-\l__tikzsymbols_Sey_nr_arguments_int=\count422
-\l__tikzsymbols_dSey_nr_arguments_int=\count423
-\l__tikzsymbols_Xey_nr_arguments_int=\count424
-\l__tikzsymbols_dXey_nr_arguments_int=\count425
-\l__tikzsymbols_Innocey_nr_arguments_int=\count426
-\l__tikzsymbols_wInnocey_nr_arguments_int=\count427
-\l__tikzsymbols_dInnocey_nr_arguments_int=\count428
-\l__tikzsymbols_Cooley_nr_arguments_int=\count429
-\l__tikzsymbols_dCooley_nr_arguments_int=\count430
-\l__tikzsymbols_Tongey_nr_arguments_int=\count431
-\l__tikzsymbols_dTongey_nr_arguments_int=\count432
-\l__tikzsymbols_Nursey_nr_arguments_int=\count433
-\l__tikzsymbols_dNursey_nr_arguments_int=\count434
-\l__tikzsymbols_Vomey_nr_arguments_int=\count435
-\l__tikzsymbols_dVomey_nr_arguments_int=\count436
-\l__tikzsymbols_Walley_nr_arguments_int=\count437
-\l__tikzsymbols_rWalley_nr_arguments_int=\count438
-\l__tikzsymbols_dWalley_nr_arguments_int=\count439
-\l__tikzsymbols_drWalley_nr_arguments_int=\count440
-\l__tikzsymbols_Cat_nr_arguments_int=\count441
-\l__tikzsymbols_SchrodingersCat_nr_arguments_int=\count442
-\l__tikzsymbols_Ninja_nr_arguments_int=\count443
-\l__tikzsymbols_dNinja_nr_arguments_int=\count444
-\l__tikzsymbols_Sleepey_nr_arguments_int=\count445
-\l__tikzsymbols_dSleepey_nr_arguments_int=\count446
-\l__tikzsymbols_Maskey_nr_arguments_int=\count447
-\l__tikzsymbols_NiceReapey_nr_arguments_int=\count448
-\l__tikzsymbols_Strichmaxerl_nr_arguments_int=\count449
-\l__tikzsymbols_Person_nr_arguments_int=\count450
-\l__tikzsymbols_Heart_nr_arguments_int=\count451
-\l__tikzsymbols_dHeart_nr_arguments_int=\count452
-\l__tikzsymbols_HeartBroken_nr_arguments_int=\count453
-\l__tikzsymbols_Candle_nr_arguments_int=\count454
-\l__tikzsymbols_Fire_nr_arguments_int=\count455
-\l__tikzsymbols_Coffeecup_nr_arguments_int=\count456
-\l__tikzsymbols_Chair_nr_arguments_int=\count457
-\l__tikzsymbols_Bed_nr_arguments_int=\count458
-\l__tikzsymbols_Tribar_nr_arguments_int=\count459
-\l__tikzsymbols_Moai_nr_arguments_int=\count460
-\l__tikzsymbols_Snowman_nr_arguments_int=\count461
-\l__tikzsymbols_BasicTree_nr_arguments_int=\count462
-\l__tikzsymbols_WorstTree_nr_arguments_int=\count463
-\l__tikzsymbols_Springtree_nr_arguments_int=\count464
-\l__tikzsymbols_Summertree_nr_arguments_int=\count465
-\l__tikzsymbols_Autumntree_nr_arguments_int=\count466
-\l__tikzsymbols_Wintertree_nr_arguments_int=\count467
+\l__tikzsymbols_Kochtopf_nr_arguments_int=\count388
+\l__tikzsymbols_Bratpfanne_nr_arguments_int=\count389
+\l__tikzsymbols_Schneebesen_nr_arguments_int=\count390
+\l__tikzsymbols_Sieb_nr_arguments_int=\count391
+\l__tikzsymbols_Purierstab_nr_arguments_int=\count392
+\l__tikzsymbols_Dreizack_nr_arguments_int=\count393
+\l__tikzsymbols_Backblech_nr_arguments_int=\count394
+\l__tikzsymbols_Ofen_nr_arguments_int=\count395
+\l__tikzsymbols_Pfanne_nr_arguments_int=\count396
+\l__tikzsymbols_Herd_nr_arguments_int=\count397
+\l__tikzsymbols_Saftpresse_nr_arguments_int=\count398
+\l__tikzsymbols_Schussel_nr_arguments_int=\count399
+\l__tikzsymbols_Schaler_nr_arguments_int=\count400
+\l__tikzsymbols_Reibe_nr_arguments_int=\count401
+\l__tikzsymbols_Flasche_nr_arguments_int=\count402
+\l__tikzsymbols_Nudelholz_nr_arguments_int=\count403
+\l__tikzsymbols_Knoblauchpresse_nr_arguments_int=\count404
+\l__tikzsymbols_Sadey_nr_arguments_int=\count405
+\l__tikzsymbols_dSadey_nr_arguments_int=\count406
+\l__tikzsymbols_Changey_nr_arguments_int=\count407
+\l__tikzsymbols_dChangey_nr_arguments_int=\count408
+\l__tikzsymbols_cChangey_nr_arguments_int=\count409
+\l__tikzsymbols_dcChangey_nr_arguments_int=\count410
+\l__tikzsymbols_Annoey_nr_arguments_int=\count411
+\l__tikzsymbols_dAnnoey_nr_arguments_int=\count412
+\l__tikzsymbols_Smiley_nr_arguments_int=\count413
+\l__tikzsymbols_dSmiley_nr_arguments_int=\count414
+\l__tikzsymbols_Laughey_nr_arguments_int=\count415
+\l__tikzsymbols_dLaughey_nr_arguments_int=\count416
+\l__tikzsymbols_Neutrey_nr_arguments_int=\count417
+\l__tikzsymbols_dNeutrey_nr_arguments_int=\count418
+\l__tikzsymbols_Winkey_nr_arguments_int=\count419
+\l__tikzsymbols_oldWinkey_nr_arguments_int=\count420
+\l__tikzsymbols_dWinkey_nr_arguments_int=\count421
+\l__tikzsymbols_olddWinkey_nr_arguments_int=\count422
+\l__tikzsymbols_Sey_nr_arguments_int=\count423
+\l__tikzsymbols_dSey_nr_arguments_int=\count424
+\l__tikzsymbols_Xey_nr_arguments_int=\count425
+\l__tikzsymbols_dXey_nr_arguments_int=\count426
+\l__tikzsymbols_Innocey_nr_arguments_int=\count427
+\l__tikzsymbols_wInnocey_nr_arguments_int=\count428
+\l__tikzsymbols_dInnocey_nr_arguments_int=\count429
+\l__tikzsymbols_Cooley_nr_arguments_int=\count430
+\l__tikzsymbols_dCooley_nr_arguments_int=\count431
+\l__tikzsymbols_Tongey_nr_arguments_int=\count432
+\l__tikzsymbols_dTongey_nr_arguments_int=\count433
+\l__tikzsymbols_Nursey_nr_arguments_int=\count434
+\l__tikzsymbols_dNursey_nr_arguments_int=\count435
+\l__tikzsymbols_Vomey_nr_arguments_int=\count436
+\l__tikzsymbols_dVomey_nr_arguments_int=\count437
+\l__tikzsymbols_Walley_nr_arguments_int=\count438
+\l__tikzsymbols_rWalley_nr_arguments_int=\count439
+\l__tikzsymbols_dWalley_nr_arguments_int=\count440
+\l__tikzsymbols_drWalley_nr_arguments_int=\count441
+\l__tikzsymbols_Cat_nr_arguments_int=\count442
+\l__tikzsymbols_SchrodingersCat_nr_arguments_int=\count443
+\l__tikzsymbols_Ninja_nr_arguments_int=\count444
+\l__tikzsymbols_dNinja_nr_arguments_int=\count445
+\l__tikzsymbols_Sleepey_nr_arguments_int=\count446
+\l__tikzsymbols_dSleepey_nr_arguments_int=\count447
+\l__tikzsymbols_Maskey_nr_arguments_int=\count448
+\l__tikzsymbols_NiceReapey_nr_arguments_int=\count449
+\l__tikzsymbols_Strichmaxerl_nr_arguments_int=\count450
+\l__tikzsymbols_Person_nr_arguments_int=\count451
+\l__tikzsymbols_Heart_nr_arguments_int=\count452
+\l__tikzsymbols_dHeart_nr_arguments_int=\count453
+\l__tikzsymbols_HeartBroken_nr_arguments_int=\count454
+\l__tikzsymbols_Candle_nr_arguments_int=\count455
+\l__tikzsymbols_Fire_nr_arguments_int=\count456
+\l__tikzsymbols_Coffeecup_nr_arguments_int=\count457
+\l__tikzsymbols_Chair_nr_arguments_int=\count458
+\l__tikzsymbols_Bed_nr_arguments_int=\count459
+\l__tikzsymbols_Tribar_nr_arguments_int=\count460
+\l__tikzsymbols_Moai_nr_arguments_int=\count461
+\l__tikzsymbols_Snowman_nr_arguments_int=\count462
+\l__tikzsymbols_BasicTree_nr_arguments_int=\count463
+\l__tikzsymbols_WorstTree_nr_arguments_int=\count464
+\l__tikzsymbols_Springtree_nr_arguments_int=\count465
+\l__tikzsymbols_Summertree_nr_arguments_int=\count466
+\l__tikzsymbols_Autumntree_nr_arguments_int=\count467
+\l__tikzsymbols_Wintertree_nr_arguments_int=\count468
 )
-\c@tcb@cnt@Theorem=\count468
-\c@tcb@cnt@theorem=\count469
-\c@tcb@cnt@Corolario=\count470
-\c@tcb@cnt@corolario=\count471
-\c@tcb@cnt@Lenma=\count472
-\c@tcb@cnt@lenma=\count473
-\c@tcb@cnt@Prop=\count474
-\c@tcb@cnt@prop=\count475
-\c@tcb@cnt@claim=\count476
-\c@tcb@cnt@Exercise=\count477
-\c@tcb@cnt@exercise=\count478
-\c@tcb@cnt@Example=\count479
-\c@tcb@cnt@example=\count480
-\c@tcb@cnt@Definición=\count481
-\c@tcb@cnt@definición=\count482
-\c@tcb@cnt@question=\count483
-\c@tcb@cnt@qstion=\count484
-\c@tcb@cnt@wconc=\count485
+\c@tcb@cnt@Theorem=\count469
+\c@tcb@cnt@theorem=\count470
+\c@tcb@cnt@Corolario=\count471
+\c@tcb@cnt@corolario=\count472
+\c@tcb@cnt@Lenma=\count473
+\c@tcb@cnt@lenma=\count474
+\c@tcb@cnt@Prop=\count475
+\c@tcb@cnt@prop=\count476
+\c@tcb@cnt@claim=\count477
+\c@tcb@cnt@Exercise=\count478
+\c@tcb@cnt@exercise=\count479
+\c@tcb@cnt@Example=\count480
+\c@tcb@cnt@example=\count481
+\c@tcb@cnt@Definición=\count482
+\c@tcb@cnt@definición=\count483
+\c@tcb@cnt@question=\count484
+\c@tcb@cnt@qstion=\count485
+\c@tcb@cnt@wconc=\count486
  (E:\Latex\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (E:\Latex\tex/latex/pgf-blur\tikzlibraryshadows.blur.code.tex  v1.02, 2012/12/09 (E:\Latex\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshadows.code.tex
 File: tikzlibraryshadows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
-\pgfbs@fading@count=\count486
+\pgfbs@fading@count=\count487
 )
-\c@mylabelcounter=\count487
+\c@mylabelcounter=\count488
 \diffdbox=\box147
  (E:\Latex\tex/latex/pgfplots\pgfplots.sty (E:\Latex\tex/generic/pgfplots\pgfplots.revision.tex)
 Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
  (E:\Latex\tex/generic/pgfplots\pgfplots.code.tex (E:\Latex\tex/generic/pgfplots\pgfplotscore.code.tex
-\t@pgfplots@toka=\toks60
-\t@pgfplots@tokb=\toks61
-\t@pgfplots@tokc=\toks62
+\t@pgfplots@toka=\toks61
+\t@pgfplots@tokb=\toks62
+\t@pgfplots@tokc=\toks63
 \pgfplots@tmpa=\dimen340
-\c@pgfplots@coordindex=\count488
-\c@pgfplots@scanlineindex=\count489
+\c@pgfplots@coordindex=\count489
+\c@pgfplots@scanlineindex=\count490
  (E:\Latex\tex/generic/pgfplots/sys\pgfplotssysgeneric.code.tex)) (E:\Latex\tex/generic/pgfplots/libs\pgfplotslibrary.code.tex) (E:\Latex\tex/generic/pgfplots/oldpgfcompatib\pgfplotsoldpgfsupp_loader.code.tex (E:\Latex\tex/generic/pgf/libraries\pgflibraryfpu.code.tex)
 Package pgfplots: loading complementary utilities for your pgf version...
-\t@pgf@toka=\toks63
-\t@pgf@tokb=\toks64
-\t@pgf@tokc=\toks65
+\t@pgf@toka=\toks64
+\t@pgf@tokb=\toks65
+\t@pgf@tokc=\toks66
 (E:\Latex\tex/generic/pgfplots/oldpgfcompatib\pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (E:\Latex\tex/generic/pgfplots/util\pgfplotsutil.code.tex (E:\Latex\tex/generic/pgfplots/liststructure\pgfplotsliststructure.code.tex) (E:\Latex\tex/generic/pgfplots/liststructure\pgfplotsliststructureext.code.tex) (E:\Latex\tex/generic/pgfplots/liststructure\pgfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count490
+\c@pgfplotsarray@tmp=\count491
 ) (E:\Latex\tex/generic/pgfplots/liststructure\pgfplotsmatrix.code.tex) (E:\Latex\tex/generic/pgfplots/numtable\pgfplotstableshared.code.tex
-\c@pgfplotstable@counta=\count491
-\t@pgfplotstable@a=\toks66
+\c@pgfplotstable@counta=\count492
+\t@pgfplotstable@a=\toks67
 ) (E:\Latex\tex/generic/pgfplots/liststructure\pgfplotsdeque.code.tex) (E:\Latex\tex/generic/pgfplots/util\pgfplotsbinary.code.tex (E:\Latex\tex/generic/pgfplots/util\pgfplotsbinary.data.code.tex)) (E:\Latex\tex/generic/pgfplots/util\pgfplotsutil.verb.code.tex) (E:\Latex\tex/generic/pgfplots/libs\pgflibrarypgfplots.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count492
+\c@pgfplotslibrarysurf@no=\count493
  (E:\Latex\tex/generic/pgfplots/sys\pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (E:\Latex\tex/generic/pgfplots/util\pgfplotscolormap.code.tex (E:\Latex\tex/generic/pgfplots/util\pgfplotscolor.code.tex)) (E:\Latex\tex/generic/pgfplots\pgfplotsstackedplots.code.tex) (E:\Latex\tex/generic/pgfplots\pgfplotsplothandlers.code.tex (E:\Latex\tex/generic/pgfplots\pgfplotsmeshplothandler.code.tex (E:\Latex\tex/generic/pgfplots\pgfplotsmeshplotimage.code.tex))) (E:\Latex\tex/generic/pgfplots\pgfplots.scaling.code.tex) (E:\Latex\tex/generic/pgfplots\pgfplotscoordprocessing.code.tex) (E:\Latex\tex/generic/pgfplots\pgfplots.errorbars.code.tex) (E:\Latex\tex/generic/pgfplots\pgfplots.markers.code.tex) (E:\Latex\tex/generic/pgfplots\pgfplotsticks.code.tex) (E:\Latex\tex/generic/pgfplots\pgfplots.paths.code.tex) (E:\Latex\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex (E:\Latex\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathreplacing.code.tex)) (E:\Latex\tex/generic/pgfplots/libs\tikzlibrarypgfplots.contourlua.code.tex)
-\pgfplots@numplots=\count493
+\pgfplots@numplots=\count494
 \pgfplots@xmin@reg=\dimen341
 \pgfplots@xmax@reg=\dimen342
 \pgfplots@ymin@reg=\dimen343
@@ -1197,7 +1203,7 @@ File: tikzlibraryplotmarks.code.tex 2025-08-29 v3.1.11a (3.1.11a)
  (E:\Latex\tex/generic/pgf/libraries\pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))) (E:\Latex\tex/generic/pgfplots/libs\tikzlibrarypgfplots.fillbetween.code.tex (E:\Latex\tex/generic/pgfplots/pgfcontrib\tikzlibraryfillbetween.code.tex (E:\Latex\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryintersections.code.tex (E:\Latex\tex/generic/pgf/libraries\pgflibraryintersections.code.tex
-\pgf@intersect@solutions=\count494
+\pgf@intersect@solutions=\count495
 )) (E:\Latex\tex/generic/pgfplots/pgfcontrib\tikzlibrarydecorations.softclip.code.tex (E:\Latex\tex/generic/pgfplots/pgfcontrib\pgflibraryfillbetween.code.tex))) (E:\Latex\tex/generic/pgfplots/libs\tikzlibrarypgfplots.decorations.softclip.code.tex)) (E:\Latex\tex/latex/titlesec\titletoc.sty
 Package: titletoc 2025/01/04 v2.17 TOC entries
 \ttl@leftsep=\dimen347
@@ -1209,12 +1215,12 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )) (E:\Latex\tex/latex/chemfig\chemfig.sty (E:\Latex\tex/generic/chemfig\chemfig.tex (E:\Latex\tex/generic/simplekv\simplekv.tex
 Package: simplekv 2025/06/15 v0.32 Simple keyval package (CT)
 )
-\CF_cnt_atomgroup=\count495
-\CF_cnt_group=\count496
-\CF_cnt_atom=\count497
-\CF_cnt_cycle=\count498
-\CF_cnt_cyclebonds=\count499
-\CF_cnt_compound=\count500
+\CF_cnt_atomgroup=\count496
+\CF_cnt_group=\count497
+\CF_cnt_atom=\count498
+\CF_cnt_cycle=\count499
+\CF_cnt_cyclebonds=\count500
+\CF_cnt_compound=\count501
 \CF_dim=\dimen348
 \CF_turnangle=\dimen349
 \CF_arrowsize=\dimen350
@@ -1223,10 +1229,10 @@ Package: simplekv 2025/06/15 v0.32 Simple keyval package (CT)
 \CF_boxstuff=\box149
 \CF_testbox=\box150
 \CF_chargebox=\box151
-\CF_substtoks=\toks67
+\CF_substtoks=\toks68
 \CF_harrow_boxup=\box152
 \CF_harrow_boxdown=\box153
-\CF_hreact_cnt=\count501
+\CF_hreact_cnt=\count502
 )
 Package: chemfig 2025/10/30 v1.71 Draw molecule with an easy syntax (CT)
 ) (E:\Latex\tex/latex/booktabs\booktabs.sty
@@ -1241,29 +1247,29 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen359
 \cmidrulekern=\dimen360
 \defaultaddspace=\dimen361
-\@cmidla=\count502
-\@cmidlb=\count503
+\@cmidla=\count503
+\@cmidlb=\count504
 \@aboverulesep=\dimen362
 \@belowrulesep=\dimen363
-\@thisruleclass=\count504
-\@lastruleclass=\count505
+\@thisruleclass=\count505
+\@lastruleclass=\count506
 \@thisrulewidth=\dimen364
 ) (E:\Latex\tex/latex/siunitx\siunitx.sty
 Package: siunitx 2025-07-09 v3.4.14 A comprehensive (SI) units package
-\l__siunitx_number_uncert_offset_int=\count506
-\l__siunitx_number_exponent_fixed_int=\count507
-\l__siunitx_number_min_decimal_int=\count508
-\l__siunitx_number_min_integer_int=\count509
-\l__siunitx_number_round_precision_int=\count510
-\l__siunitx_number_lower_threshold_int=\count511
-\l__siunitx_number_upper_threshold_int=\count512
-\l__siunitx_number_group_first_int=\count513
-\l__siunitx_number_group_size_int=\count514
-\l__siunitx_number_group_minimum_int=\count515
+\l__siunitx_number_uncert_offset_int=\count507
+\l__siunitx_number_exponent_fixed_int=\count508
+\l__siunitx_number_min_decimal_int=\count509
+\l__siunitx_number_min_integer_int=\count510
+\l__siunitx_number_round_precision_int=\count511
+\l__siunitx_number_lower_threshold_int=\count512
+\l__siunitx_number_upper_threshold_int=\count513
+\l__siunitx_number_group_first_int=\count514
+\l__siunitx_number_group_size_int=\count515
+\l__siunitx_number_group_minimum_int=\count516
 \l__siunitx_angle_tmp_dim=\dimen365
 \l__siunitx_angle_marker_box=\box154
 \l__siunitx_angle_unit_box=\box155
-\l__siunitx_compound_count_int=\count516
+\l__siunitx_compound_count_int=\count517
  (E:\Latex\tex/latex/translations\translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
 )
@@ -1277,9 +1283,9 @@ Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages 
 \l__siunitx_table_after_box=\box161
 \l__siunitx_table_before_dim=\dimen368
 \l__siunitx_table_carry_dim=\dimen369
-\l__siunitx_unit_tmp_int=\count517
-\l__siunitx_unit_position_int=\count518
-\l__siunitx_unit_total_int=\count519
+\l__siunitx_unit_tmp_int=\count518
+\l__siunitx_unit_position_int=\count519
+\l__siunitx_unit_total_int=\count520
 ) (E:\Latex\tex/latex/adjustbox\adjustbox.sty
 Package: adjustbox 2025/02/26 v1.3c Adjusting TeX boxes (trim, clip, ...)
  (E:\Latex\tex/latex/adjustbox\adjcalc.sty
@@ -1318,67 +1324,67 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 Package: biblatex 2025/07/10 v3.21 programmable bibliographies (PK/MW)
  (E:\Latex\tex/latex/logreq\logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count520
+\lrq@indent=\count521
  (E:\Latex\tex/latex/logreq\logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
-\c@tabx@nest=\count521
-\c@listtotal=\count522
-\c@listcount=\count523
-\c@liststart=\count524
-\c@liststop=\count525
-\c@citecount=\count526
-\c@citetotal=\count527
-\c@multicitecount=\count528
-\c@multicitetotal=\count529
-\c@instcount=\count530
-\c@maxnames=\count531
-\c@minnames=\count532
-\c@maxitems=\count533
-\c@minitems=\count534
-\c@citecounter=\count535
-\c@maxcitecounter=\count536
-\c@savedcitecounter=\count537
-\c@uniquelist=\count538
-\c@uniquename=\count539
-\c@refsection=\count540
-\c@refsegment=\count541
-\c@maxextratitle=\count542
-\c@maxextratitleyear=\count543
-\c@maxextraname=\count544
-\c@maxextradate=\count545
-\c@maxextraalpha=\count546
-\c@abbrvpenalty=\count547
-\c@highnamepenalty=\count548
-\c@lownamepenalty=\count549
-\c@maxparens=\count550
-\c@parenlevel=\count551
-\blx@tempcnta=\count552
-\blx@tempcntb=\count553
-\blx@tempcntc=\count554
-\c@blx@maxsection=\count555
-\blx@maxsegment@0=\count556
-\blx@notetype=\count557
-\blx@parenlevel@text=\count558
-\blx@parenlevel@foot=\count559
-\blx@sectionciteorder@0=\count560
-\blx@sectionciteorderinternal@0=\count561
-\blx@entrysetcounter=\count562
-\blx@biblioinstance=\count563
-\labelnumberwidth=\skip86
-\labelalphawidth=\skip87
-\biblabelsep=\skip88
-\bibitemsep=\skip89
-\bibnamesep=\skip90
-\bibinitsep=\skip91
-\bibparsep=\skip92
-\bibhang=\skip93
+\c@tabx@nest=\count522
+\c@listtotal=\count523
+\c@listcount=\count524
+\c@liststart=\count525
+\c@liststop=\count526
+\c@citecount=\count527
+\c@citetotal=\count528
+\c@multicitecount=\count529
+\c@multicitetotal=\count530
+\c@instcount=\count531
+\c@maxnames=\count532
+\c@minnames=\count533
+\c@maxitems=\count534
+\c@minitems=\count535
+\c@citecounter=\count536
+\c@maxcitecounter=\count537
+\c@savedcitecounter=\count538
+\c@uniquelist=\count539
+\c@uniquename=\count540
+\c@refsection=\count541
+\c@refsegment=\count542
+\c@maxextratitle=\count543
+\c@maxextratitleyear=\count544
+\c@maxextraname=\count545
+\c@maxextradate=\count546
+\c@maxextraalpha=\count547
+\c@abbrvpenalty=\count548
+\c@highnamepenalty=\count549
+\c@lownamepenalty=\count550
+\c@maxparens=\count551
+\c@parenlevel=\count552
+\blx@tempcnta=\count553
+\blx@tempcntb=\count554
+\blx@tempcntc=\count555
+\c@blx@maxsection=\count556
+\blx@maxsegment@0=\count557
+\blx@notetype=\count558
+\blx@parenlevel@text=\count559
+\blx@parenlevel@foot=\count560
+\blx@sectionciteorder@0=\count561
+\blx@sectionciteorderinternal@0=\count562
+\blx@entrysetcounter=\count563
+\blx@biblioinstance=\count564
+\labelnumberwidth=\skip87
+\labelalphawidth=\skip88
+\biblabelsep=\skip89
+\bibitemsep=\skip90
+\bibnamesep=\skip91
+\bibinitsep=\skip92
+\bibparsep=\skip93
+\bibhang=\skip94
 \blx@bcfin=\read6
 \blx@bcfout=\write5
 \blx@langwohyphens=\language80
-\c@mincomprange=\count564
-\c@maxcomprange=\count565
-\c@mincompwidth=\count566
+\c@mincomprange=\count565
+\c@maxcomprange=\count566
+\c@mincompwidth=\count567
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
  (E:\Latex\tex/latex/biblatex\blx-dm.def
@@ -1391,98 +1397,98 @@ File: apa.dbx 2025/08/27 v9.20 APA biblatex style data model
 )
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count567
-\c@savedafterword=\count568
-\c@annotator=\count569
-\c@savedannotator=\count570
-\c@author=\count571
-\c@savedauthor=\count572
-\c@bookauthor=\count573
-\c@savedbookauthor=\count574
-\c@commentator=\count575
-\c@savedcommentator=\count576
-\c@editor=\count577
-\c@savededitor=\count578
-\c@editora=\count579
-\c@savededitora=\count580
-\c@editorb=\count581
-\c@savededitorb=\count582
-\c@editorc=\count583
-\c@savededitorc=\count584
-\c@foreword=\count585
-\c@savedforeword=\count586
-\c@holder=\count587
-\c@savedholder=\count588
-\c@introduction=\count589
-\c@savedintroduction=\count590
-\c@namea=\count591
-\c@savednamea=\count592
-\c@nameb=\count593
-\c@savednameb=\count594
-\c@namec=\count595
-\c@savednamec=\count596
-\c@translator=\count597
-\c@savedtranslator=\count598
-\c@shortauthor=\count599
-\c@savedshortauthor=\count600
-\c@shorteditor=\count601
-\c@savedshorteditor=\count602
-\c@narrator=\count603
-\c@savednarrator=\count604
-\c@execproducer=\count605
-\c@savedexecproducer=\count606
-\c@execdirector=\count607
-\c@savedexecdirector=\count608
-\c@with=\count609
-\c@savedwith=\count610
-\c@labelname=\count611
-\c@savedlabelname=\count612
-\c@institution=\count613
-\c@savedinstitution=\count614
-\c@lista=\count615
-\c@savedlista=\count616
-\c@listb=\count617
-\c@savedlistb=\count618
-\c@listc=\count619
-\c@savedlistc=\count620
-\c@listd=\count621
-\c@savedlistd=\count622
-\c@liste=\count623
-\c@savedliste=\count624
-\c@listf=\count625
-\c@savedlistf=\count626
-\c@location=\count627
-\c@savedlocation=\count628
-\c@organization=\count629
-\c@savedorganization=\count630
-\c@origlocation=\count631
-\c@savedoriglocation=\count632
-\c@origpublisher=\count633
-\c@savedorigpublisher=\count634
-\c@publisher=\count635
-\c@savedpublisher=\count636
-\c@language=\count637
-\c@savedlanguage=\count638
-\c@origlanguage=\count639
-\c@savedoriglanguage=\count640
-\c@citation=\count641
-\c@savedcitation=\count642
-\c@pageref=\count643
-\c@savedpageref=\count644
-\shorthandwidth=\skip94
-\shortjournalwidth=\skip95
-\shortserieswidth=\skip96
-\shorttitlewidth=\skip97
-\shortauthorwidth=\skip98
-\shorteditorwidth=\skip99
-\locallabelnumberwidth=\skip100
-\locallabelalphawidth=\skip101
-\localshorthandwidth=\skip102
-\localshortjournalwidth=\skip103
-\localshortserieswidth=\skip104
-\localshorttitlewidth=\skip105
-\localshortauthorwidth=\skip106
-\localshorteditorwidth=\skip107
+\c@afterword=\count568
+\c@savedafterword=\count569
+\c@annotator=\count570
+\c@savedannotator=\count571
+\c@author=\count572
+\c@savedauthor=\count573
+\c@bookauthor=\count574
+\c@savedbookauthor=\count575
+\c@commentator=\count576
+\c@savedcommentator=\count577
+\c@editor=\count578
+\c@savededitor=\count579
+\c@editora=\count580
+\c@savededitora=\count581
+\c@editorb=\count582
+\c@savededitorb=\count583
+\c@editorc=\count584
+\c@savededitorc=\count585
+\c@foreword=\count586
+\c@savedforeword=\count587
+\c@holder=\count588
+\c@savedholder=\count589
+\c@introduction=\count590
+\c@savedintroduction=\count591
+\c@namea=\count592
+\c@savednamea=\count593
+\c@nameb=\count594
+\c@savednameb=\count595
+\c@namec=\count596
+\c@savednamec=\count597
+\c@translator=\count598
+\c@savedtranslator=\count599
+\c@shortauthor=\count600
+\c@savedshortauthor=\count601
+\c@shorteditor=\count602
+\c@savedshorteditor=\count603
+\c@narrator=\count604
+\c@savednarrator=\count605
+\c@execproducer=\count606
+\c@savedexecproducer=\count607
+\c@execdirector=\count608
+\c@savedexecdirector=\count609
+\c@with=\count610
+\c@savedwith=\count611
+\c@labelname=\count612
+\c@savedlabelname=\count613
+\c@institution=\count614
+\c@savedinstitution=\count615
+\c@lista=\count616
+\c@savedlista=\count617
+\c@listb=\count618
+\c@savedlistb=\count619
+\c@listc=\count620
+\c@savedlistc=\count621
+\c@listd=\count622
+\c@savedlistd=\count623
+\c@liste=\count624
+\c@savedliste=\count625
+\c@listf=\count626
+\c@savedlistf=\count627
+\c@location=\count628
+\c@savedlocation=\count629
+\c@organization=\count630
+\c@savedorganization=\count631
+\c@origlocation=\count632
+\c@savedoriglocation=\count633
+\c@origpublisher=\count634
+\c@savedorigpublisher=\count635
+\c@publisher=\count636
+\c@savedpublisher=\count637
+\c@language=\count638
+\c@savedlanguage=\count639
+\c@origlanguage=\count640
+\c@savedoriglanguage=\count641
+\c@citation=\count642
+\c@savedcitation=\count643
+\c@pageref=\count644
+\c@savedpageref=\count645
+\shorthandwidth=\skip95
+\shortjournalwidth=\skip96
+\shortserieswidth=\skip97
+\shorttitlewidth=\skip98
+\shortauthorwidth=\skip99
+\shorteditorwidth=\skip100
+\locallabelnumberwidth=\skip101
+\locallabelalphawidth=\skip102
+\localshorthandwidth=\skip103
+\localshortjournalwidth=\skip104
+\localshortserieswidth=\skip105
+\localshorttitlewidth=\skip106
+\localshortauthorwidth=\skip107
+\localshorteditorwidth=\skip108
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
  (E:\Latex\tex/latex/biblatex\blx-compat.def
@@ -1492,19 +1498,19 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
  (E:\Latex\tex/latex/biblatex\biblatex.def
 File: biblatex.def 2025/07/10 v3.21 biblatex compatibility (PK/MW)
-\c@textcitecount=\count645
-\c@textcitetotal=\count646
-\c@textcitemaxnames=\count647
-\c@biburlbigbreakpenalty=\count648
-\c@biburlbreakpenalty=\count649
-\c@biburlnumpenalty=\count650
-\c@biburlucpenalty=\count651
-\c@biburllcpenalty=\count652
+\c@textcitecount=\count646
+\c@textcitetotal=\count647
+\c@textcitemaxnames=\count648
+\c@biburlbigbreakpenalty=\count649
+\c@biburlbreakpenalty=\count650
+\c@biburlnumpenalty=\count651
+\c@biburlucpenalty=\count652
+\c@biburllcpenalty=\count653
 \biburlbigskip=\muskip21
 \biburlnumskip=\muskip22
 \biburlucskip=\muskip23
 \biburllcskip=\muskip24
-\c@smartand=\count653
+\c@smartand=\count654
 )
 Package biblatex Info: Trying to load bibliography style 'apa'...
 Package biblatex Info: ... file 'apa.bbx' found.
@@ -1514,8 +1520,8 @@ Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
  (E:\Latex\tex/latex/biblatex/bbx\standard.bbx
 File: standard.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count654
-\c@bbx:relatedtotal=\count655
+\c@bbx:relatedcount=\count655
+\c@bbx:relatedtotal=\count656
 )
 Package biblatex Info: Delimiter 'nameyeardelim' in context 'bib' already defined, overwriting.
 Package biblatex Info: Delimiter 'nameyeardelim' in context 'biblist' already defined, overwriting.
@@ -1571,16 +1577,16 @@ Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@hangindent=\dimen389
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count656
-\c@continuedfloat=\count657
+\c@caption@flags=\count657
+\c@continuedfloat=\count658
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 ) (E:\Latex\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
-\multirow@colwidth=\skip108
-\multirow@cntb=\count658
-\multirow@dima=\skip109
+\multirow@colwidth=\skip109
+\multirow@cntb=\count659
+\multirow@dima=\skip110
 \bigstrutjot=\dimen390
 ) (E:\Latex\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2025-08-29 v3.1.11a (3.1.11a)
@@ -1596,11 +1602,11 @@ Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 Package: fvextra 2026/02/25 v1.14.0 fvextra - extensions and patches for fancyvrb
  (E:\Latex\tex/latex/fancyvrb\fancyvrb.sty
 Package: fancyvrb 2025/07/28 4.6 verbatim text (tvz,hv)
-\FV@CodeLineNo=\count659
+\FV@CodeLineNo=\count660
 \FV@InFile=\read7
 \FV@TabBox=\box163
-\c@FancyVerbLine=\count660
-\FV@StepNumber=\count661
+\c@FancyVerbLine=\count661
+\FV@StepNumber=\count662
 \FV@OutFile=\write6
 ) (E:\Latex\tex/latex/upquote\upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
@@ -1608,70 +1614,70 @@ Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbat
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 )) (E:\Latex\tex/latex/lineno\lineno.sty
 Package: lineno 2026/03/08 line numbers on paragraphs v5.9
-\linenopenalty=\count662
-\output=\toks68
-\linenoprevgraf=\count663
+\linenopenalty=\count663
+\output=\toks69
+\linenoprevgraf=\count664
 \linenumbersep=\dimen391
 \linenumberwidth=\dimen392
-\c@linenumber=\count664
-\c@pagewiselinenumber=\count665
-\c@LN@truepage=\count666
-\c@internallinenumber=\count667
-\c@internallinenumbers=\count668
+\c@linenumber=\count665
+\c@pagewiselinenumber=\count666
+\c@LN@truepage=\count667
+\c@internallinenumber=\count668
+\c@internallinenumbers=\count669
 \quotelinenumbersep=\dimen393
 \bframerule=\dimen394
 \bframesep=\dimen395
 \bframebox=\box164
-\@LN@amsmath@ams@eqpen=\count669
+\@LN@amsmath@ams@eqpen=\count670
 )
-\c@FancyVerbWriteLine=\count670
-\c@FancyVerbBufferLine=\count671
-\c@FV@TrueTabGroupLevel=\count672
-\c@FV@TrueTabCounter=\count673
+\c@FancyVerbWriteLine=\count671
+\c@FancyVerbBufferLine=\count672
+\c@FV@TrueTabGroupLevel=\count673
+\c@FV@TrueTabCounter=\count674
 \FV@TabBox@Group=\box165
 \FV@bgcolorstructbox=\box166
-\FV@TmpLength=\skip110
-\c@FV@HighlightLinesStart=\count674
-\c@FV@HighlightLinesStop=\count675
-\FV@LoopCount=\count676
+\FV@TmpLength=\skip111
+\c@FV@HighlightLinesStart=\count675
+\c@FV@HighlightLinesStop=\count676
+\FV@LoopCount=\count677
 \FV@NCharsBox=\box167
 \FV@BreakIndent=\dimen396
-\FV@BreakIndentNChars=\count677
+\FV@BreakIndentNChars=\count678
 \FV@BreakSymbolSepLeft=\dimen397
-\FV@BreakSymbolSepLeftNChars=\count678
+\FV@BreakSymbolSepLeftNChars=\count679
 \FV@BreakSymbolSepRight=\dimen398
-\FV@BreakSymbolSepRightNChars=\count679
+\FV@BreakSymbolSepRightNChars=\count680
 \FV@BreakSymbolIndentLeft=\dimen399
-\FV@BreakSymbolIndentLeftNChars=\count680
+\FV@BreakSymbolIndentLeftNChars=\count681
 \FV@BreakSymbolIndentRight=\dimen400
-\FV@BreakSymbolIndentRightNChars=\count681
-\c@FancyVerbLineBreakLast=\count682
+\FV@BreakSymbolIndentRightNChars=\count682
+\c@FancyVerbLineBreakLast=\count683
 \FV@LineBox=\box168
 \FV@LineIndentBox=\box169
-\c@FV@BreakBufferDepth=\count683
+\c@FV@BreakBufferDepth=\count684
 \FV@LineWidth=\dimen401
 ) (E:\Latex\tex/latex/latex2pydata\latex2pydata.sty
 Package: latex2pydata 2026/02/25 v0.7.0 latex2pydata - write data to file in Python literal format
 ) (E:\Latex\tex/latex/pgfopts\pgfopts.sty
 Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
-\pgfopts@list@add@a@toks=\toks69
-\pgfopts@list@add@b@toks=\toks70
+\pgfopts@list@add@a@toks=\toks70
+\pgfopts@list@add@b@toks=\toks71
 ) (E:\Latex\tex/latex/tools\shellesc.sty
 Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
 Package shellesc Info: Unrestricted shell escape enabled on input line 75.
 )
-\c@minted@FancyVerbLineTemp=\count684
-\@float@every@listing=\toks71
-\c@listing=\count685
+\c@minted@FancyVerbLineTemp=\count685
+\@float@every@listing=\toks72
+\c@listing=\count686
 ) (E:\Latex\tex/latex/csquotes\csquotes.sty
 Package: csquotes 2024-04-04 v5.2o context-sensitive quotations (JAW)
-\csq@reset=\count686
-\csq@gtype=\count687
-\csq@glevel=\count688
-\csq@qlevel=\count689
-\csq@maxlvl=\count690
-\csq@tshold=\count691
-\csq@ltx@everypar=\toks72
+\csq@reset=\count687
+\csq@gtype=\count688
+\csq@glevel=\count689
+\csq@qlevel=\count690
+\csq@maxlvl=\count691
+\csq@tshold=\count692
+\csq@ltx@everypar=\toks73
  (E:\Latex\tex/latex/csquotes\csquotes.def
 File: csquotes.def 2024-04-04 v5.2o csquotes generic definitions (JAW)
 )
@@ -1682,9 +1688,9 @@ File: csquotes.cfg
 )) (E:\Latex\tex/latex/caption\subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count692
+\c@subfigure=\count693
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count693
+\c@subtable=\count694
 )
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
@@ -1738,17 +1744,17 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
  (E:\Latex\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count694
+\scratchcounter=\count695
 \scratchdimen=\dimen402
 \scratchbox=\box170
-\nofMPsegments=\count695
-\nofMParguments=\count696
-\everyMPshowfont=\toks73
-\MPscratchCnt=\count697
+\nofMPsegments=\count696
+\nofMParguments=\count697
+\everyMPshowfont=\toks74
+\MPscratchCnt=\count698
 \MPscratchDim=\dimen403
-\MPnumerator=\count698
-\makeMPintoPDFobject=\count699
-\everyMPtoPDFconversion=\toks74
+\MPnumerator=\count699
+\makeMPintoPDFobject=\count700
+\everyMPtoPDFconversion=\toks75
 ) (E:\Latex\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -1795,7 +1801,7 @@ LaTeX Info: Redefining \% on input line 37.
 LaTeX Info: Command `\dddot' is already robust on input line 37.
 LaTeX Info: Command `\ddddot' is already robust on input line 37.
 Package hyperref Info: Link coloring ON on input line 37.
-\c@lstlisting=\count700
+\c@lstlisting=\count701
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 (E:\Latex\tex/latex/translations/dicts\translations-basic-dictionary-spanish.trsl
@@ -2023,6 +2029,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--76
  
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+ 
+ []
+
+
+Overfull \hbox (15.0pt too wide) detected at line 79
+ []\T1/lmr/m/n/10 122
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
+ 
+ []
+
+
+Overfull \hbox (15.0pt too wide) detected at line 81
+ []\T1/lmr/m/n/10 126
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+ 
+ []
+
 )
 \tf@toc=\write7
 \openout7 = `template.toc'.
@@ -2036,12 +2067,12 @@ Cap\'{\i }tulo 1.
 
 
 {E:/Latex/fonts/enc/dvips/newpx/px-lms.enc}]
-<./Imagenes/RMP.PNG, id=287, 1312.905pt x 402.90524pt>
+<./Imagenes/RMP.PNG, id=303, 1312.905pt x 402.90524pt>
 File: ./Imagenes/RMP.PNG Graphic file (type png)
 <use ./Imagenes/RMP.PNG>
 Package pdftex.def Info: ./Imagenes/RMP.PNG  used on input line 48.
 (pdftex.def)             Requested size: 491.43513pt x 150.81244pt.
-<./Imagenes/RFP.png, id=289, 615.4995pt x 316.18124pt>
+<./Imagenes/RFP.png, id=305, 615.4995pt x 316.18124pt>
 File: ./Imagenes/RFP.png Graphic file (type png)
 <use ./Imagenes/RFP.png>
 Package pdftex.def Info: ./Imagenes/RFP.png  used on input line 57.
@@ -2068,7 +2099,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--11
 
 
 ] [12] [13] [14] [15]
-<./Imagenes/irreversible.jpg, id=447, 616.704pt x 336.65775pt>
+<./Imagenes/irreversible.jpg, id=463, 616.704pt x 336.65775pt>
 File: ./Imagenes/irreversible.jpg Graphic file (type jpg)
 <use ./Imagenes/irreversible.jpg>
 Package pdftex.def Info: ./Imagenes/irreversible.jpg  used on input line 302.
@@ -2081,10 +2112,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 \pydata@fh@0=\write8
 \openout8 = `_66F6181BCB4CFF4CD38FBC804A036DB6.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260510124033 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
+runsystem(latexminted config  --timestamp 20260511031758 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
 
  (_66F6181BCB4CFF4CD38FBC804A036DB6.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260510124033 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
+runsystem(latexminted cleanconfig  --timestamp 20260511031758 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
 
  (_minted/default.style.minted) (_minted/56873C1834805CA11618C54BD25FCEA2.highlight.minted
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1.
@@ -2097,29 +2128,29 @@ LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 4
  (E:\Latex\tex/latex/lm\ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [19{E:/Latex/fonts/enc/dvips/lm/lm-ts1.enc}])
-<./Imagenes/RDMP_1.1.png, id=503, 345.08925pt x 268.6035pt>
+<./Imagenes/RDMP_1.1.png, id=519, 345.08925pt x 268.6035pt>
 File: ./Imagenes/RDMP_1.1.png Graphic file (type png)
 <use ./Imagenes/RDMP_1.1.png>
 Package pdftex.def Info: ./Imagenes/RDMP_1.1.png  used on input line 463.
 (pdftex.def)             Requested size: 294.86407pt x 229.52722pt.
-<./Imagenes/RDMP_1.2.png, id=504, 324.0105pt x 269.808pt>
+<./Imagenes/RDMP_1.2.png, id=520, 324.0105pt x 269.808pt>
 File: ./Imagenes/RDMP_1.2.png Graphic file (type png)
 <use ./Imagenes/RDMP_1.2.png>
 Package pdftex.def Info: ./Imagenes/RDMP_1.2.png  used on input line 463.
 (pdftex.def)             Requested size: 294.86407pt x 245.54213pt.
  [20 <./Imagenes/RDMP_1.1.png> <./Imagenes/RDMP_1.2.png>] (_minted/3757BF0A907F43A3793C50F3BA919690.highlight.minted [21])
-<./Imagenes/RDMP_2.1.png, id=520, 1169.5695pt x 493.24275pt>
+<./Imagenes/RDMP_2.1.png, id=536, 1169.5695pt x 493.24275pt>
 File: ./Imagenes/RDMP_2.1.png Graphic file (type png)
 <use ./Imagenes/RDMP_2.1.png>
 Package pdftex.def Info: ./Imagenes/RDMP_2.1.png  used on input line 615.
 (pdftex.def)             Requested size: 491.43513pt x 207.25085pt.
  [22]
-<./Imagenes/RDMP_2.2.png, id=525, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_2.2.png, id=541, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_2.2.png Graphic file (type png)
 <use ./Imagenes/RDMP_2.2.png>
 Package pdftex.def Info: ./Imagenes/RDMP_2.2.png  used on input line 640.
 (pdftex.def)             Requested size: 294.86407pt x 222.3582pt.
-<./Imagenes/RDMP_2.3.png, id=526, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_2.3.png, id=542, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_2.3.png Graphic file (type png)
 <use ./Imagenes/RDMP_2.3.png>
 Package pdftex.def Info: ./Imagenes/RDMP_2.3.png  used on input line 640.
@@ -2128,23 +2159,23 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 65
  (E:\Latex\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [23 <./Imagenes/RDMP_2.1.png> <./Imagenes/RDMP_2.2.png> <./Imagenes/RDMP_2.3.png>] (_minted/243B8E281F5EAE91C0E3BFAE12B56019.highlight.minted [24])
-<./Imagenes/RDMP_3.1A.png, id=545, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.1A.png, id=561, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.1A.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.1A.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.1A.png  used on input line 756.
 (pdftex.def)             Requested size: 294.86407pt x 222.3582pt.
-<./Imagenes/RDMP_3.2A.png, id=546, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.2A.png, id=562, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.2A.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.2A.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.2A.png  used on input line 756.
 (pdftex.def)             Requested size: 294.86407pt x 222.3582pt.
  [25 <./Imagenes/RDMP_3.1A.png> <./Imagenes/RDMP_3.2A.png>] (_minted/AD67DD0C2BD6FE7DA621B83B30B3B5E9.highlight.minted [26])
-<./Imagenes/RDMP_3.1BREAL.png, id=561, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.1BREAL.png, id=577, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.1BREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.1BREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.1BREAL.png  used on input line 870.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<./Imagenes/RDMP_3.2BREAL.png, id=562, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.2BREAL.png, id=578, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.2BREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.2BREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.2BREAL.png  used on input line 876.
@@ -2153,7 +2184,7 @@ Package pdftex.def Info: ./Imagenes/RDMP_3.2BREAL.png  used on input line 876.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./Imagenes/RDMP_3.3BREAL.png, id=563, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.3BREAL.png, id=579, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.3BREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.3BREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.3BREAL.png  used on input line 883.
@@ -2162,44 +2193,44 @@ Package pdftex.def Info: ./Imagenes/RDMP_3.3BREAL.png  used on input line 883.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [27] (_minted/581BD93202BD91AE29B565EA9BA48035.highlight.minted [28 <./Imagenes/RDMP_3.1BREAL.png> <./Imagenes/RDMP_3.2BREAL.png> <./Imagenes/RDMP_3.3BREAL.png>] [29] [30])
-<./Imagenes/RDMP_3.1CREAL.png, id=589, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.1CREAL.png, id=605, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.1CREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.1CREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.1CREAL.png  used on input line 1062.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<./Imagenes/RDMP_3.2CREAL.png, id=590, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.2CREAL.png, id=606, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.2CREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.2CREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.2CREAL.png  used on input line 1068.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<./Imagenes/RDMP_3.3CREAL.png, id=591, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_3.3CREAL.png, id=607, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_3.3CREAL.png Graphic file (type png)
 <use ./Imagenes/RDMP_3.3CREAL.png>
 Package pdftex.def Info: ./Imagenes/RDMP_3.3CREAL.png  used on input line 1076.
 (pdftex.def)             Requested size: 245.71756pt x 185.29262pt.
  [31 <./Imagenes/RDMP_3.1CREAL.png> <./Imagenes/RDMP_3.2CREAL.png> <./Imagenes/RDMP_3.3CREAL.png>] (_minted/4D176DB2E0761A35BF6D7251059E4601.highlight.minted [32] [33])
-<./Imagenes/RDMP_4.1.png, id=613, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_4.1.png, id=629, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_4.1.png Graphic file (type png)
 <use ./Imagenes/RDMP_4.1.png>
 Package pdftex.def Info: ./Imagenes/RDMP_4.1.png  used on input line 1207.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<./Imagenes/RDMP_4.2.png, id=614, 612.2875pt x 461.725pt>
+<./Imagenes/RDMP_4.2.png, id=630, 612.2875pt x 461.725pt>
 File: ./Imagenes/RDMP_4.2.png Graphic file (type png)
 <use ./Imagenes/RDMP_4.2.png>
 Package pdftex.def Info: ./Imagenes/RDMP_4.2.png  used on input line 1213.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
  (_minted/FD178409D409C590958A971051173CC5.highlight.minted [34 <./Imagenes/RDMP_4.1.png> <./Imagenes/RDMP_4.2.png>] [35])
-<Imagenes/RDMP_3.1C.png, id=630, 721.69624pt x 451.6875pt>
+<Imagenes/RDMP_3.1C.png, id=646, 721.69624pt x 451.6875pt>
 File: Imagenes/RDMP_3.1C.png Graphic file (type png)
 <use Imagenes/RDMP_3.1C.png>
 Package pdftex.def Info: Imagenes/RDMP_3.1C.png  used on input line 1358.
 (pdftex.def)             Requested size: 294.86407pt x 184.5452pt.
-<Imagenes/RDMP_3.2C.png, id=631, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_3.2C.png, id=647, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_3.2C.png Graphic file (type png)
 <use Imagenes/RDMP_3.2C.png>
 Package pdftex.def Info: Imagenes/RDMP_3.2C.png  used on input line 1368.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_3.3C.png, id=632, 699.61375pt x 451.6875pt>
+<Imagenes/RDMP_3.3C.png, id=648, 699.61375pt x 451.6875pt>
 File: Imagenes/RDMP_3.3C.png Graphic file (type png)
 <use Imagenes/RDMP_3.3C.png>
 Package pdftex.def Info: Imagenes/RDMP_3.3C.png  used on input line 1375.
@@ -2208,7 +2239,7 @@ Package pdftex.def Info: Imagenes/RDMP_3.3C.png  used on input line 1375.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagenes/RDMP_3.4C.png, id=633, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_3.4C.png, id=649, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_3.4C.png Graphic file (type png)
 <use Imagenes/RDMP_3.4C.png>
 Package pdftex.def Info: Imagenes/RDMP_3.4C.png  used on input line 1384.
@@ -2217,7 +2248,7 @@ Package pdftex.def Info: Imagenes/RDMP_3.4C.png  used on input line 1384.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [36 <./Imagenes/RDMP_3.1C.png>] [37 <./Imagenes/RDMP_3.2C.png> <./Imagenes/RDMP_3.3C.png> <./Imagenes/RDMP_3.4C.png>] (_minted/732E1D0A90F59CF17DD79B6EFB1CDBB0.highlight.minted [38])
-<Imagenes/RDMP_6.1.png, id=666, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_6.1.png, id=682, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_6.1.png Graphic file (type png)
 <use Imagenes/RDMP_6.1.png>
 Package pdftex.def Info: Imagenes/RDMP_6.1.png  used on input line 1515.
@@ -2226,12 +2257,12 @@ Package pdftex.def Info: Imagenes/RDMP_6.1.png  used on input line 1515.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagenes/RDMP_6.2.png, id=667, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_6.2.png, id=683, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_6.2.png Graphic file (type png)
 <use Imagenes/RDMP_6.2.png>
 Package pdftex.def Info: Imagenes/RDMP_6.2.png  used on input line 1525.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_6.3.png, id=668, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_6.3.png, id=684, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_6.3.png Graphic file (type png)
 <use Imagenes/RDMP_6.3.png>
 Package pdftex.def Info: Imagenes/RDMP_6.3.png  used on input line 1532.
@@ -2240,13 +2271,13 @@ Package pdftex.def Info: Imagenes/RDMP_6.3.png  used on input line 1532.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [39] (_minted/C3A945E8F4F58CC8B21363289B70249D.highlight.minted [40 <./Imagenes/RDMP_6.1.png> <./Imagenes/RDMP_6.2.png> <./Imagenes/RDMP_6.3.png>] [41])
-<Imagenes/RDMP_Multi_1.png, id=689, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_1.png, id=705, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_1.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_1.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_1.png  used on input line 1648.
 (pdftex.def)             Requested size: 245.71756pt x 185.29262pt.
  [42 <./Imagenes/RDMP_Multi_1.png>] (_minted/BC2F99B88A2D180D16892F282B5806E4.highlight.minted [43])
-<Imagenes/RDMP_Multi_2.1.png, id=703, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2.1.png, id=719, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2.1.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2.1.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2.1.png  used on input line 1783.
@@ -2255,12 +2286,12 @@ Package pdftex.def Info: Imagenes/RDMP_Multi_2.1.png  used on input line 1783.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagenes/RDMP_Multi_2.2.png, id=704, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2.2.png, id=720, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2.2.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2.2.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2.2.png  used on input line 1791.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_Multi_2.3.png, id=705, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2.3.png, id=721, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2.3.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2.3.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2.3.png  used on input line 1798.
@@ -2269,17 +2300,17 @@ Package pdftex.def Info: Imagenes/RDMP_Multi_2.3.png  used on input line 1798.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [44] [45 <./Imagenes/RDMP_Multi_2.1.png> <./Imagenes/RDMP_Multi_2.2.png> <./Imagenes/RDMP_Multi_2.3.png>] (_minted/03C4318A5467A7CE8429216174D9C4BF.highlight.minted [46])
-<Imagenes/RDMP_2023_1.png, id=726, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_2023_1.png, id=742, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_2023_1.png Graphic file (type png)
 <use Imagenes/RDMP_2023_1.png>
 Package pdftex.def Info: Imagenes/RDMP_2023_1.png  used on input line 1913.
 (pdftex.def)             Requested size: 270.29082pt x 203.82188pt.
-<Imagenes/RDMP_2023_2.png, id=727, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_2023_2.png, id=743, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_2023_2.png Graphic file (type png)
 <use Imagenes/RDMP_2023_2.png>
 Package pdftex.def Info: Imagenes/RDMP_2023_2.png  used on input line 1921.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_2023_3.png, id=728, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_2023_3.png, id=744, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_2023_3.png Graphic file (type png)
 <use Imagenes/RDMP_2023_3.png>
 Package pdftex.def Info: Imagenes/RDMP_2023_3.png  used on input line 1928.
@@ -2289,22 +2320,22 @@ Package pdftex.def Info: Imagenes/RDMP_2023_3.png  used on input line 1928.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [47 <./Imagenes/RDMP_2023_1.png>] (_minted/2EBF330970D9BFEB19DC561845D7FA08.highlight.minted [48 <./Imagenes/RDMP_2023_2.png> <./Imagenes/RDMP_2023_3.png>] [49])
-<Imagenes/RDMP_O_24_1.png, id=750, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_O_24_1.png, id=766, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_O_24_1.png Graphic file (type png)
 <use Imagenes/RDMP_O_24_1.png>
 Package pdftex.def Info: Imagenes/RDMP_O_24_1.png  used on input line 2057.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP_O_2024_2.png, id=751, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_O_2024_2.png, id=767, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_O_2024_2.png Graphic file (type png)
 <use Imagenes/RDMP_O_2024_2.png>
 Package pdftex.def Info: Imagenes/RDMP_O_2024_2.png  used on input line 2063.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP_O_24_3.png, id=752, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_O_24_3.png, id=768, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_O_24_3.png Graphic file (type png)
 <use Imagenes/RDMP_O_24_3.png>
 Package pdftex.def Info: Imagenes/RDMP_O_24_3.png  used on input line 2072.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP_O_2024_4.png, id=753, 612.2875pt x 450.68375pt>
+<Imagenes/RDMP_O_2024_4.png, id=769, 612.2875pt x 450.68375pt>
 File: Imagenes/RDMP_O_2024_4.png Graphic file (type png)
 <use Imagenes/RDMP_O_2024_4.png>
 Package pdftex.def Info: Imagenes/RDMP_O_2024_4.png  used on input line 2078.
@@ -2315,40 +2346,40 @@ Overfull \hbox (28.68205pt too wide) in paragraph at lines 2093--2113
  []
 
 [50 <./Imagenes/RDMP_O_24_1.png> <./Imagenes/RDMP_O_2024_2.png> <./Imagenes/RDMP_O_24_3.png> <./Imagenes/RDMP_O_2024_4.png>] (_minted/D5980F0048C765B30D9F7031E4E90473.highlight.minted [51])
-<Imagenes/RDMP-O-2018-1.png, id=772, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2018-1.png, id=788, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2018-1.png Graphic file (type png)
 <use Imagenes/RDMP-O-2018-1.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2018-1.png  used on input line 2227.
 (pdftex.def)             Requested size: 319.42982pt x 240.88042pt.
  [52]
-<Imagenes/RDMP-O-2018-2.png, id=777, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2018-2.png, id=793, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2018-2.png Graphic file (type png)
 <use Imagenes/RDMP-O-2018-2.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2018-2.png  used on input line 2234.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP-O-2018-3.png, id=778, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2018-3.png, id=794, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2018-3.png Graphic file (type png)
 <use Imagenes/RDMP-O-2018-3.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2018-3.png  used on input line 2240.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
  [53 <./Imagenes/RDMP-O-2018-1.png> <./Imagenes/RDMP-O-2018-2.png> <./Imagenes/RDMP-O-2018-3.png>] (_minted/371238A3074FB329BE9F14E2C098DF31.highlight.minted [54] [55])
-<Imagenes/RDMP-O-2022-1.png, id=800, 1159.33125pt x 695.59875pt>
+<Imagenes/RDMP-O-2022-1.png, id=816, 1159.33125pt x 695.59875pt>
 File: Imagenes/RDMP-O-2022-1.png Graphic file (type png)
 <use Imagenes/RDMP-O-2022-1.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2022-1.png  used on input line 2404.
 (pdftex.def)             Requested size: 417.72285pt x 250.62764pt.
-<Imagenes/RDMP-O-2022-2.png, id=801, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2022-2.png, id=817, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2022-2.png Graphic file (type png)
 <use Imagenes/RDMP-O-2022-2.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2022-2.png  used on input line 2411.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
-<Imagenes/RDMP-O-2022-3.png, id=802, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-O-2022-3.png, id=818, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-O-2022-3.png Graphic file (type png)
 <use Imagenes/RDMP-O-2022-3.png>
 Package pdftex.def Info: Imagenes/RDMP-O-2022-3.png  used on input line 2417.
 (pdftex.def)             Requested size: 221.1443pt x 166.76337pt.
 
-Overfull \hbox (2.79308pt too wide) in paragraph at lines 2401--2422
+Overfull \hbox (2.79305pt too wide) in paragraph at lines 2401--2422
 [] 
  []
 
@@ -2361,12 +2392,12 @@ Overfull \hbox (9.41168pt too wide) in paragraph at lines 2583--2584
  []
 
 [59]
-<Imagenes/RDMP_E_2022_1.png, id=827, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_E_2022_1.png, id=843, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_E_2022_1.png Graphic file (type png)
 <use Imagenes/RDMP_E_2022_1.png>
 Package pdftex.def Info: Imagenes/RDMP_E_2022_1.png  used on input line 2588.
 (pdftex.def)             Requested size: 245.71756pt x 185.29262pt.
-<Imagenes/RDMP_E_2022_2.png, id=828, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_E_2022_2.png, id=844, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_E_2022_2.png Graphic file (type png)
 <use Imagenes/RDMP_E_2022_2.png>
 Package pdftex.def Info: Imagenes/RDMP_E_2022_2.png  used on input line 2594.
@@ -2377,44 +2408,44 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 2586--2598
  []
 
 (_minted/2D0BFB172FED9883BE8FBA2656CBB786.highlight.minted [60 <./Imagenes/RDMP_E_2022_1.png> <./Imagenes/RDMP_E_2022_2.png>] [61])
-<Imagenes/RDMP_Unk_1.png, id=849, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Unk_1.png, id=865, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Unk_1.png Graphic file (type png)
 <use Imagenes/RDMP_Unk_1.png>
 Package pdftex.def Info: Imagenes/RDMP_Unk_1.png  used on input line 2770.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_Unk_2.png, id=850, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Unk_2.png, id=866, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Unk_2.png Graphic file (type png)
 <use Imagenes/RDMP_Unk_2.png>
 Package pdftex.def Info: Imagenes/RDMP_Unk_2.png  used on input line 2776.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_Unk_3.png, id=851, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Unk_3.png, id=867, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Unk_3.png Graphic file (type png)
 <use Imagenes/RDMP_Unk_3.png>
 Package pdftex.def Info: Imagenes/RDMP_Unk_3.png  used on input line 2784.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
-<Imagenes/RDMP_Unk_4.png, id=852, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Unk_4.png, id=868, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Unk_4.png Graphic file (type png)
 <use Imagenes/RDMP_Unk_4.png>
 Package pdftex.def Info: Imagenes/RDMP_Unk_4.png  used on input line 2790.
 (pdftex.def)             Requested size: 235.88676pt x 177.88092pt.
  [62] [63 <./Imagenes/RDMP_Unk_1.png> <./Imagenes/RDMP_Unk_2.png> <./Imagenes/RDMP_Unk_3.png> <./Imagenes/RDMP_Unk_4.png>] (_minted/441924DF6B7101484B18D6361126C343.highlight.minted [64] [65] [66])
-<Imagenes/RDMP-E-2020-1.png, id=884, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-E-2020-1.png, id=900, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-E-2020-1.png Graphic file (type png)
 <use Imagenes/RDMP-E-2020-1.png>
 Package pdftex.def Info: Imagenes/RDMP-E-2020-1.png  used on input line 3015.
 (pdftex.def)             Requested size: 240.80591pt x 181.58678pt.
-<Imagenes/RDMP-E-2020-2.png, id=885, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-E-2020-2.png, id=901, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-E-2020-2.png Graphic file (type png)
 <use Imagenes/RDMP-E-2020-2.png>
 Package pdftex.def Info: Imagenes/RDMP-E-2020-2.png  used on input line 3021.
 (pdftex.def)             Requested size: 240.80591pt x 181.58678pt.
-<Imagenes/RDMP-E-2020-3.png, id=886, 612.2875pt x 461.725pt>
+<Imagenes/RDMP-E-2020-3.png, id=902, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP-E-2020-3.png Graphic file (type png)
 <use Imagenes/RDMP-E-2020-3.png>
 Package pdftex.def Info: Imagenes/RDMP-E-2020-3.png  used on input line 3028.
 (pdftex.def)             Requested size: 393.1496pt x 296.47525pt.
  [67 <./Imagenes/RDMP-E-2020-1.png> <./Imagenes/RDMP-E-2020-2.png>] (_minted/0D0E7AD49D5B60767BD90C74EA6EFD23.highlight.minted [68 <./Imagenes/RDMP-E-2020-3.png>] [69]) (_minted/B269AB082C0DD4D6DDC52ED80D5CFEF0.highlight.minted [70] [71])
-<Imagenes/RDMP_Multi_2025_1.png, id=921, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2025_1.png, id=937, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2025_1.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2025_1.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2025_1.png  used on input line 3303.
@@ -2423,7 +2454,7 @@ Package pdftex.def Info: Imagenes/RDMP_Multi_2025_1.png  used on input line 3303
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagenes/RDMP_Multi_2025_2.png, id=922, 612.2875pt x 461.725pt>
+<Imagenes/RDMP_Multi_2025_2.png, id=938, 612.2875pt x 461.725pt>
 File: Imagenes/RDMP_Multi_2025_2.png Graphic file (type png)
 <use Imagenes/RDMP_Multi_2025_2.png>
 Package pdftex.def Info: Imagenes/RDMP_Multi_2025_2.png  used on input line 3309.
@@ -2444,18 +2475,18 @@ Cap\'{\i }tulo 3.
 
 
 ] [76] [77]
-<Imagenes/sigmoidal.png, id=982, 506.49225pt x 230.66174pt>
+<Imagenes/sigmoidal.png, id=998, 506.49225pt x 230.66174pt>
 File: Imagenes/sigmoidal.png Graphic file (type png)
 <use Imagenes/sigmoidal.png>
 Package pdftex.def Info: Imagenes/sigmoidal.png  used on input line 132.
 (pdftex.def)             Requested size: 344.00308pt x 156.6684pt.
-<Imagenes/sigmo.png, id=983, 1268.74pt x 846.16125pt>
+<Imagenes/sigmo.png, id=999, 1268.74pt x 846.16125pt>
 File: Imagenes/sigmo.png Graphic file (type png)
 <use Imagenes/sigmo.png>
 Package pdftex.def Info: Imagenes/sigmo.png  used on input line 148.
 (pdftex.def)             Requested size: 344.00308pt x 229.42203pt.
  [78 <./Imagenes/sigmoidal.png> <./Imagenes/sigmo.png>] [79]
-<Imagenes/inhibicion.png, id=1008, 1027.84pt x 745.78625pt>
+<Imagenes/inhibicion.png, id=1024, 1027.84pt x 745.78625pt>
 File: Imagenes/inhibicion.png Graphic file (type png)
 <use Imagenes/inhibicion.png>
 Package pdftex.def Info: Imagenes/inhibicion.png  used on input line 202.
@@ -2465,7 +2496,7 @@ Package pdftex.def Info: Imagenes/inhibicion.png  used on input line 202.
 
  (Capitulos/RCFP.tex
 Cap\'{\i }tulo 4.
-<Imagenes/PFR.png, id=1058, 3729.935pt x 1124.2pt>
+<Imagenes/PFR.png, id=1074, 3729.935pt x 1124.2pt>
 File: Imagenes/PFR.png Graphic file (type png)
 <use Imagenes/PFR.png>
 Package pdftex.def Info: Imagenes/PFR.png  used on input line 13.
@@ -2476,7 +2507,7 @@ Package pdftex.def Info: Imagenes/PFR.png  used on input line 13.
 
 
  <./Imagenes/PFR.png>] [85] [86]
-<./Imagenes/PFR_recirculacion.png, id=1102, 585.387pt x 141.52875pt>
+<./Imagenes/PFR_recirculacion.png, id=1118, 585.387pt x 141.52875pt>
 File: ./Imagenes/PFR_recirculacion.png Graphic file (type png)
 <use ./Imagenes/PFR_recirculacion.png>
 Package pdftex.def Info: ./Imagenes/PFR_recirculacion.png  used on input line 185.
@@ -2507,7 +2538,7 @@ Package pgfplots info on input line 444: Setting layers 'axis background,axis gr
 Package pgfplots info on input line 488: fill between: activating layered graphics
 Package pgfplots info on input line 488: Setting layers 'axis background,axis grid,axis ticks,axis lines,axis tick labels,pre main,main,axis descriptions,axis foreground'...
  [91]
-<./Imagenes/comun.png, id=1162, 2802.47pt x 1541.76pt>
+<./Imagenes/comun.png, id=1178, 2802.47pt x 1541.76pt>
 File: ./Imagenes/comun.png Graphic file (type png)
 <use ./Imagenes/comun.png>
 Package pdftex.def Info: ./Imagenes/comun.png  used on input line 504.
@@ -2577,7 +2608,9 @@ Cap\'{\i }tulo 6.
 
 
 
-] [112] [113] [114] [115] [116] [117] [118] [119]) [120] (template.aux
+] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121] [122] [123] [124] [125] [126]
+Package pgfplots info on input line 1092: Using 'lua backend=false' for axis: x coord trafo unsupported.
+) [127] [128] (template.aux
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
@@ -2595,17 +2628,17 @@ Package logreq Info: Writing requests to 'template.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 72346 strings out of 467871
- 1650115 string characters out of 5435692
- 2830387 words of memory out of 5000000
- 99398 multiletter control sequences out of 15000+600000
- 905802 words of font info for 339 fonts, out of 8000000 for 9000
+ 72606 strings out of 467871
+ 1654330 string characters out of 5435692
+ 2855193 words of memory out of 5000000
+ 99589 multiletter control sequences out of 15000+600000
+ 907786 words of font info for 345 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  103i,28n,121p,983b,3307s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <E:/Latex/fonts/type1/public/newpx/NewPXMI.pfb><E:/Latex/fonts/type1/public/newpx/NewPXMI_gnu.pfb><E:/Latex/fonts/type1/public/amsfonts/latxfont/line10.pfb><E:/Latex/fonts/type1/public/lm/lmb10.pfb><E:/Latex/fonts/type1/public/lm/lmbx10.pfb><E:/Latex/fonts/type1/public/lm/lmbx12.pfb><E:/Latex/fonts/type1/public/lm/lmbx7.pfb><E:/Latex/fonts/type1/public/lm/lmbx8.pfb><E:/Latex/fonts/type1/public/lm/lmbx9.pfb><E:/Latex/fonts/type1/public/lm/lmbxi10.pfb><E:/Latex/fonts/type1/public/lm/lmr10.pfb><E:/Latex/fonts/type1/public/lm/lmr12.pfb><E:/Latex/fonts/type1/public/lm/lmr17.pfb><E:/Latex/fonts/type1/public/lm/lmr5.pfb><E:/Latex/fonts/type1/public/lm/lmr6.pfb><E:/Latex/fonts/type1/public/lm/lmr7.pfb><E:/Latex/fonts/type1/public/lm/lmr8.pfb><E:/Latex/fonts/type1/public/lm/lmr9.pfb><E:/Latex/fonts/type1/public/lm/lmri10.pfb><E:/Latex/fonts/type1/public/lm/lmri9.pfb><E:/Latex/fonts/type1/public/lm/lmss10.pfb><E:/Latex/fonts/type1/public/lm/lmssbx10.pfb><E:/Latex/fonts/type1/public/lm/lmtk10.pfb><E:/Latex/fonts/type1/public/lm/lmtt9.pfb><E:/Latex/fonts/type1/public/lm/lmtti10.pfb><E:/Latex/fonts/type1/public/newpx/pxmiaX.pfb><E:/Latex/fonts/type1/public/newpx/pxsys.pfb><E:/Latex/fonts/type1/public/newtx/txexas.pfb><E:/Latex/fonts/type1/public/newtx/txexs.pfb><E:/Latex/fonts/type1/public/newtx/txsym.pfb>
-Output written on template.pdf (121 pages, 7539103 bytes).
+Output written on template.pdf (129 pages, 7591758 bytes).
 PDF statistics:
- 2049 PDF objects out of 2073 (max. 8388607)
- 619 named destinations out of 1000 (max. 500000)
- 1630 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2186 PDF objects out of 2487 (max. 8388607)
+ 678 named destinations out of 1000 (max. 500000)
+ 1714 words of extra memory for PDF output out of 10000 (max. 10000000)
 
