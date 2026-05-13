@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  11 MAY 2026 03:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  14 MAY 2026 00:13
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1166,6 +1166,12 @@ File: tikzlibrarycalc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 File: tikzlibraryshadows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
 \pgfbs@fading@count=\count487
+) (E:\Latex\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+ (E:\Latex\tex/generic/pgf/libraries/shapes\pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)) (E:\Latex\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarymindmap.code.tex
+File: tikzlibrarymindmap.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
 \c@mylabelcounter=\count488
 \diffdbox=\box147
@@ -2112,10 +2118,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 \pydata@fh@0=\write8
 \openout8 = `_66F6181BCB4CFF4CD38FBC804A036DB6.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260511031758 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
+runsystem(latexminted config  --timestamp 20260514001356 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
 
  (_66F6181BCB4CFF4CD38FBC804A036DB6.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260511031758 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
+runsystem(latexminted cleanconfig  --timestamp 20260514001356 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
 
  (_minted/default.style.minted) (_minted/56873C1834805CA11618C54BD25FCEA2.highlight.minted
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1.
@@ -2608,9 +2614,23 @@ Cap\'{\i }tulo 6.
 
 
 
-] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121] [122] [123] [124] [125] [126]
-Package pgfplots info on input line 1092: Using 'lua backend=false' for axis: x coord trafo unsupported.
-) [127] [128] (template.aux
+] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121] [122] [123] [124] [125]
+
+LaTeX Warning: Reference `sec:RCFP_Recirculacion_final' on page 126 undefined on input line 1002.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1005--1007
+
+ []
+
+
+Overfull \hbox (10.79764pt too wide) in paragraph at lines 1043--1043
+[]$[] \LMS/npxsy/m/n/9 Ï
+ []
+
+[126] [127]
+Package pgfplots info on input line 1165: Using 'lua backend=false' for axis: x coord trafo unsupported.
+) [128] [129] (template.aux
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
@@ -2623,22 +2643,25 @@ L3 programming layer <2025-12-29>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
 Package logreq Info: Writing requests to 'template.run.xml'.
 \openout1 = `template.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 72606 strings out of 467871
- 1654330 string characters out of 5435692
- 2855193 words of memory out of 5000000
- 99589 multiletter control sequences out of 15000+600000
+ 73225 strings out of 467871
+ 1670203 string characters out of 5435692
+ 2884624 words of memory out of 5000000
+ 100190 multiletter control sequences out of 15000+600000
  907786 words of font info for 345 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  103i,28n,121p,983b,3307s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <E:/Latex/fonts/type1/public/newpx/NewPXMI.pfb><E:/Latex/fonts/type1/public/newpx/NewPXMI_gnu.pfb><E:/Latex/fonts/type1/public/amsfonts/latxfont/line10.pfb><E:/Latex/fonts/type1/public/lm/lmb10.pfb><E:/Latex/fonts/type1/public/lm/lmbx10.pfb><E:/Latex/fonts/type1/public/lm/lmbx12.pfb><E:/Latex/fonts/type1/public/lm/lmbx7.pfb><E:/Latex/fonts/type1/public/lm/lmbx8.pfb><E:/Latex/fonts/type1/public/lm/lmbx9.pfb><E:/Latex/fonts/type1/public/lm/lmbxi10.pfb><E:/Latex/fonts/type1/public/lm/lmr10.pfb><E:/Latex/fonts/type1/public/lm/lmr12.pfb><E:/Latex/fonts/type1/public/lm/lmr17.pfb><E:/Latex/fonts/type1/public/lm/lmr5.pfb><E:/Latex/fonts/type1/public/lm/lmr6.pfb><E:/Latex/fonts/type1/public/lm/lmr7.pfb><E:/Latex/fonts/type1/public/lm/lmr8.pfb><E:/Latex/fonts/type1/public/lm/lmr9.pfb><E:/Latex/fonts/type1/public/lm/lmri10.pfb><E:/Latex/fonts/type1/public/lm/lmri9.pfb><E:/Latex/fonts/type1/public/lm/lmss10.pfb><E:/Latex/fonts/type1/public/lm/lmssbx10.pfb><E:/Latex/fonts/type1/public/lm/lmtk10.pfb><E:/Latex/fonts/type1/public/lm/lmtt9.pfb><E:/Latex/fonts/type1/public/lm/lmtti10.pfb><E:/Latex/fonts/type1/public/newpx/pxmiaX.pfb><E:/Latex/fonts/type1/public/newpx/pxsys.pfb><E:/Latex/fonts/type1/public/newtx/txexas.pfb><E:/Latex/fonts/type1/public/newtx/txexs.pfb><E:/Latex/fonts/type1/public/newtx/txsym.pfb>
-Output written on template.pdf (129 pages, 7591758 bytes).
+Output written on template.pdf (130 pages, 7600461 bytes).
 PDF statistics:
- 2186 PDF objects out of 2487 (max. 8388607)
- 678 named destinations out of 1000 (max. 500000)
- 1714 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2208 PDF objects out of 2487 (max. 8388607)
+ 686 named destinations out of 1000 (max. 500000)
+ 1726 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -654,7 +654,7 @@ En reactores reales, el patrón de flujo se aparta del modelo ideal. Esta desvia
                     Si el resultado es menor que 1, el volumen estancado es $1 - \int_{0}^{\infty} \theta E \, d\theta$ (expresado en \%).
           \end{itemize}
 
-    \item \textbf{Modelo de flujo segregado:}
+    \item \textbf{Modelo de flujo segregado:} \label{sec:flujo_segregado}
           Aplicable exclusivamente a sistemas lineales (cinéticas de primer orden). Permite predecir la conversión media promediando la concentración individual de los 'paquetes' de fluido según su tiempo de residencia y si comparamos su resultado con el resto de modelos dara un resultado similar al mas optimo posible:
           \begin{equation}
               \overline{C_A} = \int_{0}^{\infty} C_A(\theta) \cdot E(t) \, d\theta \label{eq:flujo_segregado_1}
@@ -665,14 +665,14 @@ En reactores reales, el patrón de flujo se aparta del modelo ideal. Esta desvia
 \section{Modelo de flujo segregado}
 \noindent Para cinéticas de primer orden, partimos de la definición de la variación de concentración de $A$ respecto al tiempo:
 
-\begin{alignat*}{3}
-     & \text{Ley de velocidad:}                    &  & \frac{dC_A}{dt} = -k \cdot C_A                                      &       &                                                                  \\[10pt]
-     & \text{Separación de variables:\hspace{2em}} &  & \frac{dC_A}{C_A} = -k \cdot dt                                      &       &                                                                  \\[10pt]
-     & \text{Integración:}                         &  & \int_{C_{A0}}^{C_{AS}} \frac{dC_A}{C_A} = -k \int_{0}^{t} dt        &       &                                                                  \\[10pt]
-     & \text{Resolución:}                          &  & \ln\left(\frac{C_{AS}}{C_{A0}}\right) = -k \cdot t                  &       &                                                                  \\[10pt]
-     & \text{Forma exponencial:}                   &  & C_{AS} = C_{A0} \cdot e^{-k \cdot t}                                &       &                                                                  \\[10pt]
-     & \text{Cambio a } \theta:                    &  & \mathbf{C_A(\theta) = C_{A0} \cdot \exp(-k \cdot t_R \cdot \theta)} & \quad & \textcolor{gray}{\leftarrow \text{usando } t = t_R \cdot \theta} \\[10pt]
-\end{alignat*}
+\begin{alignat}{3}
+     & \text{Ley de velocidad:}                    &  & \frac{dC_A}{dt} = -k \cdot C_A                                      &       & \nonumber                                                        \\[10pt]
+     & \text{Separación de variables:\hspace{2em}} &  & \frac{dC_A}{C_A} = -k \cdot dt                                      &       & \nonumber                                                        \\[10pt]
+     & \text{Integración:}                         &  & \int_{C_{A0}}^{C_{AS}} \frac{dC_A}{C_A} = -k \int_{0}^{t} dt        &       & \nonumber                                                        \\[10pt]
+     & \text{Resolución:}                          &  & \ln\left(\frac{C_{AS}}{C_{A0}}\right) = -k \cdot t                  &       & \nonumber                                                        \\[10pt]
+     & \text{Forma exponencial:}                   &  & C_{AS} = C_{A0} \cdot e^{-k \cdot t}                                &       & \nonumber                                                        \\[10pt]
+     & \text{Cambio a } \theta:                    &  & \mathbf{C_A(\theta) = C_{A0} \cdot \exp(-k \cdot t_R \cdot \theta)} & \quad & \textcolor{gray}{\leftarrow \text{usando } t = t_R \cdot \theta} \\[10pt] \label{eq:flujo_segregado_concentracion}
+\end{alignat}
 \noindent Sustituyendo \eqref{eq:flujo_segregado_1} en la ecuación de mezcla de flujos, se obtiene:
 
 \begin{equation}
@@ -691,15 +691,15 @@ En reactores reales, el patrón de flujo se aparta del modelo ideal. Esta desvia
 \end{equation}
 
 \noindent De forma análoga si hacemos los mismos pasos para la conversión:
-\begin{alignat*}{3}
-     & \text{Relación de conversión:}              &  & C_A = C_{A0}(1 - X_A)                                              & \quad &                                                                        \\[10pt]
-     & \text{Derivada de la ley:}                  &  & \cancel{C_{A0}} \frac{dX_A}{dt} = k \cdot \cancel{C_{A0}}(1 - X_A) & \quad & \textcolor{gray}{\leftarrow \frac{dC_A}{dt} = -C_{A0} \frac{dX_A}{dt}} \\[10pt]
-     & \text{Separación de variables:\hspace{2em}} &  & \frac{dX_A}{1 - X_A} = k \cdot dt                                  & \quad &                                                                        \\[10pt]
-     & \text{Integración:}                         &  & \int \frac{dX_A}{1 - X_A} = \int k \cdot dt                        & \quad &                                                                        \\[10pt]
-     & \text{Resolución (Logaritmos):}             &  & -\ln(1 - X_A) = k \cdot t                                          & \quad &                                                                        \\[10pt]
-     & \text{Forma exponencial:}                   &  & (1 - X_A) = \exp(-k \cdot t)                                       & \quad &                                                                        \\[10pt]
-     & \text{Cambio a } \theta:                    &  & \mathbf{1 - X_A(\theta) = \exp(-k \cdot t_R \cdot \theta)}         & \quad & \textcolor{gray}{\leftarrow \text{usando } t = t_R \cdot \theta}       \\[10pt]
-\end{alignat*}
+\begin{alignat}{3}
+     & \text{Relación de conversión:}              &  & C_A = C_{A0}(1 - X_A)                                              & \quad & \nonumber                                                                                             \\[10pt]
+     & \text{Derivada de la ley:}                  &  & \cancel{C_{A0}} \frac{dX_A}{dt} = k \cdot \cancel{C_{A0}}(1 - X_A) & \quad & \textcolor{gray}{\leftarrow \frac{dC_A}{dt} = -C_{A0} \frac{dX_A}{dt}} \nonumber                      \\[10pt]
+     & \text{Separación de variables:\hspace{2em}} &  & \frac{dX_A}{1 - X_A} = k \cdot dt                                  & \quad & \nonumber                                                                                             \\[10pt]
+     & \text{Integración:}                         &  & \int \frac{dX_A}{1 - X_A} = \int k \cdot dt                        & \quad & \nonumber                                                                                             \\[10pt]
+     & \text{Resolución (Logaritmos):}             &  & -\ln(1 - X_A) = k \cdot t                                          & \quad & \nonumber                                                                                             \\[10pt]
+     & \text{Forma exponencial:}                   &  & (1 - X_A) = \exp(-k \cdot t)                                       & \quad & \nonumber                                                                                             \\[10pt]
+     & \text{Cambio a } \theta:                    &  & \mathbf{1 - X_A(\theta) = \exp(-k \cdot t_R \cdot \theta)}         & \quad & \textcolor{gray}{\leftarrow \text{usando } t = t_R \cdot \theta}     \label{eq:flujo_segregado_final} \\[10pt]
+\end{alignat}
 \section{Ejemplos practicos}
 \subsection{Experimento en Escalón}
 
@@ -998,7 +998,80 @@ Simplificando los términos $k \tau_i$:
 \begin{equation}
     \tau = (1+R) \cdot C_{AR} \int_{X_{Ae}}^{X_{As}} \frac{d_{XA}}{r_A} \implies \tau = (1+R) \int_{\dfrac{X_{AR}}{R+1}}^{X_{As}} \frac{d_{XA}}{k\cdot (1-X_A)}
 \end{equation}
-\noindent tal y como se explicaba en la ecuacíon %%! Terminar mañana 
+
+\noindent tal y como se explicaba en la ecuación \ref{eq:RCFP_recirculacion_tau} de la sección \ref{sec:RCFP_Recirculacion_final} y recordando que el valor de R se obtiene de la siguiente manera:
+\begin{equation}
+    \sigma^2 = \frac{R}{1+R} \implies 0.636 = \frac{R}{1+R} \implies R = 1.7465
+\end{equation}
+\noindent Además el valor de k es de 0.304 min$^{-1}$, y la conversión de entrada es de 0 por lo que resolviendo\\
+
+\begin{center}
+    \Res{
+        \tau = (1+R) \int_{\dfrac{X_{AR}}{R+1}}^{X_{As}} \frac{d_{XA}}{k\cdot (1-X_A)} \implies X_{As} = 0.905
+    }
+\end{center}
+\nt{Al ser una cinética de primer orden también se puede hacer la modelización por flujo segregado repasando la sección \ref{sec:flujo_segregado} y finalmente en la ecuación \ref{eq:flujo_segregado_final} }
+
+
+\ex{De forma análoga al caso anterior}{
+    \small
+    \begin{multicols}{3}
+        \textbf{1.} Columna (\textbf{$1-X(\theta)$}) (Ec. \ref{eq:flujo_segregado_final}):
+        \begin{itemize}
+            \item $\exp(-0.304 \cdot 15.161 \cdot \textcolor{blue}{0}) = 1$
+            \item $\exp(-0.304 \cdot 15.161 \cdot \textcolor{red}{0.066}) = 0.7379$
+            \item $\exp(-0.304 \cdot 15.161 \cdot \textcolor{darkgreen}{0.132}) = 0.5444$
+        \end{itemize}
+        \columnbreak
+        \textbf{2.} Columna (\textbf{$1-X(\theta)\cdot E$}):
+        \begin{itemize}
+            \item $\textcolor{blue}{1} \cdot \textcolor{blue}{0} = 0$
+            \item $\textcolor{red}{0.7379} \cdot \textcolor{red}{0.085} = 0.0629$
+            \item $\textcolor{darkgreen}{0.5444} \cdot \textcolor{darkgreen}{0.540} = 0.2940$
+        \end{itemize}
+        \columnbreak
+        \textbf{3.} Integral (Trapecios):
+        \begin{itemize}
+            \item Para $\theta=0 \implies 0$
+            \item $\frac{\textcolor{red}{0.0629}+\textcolor{blue}{0}}{2} \cdot (\textcolor{red}{0.066}-\textcolor{blue}{0}) = \textcolor{red}{0.0021}$
+            \item $\left(\frac{\textcolor{darkgreen}{0.2940}+\textcolor{red}{0.0629}}{2} \cdot (\textcolor{darkgreen}{0.132}-\textcolor{red}{0.066})\right) + \textcolor{red}{0.0021} = \textcolor{darkgreen}{0.0138}$
+        \end{itemize}
+    \end{multicols}
+    \vspace{0.2cm}
+    \normalsize
+    \textbf{4.} El último valor de la integral corresponde a la fracción no reaccionada a la salida ($1-X_A$).
+}
+\begin{table}[htbp]
+    \centering
+    \caption{Datos y cálculos para el modelo de flujo segregado.}
+    \label{tab:flujo_segregado}
+    \begin{tabular}{cccccc}
+        \toprule
+        \textbf{$t$ (min)}    & \textbf{$\theta$} & \textbf{$E$} & \textbf{$1-X(\theta)$} & \textbf{$(1-X)\cdot E$} & \textbf{$1-X$ media} \\ \midrule
+        \rowcolor{blue!20} 0  & 0                 & 0            & 1.0000                 & 0.0000                  & 0                    \\
+        \rowcolor{red!20} 1   & 0.066             & 0.085        & 0.7379                 & 0.0629                  & 0.0021               \\
+        \rowcolor{green!20} 2 & 0.132             & 0.540        & 0.5444                 & 0.2940                  & 0.0138               \\
+        3                     & 0.198             & 0.767        & 0.4017                 & 0.3082                  & 0.0337               \\
+        4                     & 0.264             & 0.853        & 0.2964                 & 0.2527                  & 0.0522               \\
+        5                     & 0.330             & 0.853        & 0.2187                 & 0.1865                  & 0.0667               \\
+        6                     & 0.396             & 0.815        & 0.1614                 & 0.1315                  & 0.0772               \\
+        8                     & 0.528             & 0.729        & 0.0879                 & 0.0641                  & 0.0901               \\
+        10                    & 0.660             & 0.635        & 0.0478                 & 0.0304                  & 0.0963               \\
+        15                    & 0.989             & 0.445        & 0.0105                 & 0.0047                  & 0.1021               \\
+        20                    & 1.319             & 0.303        & 0.0023                 & 0.0007                  & 0.1030               \\
+        30                    & 1.979             & 0.142        & 0.0001                 & 0.0000                  & 0.1032               \\
+        41                    & 2.704             & 0.066        & 0.0000                 & 0.0000                  & 0.1032               \\
+        52                    & 3.430             & 0.028        & 0.0000                 & 0.0000                  & 0.1032               \\
+        67                    & 4.419             & 0.009        & 0.0000                 & 0.0000                  & 0.1032               \\ \bottomrule
+    \end{tabular}
+\end{table}
+\begin{center}
+    \Res{
+        1-X_A(\theta) = \exp(-k \cdot t_R \cdot \theta) \implies X_A = 0.8968 \approx 0.90
+    }
+\end{center}
+\noindent Aunque los datos puedan parecer más favorables en el modelo de flujo de pistón con recirculación que en el modelo de flujo segregado, en realidad este último es el más riguroso y adecuado. Es importante recalcar que ambos modelos deben coincidir al tratarse de una cinética de primer orden; la ligera variación en el resultado se debe únicamente a errores de redondeo en los cálculos numéricos.
+
 \newpage
 \subsection{Modelos Mezclados}
 
