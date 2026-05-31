@@ -1131,14 +1131,13 @@ Simplificando los términos $k \tau_i$:
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \begin{tikzpicture}[scale=0.85]
+        \begin{tikzpicture}[scale=0.7, transform shape]
             \begin{axis}[
                     xlabel={$\theta$},
                     ylabel={$E(\theta)$},
                     ymin=0, ymax=1.1,
                     xmin=0, xmax=5.5,
-                    grid=major,
-                    title={Curva de Distribución $E(\theta)$}
+                    grid=major
                 ]
                 \addplot[thick, blue,smooth, mark=*] coordinates {
                         (0, 1) (0.2083, 0.8) (0.4167, 0.632) (0.625, 0.504)
@@ -1153,15 +1152,14 @@ Simplificando los términos $k \tau_i$:
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \begin{tikzpicture}[scale=0.85]
+        \begin{tikzpicture}[scale=0.7, transform shape]
             \begin{axis}[
                     ybar,
                     symbolic x coords={Bypass, Vol. Muerto},
                     xtick=data,
                     ylabel={\%},
                     ymin=0, ymax=25,
-                    nodes near coords,
-                    title={Desviaciones detectadas}
+                    nodes near coords
                 ]
                 \addplot[fill=orange!60] coordinates {(Bypass,9.49) (Vol. Muerto,20.77)};
             \end{axis}
@@ -1170,6 +1168,13 @@ Simplificando los términos $k \tau_i$:
     \caption{Curva de distribución de tiempos de residencia $E(\theta)$ y comportamiento del reactor.}
     \label{fig:comparativa_diagnostico}
 \end{figure}
+\nt{En la primera subfigura se observa que la curva $E(\theta)$ presenta un perfil característico de un reactor de mezcla completa (CSTR), aunque con un decaimiento más pronunciado.
+    Este fenómeno se explica físicamente por la existencia del \textbf{bypass}: al desviarse una fracción del flujo hacia la salida sin pasar por la zona activa, la concentración del trazador en el interior disminuye más rápidamente de lo esperado.
+    En la segunda subfigura, el diagnóstico mediante el modelo de compartimentos cuantifica el bypass y el volumen estanco en formato de porcentaje. Matemáticamente, estos valores se obtienen como la diferencia respecto a la unidad ($1 - \text{Integral}$) de los sumatorios resaltados en \textcolor{darkgreen}{verde} en la tabla de cálculo.}
+\newpage
+\cor{}{
+    Volviéndonos a fijar en los sumatorios de las integrales, como en este caso $\int E \,d\theta$ y $\int E\cdot \theta \, d\theta$ son $\neq 1$, entonces sabemos que estamos en el caso de un reactor tanque agitado que debemos modelizar por el modelo mezclado. Simplemente con que una de ellas ya fuera distinta de 1, este sería el modelo a elegir.
+}
 
 \begin{table}[htbp]
     \centering
@@ -1185,3 +1190,61 @@ Simplificando los términos $k \tau_i$:
     \caption{Resultados del diagnóstico hidrodinámico actualizados.}
     \label{tab:diagnostico}
 \end{table}
+
+\noindent Como tenemos un volumen estancado del $20.77\%$, es decir, de un tanque total de $800\text{ L}$, $166.16\text{ L}$ corresponderán a un subcompartimento (volumen muerto). Por otro lado, el bypass representa un $9.49\%$, lo que equivale a un caudal desviado de $47.45\text{ L/h}$, tal y como se puede ver en el siguiente esquema.
+
+\begin{center}
+    \begin{figure}[htbp]
+        \centering
+        \begin{tikzpicture}[
+            node distance=1cm and 1.5cm,
+            reactor/.style={rectangle, draw, thick, minimum width=3cm, minimum height=1.8cm, align=center, fill=white},
+            dead/.style={rectangle, draw, thick, minimum width=2cm, minimum height=1.2cm, align=center, fill=gray!10},
+            arrow/.style={thick, -{Stealth[scale=1.2]}},
+            point/.style={circle, fill, inner sep=1.5pt}
+            ]
+
+            % Nodos principales
+            \node[reactor] (main) at (2.5,0) {Reactor Activo \\ $V_a = 633.84 \text{ L}$};
+            \node[dead, below=0.5cm of main] (deadzone) {Volumen Muerto \\ $V_m = 166.16 \text{ L}$};
+
+            % Entrada
+            \node (in) at (-3,0) {};
+            \node[point] (split) at (-1,0) {};
+            \draw[arrow] (in) -- node[above, pos=0.2] {$F = 500 \text{ L/h}$} (split);
+
+            % Hacia el reactor
+            \draw[arrow] (split) -- node[below, blue, pos=0.3] {$F_a = 452.55 \text{ L/h}$} (main.west);
+
+            % Conexión con volumen muerto (intercambio)
+            \draw[thick, <->] (main.south) -- (deadzone.north);
+
+            % Salida
+            \node[point, fill=red] (merge) at (6,0) {};
+            \draw[thick] (main.east) -- node[below] {$X_{AR}$} (merge);
+            \node (out) at (8,0) {};
+            \draw[arrow] (merge) -- node[above, pos=0.7] {$F = 500 \text{ L/h}$} node[below, pos=1] {$X_{AS}$} (out);
+
+            % Bypass (superior)
+            \draw[arrow, rounded corners=10pt] (split) |- (2.5, 1.8) node[above] {Bypass ($v_b = 47.45 \text{ L/h}$)} -| (merge);
+
+        \end{tikzpicture}
+        \caption{Modelo de compartimentos: Reactor con flujo real, zona muerta y cortocircuito (Bypass).}
+        \label{fig:modelo_compartimentos_rtd}
+    \end{figure}
+\end{center}
+\noindent La forma de resolverlo es aplicando dos balances de materia. Primero en el punto de mezcla (es decir, el marcado en \textcolor{red}{rojo}), aunque previamente es necesario calcular el comportamiento del reactor activo. Los pasos serán los siguientes:
+
+\begin{enumerate}
+    \item Como tenemos $V_a$ y $F_a$, podemos calcular $\tau$ para el reactor activo:
+          \begin{equation}
+              \tau = \frac{V_a}{F_a} = \frac{633.84}{452.55} = 1.40 \si{h^{-1}} \implies \frac{C_{A0}\cdot X_{AR}}{k \cdot C_{A0}\cdot (1-X_{AR})} \implies\frac{\cancel{C_{A0}}\cdot X_{AR}}{1.875 \cdot {\cancel{C_{A0}}\cdot (1-X_{AR})}} \implies X_{AR}= 0.724
+          \end{equation}
+    \item Realizamos un balance en el punto de mezcla, expresando además la concentración de salida como $C_{AS} = C_{A0}\cdot (1-X_{AS})$ y $C_{AR} = C_{A0}\cdot (1-X_{AR})$:
+          \begin{equation}
+              F \cdot C_{AS} = F_{\text{bypass}}\cdot C_{A0} + F_a \cdot C_{AR} \implies 500 \cdot  3 \cdot (1-X_{AS}) = 47.45 \cdot 3 + 452.55 \cdot 3 \cdot (1-0.724)
+          \end{equation}
+\end{enumerate}
+\begin{center}
+    \Res{X_{AS}= 0.6553 \quad \quad C_{AS} = 1.0341 \text{ M}}
+\end{center}

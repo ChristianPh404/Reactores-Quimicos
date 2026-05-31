@@ -80,4 +80,10 @@
 \contentsline {subsection}{\numberline {6.6.2}Experimento de Impulso}{124}{subsection.6.6.2}%
 \contentsline {subsubsection}{Modelización}{126}{section*.83}%
 \contentsline {subsection}{\numberline {6.6.3}Modelos Mezclados}{128}{subsection.6.6.3}%
+\contentsline {chapter}{\numberline {7}Examenes de teoría}{130}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Examen mayo 2020}{130}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Examen junio 2020}{138}{section.7.2}%
+\contentsline {section}{\numberline {7.3}2023}{139}{section.7.3}%
+\contentsline {section}{\numberline {7.4}2024}{141}{section.7.4}%
+\contentsline {section}{\numberline {7.5}??}{142}{section.7.5}%
 \contentsfinish 

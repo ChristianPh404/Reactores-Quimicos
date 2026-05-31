@@ -599,6 +599,9 @@ INPUT Capitulos\RSMP.aux
 INPUT .\Capitulos\Reactor_real.aux
 INPUT .\Capitulos\Reactor_real.aux
 INPUT Capitulos\Reactor_real.aux
+INPUT .\Capitulos\Examenes_teoria.aux
+INPUT .\Capitulos\Examenes_teoria.aux
+INPUT Capitulos\Examenes_teoria.aux
 OUTPUT template.aux
 INPUT E:\Latex\tex\latex\newpx\omlnpxmi.fd
 INPUT E:\Latex\tex\latex\newpx\omlnpxmi.fd
@@ -1505,6 +1508,15 @@ INPUT E:\Latex\fonts\tfm\public\newtx\ntxexx.tfm
 INPUT E:\Latex\fonts\vf\public\newtx\ntxexx.vf
 INPUT E:\Latex\fonts\tfm\public\newtx\txexs.tfm
 INPUT E:\Latex\fonts\tfm\public\newtx\txex-bar.tfm
+INPUT .\Capitulos\Examenes_teoria.tex
+INPUT .\Capitulos\Examenes_teoria.tex
+OUTPUT Capitulos\Examenes_teoria.aux
+INPUT .\Capitulos\Examenes_teoria.tex
+INPUT .\Capitulos\Examenes_teoria.tex
+INPUT Capitulos\Examenes_teoria.tex
+INPUT .\Imagenes\PFR_recirculacion.png
+INPUT .\Imagenes\PFR_recirculacion.png
+INPUT .\Imagenes\PFR_recirculacion.png
 INPUT template.aux
 INPUT .\Capitulos\analisis.aux
 INPUT .\Capitulos\analisis.aux
@@ -1524,6 +1536,9 @@ INPUT Capitulos\RSMP.aux
 INPUT .\Capitulos\Reactor_real.aux
 INPUT .\Capitulos\Reactor_real.aux
 INPUT Capitulos\Reactor_real.aux
+INPUT .\Capitulos\Examenes_teoria.aux
+INPUT .\Capitulos\Examenes_teoria.aux
+INPUT Capitulos\Examenes_teoria.aux
 INPUT template.run.xml
 OUTPUT template.run.xml
 INPUT E:\Latex\fonts\type1\public\newpx\NewPXMI.pfb
