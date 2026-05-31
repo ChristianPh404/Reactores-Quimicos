@@ -816,11 +816,12 @@ Recordando que el Reactor 1 funciona como un reactor flujo pistón ya que es ide
           Cuando se tiene un reactor de tanques en serie, se forman escalones en el gráfico de Levenspiel. Si $n \to \infty$, estaríamos en el caso límite de un flujo pistón. Al variar $n$, el comportamiento del sistema se desplaza desde un mezcla perfecta ($n=1$) hacia un flujo pistón.
           Para el caso del flujo pistón con recirculación ocurre algo similar según varíe la relación de recirculación: si $R \to 0$, es equivalente a un flujo pistón puro porque no existe recirculación. Por el contrario, si $R \to \infty$ (entendiendo infinito como un número lo suficientemente grande), todo se estaría recirculando, por lo que equivaldría a un reactor de mezcla perfecta. Así, el orden de menor a mayor volumen requerido es:
           \begin{center}
-              \Res{\vspace{1em}\text{RCFP} < \underbrace{\text{RCFP}_{\text{recirculación}}}_{R \to 0} < 2\text{RCMP} < \underbrace{\text{RCFP}_{\text{recirculación}}}_{R \to \infty} < \text{RCMP}}
+              \vspace{1em}
+              \Res{\text{RCFP} < \underbrace{\text{RCFP}_{\text{recirculación}}}_{R \to 0} < 2\text{RCMP} < \underbrace{\text{RCFP}_{\text{recirculación}}}_{R \to \infty} < \text{RCMP}}
           \end{center}
 \end{enumerate}
 \newpage
-\qs{Ejercicio 2}{En una planta química se dispone de tres unidades de reacción de $60\text{ m}^3$ cada una. Tras realizar un experimento de estímulo-respuesta en impulso en cada una de ellas, se obtienen los valores de las integrales de distribución de tiempo de residencia (RTD) mostrados en la tabla adjunta. Justifica el comportamiento real de cada reactor e indica el modelo más adecuado a emplear. ¿Cuál de ellos seleccionarías para llevar a cabo una reacción de primer orden? Calcula la conversión de salida para el modelo de reactor que elijas.}
+\qs{Ejercicio 2}{En una planta química se dispone de tres unidades de reacción de $60\text{ m}^3$ cada una con un caudal de $200\ \text{L}/\text{min}$. Tras realizar un experimento de estímulo-respuesta en impulso en cada una de ellas, se obtienen los valores de las integrales de distribución de tiempo de residencia (RTD) mostrados en la tabla adjunta. Justifica el comportamiento real de cada reactor e indica el modelo más adecuado a emplear. ¿Cuál de ellos seleccionarías para llevar a cabo una reacción de primer orden? Calcula la conversión de salida para el modelo de reactor que elijas.}
 
 \begin{table}[htbp]
     \centering
@@ -835,41 +836,78 @@ Recordando que el Reactor 1 funciona como un reactor flujo pistón ya que es ide
     \end{tabular}
 \end{table}
 \solve{}
-\begin{itemize}
-    \item Para el reactor 1
-          \noindent no existe bypass ni volumen estanco ya que $\int E\,d\theta = 1$, $\int \theta E\,d\theta = 1$ con la ultima integral se calcula la varianza:
-          \begin{equation*}
-              \sigma^2 = \int \theta^2 E\,d\theta - (\int \theta E\,d\theta)^2 = 4/3 - 1^2 = 1/3
-          \end{equation*}
-          \noindent puesto que esta mas cerca de 0 que de 1 se asemeja mas a un reactor continuo flujo pistón, es decir estamos en el caso de un reactor tubular puesto que no tiene comportamiento ideal, donde se puede modelizar
-          con: modelización de flujo segregado (al ser de primer orden), modelo de dispersión y modelo de tanques en serie, que sera el siguiente:
-          \begin{equation*}
-              \sigma^2 = \frac{1}{n} \implies n = 3
-          \end{equation*}
-          \noindent con el flujo segregado seria la siguiente modelización
-          \begin{equation*}
-              \overline{C_A} = \int_{0}^{\infty} C_A(\theta) \cdot E \, d\theta
-          \end{equation*}
-          en función de la conversion seria
-          \begin{equation*}
-              1 -\overline{X_A} = \int_{0}^{\infty} 1 - X_A(\theta) \cdot E \, d\theta
-          \end{equation*}
-          \begin{align*}
-              \left.\begin{aligned}
-                        \frac{dC_A}{dt} & = r_A     \\
-                        r_A             & = -k\,C_A
-                    \end{aligned}\right\}
-              \implies \frac{dC_A}{dt} = -k\,C_A
-              \implies \cancel{C_{A0}}\frac{dX_A}{dt} = -k\,\cancel{C_{A0}}(1-X_A)
-          \end{align*}
-          \begin{align*}
-               & \frac{dX_A}{dt}                       = -k(1-X_A)\quad \frac{dX_A}{1-X_A} = -k dt  \\[6pt]
-               & \int_{0}^{X_{AS}} \frac{dX_A}{1-X_A}  = -k \int_{0}^{t} dt                         \\[6pt]
-               & -ln(1-X_{AS})                         = -kt \implies 1-X_A = \text{exp}(-k\cdot t)
-          \end{align*}
-          expresandolo en funcion del tiempo de residencia es decir $t = t_R \cdot \theta$
-          \begin{equation*}
-              \boxed{1-X_A(\theta) = \text{exp}(-k\cdot t_R \cdot \theta)}
-          \end{equation*}
-          \nt{esta modelización se podria aplicar en los 3 reactores puesto que solo depende de que la reacción sea de primer orden.}
-\end{itemize}
+\begin{enumerate}[label={\alph*)}]
+    \item Justifica el comportamiento real de cada reactor e indica el modelo más adecuado a emplear.
+          \begin{itemize}
+              \item \textbf{Para el reactor 1:}
+                    No existe bypass ni volumen estanco, ya que $\int E\,d\theta = 1$ y $\int \theta E\,d\theta = 1$. Con la última integral se calcula la varianza:
+                    \begin{equation*}
+                        \sigma^2 = \int \theta^2 E\,d\theta - 1 = 4/3 -1 = 1/3
+                    \end{equation*}
+                    Puesto que está más cerca de 0 que de 1, se asemeja más a un reactor continuo de flujo pistón. Es decir, estamos ante un reactor tubular debido a que no presenta un comportamiento ideal. Este se puede modelar con el modelo de flujo segregado (al ser de primer orden), el modelo de dispersión y el modelo de tanques en serie, el cual será el siguiente:
+                    \begin{equation*}
+                        \sigma^2 = \frac{1}{n} \implies n = 3
+                    \end{equation*}
+                    Con el flujo segregado, la modelización sería la siguiente:
+                    \begin{equation*}
+                        \overline{C_A} = \int_{0}^{\infty} C_A(\theta) \cdot E \, d\theta
+                    \end{equation*}
+                    En función de la conversión, sería:
+                    \begin{equation*}
+                        1 -\overline{X_A} = \int_{0}^{\infty} 1 - X_A(\theta) \cdot E \, d\theta
+                    \end{equation*}
+                    \begin{align*}
+                        \left.\begin{aligned}
+                                  \frac{dC_A}{dt} & = r_A     \\
+                                  r_A             & = -k\,C_A
+                              \end{aligned}\right\}
+                        \implies \frac{dC_A}{dt} = -k\,C_A
+                        \implies \cancel{C_{A0}}\frac{dX_A}{dt} = -k\,\cancel{C_{A0}}(1-X_A)
+                    \end{align*}
+                    \begin{align*}
+                         & \frac{dX_A}{dt}                       = -k(1-X_A)\quad \frac{dX_A}{1-X_A} = -k dt  \\[6pt]
+                         & \int_{0}^{X_{AS}} \frac{dX_A}{1-X_A}  = -k \int_{0}^{t} dt                         \\[6pt]
+                         & -ln(1-X_{AS})                         = -kt \implies 1-X_A = \text{exp}(-k\cdot t)
+                    \end{align*}
+                    Expresándolo en función del tiempo de residencia, es decir, $t = t_R \cdot \theta$:
+                    \begin{equation*}
+                        \boxed{1-X_A(\theta) = \text{exp}(-k\cdot t_R \cdot \theta)}
+                    \end{equation*}
+                    \nt{Esta modelización se podría aplicar en los tres reactores, puesto que solo depende de que la reacción sea de primer orden.}
+
+              \item \textbf{Para el reactor 2:}
+
+                    \noindent Solo existe una opción de modelización: la de modelos mezclados. El reactor es de tipo tanque agitado.
+              \item \textbf{Para el reactor 3:}\\
+                    No existe bypass ni volumen estanco, puesto que $\int E\,d\theta = 1$ y $\int \theta E\,d\theta = 1$. Con la última integral se calcula la varianza:
+                    \begin{equation*}
+                        \sigma^2 = \int \theta^2 E\,d\theta - 1 = 1.75 -1 = 0.75
+                    \end{equation*}
+                    Por lo tanto, estamos ante un reactor de tipo tanque agitado, el cual modelizamos como un RCFP con recirculación (RCFP-R), recordando que la recirculación se puede calcular mediante la varianza:
+                    \begin{equation*}
+                        \sigma^2 = \frac{1}{1+R} \quad \implies R = 3
+                    \end{equation*}
+          \end{itemize}
+    \item ¿Cuál utilizarías para llevar a cabo la reacción en fase líquida $A \rightarrow P$ de primer orden?\\
+          Se puede elegir tanto el reactor 1 como el 3. Lo correcto es calcular la conversión de ambos y elegir el que dé mayor conversión. Sin embargo, en este caso, al tratarse de una reacción irreversible de primer orden, conviene elegir uno que funcione con perfil de concentraciones; es decir, o bien un reactor tubular (si su comportamiento es de flujo pistón ideal) o bien un tanque agitado en modo de operación discontinua.
+          \begin{itemize}
+              \item Reactor 1
+                    \begin{equation*}
+                        \tau_{i} = \frac{\tau}{n} = \frac{300}{3} = 100\text{min}
+                    \end{equation*}
+                    \begin{equation*}
+                        100 = \frac{X_{A1}-0}{0.01(1-X_{A1})} = \frac{X_{A2}-X_{A1}}{0.01(1-X_{A2})} = \frac{X_{AS}-X_{A2}}{0.01(1-X_{AS})} \implies X_{AS} = 0.875
+                    \end{equation*}
+                    \nt{$X_{A1} = 0.5$ , $X_{A2} = 0.75$ y $X_{AS} = 0.875$}
+              \item Reactor 3
+                    \begin{equation*}
+                        \frac{60\text{m}^3}{0.2\text{m}^3/\text{min}} = (1+3)\cdot \cancel{C_{AR}}\int_{X_{\dfrac{X_{AS}\cdot R}{1+R}}}^{X_{AS}}-\frac{dX_A}{k\cdot \cancel{C_{AR}}\cdot (1-X_A)} \implies X_{AS} = 0.817
+                    \end{equation*}
+          \end{itemize}
+    \item Calcula la conversión de salida con el reactor que has elegido.\\
+          \noindent Se ha realizado en el apartado anterior.
+          \begin{center}
+              \vspace{1em}
+              \Res{\text{El reactor elegido es el 1, ya que se logra una mayor conversión de salida} \quad (0.875 > 0.817)}
+          \end{center}
+\end{enumerate}
