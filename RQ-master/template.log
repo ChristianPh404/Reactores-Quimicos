@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  31 MAY 2026 21:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  1 JUN 2026 08:34
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -2119,10 +2119,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 \pydata@fh@0=\write8
 \openout8 = `_66F6181BCB4CFF4CD38FBC804A036DB6.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260531212113 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
+runsystem(latexminted config  --timestamp 20260601083459 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
 
  (_66F6181BCB4CFF4CD38FBC804A036DB6.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260531212113 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
+runsystem(latexminted cleanconfig  --timestamp 20260601083459 66F6181BCB4CFF4CD38FBC804A036DB6)...executed.
 
  (_minted/default.style.minted) (_minted/56873C1834805CA11618C54BD25FCEA2.highlight.minted
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1.
@@ -2654,9 +2654,9 @@ Overfull \hbox (229.09758pt too wide) in paragraph at lines 259--260
 [134] [135] [136] [137] [138] [139] [140] [141] [142] [143]
 File: ./Imagenes/PFR_recirculacion.png Graphic file (type png)
 <use ./Imagenes/PFR_recirculacion.png>
-Package pdftex.def Info: ./Imagenes/PFR_recirculacion.png  used on input line 794.
+Package pdftex.def Info: ./Imagenes/PFR_recirculacion.png  used on input line 795.
 (pdftex.def)             Requested size: 368.57634pt x 89.11174pt.
- [144] [145]) [146] (template.aux
+ [144] [145] [146] [147] [148]) [149] (template.aux
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
@@ -2677,17 +2677,17 @@ Package logreq Info: Writing requests to 'template.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 73702 strings out of 467871
- 1679644 string characters out of 5435692
+ 73751 strings out of 467871
+ 1680583 string characters out of 5435692
  2889548 words of memory out of 5000000
- 100555 multiletter control sequences out of 15000+600000
+ 100595 multiletter control sequences out of 15000+600000
  907786 words of font info for 345 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  103i,28n,121p,983b,3311s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <E:/Latex/fonts/type1/public/newpx/NewPXMI.pfb><E:/Latex/fonts/type1/public/newpx/NewPXMI_gnu.pfb><E:/Latex/fonts/type1/public/amsfonts/latxfont/line10.pfb><E:/Latex/fonts/type1/public/lm/lmb10.pfb><E:/Latex/fonts/type1/public/lm/lmbx10.pfb><E:/Latex/fonts/type1/public/lm/lmbx12.pfb><E:/Latex/fonts/type1/public/lm/lmbx7.pfb><E:/Latex/fonts/type1/public/lm/lmbx8.pfb><E:/Latex/fonts/type1/public/lm/lmbx9.pfb><E:/Latex/fonts/type1/public/lm/lmbxi10.pfb><E:/Latex/fonts/type1/public/lm/lmr10.pfb><E:/Latex/fonts/type1/public/lm/lmr12.pfb><E:/Latex/fonts/type1/public/lm/lmr17.pfb><E:/Latex/fonts/type1/public/lm/lmr5.pfb><E:/Latex/fonts/type1/public/lm/lmr6.pfb><E:/Latex/fonts/type1/public/lm/lmr7.pfb><E:/Latex/fonts/type1/public/lm/lmr8.pfb><E:/Latex/fonts/type1/public/lm/lmr9.pfb><E:/Latex/fonts/type1/public/lm/lmri10.pfb><E:/Latex/fonts/type1/public/lm/lmri9.pfb><E:/Latex/fonts/type1/public/lm/lmss10.pfb><E:/Latex/fonts/type1/public/lm/lmssbx10.pfb><E:/Latex/fonts/type1/public/lm/lmtk10.pfb><E:/Latex/fonts/type1/public/lm/lmtt9.pfb><E:/Latex/fonts/type1/public/lm/lmtti10.pfb><E:/Latex/fonts/type1/public/newpx/pxmiaX.pfb><E:/Latex/fonts/type1/public/newpx/pxsys.pfb><E:/Latex/fonts/type1/public/newtx/txexas.pfb><E:/Latex/fonts/type1/public/newtx/txexs.pfb><E:/Latex/fonts/type1/public/newtx/txsym.pfb>
-Output written on template.pdf (147 pages, 7716220 bytes).
+Output written on template.pdf (150 pages, 7736116 bytes).
 PDF statistics:
- 2446 PDF objects out of 2487 (max. 8388607)
- 791 named destinations out of 1000 (max. 500000)
- 1846 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2475 PDF objects out of 2487 (max. 8388607)
+ 800 named destinations out of 1000 (max. 500000)
+ 1870 words of extra memory for PDF output out of 10000 (max. 10000000)
 

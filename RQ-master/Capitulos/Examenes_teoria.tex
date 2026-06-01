@@ -780,6 +780,7 @@ Recordando que el Reactor 1 funciona como un reactor flujo pistón ya que es ide
           \end{align}
           \noindent La temperatura de reacción se justifica de forma análoga al caso anterior, siendo esta $T_{\text{máx}}$.
     \item Dos reactores mezcla perfecta en serie.
+
           \noindent En este caso se usan los mismos balances que en el caso anterior, pero definiendo el tiempo espacial para cada reactor como $\tau_i = V_i/F$. Es decir, cada reactor divide el volumen total entre el número de reactores.
           \begin{align*}
               \frac{\tau_i}{C_{AR}} & = \frac{X_{Ai}-X_{A(i-1)}}{-r_{Ai}}                                                                                              \\[6pt]
@@ -817,7 +818,7 @@ Recordando que el Reactor 1 funciona como un reactor flujo pistón ya que es ide
           Para el caso del flujo pistón con recirculación ocurre algo similar según varíe la relación de recirculación: si $R \to 0$, es equivalente a un flujo pistón puro porque no existe recirculación. Por el contrario, si $R \to \infty$ (entendiendo infinito como un número lo suficientemente grande), todo se estaría recirculando, por lo que equivaldría a un reactor de mezcla perfecta. Así, el orden de menor a mayor volumen requerido es:
           \begin{center}
               \vspace{1em}
-              \Res{\text{RCFP} < \underbrace{\text{RCFP}_{\text{recirculación}}}_{R \to 0} < 2\text{RCMP} < \underbrace{\text{RCFP}_{\text{recirculación}}}_{R \to \infty} < \text{RCMP}}
+              \Res{\parbox{12cm}{\vspace{1em} \centering $\text{RCFP} < \underbrace{\text{RCFP}_{\text{recirculación}}}_{R \to 0} < 2\text{RCMP} < \underbrace{\text{RCFP}_{\text{recirculación}}}_{R \to \infty} < \text{RCMP}$}}
           \end{center}
 \end{enumerate}
 \newpage
@@ -910,4 +911,196 @@ Recordando que el Reactor 1 funciona como un reactor flujo pistón ya que es ide
               \vspace{1em}
               \Res{\text{El reactor elegido es el 1, ya que se logra una mayor conversión de salida} \quad (0.875 > 0.817)}
           \end{center}
+\end{enumerate}
+\newpage
+\qs{Ejercicio 3}{A) En un sistema de reacciones múltiples, define selectividad instantánea y selectividad global B) Determina su relación para un reactor continuo de mezcla perfecta y un flujo pistón}
+\solve{}
+\begin{enumerate}[label={\alph*)}]
+    \item Selectividad instantánea y global:
+          \begin{equation*}
+              \text{Selectividad local} = \frac{\text{Velocidad de transformancion de A en P}}{\text{Velocidad de transformancion de A}}
+          \end{equation*}
+          Estando en estado estacionario para $A +B +\dots\rightarrow C +D +\dots \alpha P$ , para una reacción simple $A \rightarrow P$
+          \nt{siendo $\alpha$ el coeficiente estequiometrico}
+          \begin{equation*}
+              S_p = \frac{\dfrac{r_P}{\alpha P}}{r_A}
+          \end{equation*}
+          Para evitar trabajar con velocidades y asi trabajar directamente con los moles , se usa la selectividad global es decir:
+          \begin{equation*}
+              S_G = \frac{\text{moles de A transformados en P}}{\text{moles de A transformados}}
+          \end{equation*}
+
+    \item Relación con RCFP Y RCMP
+          \begin{itemize}
+              \item RCFP: \\
+                    Partiendo del balance:
+                    \begin{equation*}
+                        \frac{dNa}{dt} = n_A-(n_A+dn_A) + r_A \cdot dV
+                    \end{equation*}
+                    En estado estacionario:
+                    \begin{align*}
+                        -dn_A & = r_A \cdot dV \\
+                        dn_P  & = r_P \cdot dV
+                    \end{align*}
+                    dividiendo ambas:
+                    \begin{equation*}
+                        \frac{dn_A}{dn_P} = \frac{r_A}{-r_P} \quad \, \quad S_G = \frac{1}{n_{A0}-n_{Af}}\int_{n_{Af}}^{n_{A0}} s \cdot dn_A
+                    \end{equation*}
+                    si la densidad es constante $\rho = \text{cte}$, entonces:
+                    \begin{equation*}
+                        S_G = \frac{1}{C_{A0}-C_{Af}}\int_{C_{Af}}^{C_{A0}} s \cdot dC_A
+                    \end{equation*}
+
+              \item Para el RCMP:
+                    \begin{equation*}
+                        \frac{dN_A}{dt} = n_{A0} - n_{Af} - r_A \cdot V
+                    \end{equation*}
+                    \begin{align*}
+                        n_{A0} - n_{Af} & = (r_A)_f \cdot V  \\
+                        n_{P0} - n_{Pf} & = -(r_P)_f \cdot V
+                    \end{align*}
+
+                    \begin{equation*}
+                        \boxed{S_G = \frac{\dfrac{(n_{P0}-n_{Pf})}{\alpha P}}{(n_{A0}-n_{Af})} = \frac{\dfrac{-(r_{P})_f}{\alpha_P}}{-(r_{A})_f} = s_f}
+                    \end{equation*}
+
+          \end{itemize}
+          \nt{Para los reactores Tubulares (flujo pistón en caso de ser ideales) la selectividad varia a lo largo de la reacción, mientras que en el reactor tipo tanque agitado la selectividad global es la selectividad final del reactor}
+          \cor{En el caso de reacciones multiples}{
+              \begin{itemize}
+                  \item Reacciones paralelas:
+                        \begin{align*}
+                            A \rightarrow P \quad \, \quad r_1  & = k_1 \cdot C_A   \\
+                            2A \rightarrow Q \quad \, \quad r_2 & = k_2 \cdot C_A^2
+                        \end{align*}
+
+
+
+                        Es decir $n_1 < n_2$
+                        \begin{itemize}
+                            \item Para el RCFP:
+                                  \begin{align*}
+                                      S_G = \frac{1}{C_{A0}-C_{Af}}\int_{C_{Af}}^{C_{A0}} \underbrace{s}_{\frac{r_1}{r_1+r_2}} \cdot dC_A
+                                  \end{align*}
+                                  \begin{align*}
+                                      S_G & = \frac{1}{C_{A0}-C_{Af}}\int_{C_{Af}}^{C_{A0}}\frac{1}{1+\dfrac{k_2}{k_1}\cdot C_A} \cdot dC_A                                                          \\[6pt]
+                                      S_G & = \frac{k_1}{k_2 \cdot C_{A0} \cdot X_{Af}}\cdot \ln \left( \frac{1+\dfrac{k_2}{k_1}\cdot C_{A0}}{1+\dfrac{k_2}{k_1}\cdot C_{A0}\cdot (1-X_{Af}} \right)
+                                  \end{align*}
+                            \item Para el RCMP:
+                                  \begin{align*}
+                                      S_G = \frac{1}{1+\dfrac{k_2}{k_1}\cdot C_{A0}\cdot (1-X_{Af})}
+                                  \end{align*}
+                        \end{itemize}
+                  \item Reacciones paralelas:
+                        \begin{align*}
+                            2A \rightarrow P \quad \, \quad r_1 & = k_1 \cdot C_A^2 \\
+                            A \rightarrow Q \quad \, \quad r_2  & = k_2 \cdot C_A
+                        \end{align*}
+                        Es decir $n_1 > n_2$.
+                        \begin{itemize}
+                            \item Para el RCFP:
+                                  \begin{align*}
+                                      S_G = \frac{1}{C_{A0}-C_{Af}}\int_{C_{Af}}^{C_{A0}} s \cdot dC_A
+                                  \end{align*}
+                                  \begin{align*}
+                                      S_G & = \frac{1}{C_{A0}-C_{Af}}\int_{C_{Af}}^{C_{A0}}\frac{1}{1+\dfrac{k_2}{k_1}\cdot C_A} \cdot dC_A                            \\[6pt]
+                                      S_G & = 1- \frac{k_2}{k_1\cdot C_{A0}\cdot X_{Af}} \cdot \ln \left( \frac{1}{1-\dfrac{k_2}{k_1}\cdot C_{A0}\cdot X_{Af}} \right)
+                                  \end{align*}
+                            \item Para el RCMP:
+                                  \begin{align*}
+                                      S_G = \frac{1}{1+\dfrac{k_2}{k_1}\cdot C_{A0}\cdot(1- X_{Af})}
+                                  \end{align*}
+                        \end{itemize}
+
+              \end{itemize}
+          }
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.48\textwidth}
+                  \centering
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width=\linewidth, height=7cm,
+                              xmin=0, xmax=1, ymin=0, ymax=1.1,
+                              xlabel={$X$}, ylabel={$S_G$},
+                              ylabel style={
+                                      at={(axis description cs:0, 0.75)},
+                                      anchor=south,
+                                      rotate=0
+                                  },
+                              yticklabel style={font=\small, color=gray},
+                              axis line style={ultra thick},
+                              ytick={0, 0.5, 0.693, 1},
+                              yticklabels={0, {0,5}, {Ln(2)}, 1},
+                              xtick={0, 1},
+                              thick,
+                              legend pos=north west
+                          ]
+                          % Curva Roja (RCMP): s_f = 1 / (2-X)
+                          \addplot[red, ultra thick, dashed, domain=0:1, samples=100] {1 / (2 - x)};
+                          \addlegendentry{RCMP}
+
+                          % Curva Verde (RCFP): ln( 2 / (2-X) ) -> Esto es lo que dibujó ella
+                          \addplot[green!60!black, ultra thick, domain=0:1, samples=100] {ln( 2 / (2 - x) )};
+                          \addlegendentry{RCFP o RDMP}
+
+                          % Línea guía Ln(2)
+                          \draw[gray, dashed] (axis cs: 0, 0.693) -- (axis cs: 1, 0.693);
+                      \end{axis}
+                  \end{tikzpicture}
+                  \caption{Selectividad global vs Conversión para el caso $n_1 < n_2$}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.48\textwidth}
+                  \centering
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width=\linewidth, height=7cm,
+                              xmin=0, xmax=1, ymin=0, ymax=1.1,
+                              xlabel={$X$}, ylabel={$S_G$},
+                              ylabel style={
+                                      at={(axis description cs:0, 0.75)},
+                                      anchor=south,
+                                      rotate=0
+                                  },
+                              yticklabel style={font=\small, color=gray},
+                              axis line style={ultra thick},
+                              ytick={0, 0.307, 0.5,1},
+                              yticklabels={0, {1-Ln(2)}, {0,5}, 1},
+                              xtick={0, 1},
+                              thick,
+                              legend style={anchor=north east}
+                          ]
+                          % Curva Verde (RCFP): 1 - (1/x)*ln(2/(2-x))
+                          % Representa la selectividad global analítica para k1=k2=Ca0=1
+                          \addplot[green!60!black, ultra thick, domain=0:1, samples=100] {1 - ln( 2 / (2-x) )};
+                          \addlegendentry{RCFP o RDMP}
+
+                          % Curva Roja (RCMP): (1-x)/(2-x)
+                          \addplot[red, ultra thick, dashed, domain=0:1, samples=100] {(1-x)/(2-x)};
+                          \addlegendentry{RCMP}
+
+                          % Línea guía asintótica 1-Ln(2)
+                          \draw[gray, dashed] (axis cs: 0, 0.307) -- (axis cs: 1, 0.307);
+                      \end{axis}
+                  \end{tikzpicture}
+                  \caption{Comparativa de selectividad para $n_1 > n_2$}
+              \end{subfigure}
+              \caption{Selectividad global en función de la conversión para distintas cinéticas}
+          \end{figure}
+    \item Para el caso de reacciones en sistema en paralelo, ¿en qué reactor continuo llevarías a cabo la reacción? Justifica la respuesta.
+
+          Se ha justificado en el apartado anterior, aunque tambien se puede justificar de la siguiente forma:
+          \begin{itemize}
+              \item Primer caso $n_2 > n_1$:
+                    \begin{equation*}
+                        s = \frac{r_1}{r_1+r_2} =  \frac{1}{1+\dfrac{r_2}{r_1}} = \frac{1}{1+\dfrac{k_2}{k_1}\cdot \dfrac{C_A^{\cancel{2}}}{\cancel{C_A}}}
+                    \end{equation*}
+                    es decir la concentración de A debe ser lo menor posible $C_A \downarrow$ y por tanto es el caso de un reactor continuo mezcla perfecta (RCMP).
+              \item Segundo caso $n_1 > n_2$:
+                    \begin{equation*}
+                        s = \frac{r_1}{r_1+r_2} =  \frac{1}{1+\dfrac{r_2}{r_1}} = \frac{1}{1+\dfrac{k_2}{k_1}\cdot \dfrac{\cancel{C_A}}{C_A^{\cancel{2}}}}
+                    \end{equation*}
+                    es decir la concentración de A debe ser lo mayor posible $C_A \uparrow$ y por tanto es el caso de un flujo pistón (RCFP).
+          \end{itemize}
 \end{enumerate}
