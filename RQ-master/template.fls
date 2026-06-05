@@ -1514,6 +1514,12 @@ OUTPUT Capitulos\Examenes_teoria.aux
 INPUT .\Capitulos\Examenes_teoria.tex
 INPUT .\Capitulos\Examenes_teoria.tex
 INPUT Capitulos\Examenes_teoria.tex
+INPUT E:\Latex\fonts\tfm\public\lm\ec-lmbx7.tfm
+INPUT E:\Latex\fonts\tfm\public\lm\ec-lmbx6.tfm
+INPUT E:\Latex\fonts\vf\public\newpx\zplmi.vf
+INPUT E:\Latex\fonts\tfm\public\newpx\NewPXMI_gnu.tfm
+INPUT E:\Latex\fonts\tfm\public\newpx\NewPXMI.tfm
+INPUT E:\Latex\fonts\tfm\public\newtx\stxscr.tfm
 INPUT .\Imagenes\PFR_recirculacion.png
 INPUT .\Imagenes\PFR_recirculacion.png
 INPUT .\Imagenes\PFR_recirculacion.png

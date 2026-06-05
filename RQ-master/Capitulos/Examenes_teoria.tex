@@ -1,3 +1,4 @@
+% !TEX root = ../template.tex
 \chapter{Examenes de teoría}
 \section{Examen mayo 2020}
 
@@ -256,7 +257,7 @@
           Dicho esto, en esta situación siempre sera necesario un reactor tanque agitado, en configuración semicontinua, donde B estara en el tanque cargado, y A se ira añadiendo poco a poco.
           Para la temperatura como $E_{a1} > E_{a2}$ entonces $\frac{E_{a1}-E_{a2}}{RT}$ será positivo, y por tanto la temperatura deberia ser lo mas grande posible, para minimizar la exponencial y asi aumentar la selectividad.\\
           \begin{center}
-              \Res{\text{Tanque agitado, semicontinuo con carga de B y alimentacion suave de A, a temperatura máxima posible y por lo tanto el reactor a elegir sería el R5.}}
+              \Res{\parbox{12cm}{\vspace{1em}\centering Tanque agitado, semicontinuo con carga de B y alimentación suave de A, a temperatura máxima posible y por lo tanto el reactor a elegir sería el R5.\vspace{1em}}}
           \end{center}
           \newpage
           \begin{multicols}{2}
@@ -521,17 +522,278 @@ Recordando que el Reactor 1 funciona como un reactor flujo pistón ya que es ide
 
     Con los datos obtenidos justifica el tipo de reactor y modelización.
 }
+\solve{}
+\begin{enumerate}[label={\alph*)}]
+    \item \textbf{Reactor 1:}
+          \begin{center}
+              \begin{tabular}{|c|c|c|c|c|c|c|}
+                  \hline
+                  $\theta$ & $E$   & $\theta \cdot E$ & $\theta^2 \cdot E$ & $\int E \, d\theta$ & $\int \theta \cdot E \, d\theta$ & $\int \theta^2 \cdot E \, d\theta$ \\ \hline
+                  0        & 1     & 0                & 0                  & -                   & -                                & -                                  \\ \hline
+                  0.2      & 0.819 & 0.1638           & 0.03276            & 0.1819              & 0.01638                          & 0.003276                           \\ \hline
+                  0.4      & 0.67  & 0.268            & 0.1072             & 0.3308              & 0.05956                          & 0.017272                           \\ \hline
+                  0.6      & 0.549 & 0.3294           & 0.19764            & 0.4527              & 0.1193                           & 0.047756                           \\ \hline
+                  0.8      & 0.449 & 0.3592           & 0.28736            & 0.5525              & 0.18816                          & 0.096256                           \\ \hline
+                  1        & 0.368 & 0.368            & 0.368              & 0.6342              & 0.26088                          & 0.161792                           \\ \hline
+                  1.5      & 0.223 & 0.3345           & 0.50175            & 0.78195             & 0.436505                         & 0.37923                            \\ \hline
+                  2        & 0.135 & 0.27             & 0.54               & 0.87145             & 0.58763                          & 0.639667                           \\ \hline
+                  3        & 0.05  & 0.15             & 0.45               & 0.96395             & 0.79763                          & 1.134667                           \\ \hline
+                  5        & 0.007 & 0.035            & 0.175              & 1.02095             & 0.98263                          & 1.759667                           \\ \hline
+                  8        & 0     & 0                & 0                  & 1.03145             & 1.03513                          & 2.022167                           \\ \hline
+              \end{tabular}
+          \end{center}
+          \noindent No existe volumen estanco ni bypass es decir $\int E d\theta=1$ y $\int \theta E d\theta=1$ aunque es ligeramente superior se puede asumir que hay un error de $\approx$ 5\%.
+          Por otro lado con la ultima integral asumiendo que el valor es 2 se obtiene la varianza: $\sigma^2=2-1 = 1$ es decir estamos en un caso de un \textbf{Reactor tipo tanque agitado} con un comportamiento ideal es decir un reactor mezcla perfecta.
+          Modelizando como un reactor continuo mezcla perfecta:
+          \begin{alignat*}{2}
+              \frac{dM}{dt}   & = m_0 - m_s                     & \qquad \frac{dN}{dt}           & = n_0 - n_s + r_i \cdot V    \\[6pt]
+              \sum m_0        & = \sum m_s                      & \qquad \frac{d(C \cdot V)}{dt} & = F(C_0 - C_s) + r_i \cdot V \\[6pt]
+              \frac{dN_A}{dt} & = n_{A0} - n_{As} - r_A \cdot V &                                &
+          \end{alignat*}
+          \begin{itemize}
+              \item \textbf{Balance de energía:}
+                    \begin{equation*}
+                        \frac{d(M \cdot C_p \cdot T)}{dt} = m \cdot C_p \cdot (T_0 - T) + V \sum_{k=1}^{h} \Delta H_k \cdot r_k + Q(T)
+                    \end{equation*}
+          \end{itemize}
+          {\small\textcolor{gray}{En el estado estacionario:}}
+          \begin{align*}
+               & \frac{dN_A}{dt} = 0                                             \\[6pt]
+               & N_{AR}\cdot (1-X_{A0}) - N_{AR}(1-X_{AS}) - (r_A)_s \cdot V = 0
+          \end{align*}
+          \vspace{1.5em}
+          {\small\textcolor{gray}{Recordando que $\tau$ se define como $\frac{V}{F}$:}}
+          \begin{equation*}
+              (r_A)_s \cdot V = N_{AR}\cdot (X_{AS}-X_{A0}) \implies \tau = \frac{C_{AR}\cdot (X_{AS}- X_{A0})}{(r_A)_s}
+          \end{equation*}
+    \item \textbf{Reactor 2:}
+          \begin{center}
+              \begin{tabular}{|c|c|c|c|c|c|c|}
+                  \hline
+                  $\theta$ & $E$  & $\theta \cdot E$ & $\theta^2 \cdot E$ & $\int E \, d\theta$ & $\int \theta \cdot E \, d\theta$ & $\int \theta^2 \cdot E \, d\theta$ \\ \hline
+                  0        & 1    & 0                & 0                  & -                   & -                                & -                                  \\ \hline
+                  0.25     & 0.48 & 0.12             & 0.03               & 0.185               & 0.015                            & 0.00375                            \\ \hline
+                  0.5      & 0.29 & 0.145            & 0.0725             & 0.28125             & 0.048125                         & 0.016563                           \\ \hline
+                  0.75     & 0.26 & 0.195            & 0.14625            & 0.35                & 0.090625                         & 0.043906                           \\ \hline
+                  1        & 0.18 & 0.18             & 0.18               & 0.405               & 0.1375                           & 0.084688                           \\ \hline
+                  1.5      & 0.15 & 0.225            & 0.3375             & 0.4875              & 0.23875                          & 0.214063                           \\ \hline
+                  2        & 0.12 & 0.24             & 0.48               & 0.555               & 0.355                            & 0.418438                           \\ \hline
+                  2.5      & 0.1  & 0.25             & 0.625              & 0.61                & 0.4775                           & 0.694688                           \\ \hline
+                  3        & 0.08 & 0.24             & 0.72               & 0.655               & 0.6                              & 1.030938                           \\ \hline
+                  4        & 0.05 & 0.2              & 0.8                & 0.72                & 0.82                             & 1.790938                           \\ \hline
+                  5        & 0    & 0                & 0                  & 0.745               & 0.92                             & 2.190938                           \\ \hline
+              \end{tabular}
+          \end{center}
+          \noindent Al ser las integrales $\int E d\theta=0.745 < 1$ y $\int \theta E d\theta=0.92 < 1$, se puede concluir que el comportamiendo es el de \textbf{modelos mezclados} y que estamos ante un \textbf{Reactor tipo tanque agitado} con bypass y volumen estancado.
+          %! TODO Insertar ecuaciones para el caso de RTM
 
+    \item \textbf{Reactor 3:}
+          \begin{center}
+              \begin{tabular}{|c|c|c|c|c|c|c|}
+                  \hline
+                  $\theta$ & $E$  & $\theta \cdot E$ & $\theta^2 \cdot E$ & $\int E \, d\theta$ & $\int \theta \cdot E \, d\theta$ & $\int \theta^2 \cdot E \, d\theta$ \\ \hline
+                  0        & 0    & 0                & 0                  & -                   & -                                & -                                  \\ \hline
+                  0.25     & 0.35 & 0.0875           & 0.021875           & 0.04375             & 0.010938                         & 0.002734                           \\ \hline
+                  0.5      & 0.6  & 0.3              & 0.15               & 0.1625              & 0.059375                         & 0.024219                           \\ \hline
+                  0.75     & 0.82 & 0.615            & 0.46125            & 0.34                & 0.17375                          & 0.100625                           \\ \hline
+                  1        & 0.95 & 0.95             & 0.95               & 0.56125             & 0.369375                         & 0.277031                           \\ \hline
+                  1.25     & 0.3  & 0.375            & 0.46875            & 0.7175              & 0.535                            & 0.454375                           \\ \hline
+                  1.5      & 0.2  & 0.3              & 0.45               & 0.78                & 0.619375                         & 0.569219                           \\ \hline
+                  2        & 0.15 & 0.3              & 0.6                & 0.8675              & 0.769375                         & 0.831719                           \\ \hline
+                  2.5      & 0.1  & 0.25             & 0.625              & 0.93                & 0.906875                         & 1.137969                           \\ \hline
+                  3        & 0.05 & 0.15             & 0.45               & 0.9675              & 1.006875                         & 1.406719                           \\ \hline
+                  3.5      & 0.02 & 0.07             & 0.245              & 0.985               & 1.061875                         & 1.580469                           \\ \hline
+                  4        & 0    & 0                & 0                  & 0.99                & 1.079375                         & 1.641719                           \\ \hline
+              \end{tabular}
+          \end{center}
+          \noindent Al ser las integrales $\int E d\theta$ y $\int \theta E d\theta \approx 1$, nos fijamos en la varianza es decir $\int \theta^2 E d\theta - 1 = 1.642 - 1 = 0.642$ Por tanto estamos mas cerca de un \textbf{reactor tipo tanque agitado}, cuya \textbf{modelización} sera la de un \textbf{Reactor continuo flujo pistón con recirculación}.
+          \begin{alignat}{2}
+              \frac{dN_A}{dt}   & = n_A - (n_A + dn_A) - r_A \cdot dV & \qquad \int_0^V dV & = n_{AR} \int_{X_{A0}}^{X_{AR}} \frac{dX_A}{r_A} \nonumber                    \\[6pt]
+              -dn_A             & = r_A \cdot dV                      & \qquad V           & = n_{AR} \int_{X_{A0}}^{X_{AS}} \frac{dX_A}{r_A} \nonumber                    \\[6pt]
+              dn_A              & = n_{AR} \cdot dX_A                 & \qquad \frac{V}{F} & = \frac{n_{AR}}{F} \int_{X_{A0}}^{X_{AS}} \frac{dX_A}{r_A} \nonumber          \\[6pt]
+              n_{AR} \cdot dX_A & = r_A \cdot dV                      & \qquad \tau        & = C_{AR} \int_{X_{A0}}^{X_{AS}} \frac{dX_A}{r_A} \label{eq:RCFP_examen_unk_2}
+          \end{alignat}
+          {\small\textcolor{gray}{Haciendo el balance al punto de mezcla y recordando la definición de recirculación:}}
+          \begin{equation*}
+              R = \frac{\text{caudal de recirculación}}{\text{caudal de salida}} = \frac{F_R}{F}
+          \end{equation*}
+          \noindent El balance de materia en el punto de mezcla queda de la siguiente forma:
+          \begin{alignat*}{2}
+              F \cdot C_{A0} + F_R \cdot C_{AS} & = F(1 + R)C_{Ae}                        & \qquad X_{Ae} & = \frac{C_{AR}-C_{Ae}}{C_{AR}}       \\[6pt]
+              C_{Ae}                            & = \frac{C_{A0} + R \cdot C_{AS}}{1 + R} & \qquad X_{Ae} & = \frac{X_{A0} + R\cdot X_{AS}}{1+R}
+          \end{alignat*}
+          \noindent Introduciéndolo en la ecuación del flujo pistón~\eqref{eq:RCFP_examen_unk_2} obtenemos:
+          \begin{equation*}
+              \tau = (1+R)\cdot C_{AR}\int_{X_{Ae}}^{X_{AS}}-\frac{dX_A}{r_A}
+          \end{equation*}
+          Donde el valor de R se obtiene de la siguiente forma: $\sigma^2 = R/(R+1) \implies R = 1.77$
+\end{enumerate}
 \qs{Ejercicio 2 (1.5 puntos)}{
     En la planta se quiere llevar a cabo la reacción exotérmica de primer orden $A \rightarrow P$, a $T = 350 \text{ K}$. A esa temperatura la constante cinética es $0.3 \text{min}^{-1}$. Para un caudal de alimentación $F = 5X \text{ litros/min}$, donde $X$ es el primer número de tu DNI, justifica, mediante el cálculo correspondiente de la conversión de salida, el reactor que emplearías de los tres anteriores. En el caso en qué puedas justificar más de una forma de modelización para un reactor, aplícalas todas y calcula la conversión de salida en cada una de ellas.
 }
+\solve{}
+Caudal supuesto: $55 \text{ L/min}$ en el reactor 1 la unica modeliación que se puede llevar a cabo es el RCMP en el segundo el modelo mezclado y en el tercero el flujo pistón con recirculación, aunque en todos los reactores es posible modelizar por flujo segregado, que solo es posible para cineticas de primer orden.
 
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{RCMP} Reactor 1
+          \begin{equation*}
+              \tau =\frac{C_{A0}(X_{AS}-X_{A0})}{r_A}
+          \end{equation*}
+          \Res{
+              \frac{1000\text{L}}{55\text{L/min}} = \frac{\cancel{C_{A0}}(X_{AS}-X_{A0})}{k\cdot \cancel{C_{A0}}} \quad \rightarrow \quad 18.18\text{min} = \frac{X_{AS}-0}{0.3 \text{min}^{-1}\cdot (1-X_{AS})} \implies X_{AS} = 0.845
+          }
+    \item \textbf{Modelos mezclados} Reactor 2
+          \begin{center}
+              \begin{figure}[htbp]
+                  \centering
+                  \begin{tikzpicture}[
+                      node distance=1cm and 1.5cm,
+                      reactor/.style={rectangle, draw, thick, minimum width=3cm, minimum height=1.8cm, align=center, fill=white},
+                      dead/.style={rectangle, draw, thick, minimum width=2cm, minimum height=1.2cm, align=center, fill=gray!10},
+                      arrow/.style={thick, -{Stealth[scale=1.2]}},
+                      point/.style={circle, fill, inner sep=1.5pt}
+                      ]
+
+                      % Nodos principales
+                      \node[reactor] (main) at (2.5,0) {Reactor Activo \\ $V_a = 920 \text{ L}$};
+                      \node[dead, below=0.5cm of main] (deadzone) {Volumen Muerto \\ $V_m = 80 \text{ L}$};
+
+                      % Entrada
+                      \node (in) at (-3,0) {};
+                      \node[point] (split) at (-1,0) {};
+                      \draw[arrow] (in) -- node[above, pos=0.2] {$F = 55 \text{ L/min}$} (split);
+
+                      % Hacia el reactor
+                      \draw[arrow] (split) -- node[below, blue, pos=0.3] {$F_a = 41 \text{ L/min}$} (main.west);
+
+                      % Conexión con volumen muerto (intercambio)
+                      \draw[thick, <->] (main.south) -- (deadzone.north);
+
+                      % Salida
+                      \node[point, fill=red] (merge) at (6,0) {};
+                      \draw[thick] (main.east) -- node[below] {$X_{AR}$} (merge);
+                      \node (out) at (8,0) {};
+                      \draw[arrow] (merge) -- node[above, pos=0.7] {$F = 55 \text{ L/min}$} node[below, pos=1] {$X_{AS}$} (out);
+
+                      % Bypass (superior)
+                      \draw[arrow, rounded corners=10pt] (split) |- (2.5, 1.8) node[above] {Bypass ($F_{bp} = 14 \text{ L/min}$)} -| (merge);
+
+                  \end{tikzpicture}
+                  \caption{Modelo de compartimentos: Reactor con flujo real, zona muerta y cortocircuito (Bypass).}
+                  \label{fig:modelo_mezclado_junio_2020}
+              \end{figure}
+          \end{center}
+          \begin{enumerate}
+              \item Primer paso calcular lo que ocurre en el tanque activo: \\
+                    {\scriptsize \textcolor{gray}{Se aplica la ecuacion del RCMP para el tanque activo como en el caso anterior}}
+                    \begin{equation*}
+                        \tau =\frac{C_{A0}(X_{AR}-X_{A0})}{r_A}
+                    \end{equation*}
+                    \begin{center}
+                        \Res{
+                            \begin{aligned}
+                                ~                                    &                                                                                \\[1em]
+                                \frac{920\text{ L}}{41\text{ L/min}} & = \frac{\cancel{C_{A0}}(X_{AR}-X_{A0})}{k\cdot \cancel{C_{A0}}}                \\[6pt]
+                                22.43\text{ min}                     & = \frac{X_{AR}-0}{0.3 \text{ min}^{-1}\cdot (1-X_{AR})} \implies X_{AR} = 0.87 \\[1em]
+                            \end{aligned}
+                        }
+                    \end{center}
+              \item Despues Aplicar el punto mezcla para calcular la conversión a la salida:
+                    \begin{equation*}
+                        F \cdot C_{AS} = F_{bp}\cdot C_{A0} + F_R\cdot C_{AR}
+                    \end{equation*}
+                    \begin{center}
+                        \Res{
+                            \begin{aligned}
+                                ~                                            &                                                                                  \\[1em]
+                                55\text{ L/min} \cdot C_{A0}\cdot (1-X_{AS}) & = 14\text{ L/min} \cdot C_{A0} + 41\text{ L/min} \cdot (C_{A0} \cdot (1-X_{AR})) \\[6pt]
+                                55(1-X_{AS})                                 & = 14 + 41(1-0.87) = 14 + 41(0.13) = 14 + 5.33 = 19.33                            \\[6pt]
+                                1-X_{AS}                                     & = 0.351  \implies  X_{AS} = 0.648                                                \\[1em]
+                            \end{aligned}
+                        }
+                    \end{center}
+          \end{enumerate}
+          \newpage
+    \item \textbf{RCFP-R} Reactor 3
+          \begin{equation*}
+              \tau = (1+R)\cdot C_{A0}\int_{X_{AS}}^{\dfrac{X_{AS}\cdot R}{1+R}}\frac{dX_A}{r_A}
+          \end{equation*}
+          \begin{center}
+              \Res{
+                  \begin{aligned}
+                      ~                &                                                                                                                                                                                        \\[1em]
+                      18.18\text{ min} & = (1+1.77)\cdot \cancel{C_{A0}}\int_{X_{AS}}^{\dfrac{0.55\cdot 1.77}{1+1.77}}\frac{dX_A}{\underbrace{k}_{0.3\text{min}^{-1}}\cdot \cancel{C_{A0}} \cdot(1-X_A)} \implies X_{AS} = 0.94 \\[1em]
+                  \end{aligned}
+              }
+          \end{center}
+\end{enumerate}
+\vspace{3em}
+\subsubsection*{Conclusión}
+\noindent El reactor a escoger seria el número 3 ya que es el que mayor conversión de salida presenta. Una vez escogido, se realiza la modelización de flujo segregado:
+
+\begin{equation*}
+    \overline{C_A} = \int_{0}^{\infty} C_A(\theta) \cdot E \, d\theta
+\end{equation*}
+\noindent En función de la conversión, sería:
+\begin{equation*}
+    1 -\overline{X_A} = \int_{0}^{\infty} 1 - X_A(\theta) \cdot E \, d\theta
+\end{equation*}
+\begin{align*}
+    \left.\begin{aligned}
+              \frac{dC_A}{dt} & = r_A     \\
+              r_A             & = -k\,C_A
+          \end{aligned}\right\}
+    \implies \frac{dC_A}{dt} = -k\,C_A
+    \implies \cancel{C_{A0}}\frac{dX_A}{dt} = -k\,\cancel{C_{A0}}(1-X_A)
+\end{align*}
+\begin{align*}
+     & \frac{dX_A}{dt}                       = -k(1-X_A)\quad \frac{dX_A}{1-X_A} = -k dt  \\[6pt]
+     & \int_{0}^{X_{AS}} \frac{dX_A}{1-X_A}  = -k \int_{0}^{t} dt                         \\[6pt]
+     & -ln(1-X_{AS})                         = -kt \implies 1-X_A = \text{exp}(-k\cdot t)
+\end{align*}
+\noindent Expresándolo en función del tiempo de residencia, es decir, $t = t_R \cdot \theta$:
+\begin{equation*}
+    \boxed{1-X_A(\theta) = \text{exp}(-k\cdot t_R \cdot \theta)}
+\end{equation*}
+
+\noindent Donde el resultado es el que se muestra a continuación en la tabla ~\ref{tab:flujo_segregado_reactores}:
+\nt{Como conclusión se puede ver claramente que coincide que el reactor 3 es el que mejor resultado da aunque el valor de la conversión varia ligeramente}
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{|ccc|ccc|ccc|}
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Reactor 1}} & \multicolumn{3}{c|}{\textbf{Reactor 2}} & \multicolumn{3}{c|}{\textbf{Reactor 3}}                                                                                                                                                                                                                                                                           \\
+        \hline
+        $1-X(\theta)$                            & $(1-X)\cdot E$                          & $\int$                                              & $1-X(\theta)$          & $(1-X)\cdot E$         & $\int$                                              & $1-X(\theta)$                                                        & $(1-X)\cdot E$         & $\int$                                              \\
+        \hline
+        $1.000 \cdot 10^{0}$                     & $1.000 \cdot 10^{0}$                    & $0.000 \cdot 10^{0}$                                & $1.000 \cdot 10^{0}$   & $1.000 \cdot 10^{0}$   & $0.000 \cdot 10^{0}$                                & $1.000 \cdot 10^{0}$                                                 & $0.000 \cdot 10^{0}$   & $0.000 \cdot 10^{0}$                                \\
+        $3.359 \cdot 10^{-1}$                    & $2.751 \cdot 10^{-1}$                   & $1.275 \cdot 10^{-1}$                               & $1.860 \cdot 10^{-1}$  & $8.926 \cdot 10^{-2}$  & $1.362 \cdot 10^{-1}$                               & $2.558 \cdot 10^{-1}$                                                & $8.952 \cdot 10^{-2}$  & $1.119 \cdot 10^{-2}$                               \\
+        $1.129 \cdot 10^{-1}$                    & $7.562 \cdot 10^{-2}$                   & $1.626 \cdot 10^{-1}$                               & $3.458 \cdot 10^{-2}$  & $1.003 \cdot 10^{-2}$  & $1.486 \cdot 10^{-1}$                               & $6.542 \cdot 10^{-2}$                                                & $3.925 \cdot 10^{-2}$  & $2.729 \cdot 10^{-2}$                               \\
+        $3.791 \cdot 10^{-2}$                    & $2.082 \cdot 10^{-2}$                   & $1.722 \cdot 10^{-1}$                               & $6.430 \cdot 10^{-3}$  & $1.672 \cdot 10^{-3}$  & $1.500 \cdot 10^{-1}$                               & $1.673 \cdot 10^{-2}$                                                & $1.372 \cdot 10^{-2}$  & $3.391 \cdot 10^{-2}$                               \\
+        $1.274 \cdot 10^{-2}$                    & $5.719 \cdot 10^{-3}$                   & $1.749 \cdot 10^{-1}$                               & $1.196 \cdot 10^{-3}$  & $2.150 \cdot 10^{-4}$  & $1.503 \cdot 10^{-1}$                               & $4.279 \cdot 10^{-3}$                                                & $4.065 \cdot 10^{-3}$  & $3.613 \cdot 10^{-2}$                               \\
+        $4.279 \cdot 10^{-3}$                    & $1.575 \cdot 10^{-3}$                   & $1.756 \cdot 10^{-1}$                               & $4.130 \cdot 10^{-5}$  & $9.300 \cdot 10^{-6}$  & $1.503 \cdot 10^{-1}$                               & $1.094 \cdot 10^{-3}$                                                & $3.280 \cdot 10^{-4}$  & $3.668 \cdot 10^{-2}$                               \\
+        $2.800 \cdot 10^{-4}$                    & $6.240 \cdot 10^{-5}$                   & $1.760 \cdot 10^{-1}$                               & $1.430 \cdot 10^{-6}$  & $3.430 \cdot 10^{-7}$  & $1.503 \cdot 10^{-1}$                               & $2.800 \cdot 10^{-4}$                                                & $5.600 \cdot 10^{-5}$  & $3.673 \cdot 10^{-2}$                               \\
+        $1.830 \cdot 10^{-5}$                    & $2.470 \cdot 10^{-6}$                   & $1.760 \cdot 10^{-1}$                               & $4.940 \cdot 10^{-8}$  & $1.240 \cdot 10^{-8}$  & $1.503 \cdot 10^{-1}$                               & $1.830 \cdot 10^{-5}$                                                & $2.750 \cdot 10^{-6}$  & $3.674 \cdot 10^{-2}$                               \\
+        $7.840 \cdot 10^{-8}$                    & $3.920 \cdot 10^{-9}$                   & $1.760 \cdot 10^{-1}$                               & $1.710 \cdot 10^{-9}$  & $4.100 \cdot 10^{-10}$ & $1.503 \cdot 10^{-1}$                               & $1.200 \cdot 10^{-6}$                                                & $1.200 \cdot 10^{-7}$  & $3.674 \cdot 10^{-2}$                               \\
+        $1.430 \cdot 10^{-12}$                   & $1.000 \cdot 10^{-14}$                  & $1.760 \cdot 10^{-1}$                               & $2.040 \cdot 10^{-12}$ & $4.090 \cdot 10^{-13}$ & $1.503 \cdot 10^{-1}$                               & $7.840 \cdot 10^{-8}$                                                & $3.920 \cdot 10^{-9}$  & $3.674 \cdot 10^{-2}$                               \\
+        $1.120 \cdot 10^{-19}$                   & $0.000 \cdot 10^{0}$                    & \textcolor{blue}{\underline{$1.760 \cdot 10^{-1}$}} & $2.440 \cdot 10^{-15}$ & $0.000 \cdot 10^{0}$   & \textcolor{blue}{\underline{$1.503 \cdot 10^{-1}$}} & $5.130 \cdot 10^{-9}$                                                & $1.030 \cdot 10^{-10}$ & $3.674 \cdot 10^{-2}$                               \\
+                                                 &                                         &                                                     &                        &                        &                                                     & $3.350 \cdot 10^{-10}$                                               & $0.000 \cdot 10^{0}$   & \textcolor{blue}{\underline{$3.674 \cdot 10^{-2}$}} \\
+        \hline
+        $X_{AS} =$                               & \textbf{0.824}                          &                                                     & $X_{AS} =$             & \textbf{0.850}         &                                                     & \multicolumn{3}{c|}{\cellcolor{green!15}$X_{AS} =$ \textbf{$0.963$}}                                                                                \\
+        \hline
+    \end{tabular}
+    \caption{Resultados de la modelización por flujo segregado para los tres reactores.}
+    \label{tab:flujo_segregado_reactores}
+\end{table}
 \qs{Ejercicio 3 (1.5 puntos)}{
     Para el siguiente proceso de reacción en serie-paralelo:
     \begin{center}
         \begin{tabular}{lll}
-            $A + B \rightarrow P$ ($P$ es el producto deseado) & $E_{a1} > E_{a2}$ & $r_1 = k_1 C_A C_B$   \\
-            $P + 2B \rightarrow Q$ (reacción secundaria)       &                   & $r_2 = k_2 C_P C_B^2$
+            $A + B \rightarrow P^{\bullet}$ (P es el producto deseado) & $E_{a1} > E_{a2}$ & $r_1 = k_1 C_A C_B$   \\
+            $P + 2B \rightarrow Q$ (reacción secundaria)               &                   & $r_2 = k_2 C_P C_B^2$
         \end{tabular}
     \end{center}
 
@@ -541,6 +803,79 @@ Recordando que el Reactor 1 funciona como un reactor flujo pistón ya que es ide
         \item ¿Podrías mejorar aún más la selectividad del proceso actuando sobre el reactor elegido? ¿Se te ocurre alguna forma?
     \end{enumerate}
 }
+\solve{}
+\begin{enumerate}[label={\alph*)}]
+    \item Tipo de reactor y condiciones:
+          \noindent En primer lugar procederemos a calcular la selectividad de la reacción para elegir el selector mas adecuado.
+          \begin{align*}
+              A +B \xrightarrow{k_1} P^{\bullet} \quad & r_p = k_1 C_A C_B   \\
+              P + 2B \xrightarrow{k_2} Q \quad         & r_q = k_2 C_P C_B^2
+          \end{align*}
+          \begin{equation*}
+              s = \frac{r1}{r1+r2} = \frac{1}{1+\dfrac{r2}{r1}}= \frac{1}{1+\dfrac{k_2\cdot C_P\cdot C_B^{\cancel{2}}}{k_1\cdot C_A \cdot \cancel{C_B}}}
+          \end{equation*}
+          aplicando arrehenius a la constante de velocidad y simplifcando:
+          \begin{equation}
+              s = \frac{1}{1+\dfrac{k_{20}}{k_{10}} \dfrac{C_P\cdot C_B}{C_A}\cdot \text{exp}\left(\dfrac{E_{a1}-E_{a2}}{RT}\right)}
+          \end{equation}
+          luego para maximizar la selectividad necesitamos que $C_A \uparrow$ sea lo mayor posible, que $C_P\downarrow$ y $C_B\downarrow$ sea lo menor posible.\\
+
+          \begin{center}
+              \Res{\parbox{12cm}{\vspace{1em}\centering Tanque agitado, semicontinuo con carga de A y alimentación suave de B, a temperatura máxima posible y en régimen isotermo, en caso de ser ideal se modelizaria como un RSMP.\vspace{1em}}}
+          \end{center}
+    \item Modelización:
+
+          \begin{align*}
+               & \left\{
+              \begin{aligned}
+                  \frac{dV}{dt}   & = F                      \\[6pt]
+                  \frac{dN_B}{dt} & = F \cdot C_{A0} - r_A V \\[6pt]
+                  \frac{dN_A}{dt} & = - r_B V                \\[6pt]
+                  \frac{dN_P}{dt} & = r_P V                  \\[6pt]
+                  \frac{dN_Q}{dt} & = r_Q \cdot V
+              \end{aligned}
+              \right.
+               &         &
+              \left\{
+              \begin{aligned}
+                  C_A             & = \frac{N_A}{V}                                \\[6pt]
+                  C_B             & = \frac{N_B}{V}                                \\[6pt]
+                  C_P             & = \frac{N_P}{V}                                \\[6pt]
+                  C_Q             & = \frac{N_Q}{V}                                \\[6pt]
+                  dN_i            & = d(V \cdot C_i) = V \cdot dC_i + C_i \cdot dV \\[6pt]
+                  \frac{dN_i}{dt} & = V \cdot \frac{dC_i}{dt} + C_i \frac{dV}{dt}  \\[6pt]
+                  \frac{dV}{dt}   & = F
+              \end{aligned}
+              \right.
+              \\[1.5em]
+               & \left\{
+              \begin{aligned}
+                  \frac{dC_A}{dt} & = \frac{F}{V}\cdot (C_{A0}-C_A) - r_A \\[6pt]
+                  \frac{dC_B}{dt} & = -\frac{F C_B}{V} - r_B              \\[6pt]
+                  \frac{dC_P}{dt} & = -\frac{F C_P}{V} + r_P              \\[6pt]
+                  \frac{dC_Q}{dt} & = -\frac{F C_Q}{V} + r_Q
+              \end{aligned}
+              \right.
+               &         &
+              \left\{
+              \begin{aligned}
+                  r_A & = r_1         \\[6pt]
+                  r_B & = r_1 + 2 r_2 \\[6pt]
+                  r_P & = r_1 - r_2   \\[6pt]
+                  r_Q & = r_2
+              \end{aligned}
+              \right.
+          \end{align*}
+    \item Posible solución para mejorar la selectividad:
+
+          \noindent se debe plantear un \textbf{reactor con separación in situ} que retire $P$ a medida que se forma. Algunas opciones serían:
+          \begin{itemize}
+              \item \textbf{Reactores con resinas adsorbentes:} Introducir un agente material de separación (sólido) que adsorba de forma selectiva el producto $P$ (p. ej. en las paredes o en un lecho).
+              \item \textbf{Extracción reactiva (reactor heterogéneo de fase):} Emplear un disolvente inmiscible que actúe como segunda fase (en otra sección del reactor) y extraiga preferentemente a $P$ del medio donde ocurre la reacción.
+              \item \textbf{Reactores de membrana:} Utilizar membranas con permeabilidad selectiva para filtrar $P$ y sacarlo del volumen de reacción.
+          \end{itemize}
+          \noindent A nivel puramente operativo, otra alternativa para mejorar la selectividad sin modificar el equipo sería \textbf{disminuir todavía más el caudal de alimentación de B}. Puesto que la reacción secundaria es de orden 2 respecto a $B$ y la principal de orden 1, mantener una $C_B$ tendiendo a cero limitará drásticamente la reacción secundaria frente a la principal.
+\end{enumerate}
 \newpage
 \section{2023}
 
@@ -563,6 +898,315 @@ Recordando que el Reactor 1 funciona como un reactor flujo pistón ya que es ide
 }
 
 \tikzset{>=stealth}
+\solve{}
+\begin{enumerate}[label=\Roman*.]
+    \item Al ser una reacción irreversible en fase gaseosa, se optará por un \textbf{reactor tubular} (idealmente modelizado como flujo pistón), ya que su perfil de concentraciones minimiza el volumen requerido. Para maximizar la velocidad de reacción, el equipo operará a la \textbf{temperatura máxima permisible ($T_{\text{máx}}$)}.
+          \begin{alignat}{2}
+              \frac{dN_A}{dt}   & = n_A - (n_A + dn_A) - r_A \cdot dV & \qquad \int_0^V dV & = n_{AR} \int_{X_{A0}}^{X_{AR}} \frac{dX_A}{r_A} \nonumber                    \\[6pt]
+              -dn_A             & = r_A \cdot dV                      & \qquad V           & = n_{AR} \int_{X_{A0}}^{X_{AS}} \frac{dX_A}{r_A} \nonumber                    \\[6pt]
+              dn_A              & = n_{AR} \cdot dX_A                 & \qquad \frac{V}{F} & = \frac{n_{AR}}{F} \int_{X_{A0}}^{X_{AS}} \frac{dX_A}{r_A} \nonumber          \\[6pt]
+              n_{AR} \cdot dX_A & = r_A \cdot dV                      & \qquad \tau        & = C_{AR} \int_{X_{A0}}^{X_{AS}} \frac{dX_A}{r_A} \label{eq:RCFP_examen_unk_2}
+          \end{alignat}
+    \item Configuración del Reactor: Al tratarse de una reacción catalítica heterogénea (líquido-sólido), el sistema requiere un reactor multifásico, existiendo dos configuraciones principales según las necesidades del proceso:
+          \begin{itemize}
+              \item \textbf{Reactor de lecho fijo (tubular):} Donde el líquido atraviesa una columna con las partículas de catalizador estáticas. Es una opción mecánicamente más simple y robusta, aunque la transferencia de materia entre el líquido y el sólido puede convertirse en la etapa lenta que limite la velocidad global.
+              \item \textbf{Reactor de lecho fluidificado:} Donde el flujo ascendente de líquido se ajusta para suspender y agitar las partículas de catalizador. Esta opción es excelente para maximizar el área de contacto y mejorar drásticamente la transferencia de materia, aunque más compleja de mantener el sólido en suspensión y un comportamiento del fluido cercano a la mezcla perfecta. {\scriptsize\textcolor{darkgray}{Ambas a $T_{\text{máx}}$ al ser irreversibles}}
+          \end{itemize}
+          % si asumimos que el catalizador solo actúa reduciendo la energía de activación (sin limitaciones por transferencia de materia), el comportamiento ideal para minimizar el volumen de una reacción irreversible sigue requiriendo un perfil de concentraciones. Por tanto, se optaría por un \textbf{RFP} (si opera en continuo) o un \textbf{RDMP} (si opera en discontinuo). Al ser irreversible, la temperatura de operación será nuevamente \textbf{$T_{\text{máx}}$}.
+          % \begin{align*}
+          %    \frac{dN_A}{dt}            & = r_A V \leftarrow  X_A = \frac{N_{AR}-N_A}{N_{A}}                    \\[6pt]
+          %   NA                         & = N_{AR}(1-X_A) \leftarrow dN_A = -N_{AR}\cdot dX_A                   \\[6pt]
+          %   dN_A \cdot \frac{dX_A}{dt} & = r_A V \implies \int_0^{t_R} dt = \int_0^{X_{Af}} \frac{dN_A}{r_A V} \\[6pt]
+          %   t_R                        & = C_{AR}\int_0^{X_{Af}} \frac{dX_A}{r_A}
+          %\end{align*}
+
+
+    \item \textbf{Reactor semicontinuo (RSMP)}.
+          \noindent En primer lugar procederemos a calcular la selectividad de la reacción para elegir el selector mas adecuado.
+          \begin{align*}
+              2A +B \xrightarrow{k_1} P^{\bullet} \quad & r_1 = k_1 C_A^2 C_B \\
+              A + 2B \xrightarrow{k_2} Q \quad          & r_2 = k_2 C_A C_B^2
+          \end{align*}
+          \begin{equation*}
+              s = \frac{r1}{r1+r2} = \frac{1}{1+\dfrac{r2}{r1}}= \frac{1}{1+\dfrac{k_2\cdot \cancel{C_A}\cdot C_B^{\cancel{2}}}{k_1\cdot C_A^2 \cdot \cancel{C_B}}}
+          \end{equation*}
+          aplicando arrehenius a la constante de velocidad y simplifcando:
+          \begin{equation}
+              s = \frac{1}{1+\dfrac{k_{20}}{k_{10}} \dfrac{C_B}{C_A}\cdot \text{exp}\left(\dfrac{E_{a1}-E_{a2}}{RT}\right)}
+          \end{equation}
+          luego para maximizar la selectividad necesitamos que $C_A \uparrow$ sea lo mayor posible y $C_B\downarrow$ sea lo menor posible.\\
+
+          \begin{center}
+              \Res{\parbox{12cm}{\vspace{1em}\centering Tanque agitado, semicontinuo con carga de A y alimentación suave de B, a temperatura mínima posible (al ser $E_{a1}<E_{a2}$ el exponente es negativo, por lo que bajar $T$ reduce la exponencial y mejora la selectividad) y en régimen isotermo. Modelo ideal: RSMP.\vspace{1em}}}
+          \end{center}
+
+          \textbf{Modelización:}
+          \begin{align*}
+               & \left\{
+              \begin{aligned}
+                  \frac{dV}{dt}   & = F                      \\[6pt]
+                  \frac{dN_B}{dt} & = F \cdot C_{B0} - r_B V \\[6pt]
+                  \frac{dN_A}{dt} & = - r_A V                \\[6pt]
+                  \frac{dN_P}{dt} & = r_P V                  \\[6pt]
+                  \frac{dN_Q}{dt} & = r_Q \cdot V
+              \end{aligned}
+              \right.
+               &         &
+              \left\{
+              \begin{aligned}
+                  C_A             & = \frac{N_A}{V}                                \\[6pt]
+                  C_B             & = \frac{N_B}{V}                                \\[6pt]
+                  C_P             & = \frac{N_P}{V}                                \\[6pt]
+                  C_Q             & = \frac{N_Q}{V}                                \\[6pt]
+                  dN_i            & = d(V \cdot C_i) = V \cdot dC_i + C_i \cdot dV \\[6pt]
+                  \frac{dN_i}{dt} & = V \cdot \frac{dC_i}{dt} + C_i \frac{dV}{dt}  \\[6pt]
+                  \frac{dV}{dt}   & = F
+              \end{aligned}
+              \right.
+              \\[1.5em]
+               & \left\{
+              \begin{aligned}
+                  \frac{dC_B}{dt} & = \frac{F}{V}\cdot (C_{B0}-C_B) - r_B \\[6pt]
+                  \frac{dC_A}{dt} & = -\frac{F C_A}{V} - r_A              \\[6pt]
+                  \frac{dC_P}{dt} & = -\frac{F C_P}{V} + r_P              \\[6pt]
+                  \frac{dC_Q}{dt} & = -\frac{F C_Q}{V} + r_Q
+              \end{aligned}
+              \right.
+               &         &
+              \left\{
+              \begin{aligned}
+                  r_A & = 2 r_1 + r_2 \\[6pt]
+                  r_B & = r_1 + 2 r_2 \\[6pt]
+                  r_P & = r_1         \\[6pt]
+                  r_Q & = r_2
+              \end{aligned}
+              \right.
+          \end{align*}
+
+    \item \textbf{Reactor semicontinuo (RSMP) a $T_{\text{máx}}$}. En este caso, como $E_{a1} > E_{a2}$, operar a la máxima temperatura favorece la reacción principal. Procedemos a calcular la selectividad:
+          \begin{align*}
+              A +B \xrightarrow{k_1} P^{\bullet} \quad & r_1 = k_1 C_A C_B   \\
+              2A + B \xrightarrow{k_2} Q \quad         & r_2 = k_2 C_A^2 C_B
+          \end{align*}
+          \begin{equation*}
+              s = \frac{r_1}{r_1+r_2} = \frac{1}{1+\dfrac{r_2}{r_1}}= \frac{1}{1+\dfrac{k_2\cdot C_A^{\cancel{2}}\cdot \cancel{C_B}}{k_1\cdot \cancel{C_A}\cdot \cancel{C_B}}}
+          \end{equation*}
+          Aplicando Arrhenius a las constantes de velocidad y simplificando:
+          \begin{equation}
+              s = \frac{1}{1+\dfrac{k_{20}}{k_{10}} C_A\cdot \text{exp}\left(\dfrac{E_{a1}-E_{a2}}{RT}\right)}
+          \end{equation}
+          Para maximizar la selectividad necesitamos que $C_A \downarrow$ sea lo menor posible. $C_B$ no afecta directamente a la selectividad matemática tras cancelar términos, pero se busca mantenerla alta para favorecer la velocidad global de $r_1$.\\
+
+          \begin{center}
+              \Res{\parbox{12cm}{\vspace{1em}\centering Tanque agitado, semicontinuo con carga de B y alimentación suave de A, a temperatura máxima posible. Al ser $E_{a1} > E_{a2}$, el exponente es positivo y aumentar $T$ minimiza la exponencial, mejorando la selectividad. Modelo ideal: RSMP.\vspace{1em}}}
+          \end{center}
+
+          \textbf{Modelización:}
+          \begin{align*}
+               & \left\{
+              \begin{aligned}
+                  \frac{dV}{dt}   & = F                      \\[6pt]
+                  \frac{dN_A}{dt} & = F \cdot C_{A0} - r_A V \\[6pt]
+                  \frac{dN_B}{dt} & = - r_B V                \\[6pt]
+                  \frac{dN_P}{dt} & = r_P V                  \\[6pt]
+                  \frac{dN_Q}{dt} & = r_Q \cdot V
+              \end{aligned}
+              \right.
+               &         &
+              \left\{
+              \begin{aligned}
+                  C_A             & = \frac{N_A}{V}                                \\[6pt]
+                  C_B             & = \frac{N_B}{V}                                \\[6pt]
+                  C_P             & = \frac{N_P}{V}                                \\[6pt]
+                  C_Q             & = \frac{N_Q}{V}                                \\[6pt]
+                  dN_i            & = d(V \cdot C_i) = V \cdot dC_i + C_i \cdot dV \\[6pt]
+                  \frac{dN_i}{dt} & = V \cdot \frac{dC_i}{dt} + C_i \frac{dV}{dt}  \\[6pt]
+                  \frac{dV}{dt}   & = F
+              \end{aligned}
+              \right.
+              \\[1.5em]
+               & \left\{
+              \begin{aligned}
+                  \frac{dC_A}{dt} & = \frac{F}{V}\cdot (C_{A0}-C_A) - r_A \\[6pt]
+                  \frac{dC_B}{dt} & = -\frac{F C_B}{V} - r_B              \\[6pt]
+                  \frac{dC_P}{dt} & = -\frac{F C_P}{V} + r_P              \\[6pt]
+                  \frac{dC_Q}{dt} & = -\frac{F C_Q}{V} + r_Q
+              \end{aligned}
+              \right.
+               &         &
+              \left\{
+              \begin{aligned}
+                  r_A & = r_1         \\[6pt]
+                  r_B & = r_1 + 2 r_2 \\[6pt]
+                  r_P & = r_1 - r_2   \\[6pt]
+                  r_Q & = r_2
+              \end{aligned}
+              \right.
+          \end{align*}
+          \newpage
+    \item \textbf{Reactor discontinuo} operando con una \textbf{progresión óptima de temperatura}. Se debe encontrar el equilibrio entre el aumento de velocidad de reacción y la conversión que disminuye a lo largo que aumentamos la temperatura
+          \begin{align*}
+              \frac{dN_A}{dt}            & = r_A V \leftarrow  X_A = \frac{N_{AR}-N_A}{N_{A}}                    \\[6pt]
+              NA                         & = N_{AR}(1-X_A) \leftarrow dN_A = -N_{AR}\cdot dX_A                   \\[6pt]
+              dN_A \cdot \frac{dX_A}{dt} & = r_A V \implies \int_0^{t_R} dt = \int_0^{X_{Af}} \frac{dN_A}{r_A V} \\[6pt]
+              t_R                        & = C_{AR}\int_0^{X_{Af}} \frac{dX_A}{r_A}
+          \end{align*}
+          Para una reacción reversible exotérmica ($E_d < E_i$), se trabaja a $T_{\text{máx}}$ hasta llegar a la conversión de equilibrio, que se obtiene de la siguiente forma:
+          \begin{align*}
+              r = k_d \cdot C_A - k_i \cdot C_B                                    & = A_d \cdot \text{exp}\left(\frac{-E_d}{RT}\right) \cdot C_{A0}(1-X_A) - A_i \cdot \text{exp}\left(\frac{-E_i}{RT}\right) \cdot C_{A0}X_A \\[6pt]
+              \text{En el equilibrio}                                              & \implies r_i = r_d                                                                                                                        \\[6pt]
+              A_d \cdot \text{exp}\left(\frac{-E_d}{RT}\right) \cdot C_{A0}(1-X_e) & = A_i \cdot \text{exp}\left(\frac{-E_i}{RT}\right) \cdot C_{A0}X_e                                                                        \\[6pt]
+              \frac{A_d}{A_i} \cdot \text{exp}\left(\frac{E_i-E_d}{RT}\right)      & = \frac{X_e}{1-X_e}                                                                                                                       \\[6pt]
+              X_e                                                                  & = \frac{1}{1 + \frac{A_i}{A_d} \text{exp}\left(\frac{E_d-E_i}{RT}\right)}
+          \end{align*}
+          Posteriormente, se trabaja a la temperatura óptima hasta alcanzar la conversión deseada:
+          \begin{equation*}
+              \frac{dr_A}{dz} = 0
+          \end{equation*}
+          \begin{equation*}
+              0 = Ad \cdot \frac{E_d}{RT^2} \cdot \text{exp}\left(\frac{-E_d}{RT}\right) - C_{A0} \cdot (1-X_A) - A_i \cdot \left(\frac{-E_i}{RT}\right) \cdot \text{exp}\left(\frac{-E_i}{RT}\right) \cdot C_{A0} \cdot X_A
+          \end{equation*}
+          y todo esto si lo ponemos en función de la conversión queda tal que:
+          \begin{equation*}
+              \frac{X_A}{1-X_A} = \frac{A_d \cdot E_D}{A_i \cdot E_i} \cdot \text{exp}\left(\frac{E_i-E_d}{RT}\right)
+          \end{equation*}
+          finalmente despejamos la temperatura:
+          \begin{equation*}
+              T_{\text{opt}} = \dfrac{E_i-E_d}{R \cdot \text{ln}\left(\dfrac{\dfrac{1-X_A}{X_A}}{\dfrac{A_d \cdot E_D}{A_i \cdot E_i}}\right)}
+          \end{equation*}
+          \newpage
+    \item Configuración del Reactor (Gas-Líquido): Al tratarse de un sistema bifásico donde el reactivo gaseoso debe solubilizarse en la fase líquida, el diseño del equipo tiene como objetivo principal maximizar el área interfacial para favorecer la transferencia de materia. Según los requerimientos del proceso y la velocidad de la reacción, se presentan tres configuraciones principales en forma de columna:
+          \begin{itemize}
+              \item Columna de burbujeo: El gas se introduce de forma ascendente por la base del reactor, dispersándose en el líquido en forma de pequeñas burbujas. Es una opción idónea cuando se requiere un gran volumen de líquido retenido (liquid holdup) y un tiempo de residencia prolongado para que se complete la reacción.
+
+              \item Columna de relleno: El líquido se alimenta por la parte superior y percola hacia abajo sobre un soporte sólido (relleno), mientras el gas asciende en contracorriente. Esta disposición genera una fina película líquida sobre el relleno que ofrece una gran superficie de contacto y es excelente para absorciones rápidas.
+
+              \item Reactor de pulverización (o de spray): El líquido se atomiza en forma de finas gotas en el seno de la corriente gaseosa. Es la configuración ideal si la resistencia a la transferencia de materia está controlada casi por completo por la fase gaseosa, minimizando la caída de presión en el equipo.
+          \end{itemize}
+          \nt{Desde el punto de vista del patrón de flujo ideal, la columna de burbujeo se aproxima al comportamiento de un reactor tipo tanque agitado debido a la intensa mezcla global que provocan las burbujas. Por el contrario, las columnas de relleno y de spray operan bajo el principio de un reactor tubular, donde las composiciones varían de forma continua a lo largo de la longitud del equipo.}
+          \nt{Cabe aclarar que en todos los casos se debe especificar el trabajo en régimen isotermo a la $T$ indicada para cada situación. El único caso en el que conviene una operación adiabática es cuando el sistema puede funcionar de forma autotérmica, es decir, que el reactor absorba o ceda calor de forma constante (además, esto es únicamente posible en el RCMP), aunque tiene menor flexibilidad. El régimen no isotermo-no adiabático es algo que se debe evitar a la hora de modelizar. Por último, en los RSMP, si $E_{a1} > E_{a2}$ se trabajará a $T_{\text{máx}}$, y si $E_{a1} < E_{a2}$ será a $T_{\text{mín}}$.}
+          \cor{Otros tipos que no vienen en el examén}{
+              \begin{itemize}
+                  \item $A \Rightarrow B \text{\textcolor{darkgray}{cinética de inhibición}}$ \\
+                        \noindent Al ser una reacción con cinética de inhibición existe multiplicidad de estados estacionarios, obligatoriamente debemos llevarlo a cabo en un reactor tipo tanque agitado en operación continua en el caso de ser ideal RCMP:
+                        \noindent la cinética viene dada por la siguiente expresión:
+                        \begin{equation}
+                            r_A = - \frac{k_1 \cdot C_A}{(1 + k_2 \cdot C_A)^2}
+                        \end{equation}
+                        \begin{multicols}{2}
+                            \[ \frac{dM}{dt}=0 \implies F_0 = F_s = F \qquad {\color{darkgray}\text{\scriptsize(\(\rho=\mathrm{cte.}\))}} \]
+                            \[ \frac{dN_A}{dt}=N_{Ae}-N_{As}-N_{Ar} \]
+
+                            En \textbf{estado estacionario}:
+                            \[ \cancelto{0}{\frac{dN_A}{dt}} = N_{Ae}-N_{As}-N_{Ar} \]
+                            \[ N_{Ae}=F\,C_{A0} \qquad N_{As}=F\,C_A  \qquad N_{Ar} = r_A V \]
+                            \[ \textcolor{blue}{F(C_{A0}-C_A)=r_AV} \]
+
+
+                            \columnbreak
+
+                            \textbf{Cinética de inhibición por sustrato}
+                            \[ r_A=\frac{K_1\,C_A}{(1+K_2\,C_A)^2} \]
+
+                            Sustituyendo en el balance:
+                            \[ F(C_{A0}-C_A) = \frac{K_1\,C_A}{(1+K_2\,C_A)^2}\,V \]
+
+                            Dividiendo por \(V\):
+                            \[ \textcolor{teal}{\frac{dC_A}{dt} = \frac{F}{V}(C_{A0}-C_A) - \frac{K_1\,C_A}{(1+K_2\,C_A)^2}} \]
+                        \end{multicols}
+                        \noindent si representamos estas expresiónes en funcion del estado estacionario que se llega , se puede ver que la segunda expresion tiene una forma cuadratica mientras la primera es una linea recta con una pendiente negativa que da una posibilidad de hasta 3 estados estacionarios.
+                        \begin{tikzpicture}[scale=1.1]
+
+                            % Ejes
+                            \draw[->,thick] (0,0) -- (9,0) node[below] {$C_{AS}$};
+                            \draw[->,thick] (0,0) -- (0,6);
+
+                            % Ticks en ejes
+                            \foreach \x in {1,2,3,4,5,6,7,8}
+                            \draw[thick] (\x,0.1) -- (\x,-0.1);
+                            \foreach \y in {1,2,3,4,5}
+                            \draw[thick] (0.1,\y) -- (-0.1,\y);
+
+                            % Etiqueta eje y
+                            \node[left] at (-0.2,4.5) {$\dfrac{n_{Ae}}{n_{AS}}$};
+
+                            % Curva azul (ecuación de tercer grado)
+                            \draw[blue,thick,domain=0:8,samples=100]
+                            plot (\x, {0.09422*\x^3 - 1.31908*\x^2 + 4.7*\x});
+
+                            % Recta naranja
+                            \draw[orange,thick] (0,5.3) -- (8.5,0.2);
+
+                            % Puntos de equilibrio
+                            \fill[red] (1.5,4.4) circle (2.5pt);
+                            \fill[red] (5.0,2.3) circle (2.5pt);
+                            \fill[red] (7.5,0.8) circle (2.5pt);
+
+                            % Numeración
+                            \node[red,circle,draw=red,thick,inner sep=1pt] at (1.1,4.3) {1};
+                            \node[red,circle,draw=red,thick,inner sep=1pt] at (5.5,2.6) {2};
+                            \node[red,circle,draw=red,thick,inner sep=1pt] at (7.2,0.4) {3};
+
+                            % Etiquetas estabilidad
+                            \node[
+                                draw=green!50!black,thick,
+                                fill=green!5,
+                                text=green!50!black
+                            ] (est1) at (2.0,3.2) {\large ESTABLE};
+
+
+                            \node[
+                                draw=green!50!black,thick,
+                                fill=green!5,
+                                text=green!50!black
+                            ] (est3) at (8.6,1.7) {\large ESTABLE};
+
+                            % Texto inestable inferior
+                            \node[
+                                draw=red,thick,
+                                fill=red!5,
+                                text=red
+                            ] (inest) at (4.0,1.2) {\Large INESTABLE};
+
+                            % Flechas
+                            \draw[->,green!50!black,thick]
+                            (est1) -- (1.5,4.25);
+
+                            \draw[->,red,thick]
+                            (inest) -- (4.9,2.2);
+
+                            \draw[->,green!50!black,thick]
+                            (est3) -- (7.6,0.9);
+
+                            % Leyenda
+                            \draw[thick, black, fill=white] (7.6, 4.6) rectangle (9.3, 5.6);
+                            \draw[orange,thick] (7.8,5.3) -- (8.4,5.3);
+                            \node[right] at (8.4,5.3) {$n_{Ae}$};
+
+                            \draw[blue,thick] (7.8,4.9) -- (8.4,4.9);
+                            \node[right] at (8.4,4.9) {$n_{AS}$};
+
+                            % Texto rojo superior
+                            \node[red,font=\Large] at (5.7,4.9)
+                            {$\dfrac{dn_{AS}}{dC_{AS}}
+                                    <
+                                    \dfrac{dn_{Ae}}{dC_{AS}}$};
+
+                            \node[red,font=\Large] at (5.7,3.6)
+                            {$\dfrac{dn_{AS}}{dC_{AS}}
+                                    >
+                                    \dfrac{dn_{Ae}}{dC_{AS}}$};
+
+                        \end{tikzpicture}
+
+                  \item $A \rightarrow P \quad {\scriptsize\textcolor{darkgray}{\text{reacción endotérmica}}}$ \\
+                        \noindent Al ser irreversible vuelve a repetirse el primer caso. El hecho de que sea endotérmica no afecta a la temperatura de operación, ya que al ser irreversible siempre se alcanzará la conversión deseada.
+                  \item $A \leftrightarrow B  \quad {\scriptsize\textcolor{darkgray}{\text{reacción endotérmica}}}$ \\
+                        \noindent Será un reactor discontinuo o RCFP a $T_{\text{máx}}$.
+              \end{itemize}
+          }
+
+\end{enumerate}
 \qs{Ejercicio 2 (1.5 puntos)}{
     Se dispone de dos reactores tipo tanque agitado, cuyos volúmenes son $V_1=V$ y $V_2=2V$ para llevar a cabo a temperatura constante, una reacción irreversible $A \rightarrow P$ de primer orden. Para un caudal de alimentación $F$, ¿Cuál de las siguientes ordenaciones daría una mayor producción de P? Puede suponerse que $k \cdot V/F = 1$
 
@@ -613,7 +1257,82 @@ Recordando que el Reactor 1 funciona como un reactor flujo pistón ya que es ide
               \end{center}
     \end{enumerate}
 }
+\solve{}
+\noindent los balances para un RCMP son los siguientes:
 
+
+\begin{align*}
+    \frac{dM}{dt}                     & = m_0 - m_s                                                                  \\[6pt]
+    \sum m_0                          & = \sum m_s                                                                   \\[6pt]
+    \frac{dN}{dt}                     & = n_0 - n_s + r_i \cdot V                                                    \\[6pt]
+    \frac{d(C \cdot V)}{dt}           & = F(C_0 - C_s) + r_i \cdot V                                                 \\[6pt]
+    \frac{d(M \cdot C_p \cdot T)}{dt} & = m \cdot C_p \cdot (T_0 - T) + V \sum_{k=1}^{h} \Delta H_k \cdot r_k + Q(T)
+\end{align*}
+\noindent Para la reacción que nos indican en el enunciado $A \rightarrow P$ exotérmica y en isotermo, partiendo de las ecuaciones generales anteriores:
+\begin{equation*}
+    \frac{dN_A}{dt} = n_{A0} - n_{As} - r_A \cdot V
+\end{equation*}
+\noindent En el estado estacionario:
+
+\begin{equation*}
+    \frac{dN_A}{dt} = 0
+\end{equation*}
+
+\begin{equation*}
+    N_{AR}\cdot (1-X_{A0}) - N_{AR}(1-X_{AS}) - (r_A)_s \cdot V = 0
+\end{equation*}
+\vspace{1.5em}
+\noindent Recordando que $\tau$ se define como $\frac{V}{F}$.
+\begin{equation*}
+    (r_A)_s \cdot V = N_{AR}\cdot (X_{AS}-X_{A0}) \implies \tau = \frac{C_{AR}\cdot (X_{AS}- X_{A0})}{(r_A)_s}
+\end{equation*}
+\begin{align*}
+    \frac{\tau_i}{C_{AR}} & = \frac{X_{Ai}-X_{A(i-1)}}{-r_{Ai}}                                                                                              \\[6pt]
+    \tau_i                & = \frac{C_A \cdot (X_{A1}-0)}{C_{A0}\cdot K \cdot (1-X_{A1})} = \frac{C_A \cdot (X_{AS}-X_{A1})}{C_{A0}\cdot K \cdot (1-X_{AS})} \\[6pt]
+    \tau                  & = 2 \cdot \tau_i
+\end{align*}
+\begin{enumerate}[label={\alph*)}]
+    \item
+          \begin{itemize}
+              \item Para el reactor V:
+
+                    \vspace{1em}
+                    \Res{\tau = \frac{V}{F} = \frac{\cancel{C_{A0}} \cdot (X_A - 0)}{K \cdot \cancel{C_{A0}}\cdot (1-X_A)} \implies 2\cdot \underbrace{\frac{V}{F}\cdot k}_{1} = \frac{X_{A}}{1-X_{A}} \implies 2 = \frac{1}{1-X_{A}}\implies X_A \approx 0.67}
+              \item Para el reactor 2V:
+
+                    \vspace{1em}
+                    \Res{\tau = \frac{2\cdot V} {F/2} = 4 \cdot \underbrace{\frac{V}{F}\cdot k}_{1} \frac{X_{A}}{1-X_{A}} \implies 4 = \frac{1}{1-X_{A}} \implies X_A \approx 0.8}
+              \item La conversión de salida seria la media aritmetica de las conversiones individuales es decir:
+
+                    \vspace{1em}
+                    \Res{X_{AS} = \frac{0.67+0.8}{2} = 0.735}
+          \end{itemize}
+    \item
+          \begin{itemize}
+              \item Primer reactor (V):
+
+                    \vspace{1em}
+                    \Res{\tau_i =  \frac{V}{F} = \frac{\cancel{C_{A0}} \cdot (X_A - 0)}{K \cdot \cancel{C_{A0}}\cdot (1-X_A)} \implies 1 = \frac{X_{A}}{1-X_{A}} \implies X_A = 0.5}
+              \item Segundo reactor (2V):
+
+                    \vspace{1em}
+                    \Res{\tau_i =  \frac{V}{F} = \frac{\cancel{C_{A0}} \cdot (X_{AS} - X_{A1})}{K \cdot \cancel{C_{A0}}\cdot (1-X_{AS})} \implies 2 = \frac{X_{AS}-0.5}{1-X_{AS}} \implies X_{AS} \approx 0.83}
+          \end{itemize}
+    \item
+          \begin{itemize}
+              \item Primer reactor (2V):
+
+                    \vspace{1em}
+                    \Res{\tau_i =  \frac{V}{F} = \frac{\cancel{C_{A0}} \cdot (X_A - 0)}{K \cdot \cancel{C_{A0}}\cdot (1-X_A)} \implies 2 = \frac{X_{A}}{1-X_{A}} \implies X_A \approx 0.67}
+              \item Segundo reactor (V):
+
+                    \vspace{1em}
+                    \Res{\tau_i =  \frac{V}{F} = \frac{\cancel{C_{A0}} \cdot (X_{AS} - X_{A1})}{K \cdot \cancel{C_{A0}}\cdot (1-X_{AS})} \implies 1 = \frac{X_{AS}-0.67}{1-X_{AS}} \implies X_{AS} \approx 0.835}
+
+          \end{itemize}
+\end{enumerate}
+\noindent Por lo que tras analizar los casos podemos concluir que el optimo es el tercer caso.
+\newpage
 \qs{Ejercicio 3 (1.5 puntos)}{
     En una planta química se construyó un RCMP para llevar a cabo una reacción irreversible de primer orden y conseguir un 75\% de conversión ($\tau \cdot k = 3$). Sin embargo, en la puesta en marcha se comprueba que la conversión final obtenida es ligeramente menor que la descrita por el modelo ideal. Entonces, se le realizan estudios del grado de mezcla mediante experimentación estímulo-respuesta en impulso. Se obtienen los siguientes datos:
 
@@ -630,6 +1349,158 @@ Recordando que el Reactor 1 funciona como un reactor flujo pistón ya que es ide
         \item ¿Es aplicable el modelo de flujo segregado?
         \item Calcula la conversión real del reactor.
     \end{enumerate}
+}
+\solve{}
+\begin{enumerate}[label={\alph*)}]
+    \item
+
+          \noindent recordando que $\theta = t/t_R$ y que $E = \frac{C_B}{C_{BR}}$ y a su vez, que el tiempo de residencia $t_R = \frac{\int t \cdot c_B \cdot dt}{\int c_B \cdot dt}$ , $C_{BR} = \frac{\int C_B \cdot dt}{t_R}$.
+
+          \begin{center}
+              \resizebox{\textwidth}{!}{
+                  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+                      \hline
+                      $t$, min              & $C_B$, g/L & $t \cdot C_B$ & $\int t \cdot C_B \, dt$ & $\int C_B \, dt$ & $\theta$ & $E$   & $\theta \cdot E$ & $\theta^2 \cdot E$ & $\int E \, d\theta$ & $\int \theta E \, d\theta$ & $\int \theta^2 E \, d\theta$ \\ \hline
+                      0                     & 0          & 0             & 0                        & 0                & 0.000    & 0.000 & 0                & 0                  & -                   & -                          & -                            \\ \hline
+                      1                     & 0          & 0             & 0                        & 0                & 0.184    & 0.000 & 0                & 0                  & 0                   & 0                          & 0                            \\ \hline
+                      2                     & 0.02       & 0.04          & 0.02                     & 0.01             & 0.368    & 0.028 & 0.0101           & 0.0037             & 0.0025              & 0.0009                     & 0.0003                       \\ \hline
+                      3                     & 0.35       & 1.05          & 0.565                    & 0.195            & 0.552    & 0.482 & 0.2658           & 0.1467             & 0.0468              & 0.0254                     & 0.0138                       \\ \hline
+                      4                     & 0.88       & 3.52          & 2.85                     & 0.81             & 0.736    & 1.211 & 0.8911           & 0.6558             & 0.1557              & 0.1064                     & 0.0738                       \\ \hline
+                      5                     & 1.01       & 5.05          & 7.135                    & 1.755            & 0.920    & 1.390 & 1.2785           & 1.1761             & 0.2392              & 0.1996                     & 0.1685                       \\ \hline
+                      6                     & 0.78       & 4.68          & 12                       & 2.65             & 1.104    & 1.073 & 1.1848           & 1.3079             & 0.2266              & 0.2266                     & 0.2285                       \\ \hline
+                      7                     & 0.47       & 3.29          & 15.985                   & 3.275            & 1.288    & 0.647 & 0.8329           & 1.0727             & 0.1582              & 0.1856                     & 0.2190                       \\ \hline
+                      8                     & 0.24       & 1.92          & 18.59                    & 3.63             & 1.472    & 0.330 & 0.4861           & 0.7154             & 0.0899              & 0.1213                     & 0.1645                       \\ \hline
+                      9                     & 0.12       & 1.08          & 20.09                    & 3.81             & 1.656    & 0.165 & 0.2734           & 0.4527             & 0.0456              & 0.0699                     & 0.1075                       \\ \hline
+                      10                    & 0.05       & 0.5           & 20.88                    & 3.895            & 1.840    & 0.069 & 0.1266           & 0.2329             & 0.0215              & 0.0368                     & 0.0631                       \\ \hline
+                      11                    & 0.02       & 0.22          & 21.24                    & 3.93             & 2.024    & 0.028 & 0.0557           & 0.1127             & 0.0089              & 0.0168                     & 0.0318                       \\ \hline
+                      12                    & 0.01       & 0.12          & 21.41                    & 3.945            & 2.208    & 0.014 & 0.0304           & 0.0671             & 0.0038              & 0.0079                     & 0.0165                       \\ \hline
+                      13                    & 0          & 0             & 21.47                    & 3.95             & 2.392    & 0.000 & 0                & 0                  & 0.0013              & 0.0028                     & 0.0062                       \\ \hline
+                      \multicolumn{8}{c|}{} & $\Sigma$   & 1             & 1                        & 1.0935                                                                                                                                                        \\ \cline{9-12}
+                  \end{tabular}
+              }
+
+              \vspace{1.5em}
+              \begin{tabular}{|c|c|}
+                  \hline
+                  $t_R$    & $5.4354$ min \\ \hline
+                  $C_{B0}$ & $0.7267$ g/L \\ \hline
+              \end{tabular}
+          \end{center}
+          \noindent donde $\int E d\theta = 1$ y $ \int \theta E d\theta = 1 $, por lo que no hay volumen estanco ni bypass, calculamos la varianza:
+          \begin{equation*}
+              \sigma^2 = \int E \theta^2 d\theta - 1 \approx 0.0935
+          \end{equation*}
+          \noindent el reactor presenta un comportamiento tubular, el cual modelizare como una bateria de tanques en serie (Aunque se podria modelizar por el modelo de dispersión):
+
+          \noindent El balance de un reactor tipo tanque agitado en serie, siendo ideal reactores continuo mezcla perfecta, son los presentador en el anterior apartado, donde a partir de la ecuación final queda lo siguiente:
+
+          \begin{equation*}
+              n = \frac{1}{\sigma^2} = \frac{1}{0.0935} \approx 10.695
+          \end{equation*}
+
+          \noindent por lo que se modeliza como una bateria de 11 tanques agitados en serie. Por otro lado calculamos la conversion:
+
+          \begin{equation*}
+              \tau_i = \frac{\tau}{n} = \frac{\cancel{C_{A0}} \cdot (X_{n} - X_{n-1})}{k \cancel{C_{A0}}(1-X_{n})}\Rightarrow \underbrace{\frac{\tau \cdot k}{n}}_{3/11} = \frac{X_{n}-X_{n-1}}{1-X_{n}}
+          \end{equation*}
+          \begin{center}
+              \Res{
+                  \begin{aligned}
+                      X_{A0} & = 0      & X_{A4} & = 0.6189 & X_{A8}  & = 0.8548          \\
+                      X_{A1} & = 0.2143 & X_{A5} & = 0.7006 & X_{A9}  & = 0.8859          \\
+                      X_{A2} & = 0.3827 & X_{A6} & = 0.7648 & X_{A10} & = 0.9103          \\
+                      X_{A3} & = 0.5149 & X_{A7} & = 0.8152 & X_{A11} & = \mathbf{0.9295}
+                  \end{aligned}
+              }
+          \end{center}
+
+          \nt{consejo para ir rapido en el calculo, en la calculadora cientifica ( Casio fx-991spx II )
+              poniendo (3/11) = $\frac{x-0}{1-x}$ para el primer valor luego cambiar el 0 por Ans y ir dandole a solve (shift + CALC) todo el rato}
+
+    \item como $\tau$ tiene que definirse en tiempo (ya sea horas minutos segundos..) y $\tau \cdot k$ = 3 es decir se vuelve adimensional, $k$ tiene que ser $\text{tiempo}^{-1}$ y por tanto estamos en cinetica de primer orden y es aplicable la modelización por flujo segregado.
+
+          \begin{equation*}
+              \overline{C_A} = \int_{0}^{\infty} C_A(\theta) \cdot E \, d\theta
+          \end{equation*}
+          En función de la conversión, sería:
+          \begin{equation*}
+              1 -\overline{X_A} = \int_{0}^{\infty} 1 - X_A(\theta) \cdot E \, d\theta
+          \end{equation*}
+          \begin{align*}
+              \left.\begin{aligned}
+                        \frac{dC_A}{dt} & = r_A     \\
+                        r_A             & = -k\,C_A
+                    \end{aligned}\right\}
+              \implies \frac{dC_A}{dt} = -k\,C_A
+              \implies \cancel{C_{A0}}\frac{dX_A}{dt} = -k\,\cancel{C_{A0}}(1-X_A)
+          \end{align*}
+          \begin{align*}
+               & \frac{dX_A}{dt}                       = -k(1-X_A)\quad \frac{dX_A}{1-X_A} = -k dt  \\[6pt]
+               & \int_{0}^{X_{AS}} \frac{dX_A}{1-X_A}  = -k \int_{0}^{t} dt                         \\[6pt]
+               & -ln(1-X_{AS})                         = -kt \implies 1-X_A = \text{exp}(-k\cdot t)
+          \end{align*}
+          Expresándolo en función del tiempo de residencia, es decir, $t = t_R \cdot \theta$:
+          \begin{equation*}
+              \boxed{1-X_A(\theta) = \text{exp}(-k\cdot t_R \cdot \theta)}
+          \end{equation*}
+          Y sustituyendo en la expresión de la media:
+          \nt{Se calcula $1-X_A(\theta)$, por ejemplo, para el primer valor es $\exp(-3\cdot 0) = 1$; para el segundo valor, es decir, $1-X_A(0.184) = \exp(-3\cdot 0.184) = 0.575836$, y así sucesivamente. Luego se construye la siguiente columna y por último se realiza la integral por trapecios; el valor de la conversión de salida será $1$ menos el último valor de la integral.}
+          \begin{center}
+              \begin{tabular}{|c|c|c|c|c|}
+                  \hline
+                  $\theta$              & $E$        & $1-X_A(\theta)$ & $(1-X_A(\theta)) \cdot E$ & $\int (1-X_A(\theta)) \cdot E \, d\theta$ \\ \hline
+                  0.000                 & 0.000      & 1               & 0                         & 0                                         \\ \hline
+                  0.184                 & 0.000      & 0.575836        & 0                         & 0                                         \\ \hline
+                  0.368                 & 0.028      & 0.331587        & 0.009126                  & 0.000839                                  \\ \hline
+                  0.552                 & 0.482      & 0.190939        & 0.091961                  & 0.010138                                  \\ \hline
+                  0.736                 & 1.211      & 0.10995         & 0.133142                  & 0.030845                                  \\ \hline
+                  0.920                 & 1.390      & 0.063313        & 0.087994                  & 0.051187                                  \\ \hline
+                  1.104                 & 1.073      & 0.036458        & 0.039131                  & 0.062881                                  \\ \hline
+                  1.288                 & 0.647      & 0.020994        & 0.013578                  & 0.06773                                   \\ \hline
+                  1.472                 & 0.330      & 0.012089        & 0.003992                  & 0.069346                                  \\ \hline
+                  1.656                 & 0.165      & 0.006961        & 0.001149                  & 0.069819                                  \\ \hline
+                  1.840                 & 0.069      & 0.004009        & 0.000276                  & 0.06995                                   \\ \hline
+                  2.024                 & 0.028      & 0.002308        & $6.35 \cdot 10^{-5}$      & 0.069981                                  \\ \hline
+                  2.208                 & 0.014      & 0.001329        & $1.83 \cdot 10^{-5}$      & 0.069989                                  \\ \hline
+                  2.392                 & 0.000      & 0.000765        & 0                         & 0.069991                                  \\ \hline
+                  \multicolumn{3}{c|}{} & $X_{AS} =$ & 0.930009                                                                                \\ \cline{4-5}
+              \end{tabular}
+          \end{center}
+\end{enumerate}
+\ex{Ejemplo si fuera en escalón en lugar de impulso}{
+    dado los siguientes valores:
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            $t$, min   & 0 & 5 & 10 & 15 & 20 & 25 & 30 & 35 \\ \hline
+            $c_s$, g/L & 0 & 3 & 5  & 5  & 4  & 4  & 2  & 1  \\ \hline
+        \end{tabular}
+    \end{center}
+    \begin{center}
+        \resizebox{\textwidth}{!}{
+            \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+                \hline
+                $t$, min & $C_B$, g/L & $t \cdot C_B$ & $\int t \cdot C_B \, dt$ & $\int C_B \, dt$ & $\theta$ & $E$ & $\theta \cdot E$ & $\theta^2 \cdot E$ & $\int E \, d\theta$ & $\int \theta E \, d\theta$ & $\int \theta^2 E \, d\theta$ \\ \hline
+                0 & 0 & 0 & 0 & 0 & 0.000 & 0.000 & 0 & 0.000 & - & - & - \\ \hline
+                5 & 3 & 15 & 37.5 & 15 & 0.333 & 0.450 & 0.15 & 0.050 & 0.075 & 0.025 & 0.008 \\ \hline
+                10 & 5 & 50 & 200 & 40 & 0.667 & 0.750 & 0.5 & 0.333 & 0.200 & 0.108 & 0.064 \\ \hline
+                15 & 5 & 75 & 512.5 & 65 & 1.000 & 0.750 & 0.75 & 0.750 & 0.250 & 0.208 & 0.181 \\ \hline
+                20 & 4 & 80 & 900 & 85 & 1.333 & 0.600 & 0.8 & 1.067 & 0.225 & 0.258 & 0.303 \\ \hline
+                25 & 2 & 50 & 1225 & 95 & 1.667 & 0.300 & 0.5 & 0.833 & 0.150 & 0.217 & 0.317 \\ \hline
+                30 & 1 & 30 & 1425 & 100 & 2.000 & 0.150 & 0.3 & 0.600 & 0.075 & 0.133 & 0.239 \\ \hline
+                35 & 0 & 0 & 1500 & 100 & 2.333 & 0.000 & 0 & 0.000 & 0.025 & 0.050 & 0.100 \\ \hline
+                \multicolumn{8}{c|}{} & $\Sigma$ & 1.000 & 1.000 & 1.211 \\ \cline{9-12}
+            \end{tabular}
+        }
+
+        \vspace{1.5em}
+        \begin{tabular}{|c|c|}
+            \hline
+            $t_R$ & $15$ min \\ \hline
+            $C_{B0}$ & $6.667$ g/L \\ \hline
+        \end{tabular}
+    \end{center}
+    \nt{La principal diferencia es que la integral $\int C_B \, dt$, en lugar de calcularse mediante la regla de los trapecios como se ha hecho en casos anteriores, se aproxima directamente como el área de rectángulos ($C_B \cdot \Delta t$).}
 }
 
 % \shorthandon{>}
@@ -707,7 +1578,7 @@ Recordando que el Reactor 1 funciona como un reactor flujo pistón ya que es ide
           \begin{equation*}
               N_{AR}\cdot (1-X_{A0}) - N_{AR}(1-X_{AS}) - (r_A)_s \cdot V = 0
           \end{equation*}
-          \vspace{1em}
+          \vspace{1.5em}
           \noindent Recordando que $\tau$ se define como $\frac{V}{F}$.
           \begin{equation*}
               (r_A)_s \cdot V = N_{AR}\cdot (X_{AS}-X_{A0}) \implies \tau = \frac{C_{AR}\cdot (X_{AS}- X_{A0})}{(r_A)_s}
@@ -747,10 +1618,9 @@ Recordando que el Reactor 1 funciona como un reactor flujo pistón ya que es ide
                   .. (Azeo);
 
                   % Etiquetas de curvas
-                  \node at (0.75,2.55) {$t_1$};
-                  \node at (1.45,4.20) {$T_1$};
-                  \node at (2.10,4.20) {$T_2$};
-                  \node at (2.80,4.20) {$T_3$};
+                  \node at (0.80,4.20) {$T_1$};
+                  \node at (1.45,4.20) {$T_2$};
+                  \node at (2.10,4.20) {$T_3$};
 
                   % Composición azeotrópica
                   \draw[densely dashed]
