@@ -20,6 +20,8 @@
     donde $dz$ es el diferencial axial y $A$ el área transversal del tubo.
     \vspace{1em}
 \end{flushleft}
+
+
 \section{Isotermo}
 \begin{flushleft}
     En condiciones isotermas (temperatura constante), el modelo del reactor se basa únicamente en balances de materia, ya que el balance de energía no es necesario para la modelización (solo para el diseño térmico).\\
@@ -889,3 +891,625 @@ De forma análoga, para el caso del balance entálpico tenemos:
 \vspace{0.3cm}
 \nt{\textit{Nota: El término $\frac{D}{v \cdot L}$ corresponde al \textbf{Módulo de Dispersión axial ($N_D$)}, equivalente a $1/Pe$.}}
 \section{Scilab}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|m{5cm}|m{3cm}|m{3cm}|m{4cm}|}
+        \hline
+        \rowcolor{teal!20}
+        \textbf{Detalles Claves}                                                              & \textbf{Isotermo}               & \textbf{Adiabático}             & \textbf{No Adiabático / No Isotermo} \\
+        \hline
+        Obtener el estado estacionario                                                        & \hyperlink{qs:RCFP-1a}{RCFP-1a} & \hyperlink{qs:RCFP-1b}{RCFP-1b} & \hyperlink{qs:RCFP-1c}{RCFP-1c}      \\
+        \hline
+        Reactores adiabáticos en serie con enfriamiento intermedio (Optimización de longitud) &                                 & \hyperlink{qs:RCFP-1d}{RCFP-1d} &                                      \\
+        \hline
+        Proceso con recirculación (Optimizar fracción de recirculación)                       & \hyperlink{qs:RCFP-2}{RCFP-2}   &                                 &                                      \\
+        \hline
+    \end{tabular}
+    \caption{Clasificación de los ejercicios resueltos del RCFP}
+    \label{tab:clasificacion_rcfp}
+\end{table}
+
+\hypertarget{qs:RCFP-1a}{}\qs{RCFP-1a}{El equilibrio químico:
+    $$ A + B \rightleftharpoons C $$
+    Factor preexponencial de Arrhenius = $1.75 \times 10^8$ L/(mol$\cdot$h)\\
+    Factor preexponencial de Van't Hoff = $8.25 \times 10^{-22}$ L/mol\\
+    Energía de activación = $62350$ J/mol\\
+    Entalpía de reacción = $-136400$ J/mol
+
+    Se lleva a cabo en condiciones isotermas a 310 K en un reactor tubular de 800 dm de longitud y 3 dm de diámetro alimentado por 50 L/h de los compuestos A, B y C a concentración 1.5, 2.0 y 0.1 mol/L, respectivamente. La mezcla reaccionante presenta una densidad de 1150 g/L y una capacidad calorífica de 3.8 J/(g$\cdot$K).
+
+    \begin{enumerate}[label={\alph*)}]
+        \item Obtener el estado estacionario del proceso.
+    \end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+clear; clc;
+// RCFP-1a.sce
+// A + B <=> C
+// Isotermo
+// Estado estacionario
+
+// EQUIVALENCIA
+// RCFP                         RDMP             
+// Estado estacionario          Dinámica         
+// Tiempo de residencia         Tiempo           
+// Entrada                      Valores iniciales        
+// Salida                       Valores finales                   
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdtau = f(tau,x)
+    // Variables diferenciales
+    CA = x(1)
+    CB = x(2)
+    CC = x(3)
+    // Ecuación de Arrhenius
+    kd = kd0*exp(-E/(R*T))
+    // Ecuación de Van't Hoff
+    Keq = Keq0*exp(-H/(R*T))
+    // Velocidad de reacción
+    // r = rd - ri = kd*CA*CB - ki*CC = kd*CA*CB - kd*CC/Keq
+    r = kd*(CA*CB - CC/Keq)
+    // Balance de materia para A
+    // RDMP: d(V*CA)dt = -r*V 
+    dCAdtau = -r
+    // Balance de materia para B
+    // RDMP: d(V*Cb)dt = -r*V 
+    dCBdtau = -r
+    // Balance de materia para C
+    // RDMP: d(V*Cc)dt = r*V 
+    dCCdtau =  r
+    // Derivadas
+    dxdtau(1) = dCAdtau
+    dxdtau(2) = dCBdtau
+    dxdtau(3) = dCCdtau
+endfunction
+
+// CONSTANTES
+kd0 = 1.75E8; // L/(mol*h)
+E = 62350; // J/mol
+Keq0 = 8.25E-22; // L/mol
+H = -136400; // J/mol
+R = 8.314; // J/(mol*K)
+RHO = 1150; // g/L
+CP = 3.8; // J/(g*K)
+F = 50; // L/h 
+D = 3; // dm
+L = 800; // dm
+V = %pi/4*D^2*L // L
+TAU = V/F // h
+
+T = 310; // K
+
+// ENTRADA
+CA0 = 1.5; CB0 = 2; CC0 = 0.1; // mol/L
+x0 = [CA0;CB0;CC0];
+
+// TIEMPO DE RESIDENCIA
+N = 800 ; tau = 0:TAU/N:TAU; // h
+l = 0:L/N:L; // dm
+
+// RESOLVER
+x = ode(x0,0,tau,f);
+CA = x(1,:); CAs = CA($)
+CB = x(2,:); CBs = CB($) 
+CC = x(3,:); CCs = CC($)
+XA = 1 - CA/CA0; XAs = XA($)
+//Det la conversion a mitad del reactor
+Xam = XA(L/2) // o $/2
+disp('la conversion en mitad del reactor es' ,Xam);
+
+// GRÁFICAS
+scf(1); clf(1); 
+plot(l,CA,l,CB,l,CC);
+xgrid; xlabel('l'); legend('CA','CB','CC',-2,%f);
+
+scf(2); clf(2); 
+plot(l,XA,'m');
+plot(L/2,Xam,'mo','markersize',6);
+xgrid; xlabel('l'); legend('XA',-2,%f);
+disp('V' ,V);
+disp('TAU' ,TAU);
+disp('CA' ,CAs);
+disp('CB' ,CBs);
+disp('CC' ,CCs);
+disp('XA' ,XAs);
+
+//TODO Determinar la conversion a mitad del reactor 
+\end{minted}
+
+\hypertarget{qs:RCFP-1b}{}\qs{RCFP-1b}{El equilibrio químico:
+    $$ A + B \rightleftharpoons C $$
+    Factor preexponencial de Arrhenius = $1.75 \times 10^8$ L/(mol$\cdot$h)\\
+    Factor preexponencial de Van't Hoff = $8.25 \times 10^{-22}$ L/mol\\
+    Energía de activación = $62350$ J/mol\\
+    Entalpía de reacción = $-136400$ J/mol
+
+    Se lleva a cabo en condiciones adiabáticas en un reactor tubular de 800 dm de longitud y 3 dm de diámetro alimentado por 50 L/h a 310 K de los compuestos A, B y C a concentración 1.5, 2.0 y 0.1 mol/L, respectivamente. La mezcla reaccionante presenta una densidad de 1150 g/L y una capacidad calorífica de 3.8 J/(g$\cdot$K).
+
+    \begin{enumerate}[label={\alph*)}]
+        \item Obtener el estado estacionario del proceso.
+    \end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+clear; clc;
+// RCFP-1b.sce
+// A + B <=> C
+// Adiabático
+// Estado estacionario
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdtau = f(tau,x)
+    // Variables diferenciales
+    CA = x(1)
+    CB = x(2)
+    CC = x(3)
+    T  = x(4)
+    // Ecuación de Arrhenius
+    kd = kd0*exp(-E/(R*T))
+    // Ecuación de Van't Hoff
+    Keq = Keq0*exp(-H/(R*T))
+    // Velocidad de reacción
+    // r = rd - ri = kd*CA*CB - ki*CC = kd*CA*CB - kd*CC/Keq
+    r = kd*(CA*CB - CC/Keq)
+    // Balance de materia para A
+    // RDMP: d(V*CA)dt = -r*V 
+    dCAdtau = -r
+    // Balance de materia para B
+    // RDMP: d(V*Cb)dt = -r*V 
+    dCBdtau = -r
+    // Balance de materia para C
+    // RDMP: d(V*Cc)dt = r*V 
+    dCCdtau =  r
+    // Balance de energía
+    // RDMP: d(V*RHO*CP*T)dt = -H*r*V
+    dTdtau = -H*r/(RHO*CP) 
+    // Derivadas
+    dxdtau(1) = dCAdtau
+    dxdtau(2) = dCBdtau
+    dxdtau(3) = dCCdtau
+    dxdtau(4) = dTdtau
+endfunction
+
+// CONSTANTES
+kd0 = 1.75E8; // L/(mol*h)
+E = 62350; // J/mol
+Keq0 = 8.25E-22; // L/mol
+H = -136400; // J/mol
+R = 8.314; // J/(mol*K)
+RHO = 1150; // g/L
+CP = 3.8; // J/(g*K)
+F = 50; // L/h 
+D = 3; // dm
+L = 800; // dm
+V = %pi/4*D^2*L // L
+TAU = V/F // h
+
+// ENTRADA
+CA0 = 1.5; CB0 = 2; CC0 = 0.1; // mol/L
+T0 = 310; // K
+x0 = [CA0;CB0;CC0;T0];
+
+// TIEMPO DE RESIDENCIA
+N = 800; tau = 0:TAU/N:TAU; // h
+l = 0:L/N:L; // dm
+
+// RESOLVER
+x = ode(x0,0,tau,f);
+CA = x(1,:); CAs = CA($);
+CB = x(2,:); CBs = CB($);
+CC = x(3,:); CCs = CC($);
+T  = x(4,:); Ts  = T($);
+XA = 1 - CA/CA0; XAs = XA($);
+s = 8; // número de segmentos
+s2ini = T(l=1*L/8);
+s2fin = T(l=2*L/8);
+if s2ini == s2fin then
+    disp('El reactor no esta progresando y su diferencia de temperatura es cero')
+else
+    disp('El reactor esta progresando',(s2fin-s2ini), 'K')
+end
+// GRÁFICAS
+scf(1); clf(1); 
+plot(l,XA,'m');
+xgrid; xlabel('l'); legend('XA',-2,%f);
+
+scf(2); clf(2); 
+plot(l,T,'r');
+xgrid; xlabel('l'); legend('T',-2,%f);
+
+scf(3); clf(3); 
+plot(T,XA,'mo-');
+xgrid; xlabel('T'); legend('XA',-2,%f);
+
+//TODO si dividimos el reactor en 8 segmentos, aumenta la temperatura en el segundo segmento?
+\end{minted}
+
+\hypertarget{qs:RCFP-1c}{}\qs{RCFP-1c}{El equilibrio químico:
+    $$ A + B \rightleftharpoons C $$
+    Factor preexponencial de Arrhenius = $1.75 \times 10^8$ L/(mol$\cdot$h)\\
+    Factor preexponencial de Van't Hoff = $8.25 \times 10^{-22}$ L/mol\\
+    Energía de activación = $62350$ J/mol\\
+    Entalpía de reacción = $-136400$ J/mol
+
+    Se lleva a cabo en condiciones no adiabáticas en un reactor tubular de 800 dm de longitud y 3 dm de diámetro alimentado por 50 L/h a 310 K de los compuestos A, B y C a concentración 1.5, 2.0 y 0.1 mol/L, respectivamente. El reactor está refrigerado por una camisa por la que circula un fluido a 310 K, con un coeficiente global de transmisión de calor de 900 J/(dm$^2\cdot$h$\cdot$K). La mezcla reaccionante presenta una densidad de 1150 g/L y una capacidad calorífica de 3.8 J/(g$\cdot$K).
+
+    \begin{enumerate}[label={\alph*)}]
+        \item Obtener el estado estacionario del proceso.
+    \end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+clear; clc;
+// RCFP-1c.sce
+// A + B <=> C
+// No adiabático
+// Estado estacionario
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdtau = f(tau,x)
+    // Variables diferenciales
+    CA = x(1)
+    CB = x(2)
+    CC = x(3)
+    T  = x(4)
+    // Ecuación de Arrhenius
+    kd = kd0*exp(-E/(R*T))
+    // Ecuación de Van't Hoff
+    Keq = Keq0*exp(-H/(R*T))
+    // Velocidad de reacción
+    // r = rd - ri = kd*CA*CB - ki*CC = kd*CA*CB - kd*CC/Keq
+    r = kd*(CA*CB - CC/Keq)
+    // Balance de materia para A
+    // RDMP: d(V*CA)dt = -r*V 
+    dCAdtau = -r
+    // Balance de materia para B
+    // RDMP: d(V*Cb)dt = -r*V 
+    dCBdtau = -r
+    // Balance de materia para C
+    // RDMP: d(V*Cc)dt = r*V 
+    dCCdtau =  r
+    // Balance de energía
+    // RDMP: d(V*RHO*CP*T)dt = -H*r*V - Q = -H*r*V - U*A*(T-TJ)
+    // RDMP: dTdt = -H*r/(RHO*CP) - U*A*(T-TJ)/(V*RHO*CP)
+    // A/V = %pi*D*L / (%pi/4*D^2*L) = 4/D 
+    dTdtau = -H*r/(RHO*CP) - 4*U*(T-TJ)/(D*RHO*CP)
+    // Derivadas
+    dxdtau(1) = dCAdtau
+    dxdtau(2) = dCBdtau
+    dxdtau(3) = dCCdtau
+    dxdtau(4) = dTdtau
+endfunction
+
+// CONSTANTES
+kd0 = 1.75E8; // L/(mol*h)
+E = 62350; // J/mol
+Keq0 = 8.25E-22; // L/mol
+H = -136400; // J/mol
+R = 8.314; // J/(mol*K) 
+RHO = 1150; // g/L
+CP = 3.8; // J/(g*K)
+F = 50; // L/h 
+D = 3; // dm
+L = 800; // dm
+V = %pi/4*D^2*L // L
+TAU = V/F // h
+
+U = 900; // J/(dm2*h*K)
+TJ = 310; // K
+//! hacer un bucle para ver como varia la conversion con la temperatura de refrigeracion para buscar optimo
+//! de forma que aumente el rango si aumenta la temperatura o disminuye la t si aumenta la conversion con el signo de derivda
+//! para calcular el optimo tal que sea < tol 
+// ENTRADA
+CA0 = 1.5; CB0 = 2; CC0 = 0.1; // mol/L
+T0 = 310; // K
+x0 = [CA0;CB0;CC0;T0];
+
+// TIEMPO DE RESIDENCIA
+tau = 0:TAU/100:TAU; // h
+l = 0:L/100:L; // dm
+
+// RESOLVER
+x = ode(x0,0,tau,f);
+CA = x(1,:); CAs = CA($) 
+CB = x(2,:); CBs = CB($) 
+CC = x(3,:); CCs = CC($)
+T  = x(4,:); Ts  = T($)
+XA = 1 - CA/CA0; XAs = XA($)
+
+// GRÁFICAS
+scf(1); clf(1); 
+plot(l,XA,'m');
+xgrid; xlabel('l'); legend('XA',-2,%f);
+
+scf(2); clf(2); 
+plot(l,T,'r');
+xgrid; xlabel('l'); legend('T',-2,%f);
+
+scf(3); clf(3); 
+plot(T,XA,'mo-');
+xgrid; xlabel('T'); legend('XA',-2,%f);
+
+scf(4);
+plot(TJ, XAs,'mo');
+xgrid; xlabel('TJ'); ylabel('XAs');
+\end{minted}
+
+\hypertarget{qs:RCFP-1d}{}\qs{RCFP-1d}{El equilibrio químico:
+    $$ A + B \rightleftharpoons C $$
+    Factor preexponencial de Arrhenius = $1.75 \times 10^8$ L/(mol$\cdot$h)\\
+    Factor preexponencial de Van't Hoff = $8.25 \times 10^{-22}$ L/mol\\
+    Energía de activación = $62350$ J/mol\\
+    Entalpía de reacción = $-136400$ J/mol
+
+    Se lleva a cabo en un sistema de dos reactores tubulares adiabáticos en serie con un enfriamiento intermedio. El sistema completo tiene una longitud equivalente de 800 dm y 3 dm de diámetro, y es alimentado por 50 L/h a 310 K de los compuestos A, B y C a concentración 1.5, 2.0 y 0.1 mol/L, respectivamente. Entre ambos reactores se enfría la mezcla hasta la temperatura inicial de 310 K. La mezcla reaccionante presenta una densidad de 1150 g/L y una capacidad calorífica de 3.8 J/(g$\cdot$K).
+
+    \begin{enumerate}[label={\alph*)}]
+        \item Obtener el estado estacionario del proceso y optimizar la longitud del primer reactor.
+    \end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+clear; clc;
+// RCFP-1d.sce
+// A + B <=> C
+// Adiabático
+// Estado estacionario
+// 2 reactores con enfriamiento intermedio
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdtau = f(tau,x)
+    // Variables diferenciales
+    CA = x(1)
+    CB = x(2)
+    CC = x(3)
+    T  = x(4)
+    // Ecuación de Arrhenius
+    kd = kd0*exp(-E/(R*T))
+    // Ecuación de Van't Hoff
+    Keq = Keq0*exp(-H/(R*T))
+    // Velocidad de reacción
+    // r = rd - ri = kd*CA*CB - ki*CC = kd*CA*CB - kd*CC/Keq
+    r = kd*(CA*CB - CC/Keq)
+    // Balance de materia para A
+    // RDMP: d(V*CA)dt = -r*V 
+    dCAdtau = -r
+    // Balance de materia para B
+    // RDMP: d(V*Cb)dt = -r*V 
+    dCBdtau = -r
+    // Balance de materia para C
+    // RDMP: d(V*Cc)dt = r*V 
+    dCCdtau =  r
+    // Balance de energía
+    // RDMP: d(V*RHO*CP*T)dt = -H*r*V
+    dTdtau = -H*r/(RHO*CP) 
+    // Derivadas
+    dxdtau(1) = dCAdtau
+    dxdtau(2) = dCBdtau
+    dxdtau(3) = dCCdtau
+    dxdtau(4) = dTdtau
+endfunction
+
+// CONSTANTES
+kd0 = 1.75E8; // L/(mol*h)
+E = 62350; // J/mol
+Keq0 = 8.25E-22; // L/mol
+H = -136400; // J/mol
+R = 8.314; // J/(mol*K)
+RHO = 1150; // g/L
+CP = 3.8; // J/(g*K)
+F = 50; // L/h 
+D = 3; // dm
+L = 800; // dm
+
+// *********
+// REACTOR 1
+// *********
+
+// CONSTANTES
+L1 = 400; // dm
+V1 = %pi/4*D^2*L1 // L
+TAU1 = V1/F // h
+
+// ENTRADA
+CA0 = 1.5; CB0 = 2; CC0 = 0.1; // mol/L
+T0 = 310; // K
+x01 = [CA0;CB0;CC0;T0];
+
+// TIEMPO DE RESIDENCIA
+N =400; tau1 = 0:TAU1/N:TAU1; // h
+l1 = 0:L1/N:L1; // dm
+
+// RESOLVER
+x1 = ode(x01,0,tau1,f);
+CA1 = x1(1,:); CA1s = CA1($) 
+CB1 = x1(2,:); CB1s = CB1($) 
+CC1 = x1(3,:); CC1s = CC1($)
+T1  = x1(4,:); T1s  = T1($)
+XA1 = 1 - CA1/CA0; XA1s = XA1($)
+
+
+d2XA1 = diff(XA1,2); // segunda derivada de XA1
+indexXA1 = find(d2XA1(1:$-1).*d2XA1(2:$) < 0) + 1; // índice de los puntos de inflexión
+lli = l1(indexXA1);
+XA1i = XA1(indexXA1);
+disp('el cambio de reactor optimo es a la longitud = ', lli, 'dm' , ' y la conversion = ', XA1i, 'mol/L')
+L3 = lli; // dm
+V3 = %pi/4*D^2*L3 // L
+TAU3 = V3/F // h
+tau3 = 0:TAU3/N:TAU3
+l3 = 0:L3/N:L3; // dm
+// RESOLVER
+x3 = ode(x01,0,tau3,f);
+CA3 = x3(1,:); CA3s = CA3($);
+CB3 = x3(2,:); CB3s = CB3($);
+CC3 = x3(3,:); CC3s = CC3($);
+T3  = x3(4,:); T3s  = T3($);
+XA3 = 1 - CA3/CA0; XA3s = XA3($);
+
+
+// *********
+// REACTOR 2
+// *********
+
+// CONSTANTES
+L2 = L - lli; // dm
+V2 = %pi/4*D^2*L2 // L
+TAU2 = V2/F // h
+
+// ENTRADA
+// x02 = [CA1s;CB1s;CC1s;T0];  // Enfriamiento: T1s => T0 si fuera otra cosa en vez de T0 se pondria su valor
+x02 = [CA3s;CB3s;CC3s;T0];  //*optimizado el otro era a mitad del reactor 
+// TIEMPO DE RESIDENCIA
+N =400; tau2 = 0:TAU2/N:TAU2; // h
+l2 = 0:L2/N:L2; // dm
+l2s = l2 + lli; // dm, para que la grafica de l2 empiece desde el final de l1
+
+// RESOLVER
+x2 = ode(x02,0,tau2,f);
+CA2 = x2(1,:); CA2s = CA2($) 
+CB2 = x2(2,:); CB2s = CB2($) 
+CC2 = x2(3,:); CC2s = CC2($)
+T2  = x2(4,:); T2s  = T2($)
+XA2 = 1 - CA2/CA0; XA2s = XA2($) //! se pone CA2/Ca0 por que es la conversion respecto a la entrada inicial para ver la conversion total del reactor y no de forma individual   
+
+disp('la conversion final del reactor 2 es = ', XA2s, 'mol/L')
+// GRÁFICAS
+scf(1); clf(1); 
+plot(l3,XA3,'m',l2s,XA2,'m--');
+xgrid; xlabel('l'); legend('XA1','XA2',-2,%f); 
+
+scf(2); clf(2); 
+plot(l3,T3,'r',l2s,T2,'r--');
+xgrid; xlabel('l'); legend('T1','T2',-2,%f); 
+
+scf(3); clf(3); 
+plot(T3,XA3,'mo-',T2,XA2,'m.-');
+xgrid; xlabel('T'); legend('XA1','XA2',-2,%f); 
+
+scf(4);
+plot(L1, XA2s,'mo');
+xgrid; xlabel('L1'); ylabel('XA2s'); 
+m=-RHO*CP/H*CA0; // pendiente teorica de la recta de enfriamiento
+m2= (XA1s-0)/(T1s-T0); // pendiente de la recta de enfriamiento
+m3 = (XA2s-XA1s)/(T2s-T0); // pendiente de la recta de enfriamiento
+if m2 == m3 & m2 == m then //! cambiar el disp
+    disp('El reactor esta progresando',(s2fin-s2ini), 'K')
+else
+    disp('El reactor no esta progresando y su diferencia de temperatura es cero')
+end
+//dxa/dtau = r/cao
+//dxa/dtau = (1/cao)/(-H*r/(RHO*CP)) =-rho*CP/H*CA0* por eso ambas rectas son cortantes 
+//buscar punto de inflexion 
+
+
+scf(1); plot(lli,XA1i,'ro-');
+//despues usar ese punto para calcular la conversiona al cambiar la L 
+\end{minted}
+
+\hypertarget{qs:RCFP-2}{}\qs{RCFP-2}{La reacción elemental e isoterma:
+    $$ A + B \rightarrow 2B $$
+    Con constante cinética $k = 1$ L/(mol$\cdot$h), se lleva a cabo en un proceso con recirculación. El sistema consta de un reactor tubular de 12 dm de longitud y 1 dm de diámetro. La alimentación fresca es de 5 L/h con una concentración de 2 mol/L de A y 0.01 mol/L de B. Parte de la corriente de salida se recircula a la entrada del reactor, con una relación de recirculación de $R = 0.1$.
+
+    \begin{enumerate}[label={\alph*)}]
+        \item Obtener el estado estacionario del proceso con el método del punto fijo.
+        \item Optimizar la fracción de recirculación.
+    \end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+clear; clc;
+// RCFP-2.sce
+// A + B => 2 B
+// Isotermo
+// Estado estacionario
+// Recirculación 
+
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdtau = f(tau,x)
+    // Variables diferenciales
+    CA = x(1)
+    CB = x(2)
+    // Velocidad de reacción
+    r = k*CA*CB
+    // Balance de materia para A
+    // RDMP: d(V*CA)dt = -r*V
+    dCAdtau = -r
+    // Balance de materia para B
+    // RDMP: d(V*CB)dt = (-r + 2*r)*V
+    dCBdtau = r   
+    dxdtau(1) = dCAdtau
+    dxdtau(2) = dCBdtau 
+endfunction
+
+// CONSTANTES
+F =  5; // L/h
+L =  12; // dm
+D = 1; // dm
+V = %pi/4*D^2*L // L
+R = 0.1 ;
+TAU = V/(F*(1+R))  // h
+k = 1; // L/(mol·h)
+CA0 = 2; // mol/L
+CB0 = 0.01; // mol/L
+x0 = [CA0;CB0];
+
+// TIEMPO DE RESIDENCIA
+N = 1000 ; tau = 0:TAU/N:TAU; // h
+l = 0:L/N:L; // dm
+
+// SOLUCIÓN SUPUESTA
+CAsguess = 2; CBsguess = 0.01; // mol/L
+xsguess = [CAsguess;CBsguess];
+
+imax = 20;
+tol = 1E-5;
+
+for i = 1:imax
+    
+    i
+    
+    // Balance al mezclador
+    // F*CA0 + F*R*CAsguess = F*(1+R)*CAe
+    // F*CB0 + F*R*CBsguess = F*(1+R)*CBe
+    // CAe = (CA0 + R*CAsguess)/(1+R)
+    // CBe = (CB0 + R*CBsguess)/(1+R)
+    xe = (x0 + R*xsguess)/(1+R);
+
+    // RESOLVER
+    x = ode(xe,0,tau,f);
+    xs = x(:,$)
+    
+    err = abs(xs-xsguess);
+    
+    if err < tol then
+        break
+    else
+        xsguess = xs;
+    end
+
+end
+
+i;
+CA = x(1,:); CAs = xs(1);
+CB = x(2,:); CBs = xs(2);
+disp('la concentracion final de A es:' +string(CAs)), disp('la concentracion final de B es:' +string(CBs));
+scf(1); clf(1);
+plot(l,CA,l,CB);
+xgrid; xlabel('l'); legend('CA','CB',-2,%f);
+
+scf(2);
+plot(R,CAs,'o');
+xgrid; xlabel('R'); ylabel('CAs');
+
+
+//! hacer una segunda parte donde busque el optimo con R aumentandola 
+\end{minted}
+
+\qs{RCFP-2024-O}{En un reactor continuo tubular 30 m de largo y 0.25 m de diámetro, alimentado por una corriente de 0.5 m$^3$/min con 1500 mol/m$^3$ del compuesto A a 310 K, se lleva a cabo una reacción química exotérmica con entalpía de reacción = -4.1E5 J/mol
+
+	A $\Rightarrow$ B\\
+	k = 1.2E6$\cdot$exp(-5000/T) min$^{-1}$
+
+	Considerando una densidad = 950 kg/m$^3$, una capacidad calorífica = 3.5E3 J/(kg$\cdot$K) y que el reactor dispone de una camisa a 280 K con un coeficiente global de transmisión de calor de 6.5E4 J/(min$\cdot$m$^2\cdot$K):
+
+	\begin{enumerate}[label={\alph*)}]
+		\item Obtener la conversión y la temperatura a lo largo del reactor en estado estacionario
+		\item Localizar el punto de inflexión de la curva de conversión
+		\item Determinar durante cuánta longitud la temperatura es superior a 420 K
+	\end{enumerate}
+}
+

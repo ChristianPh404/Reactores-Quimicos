@@ -1,0 +1,88 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{clear}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{clc}\PYG{p}{;}
+\PYG{c+c1}{// RCMP\PYGZhy{}2.sce}
+\PYG{c+c1}{// A + B \PYGZlt{}=\PYGZgt{} C}
+\PYG{c+c1}{// Isotermo}
+
+\PYG{c+c1}{// (a) Estado estacionario}
+
+\PYG{c+c1}{// SISTEMA DE ECUACIONES ALGEBRAICAS}
+\PYG{k}{function}\PYG{+w}{ }dxdt\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nf}{f}\PYG{p}{(}x\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Variables}
+\PYG{+w}{    }\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{CC}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Velocidad de reacciÃ³n}
+\PYG{+w}{    }\PYG{c+c1}{// r = rd \PYGZhy{} ri = kd*CA*CB \PYGZhy{} ki*CC = kd*CA*CB \PYGZhy{} kd*CC/Keq}
+\PYG{+w}{    }\PYG{n}{r}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{kd}\PYG{o}{*}\PYG{p}{(}\PYG{n}{CA}\PYG{o}{*}\PYG{n}{CB}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{CC}\PYG{o}{/}\PYG{n}{Keq}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para A}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*CA)dt = F*CA0 \PYGZhy{} F*CA \PYGZhy{} r*V}
+\PYG{+w}{    }\PYG{n}{dCAdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{F}\PYG{o}{*}\PYG{p}{(}\PYG{n}{CA0}\PYG{o}{\PYGZhy{}}\PYG{n}{CA}\PYG{p}{)}\PYG{o}{/}\PYG{n}{V}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{r}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para B}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*CB)dt = F*CB0 \PYGZhy{} F*CB \PYGZhy{} r*V}
+\PYG{+w}{    }\PYG{n}{dCBdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{F}\PYG{o}{*}\PYG{p}{(}\PYG{n}{CB0}\PYG{o}{\PYGZhy{}}\PYG{n}{CB}\PYG{p}{)}\PYG{o}{/}\PYG{n}{V}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{r}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para C}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*CC)dt = F*CC0 \PYGZhy{} F*CC + r*V}
+\PYG{+w}{    }\PYG{n}{dCCdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{F}\PYG{o}{*}\PYG{p}{(}\PYG{n}{CC0}\PYG{o}{\PYGZhy{}}\PYG{n}{CC}\PYG{p}{)}\PYG{o}{/}\PYG{n}{V}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{r}
+\PYG{+w}{    }\PYG{c+c1}{// Derivadas}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCAdt}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCBdt}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCCdt}
+\PYG{k}{endfunction}
+
+\PYG{c+c1}{// CONSTANTES}
+\PYG{n}{F}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L/min}
+\PYG{n}{CA0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CB0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.5}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CC0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{V}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{150}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L}
+\PYG{n}{kd}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L/(mol*min)}
+\PYG{n}{Keq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L/mol}
+
+\PYG{c+c1}{// SOLUCIÃ“N SUPUESTA}
+\PYG{n}{CAeeguess}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CBeeguess}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.5}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CCeeguess}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{xeeguess}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CAeeguess}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CBeeguess}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CCeeguess}\PYG{p}{];}
+
+\PYG{c+c1}{// RESOLVER}
+\PYG{p}{[}\PYG{n}{xee}\PYG{p}{,}\PYG{n}{fxee}\PYG{p}{,}\PYG{n}{info}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{fsolve}\PYG{p}{(}\PYG{n}{xeeguess}\PYG{p}{,}\PYG{n}{f}\PYG{p}{)}
+\PYG{n}{CAee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{xee}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{CBee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{xee}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{CPee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{xee}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}
+
+\PYG{c+c1}{// (b) DinÃ¡mica}
+
+\PYG{c+c1}{// SISTEMA DE ECUACIONES DIFERENCIALES}
+\PYG{k}{function}\PYG{+w}{ }dxdt\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nf}{g}\PYG{p}{(}t,x\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+\PYG{k}{endfunction}
+
+\PYG{c+c1}{// CONDICIONES INICIALES}
+\PYG{n}{CAini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CBini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CCini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{xini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CAini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CBini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CCini}\PYG{p}{];}
+
+\PYG{c+c1}{// TIEMPO}
+\PYG{n}{tfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{150}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{dt}\PYG{p}{:}\PYG{n}{tfin}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// min}
+
+\PYG{c+c1}{// RESOLVER}
+\PYG{n}{x}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ode}\PYG{p}{(}\PYG{n}{xini}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{g}\PYG{p}{);}
+\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CAfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CA}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+\PYG{n}{CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CBfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CB}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+\PYG{n}{CC}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CCfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CC}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+
+\PYG{n}{dCAdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{diff}\PYG{p}{(}\PYG{n}{CA}\PYG{p}{)}\PYG{o}{/}\PYG{n}{dt}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dCBdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{diff}\PYG{p}{(}\PYG{n}{CB}\PYG{p}{)}\PYG{o}{/}\PYG{n}{dt}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dCCdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{diff}\PYG{p}{(}\PYG{n}{CC}\PYG{p}{)}\PYG{o}{/}\PYG{n}{dt}\PYG{p}{;}
+\PYG{n}{dCAdtee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1E\PYGZhy{}5}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dCBdtee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1E\PYGZhy{}5}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dCCdtee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1E\PYGZhy{}5}\PYG{p}{;}\PYG{c+c1}{// mol/(L*h)}
+\PYG{n}{indexCAee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{find}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{dCAdt}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{n}{dCAdtee}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{indexCBee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{find}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{dCBdt}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{n}{dCBdtee}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{indexCCee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{find}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{dCCdt}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{n}{dCCdtee}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{tCAee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYG{n}{indexCAee}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{tCBee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYG{n}{indexCBee}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{tCCee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{(}\PYG{n}{indexCCee}\PYG{p}{)}
+\PYG{n}{CAee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CA}\PYG{p}{(}\PYG{n}{indexCAee}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{CBee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CB}\PYG{p}{(}\PYG{n}{indexCBee}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{CCee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CC}\PYG{p}{(}\PYG{n}{indexCCee}\PYG{p}{)}
+
+\PYG{c+c1}{// GRÃFICAS}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{CA}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{CB}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{CC}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{tCAee}\PYG{p}{,}\PYG{n}{CAee}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}b.\PYGZsq{}}\PYG{p}{,}\PYG{n}{tCBee}\PYG{p}{,}\PYG{n}{CBee}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}g.\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{tCCee}\PYG{p}{,}\PYG{n}{CCee}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}r.\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CA\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}CB\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}CC\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYGZdl{}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{dCAdt}\PYG{p}{),}\PYG{n}{t}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYGZdl{}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{dCBdt}\PYG{p}{),}\PYG{n}{t}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYGZdl{}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{dCCdt}\PYG{p}{));}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{tCAee}\PYG{p}{,}\PYG{n}{dCAdtee}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}b.\PYGZsq{}}\PYG{p}{,}\PYG{n}{tCBee}\PYG{p}{,}\PYG{n}{dCBdtee}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}g.\PYGZsq{}}\PYG{p}{,}\PYG{n}{tCCee}\PYG{p}{,}\PYG{n}{dCCdtee}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}r.\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}|dCAdt|\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}|dCBdt|\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}|dCCdt|\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+\PYG{n}{a2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{gca}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{a2}\PYG{p}{.}\PYG{n}{log\PYGZus{}flags}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}nl\PYGZdq{}}\PYG{p}{;}
+\end{MintedVerbatim}

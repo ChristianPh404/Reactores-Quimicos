@@ -1,0 +1,157 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{clear}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{clc}\PYG{p}{;}
+\PYG{c+c1}{// RCFP\PYGZhy{}1d.sce}
+\PYG{c+c1}{// A + B \PYGZlt{}=\PYGZgt{} C}
+\PYG{c+c1}{// Adiabático}
+\PYG{c+c1}{// Estado estacionario}
+\PYG{c+c1}{// 2 reactores con enfriamiento intermedio}
+
+\PYG{c+c1}{// SISTEMA DE ECUACIONES DIFERENCIALES}
+\PYG{k}{function}\PYG{+w}{ }dxdtau\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nf}{f}\PYG{p}{(}tau,x\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Variables diferenciales}
+\PYG{+w}{    }\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{CC}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{T}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Ecuación de Arrhenius}
+\PYG{+w}{    }\PYG{n}{kd}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{kd0}\PYG{o}{*}\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{E}\PYG{o}{/}\PYG{p}{(}\PYG{n}{R}\PYG{o}{*}\PYG{n}{T}\PYG{p}{))}
+\PYG{+w}{    }\PYG{c+c1}{// Ecuación de Van\PYGZsq{}t Hoff}
+\PYG{+w}{    }\PYG{n}{Keq}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Keq0}\PYG{o}{*}\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{H}\PYG{o}{/}\PYG{p}{(}\PYG{n}{R}\PYG{o}{*}\PYG{n}{T}\PYG{p}{))}
+\PYG{+w}{    }\PYG{c+c1}{// Velocidad de reacción}
+\PYG{+w}{    }\PYG{c+c1}{// r = rd \PYGZhy{} ri = kd*CA*CB \PYGZhy{} ki*CC = kd*CA*CB \PYGZhy{} kd*CC/Keq}
+\PYG{+w}{    }\PYG{n}{r}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{kd}\PYG{o}{*}\PYG{p}{(}\PYG{n}{CA}\PYG{o}{*}\PYG{n}{CB}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{CC}\PYG{o}{/}\PYG{n}{Keq}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para A}
+\PYG{+w}{    }\PYG{c+c1}{// RDMP: d(V*CA)dt = \PYGZhy{}r*V}
+\PYG{+w}{    }\PYG{n}{dCAdtau}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{r}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para B}
+\PYG{+w}{    }\PYG{c+c1}{// RDMP: d(V*Cb)dt = \PYGZhy{}r*V}
+\PYG{+w}{    }\PYG{n}{dCBdtau}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{r}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para C}
+\PYG{+w}{    }\PYG{c+c1}{// RDMP: d(V*Cc)dt = r*V}
+\PYG{+w}{    }\PYG{n}{dCCdtau}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{  }\PYG{n}{r}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de energía}
+\PYG{+w}{    }\PYG{c+c1}{// RDMP: d(V*RHO*CP*T)dt = \PYGZhy{}H*r*V}
+\PYG{+w}{    }\PYG{n}{dTdtau}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{H}\PYG{o}{*}\PYG{n}{r}\PYG{o}{/}\PYG{p}{(}\PYG{n}{RHO}\PYG{o}{*}\PYG{n}{CP}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Derivadas}
+\PYG{+w}{    }\PYG{n}{dxdtau}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCAdtau}
+\PYG{+w}{    }\PYG{n}{dxdtau}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCBdtau}
+\PYG{+w}{    }\PYG{n}{dxdtau}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCCdtau}
+\PYG{+w}{    }\PYG{n}{dxdtau}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dTdtau}
+\PYG{k}{endfunction}
+
+\PYG{c+c1}{// CONSTANTES}
+\PYG{n}{kd0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.75E8}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L/(mol*h)}
+\PYG{n}{E}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{62350}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/mol}
+\PYG{n}{Keq0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{8.25E\PYGZhy{}22}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L/mol}
+\PYG{n}{H}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{136400}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/mol}
+\PYG{n}{R}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{8.314}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/(mol*K)}
+\PYG{n}{RHO}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1150}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// g/L}
+\PYG{n}{CP}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{3.8}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// J/(g*K)}
+\PYG{n}{F}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{50}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L/h}
+\PYG{n}{D}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dm}
+\PYG{n}{L}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{800}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dm}
+
+\PYG{c+c1}{// *********}
+\PYG{c+c1}{// REACTOR 1}
+\PYG{c+c1}{// *********}
+
+\PYG{c+c1}{// CONSTANTES}
+\PYG{n}{L1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{400}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dm}
+\PYG{n}{V1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+no}{\PYGZpc{}pi}\PYG{o}{/}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{D}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{L1}\PYG{+w}{ }\PYG{c+c1}{// L}
+\PYG{n}{TAU1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{V1}\PYG{o}{/}\PYG{n}{F}\PYG{+w}{ }\PYG{c+c1}{// h}
+
+\PYG{c+c1}{// ENTRADA}
+\PYG{n}{CA0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.5}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CB0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CC0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{T0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{310}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{n}{x01}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CA0}\PYG{p}{;}\PYG{n}{CB0}\PYG{p}{;}\PYG{n}{CC0}\PYG{p}{;}\PYG{n}{T0}\PYG{p}{];}
+
+\PYG{c+c1}{// TIEMPO DE RESIDENCIA}
+\PYG{n}{N}\PYG{+w}{ }\PYG{p}{=}\PYG{l+m+mi}{400}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{tau1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{TAU1}\PYG{o}{/}\PYG{n}{N}\PYG{p}{:}\PYG{n}{TAU1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// h}
+\PYG{n}{l1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{L1}\PYG{o}{/}\PYG{n}{N}\PYG{p}{:}\PYG{n}{L1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dm}
+
+\PYG{c+c1}{// RESOLVER}
+\PYG{n}{x1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ode}\PYG{p}{(}\PYG{n}{x01}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{tau1}\PYG{p}{,}\PYG{n}{f}\PYG{p}{);}
+\PYG{n}{CA1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x1}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CA1s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CA1}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+\PYG{n}{CB1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x1}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CB1s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CB1}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+\PYG{n}{CC1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x1}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CC1s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CC1}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+\PYG{n}{T1}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x1}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{T1s}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T1}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+\PYG{n}{XA1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{CA1}\PYG{o}{/}\PYG{n}{CA0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{XA1s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{XA1}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+
+
+\PYG{n}{d2XA1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{diff}\PYG{p}{(}\PYG{n}{XA1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{// segunda derivada de XA1}
+\PYG{n}{indexXA1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{find}\PYG{p}{(}\PYG{n}{d2XA1}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYGZdl{}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{).}\PYG{o}{*}\PYG{n}{d2XA1}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{:}\PYGZdl{}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// índice de los puntos de inflexión}
+\PYG{n}{lli}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{l1}\PYG{p}{(}\PYG{n}{indexXA1}\PYG{p}{);}
+\PYG{n}{XA1i}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{XA1}\PYG{p}{(}\PYG{n}{indexXA1}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}el cambio de reactor optimo es a la longitud = \PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lli}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}dm\PYGZsq{}}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{} y la conversion = \PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{XA1i}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}mol/L\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{L3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{lli}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dm}
+\PYG{n}{V3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+no}{\PYGZpc{}pi}\PYG{o}{/}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{D}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{L3}\PYG{+w}{ }\PYG{c+c1}{// L}
+\PYG{n}{TAU3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{V3}\PYG{o}{/}\PYG{n}{F}\PYG{+w}{ }\PYG{c+c1}{// h}
+\PYG{n}{tau3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{TAU3}\PYG{o}{/}\PYG{n}{N}\PYG{p}{:}\PYG{n}{TAU3}
+\PYG{n}{l3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{L3}\PYG{o}{/}\PYG{n}{N}\PYG{p}{:}\PYG{n}{L3}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dm}
+\PYG{c+c1}{// RESOLVER}
+\PYG{n}{x3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ode}\PYG{p}{(}\PYG{n}{x01}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{tau3}\PYG{p}{,}\PYG{n}{f}\PYG{p}{);}
+\PYG{n}{CA3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x3}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CA3s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CA3}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{n}{CB3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x3}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CB3s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CB3}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{n}{CC3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x3}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CC3s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CC3}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{n}{T3}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x3}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{T3s}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T3}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+\PYG{n}{XA3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{CA3}\PYG{o}{/}\PYG{n}{CA0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{XA3s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{XA3}\PYG{p}{(}\PYGZdl{}\PYG{p}{);}
+
+
+\PYG{c+c1}{// *********}
+\PYG{c+c1}{// REACTOR 2}
+\PYG{c+c1}{// *********}
+
+\PYG{c+c1}{// CONSTANTES}
+\PYG{n}{L2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{L}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{lli}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dm}
+\PYG{n}{V2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+no}{\PYGZpc{}pi}\PYG{o}{/}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{D}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{L2}\PYG{+w}{ }\PYG{c+c1}{// L}
+\PYG{n}{TAU2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{V2}\PYG{o}{/}\PYG{n}{F}\PYG{+w}{ }\PYG{c+c1}{// h}
+
+\PYG{c+c1}{// ENTRADA}
+\PYG{c+c1}{// x02 = [CA1s;CB1s;CC1s;T0];  // Enfriamiento: T1s =\PYGZgt{} T0 si fuera otra cosa en vez de T0 se pondria su valor}
+\PYG{n}{x02}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CA3s}\PYG{p}{;}\PYG{n}{CB3s}\PYG{p}{;}\PYG{n}{CC3s}\PYG{p}{;}\PYG{n}{T0}\PYG{p}{];}\PYG{+w}{  }\PYG{c+c1}{//*optimizado el otro era a mitad del reactor}
+\PYG{c+c1}{// TIEMPO DE RESIDENCIA}
+\PYG{n}{N}\PYG{+w}{ }\PYG{p}{=}\PYG{l+m+mi}{400}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{tau2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{TAU2}\PYG{o}{/}\PYG{n}{N}\PYG{p}{:}\PYG{n}{TAU2}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// h}
+\PYG{n}{l2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{L2}\PYG{o}{/}\PYG{n}{N}\PYG{p}{:}\PYG{n}{L2}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dm}
+\PYG{n}{l2s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{l2}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{lli}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dm, para que la grafica de l2 empiece desde el final de l1}
+
+\PYG{c+c1}{// RESOLVER}
+\PYG{n}{x2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ode}\PYG{p}{(}\PYG{n}{x02}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{tau2}\PYG{p}{,}\PYG{n}{f}\PYG{p}{);}
+\PYG{n}{CA2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x2}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CA2s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CA2}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+\PYG{n}{CB2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x2}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CB2s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CB2}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+\PYG{n}{CC2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x2}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CC2s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CC2}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+\PYG{n}{T2}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x2}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{T2s}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T2}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+\PYG{n}{XA2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{CA2}\PYG{o}{/}\PYG{n}{CA0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{XA2s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{XA2}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{//! se pone CA2/Ca0 por que es la conversion respecto a la entrada inicial para ver la conversion total del reactor y no de forma individual}
+
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}la conversion final del reactor 2 es = \PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{XA2s}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}mol/L\PYGZsq{}}\PYG{p}{)}
+\PYG{c+c1}{// GRÁFICAS}
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{l3}\PYG{p}{,}\PYG{n}{XA3}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}m\PYGZsq{}}\PYG{p}{,}\PYG{n}{l2s}\PYG{p}{,}\PYG{n}{XA2}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}m\PYGZhy{}\PYGZhy{}\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}l\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}XA1\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}XA2\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{l3}\PYG{p}{,}\PYG{n}{T3}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{,}\PYG{n}{l2s}\PYG{p}{,}\PYG{n}{T2}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}r\PYGZhy{}\PYGZhy{}\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}l\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}T1\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}T2\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{T3}\PYG{p}{,}\PYG{n}{XA3}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}mo\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{T2}\PYG{p}{,}\PYG{n}{XA2}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}m.\PYGZhy{}\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}T\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}XA1\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}XA2\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{L1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{XA2s}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}mo\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}L1\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}XA2s\PYGZsq{}}\PYG{p}{);}
+\PYG{n}{m}\PYG{p}{=}\PYG{o}{\PYGZhy{}}\PYG{n}{RHO}\PYG{o}{*}\PYG{n}{CP}\PYG{o}{/}\PYG{n}{H}\PYG{o}{*}\PYG{n}{CA0}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// pendiente teorica de la recta de enfriamiento}
+\PYG{n}{m2}\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{XA1s}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{n}{T1s}\PYG{o}{\PYGZhy{}}\PYG{n}{T0}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{// pendiente de la recta de enfriamiento}
+\PYG{n}{m3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{XA2s}\PYG{o}{\PYGZhy{}}\PYG{n}{XA1s}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{n}{T2s}\PYG{o}{\PYGZhy{}}\PYG{n}{T0}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{// pendiente de la recta de enfriamiento}
+\PYG{k}{if}\PYG{+w}{ }\PYG{n}{m2}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{m3}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{m2}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{m}\PYG{+w}{ }\PYG{n+nb}{then}\PYG{+w}{ }\PYG{c+c1}{//! cambiar el disp}
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}El reactor esta progresando\PYGZsq{}}\PYG{p}{,(}\PYG{n}{s2fin}\PYG{o}{\PYGZhy{}}\PYG{n}{s2ini}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}K\PYGZsq{}}\PYG{p}{)}
+\PYG{k}{else}
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}El reactor no esta progresando y su diferencia de temperatura es cero\PYGZsq{}}\PYG{p}{)}
+\PYG{k}{end}
+\PYG{c+c1}{//dxa/dtau = r/cao}
+\PYG{c+c1}{//dxa/dtau = (1/cao)/(\PYGZhy{}H*r/(RHO*CP)) =\PYGZhy{}rho*CP/H*CA0* por eso ambas rectas son cortantes}
+\PYG{c+c1}{//buscar punto de inflexion}
+
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}\PYG{n}{lli}\PYG{p}{,}\PYG{n}{XA1i}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}ro\PYGZhy{}\PYGZsq{}}\PYG{p}{);}
+\PYG{c+c1}{//despues usar ese punto para calcular la conversiona al cambiar la L}
+\end{MintedVerbatim}

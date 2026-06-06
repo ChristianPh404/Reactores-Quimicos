@@ -1,7 +1,7 @@
-% !TEX root = ../template.tex
+﻿% !TEX root = ../template.tex
 \chapter{Reactor Continuo Mezcla Perfecta}
-\section{Introducción}
-\noindent nos vamos a encontrar con un reactor tipo tanque agitado, que el diseño del agitador va a permitir una homogeneización de la mezcla reaccionante, en un instante t tendremos la misma concentración y la temperatura en cualquier punto del reactor.
+\section{IntroducciÃ³n}
+\noindent nos vamos a encontrar con un reactor tipo tanque agitado, que el diseÃ±o del agitador va a permitir una homogeneizaciÃ³n de la mezcla reaccionante, en un instante t tendremos la misma concentraciÃ³n y la temperatura en cualquier punto del reactor.
 el balance global de materia para un componente i es:
 \begin{equation}
 	\frac{dM}{dt} = m_{0} - m_{s}
@@ -14,63 +14,63 @@ el balance a componentes queda expresado como:
 \begin{equation}
 	\frac{dN_i}{dt} = n_{i0} - n_{is} + r_i V \rightarrow \frac{dC_i}{dt} = \frac{F}{V}(c_{i0}-c_{is})+r_i
 \end{equation}
-dando la evolución de la cooncentracion de cualquier componente en un tiempo t. para el balance entalpico seria:
+dando la evoluciÃ³n de la cooncentracion de cualquier componente en un tiempo t. para el balance entalpico seria:
 \begin{equation}
 	\frac{d}{dt}  (M\cdot C_p \cdot T) = m \cdot cp (T_0 - T_s) + V \cdot \sum_{k=1}^{h} \Delta H_k \cdot r_k + Q(T)
 \end{equation}
-que da a lugar de forma explicita a la siguiente ecuación:
+que da a lugar de forma explicita a la siguiente ecuaciÃ³n:
 \begin{equation}
 	\frac{dT}{dt} = \frac{F}{V} \cdot (T_0 - T_s) +\sum_{k=1}^{h} \frac{\Delta H_k \cdot r_k}{\rho \cdot C_p} + \frac{K\cdot A\cdot (T_j-T)} {V\cdot \rho \cdot C_p}
 \end{equation}
-visto en el apartado de modelizacion general, la resolucion del modelo nos permitiria calcular la evolución de concentraciones y temperatura a lo largo del tiempo, ese sistema %*Introducir mas tarde la referencia
+visto en el apartado de modelizacion general, la resolucion del modelo nos permitiria calcular la evoluciÃ³n de concentraciones y temperatura a lo largo del tiempo, ese sistema %*Introducir mas tarde la referencia
 
-\noindent llegara al estado estacionario, los reactores continuos acaban siempre al estado estacionario, donde hay una conversión de salida constante y una temperatura constante .
+\noindent llegara al estado estacionario, los reactores continuos acaban siempre al estado estacionario, donde hay una conversiÃ³n de salida constante y una temperatura constante .
 los reactores continuos van a evolucionar desde su puesta en marcha al estado estacionario, donde las corrientes de entrada y salida equilibran al reactor.
 \section{Isotermo}
-\noindent Para una reacción unica con un reactivo limitante A con un balance a componente es suficente siendo las ecuaciones de diseño:
+\noindent Para una reacciÃ³n unica con un reactivo limitante A con un balance a componente es suficente siendo las ecuaciones de diseÃ±o:
 
 \begin{equation}
 	\frac{dN_A}{dt} = n_{A0} - n_{As} - r_A V \xrightarrow{\text{e.e}} \frac{dN_A}{dt} = 0
 \end{equation}
 \nt{la velocidad es negativa debido a que es un reactivo y por tanto se consume}
-\noindent Si ponemos esta ecuacion en función de la conversión:
+\noindent Si ponemos esta ecuacion en funciÃ³n de la conversiÃ³n:
 \begin{equation}
 	n_{AR} (1-X_{A0}) - n_{AR} (1-X_{AS}) - (r_A)_s\cdot V = 0
 \end{equation}
-\noindent ademas si agrupamos términos para simplificar la ecuación queda de la siguiente forma:
+\noindent ademas si agrupamos tÃ©rminos para simplificar la ecuaciÃ³n queda de la siguiente forma:
 \begin{equation}
 	n_{AR} (X_{AS}-X_{A0}) = (r_A)_s\cdot V
 \end{equation}
 y recordando que $\tau$, tiempo espacial, es la relacion entre el volumen del reactor y un caudal de referencia normalmente inicial, y por otro lado tambien se puede encontrar la definicion del tiempo de residencia que es el volumen del reactor entre el caudal de salida,
-en este caso ambos coinciden ya que el reactor es continuo. En bioreactores tambien se usa la inversa del $\tau$ que es la velocidad de dilución.
-si en el balance anterior introducimos el tiempo espacial se obtiene la siguiente expresión:
+en este caso ambos coinciden ya que el reactor es continuo. En bioreactores tambien se usa la inversa del $\tau$ que es la velocidad de diluciÃ³n.
+si en el balance anterior introducimos el tiempo espacial se obtiene la siguiente expresiÃ³n:
 \begin{equation}
 	\frac{\textcolor{blue}{n_{AR}} (X_{AS}-X_{A0})}{\textcolor{blue}{F}} = \frac{(r_A)_s\cdot \textcolor{darkgreen}{V}}{\textcolor{darkgreen}{F}} \rightarrow \textcolor{darkgreen}{\tau} = \frac{\textcolor{blue}{C_{AR}}(X_{AS}-X_{A0})}{(r_A)_s}
 \end{equation}
-que es la ecuación de diseño para un reactor continuo mezcla perfecta, es una expresión algebraica que nos permite calcular el tiempo espacial necesario en el reactor y que por tanto conociendo el caudal  de entrada nos permite calcular el volumen del reactor. como normalmente el estado de referencia es el inicial $X_{A0}=0$, $C_{AR}$ = $C_{A0}$, por tanto la ecuación queda de la siguiente forma:
+que es la ecuaciÃ³n de diseÃ±o para un reactor continuo mezcla perfecta, es una expresiÃ³n algebraica que nos permite calcular el tiempo espacial necesario en el reactor y que por tanto conociendo el caudal  de entrada nos permite calcular el volumen del reactor. como normalmente el estado de referencia es el inicial $X_{A0}=0$, $C_{AR}$ = $C_{A0}$, por tanto la ecuaciÃ³n queda de la siguiente forma:
 \begin{equation}
 	\textcolor{darkgreen}{\tau} = \frac{\textcolor{blue}{C_{AR}}X_{AS}}{(r_A)_s}
 \end{equation}
-\section{Adiabático}
+\section{AdiabÃ¡tico}
 
-\noindent Seguimos con reacción unica para poder analizar el sistema desde un punto de vista analitico, el modelo, donde el balance de materia es exactamente igual pero introducimos el balance entalpico,
+\noindent Seguimos con reacciÃ³n unica para poder analizar el sistema desde un punto de vista analitico, el modelo, donde el balance de materia es exactamente igual pero introducimos el balance entalpico,
 \begin{equation}
-	\underbrace{\frac{d}{dt}  (M\cdot C_p \cdot T)}_{\text{Termino de acumulación}} = \underbrace{m \cdot cp (T_0 - T_s)}_{\text{Termino de entalpías de entrada y salida}} + \underbrace{ \Delta H_A \cdot r_A \cdot V}_{\text{Termino de reacción}}
+	\underbrace{\frac{d}{dt}  (M\cdot C_p \cdot T)}_{\text{Termino de acumulaciÃ³n}} = \underbrace{m \cdot cp (T_0 - T_s)}_{\text{Termino de entalpÃ­as de entrada y salida}} + \underbrace{ \Delta H_A \cdot r_A \cdot V}_{\text{Termino de reacciÃ³n}}
 \end{equation}
 siendo los balances de materia y energia en el estado estacionario los siguientes:
 \begin{align}
 	(r_A)_s V            & = \textcolor{red}{n_{AR} (X_{AS}-X_{A0})}
-	                     & \quad                                     & \leftarrow \text{balance de materia} \\
+	                     & \quad                                     & \leftarrow \text{balance de materia}  \\
 	\Delta H_A (r_A)_s V & = m\, c_p (T_0 - T_s)
-	                     & \quad                                     & \leftarrow \text{balance de energía}
+	                     & \quad                                     & \leftarrow \text{balance de energÃ­a}
 \end{align}
-donde nos planteamos lo siguiente: ¿Podemos funcionar en un reactor continuo de forma adiabatico?
-Hay que tener en cuenta que supone que hemos aislado el reactor, el reactor esta aislado para no tener intercambio de energía con el exterior por tanto si el sistema es exotérmico vamos a tener un aumento de temperatura y si es endotérmico vamos a tener una disminución de temperatura, pero un reactor continuo debe llegar al estado estacionario, por tanto
-ese aumento o disminución de temperatura debe ser contrarestado por la corriente de alimentación, es decir que la corriente de entrada sirva para enfriar o calentar el sistema, por tanto, como $T_s$ queremos tenerla fija, el aumento o disminucion de $\Delta H_a \cdot (r_A)_s \cdot V$ influira en la $T_0$ eso es un funcionamiento autotérmico.
+donde nos planteamos lo siguiente: Â¿Podemos funcionar en un reactor continuo de forma adiabatico?
+Hay que tener en cuenta que supone que hemos aislado el reactor, el reactor esta aislado para no tener intercambio de energÃ­a con el exterior por tanto si el sistema es exotÃ©rmico vamos a tener un aumento de temperatura y si es endotÃ©rmico vamos a tener una disminuciÃ³n de temperatura, pero un reactor continuo debe llegar al estado estacionario, por tanto
+ese aumento o disminuciÃ³n de temperatura debe ser contrarestado por la corriente de alimentaciÃ³n, es decir que la corriente de entrada sirva para enfriar o calentar el sistema, por tanto, como $T_s$ queremos tenerla fija, el aumento o disminucion de $\Delta H_a \cdot (r_A)_s \cdot V$ influira en la $T_0$ eso es un funcionamiento autotÃ©rmico.
 \begin{equation}
 	\Delta H_A\cdot \textcolor{red}{n_{AR} (X_{AS}-X_{A0})} = {m \cdot cp (T_0 - T_s)}
 \end{equation}
-y trabajando con dicha expresión se puede llegar a que la temperatura del reactor es una funcion lineal de la conversión:
+y trabajando con dicha expresiÃ³n se puede llegar a que la temperatura del reactor es una funcion lineal de la conversiÃ³n:
 \begin{align}
 	T_s & = T_0 + \frac{\Delta H_A \cdot \textcolor{red}{n_{AR}}}{\textcolor{red}{m}\, c_p} (X_{AS}-X_{A0})
 	    &                                                                                                                                                              & \text{\scriptsize donde }
@@ -79,18 +79,18 @@ y trabajando con dicha expresión se puede llegar a que la temperatura del react
 	[6pt]
 	T_s & = T_0 + \frac{\Delta H_A \cdot \textcolor{red}{C_{AR}}\cancel{\textcolor{red}{V}}}{\textcolor{blue}{\rho}\cancel{\textcolor{blue}{V}}\, c_p} (X_{AS}-X_{A0})
 \end{align}
-es decir vamos a tener un aumento/disminución lineal de la temperatura, que compensaremos con la corriente de entrada. Aunque este funcionamiento es muy limitado ya que ante cualquier perturbación en el medio no se puede actuar sobre ella al no existir un intercambiador de calor y por tanto se desestabiliza.
-para el tiempo espacial esta la expresión descrita en la Ec. 3.10
+es decir vamos a tener un aumento/disminuciÃ³n lineal de la temperatura, que compensaremos con la corriente de entrada. Aunque este funcionamiento es muy limitado ya que ante cualquier perturbaciÃ³n en el medio no se puede actuar sobre ella al no existir un intercambiador de calor y por tanto se desestabiliza.
+para el tiempo espacial esta la expresiÃ³n descrita en la Ec. 3.10
 \section{No isotermo}
 \noindent De forma analoga al regimen adiabatico, el balance de materia es exactamente igual pero en el balance entalpico introduciendo el intercambiador de calor queda de la siguiente forma:
 \begin{equation}
 	\frac{d}{dt}  (M\cdot C_p \cdot T) = m \cdot cp (T_0 - T_s) + \Delta H_A \cdot r_A \cdot V +  U \cdot S \cdot (T_{j}-T)
 \end{equation}
-\nt{considerando esa expresión del intercambiador de calor debiado a que se mantiene la temperatura del sistema constante bien por que este en un cambio de fase (calor latente) o bien por que se trabajamos con un caudal tan alto que la temperatura apenas varia y se pueda considerar constante}
+\nt{considerando esa expresiÃ³n del intercambiador de calor debiado a que se mantiene la temperatura del sistema constante bien por que este en un cambio de fase (calor latente) o bien por que se trabajamos con un caudal tan alto que la temperatura apenas varia y se pueda considerar constante}
 
-En estado estacionario, para ver las ecuaciones de diseño los balances quedan de la siguiente forma:
+En estado estacionario, para ver las ecuaciones de diseÃ±o los balances quedan de la siguiente forma:
 
-\dfn{Balances de materia y energía en estado estacionario}{
+\dfn{Balances de materia y energÃ­a en estado estacionario}{
 	\begin{align}
 		(r_A)_s \cdot V
 		 & = n_{AR} (X_{AS}-X_{A0})
@@ -103,20 +103,20 @@ En estado estacionario, para ver las ecuaciones de diseño los balances quedan d
 \begin{flushleft}
 
 	\vspace{1em}
-	Se obtiene un \textbf{sistema de ecuaciones algebraicas no lineales} cuya resolución requiere, en general, \textbf{métodos iterativos}, ya que las incógnitas $T_s$ y $X_{AS}$ están acopladas. La no linealidad del sistema proviene de la \textbf{dependencia de la cinética con la temperatura}, descrita mediante la ecuación de Arrhenius, de carácter exponencial.
+	Se obtiene un \textbf{sistema de ecuaciones algebraicas no lineales} cuya resoluciÃ³n requiere, en general, \textbf{mÃ©todos iterativos}, ya que las incÃ³gnitas $T_s$ y $X_{AS}$ estÃ¡n acopladas. La no linealidad del sistema proviene de la \textbf{dependencia de la cinÃ©tica con la temperatura}, descrita mediante la ecuaciÃ³n de Arrhenius, de carÃ¡cter exponencial.
 	\vspace{1em}
-	Para que exista una solución física, deben satisfacerse simultáneamente el \textbf{balance de materia} y el \textbf{balance de energía}. Desde un punto de vista gráfico, esto equivale a representar ambas ecuaciones y buscar sus puntos de intersección. Dado que el sistema es no lineal, pueden existir \textbf{múltiples puntos de corte},
+	Para que exista una soluciÃ³n fÃ­sica, deben satisfacerse simultÃ¡neamente el \textbf{balance de materia} y el \textbf{balance de energÃ­a}. Desde un punto de vista grÃ¡fico, esto equivale a representar ambas ecuaciones y buscar sus puntos de intersecciÃ³n. Dado que el sistema es no lineal, pueden existir \textbf{mÃºltiples puntos de corte},
 	lo que implica la posible \textbf{multiplicidad de estados estacionarios}. Si el sistema tiene un solo estado estacionario, llegara de una forma mas rapida o mas lenta pero si tiene varios, hay que estudiar cuales son las condiciones para llegar a uno o a otro. y uno de esos estados estacionarios sera el optimo, es decir el que nos de mayor conversion o mayor o bien es el unico posible por la resistencia de los materiales ya que la temperatura en otro estado estacionario sea critica.
 \end{flushleft}
 \subsection{Multiplicidad de estados estacionarios}
 \begin{flushleft}
 	Vamos a analizar ahora la posible \textbf{multiplicidad de estados estacionarios} en reactores continuos de mezcla perfecta.
 	\vspace{0.5em}
-	En estado estacionario, la temperatura y la conversión permanecen constantes, lo que fija los valores de los parámetros cinéticos y, en consecuencia, la velocidad de reacción y la conversión alcanzada en el reactor.
+	En estado estacionario, la temperatura y la conversiÃ³n permanecen constantes, lo que fija los valores de los parÃ¡metros cinÃ©ticos y, en consecuencia, la velocidad de reacciÃ³n y la conversiÃ³n alcanzada en el reactor.
 	\vspace{0.5em}
-	Para que dicho estado estacionario sea posible, es necesario que el calor generado por la reacción se equilibre con el calor eliminado del sistema. Este último tiene lugar tanto por el intercambio de entalpía con las corrientes de entrada y salida como por el sistema de intercambio térmico.
+	Para que dicho estado estacionario sea posible, es necesario que el calor generado por la reacciÃ³n se equilibre con el calor eliminado del sistema. Este Ãºltimo tiene lugar tanto por el intercambio de entalpÃ­a con las corrientes de entrada y salida como por el sistema de intercambio tÃ©rmico.
 
-	El término de generación de calor puede expresarse como:
+	El tÃ©rmino de generaciÃ³n de calor puede expresarse como:
 \end{flushleft}
 \begin{align}
 	H_G & = \Delta H_A \cdot (r_A)_s \cdot V
@@ -142,12 +142,12 @@ y por el otro lado todos los terminos son conocidos queda de la siguiente forma:
 \end{equation}
 \noindent por tanto si representasemos el calor ganado en el sistema por el calor dado por la entalpia del proceso y la linea recta que supone el calor modulado en el proceso, las curvas se cortarian, en un sistema endotermico tendria solo un punto de corte
 pero en un sistema exotermico tendria desde 1 a 3 puntos de corte, por tanto en los sistemas \textbf{exotermicos} se puede dar multiplicidad de estados estacionarios. Siendo la mayoria de los procesos industriales exotermicos, por tanto es necesario tenerlo en cuenta, y la recta del calor modulado
-se puede actuar sobre ella cambiando la temperatura de entrada o la del intercambiador de calor, cambiando asi su ordenada y por lo tanto llevarlo a tener un solo punto de corte, o que sea mas adecuado para el proceso. Otra opcion es modificar la U ya sea por la velocidad de paso del fluido ya que cambia los coeficientes individuales de transmisión de calor.
+se puede actuar sobre ella cambiando la temperatura de entrada o la del intercambiador de calor, cambiando asi su ordenada y por lo tanto llevarlo a tener un solo punto de corte, o que sea mas adecuado para el proceso. Otra opcion es modificar la U ya sea por la velocidad de paso del fluido ya que cambia los coeficientes individuales de transmisiÃ³n de calor.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Imagenes/sigmo.png}
-	\caption{rectas de calor modulado para sigmoidal exotérmica}
+	\caption{rectas de calor modulado para sigmoidal exotÃ©rmica}
 	\label{fig:sigmo}
 \end{figure}
 
@@ -156,39 +156,39 @@ se puede actuar sobre ella cambiando la temperatura de entrada o la del intercam
 	\item Caso III: Un solo estado estacionario a alta temperatura.
 	\item Caso II: tres estados estacionarios
 	      \begin{itemize}
-		      \item A: Estado estacionario conversión y temperatura baja
+		      \item A: Estado estacionario conversiÃ³n y temperatura baja
 		      \item B: Estado estacionario inestable
-		      \item C: Estado estacionario conversión y temperatura alta
+		      \item C: Estado estacionario conversiÃ³n y temperatura alta
 	      \end{itemize}
 \end{itemize}
-\nt{ Puede ser necesario trabajar en estados estacionarios intermedios ya que el estado de alta conversión, no es facilmente regulable y puede dar problemas de otras reacciones secundarias no deseadas o de resistencia de materiales... por lo que no es conveniente.}
-para entender la estabilidad de los estados estacionarios, la mejor manera es fijarnos en el caso II donde para el punto A hay baja temperatura por tanto bajo valor de la constante cinetica y baja conversión, si trabajabmos en el punto C y hay una perturbación en el sistema
-y aumenta como se puede ver  el calor que modula(HL) es mayor que el calor generado(HG), por tanto la temperatura tenderá a disminuir, y volverá al estado estacionario, por tanto el estado estacionario C es estable,
+\nt{ Puede ser necesario trabajar en estados estacionarios intermedios ya que el estado de alta conversiÃ³n, no es facilmente regulable y puede dar problemas de otras reacciones secundarias no deseadas o de resistencia de materiales... por lo que no es conveniente.}
+para entender la estabilidad de los estados estacionarios, la mejor manera es fijarnos en el caso II donde para el punto A hay baja temperatura por tanto bajo valor de la constante cinetica y baja conversiÃ³n, si trabajabmos en el punto C y hay una perturbaciÃ³n en el sistema
+y aumenta como se puede ver  el calor que modula(HL) es mayor que el calor generado(HG), por tanto la temperatura tenderÃ¡ a disminuir, y volverÃ¡ al estado estacionario, por tanto el estado estacionario C es estable,
 la mejor forma de entender es que si se cumple:
 \begin{equation}
 	\frac{dH_G}{dT_s} < \frac{dH_L}{dT_s} \quad \text{\scriptsize Estado estable}
 \end{equation}
 en el caso \textbf{B}, si hay una perturbacion que aumente la temperatura como el calor generado es mayor que el calor eliminado la temperatura seguira aumentando hasta llegar al estado C, por el contrario si la perturbacion disminuye la temperatura como el calor eliminado es mayor que el calor generado la temperatura seguira disminuyendo hasta llegar al estado A.
-por tanto como la pendiente de la entalpia del calor  ganado es mayor que la del calor eliminado, es inestable ya que cualquier perturbación lo lleva a otro estado estacionario.
+por tanto como la pendiente de la entalpia del calor  ganado es mayor que la del calor eliminado, es inestable ya que cualquier perturbaciÃ³n lo lleva a otro estado estacionario.
 
 \subsection{Plano de fases}
 en los sistemas exotermicos se puede dar multiplicidad de estados estacionarios, la mejor forma de entenderlo es usando un plano de fases que nos muestra los posibles estados estacionarios que hay y como se llegan a ellos.
 
-es decir es la simulación de todas las posibles trayectorias que puede tomar el sistema hasta llegar a un estado estacionario, esto se consigue resolviendo el sistema en dinamico, es decir los balances de materia y energia con la condicion inicial del reactor a tiempo 0 de la concentracion y temperatura inicial para los diferentes tipos de recorridos que puede hacer (Ejemplo que los reactivos sean 0 por que se llene de solvente, o que la corriente de alimentación sea un llenado instantaneo, preenfrio el reactor o lo precaliento...)
+es decir es la simulaciÃ³n de todas las posibles trayectorias que puede tomar el sistema hasta llegar a un estado estacionario, esto se consigue resolviendo el sistema en dinamico, es decir los balances de materia y energia con la condicion inicial del reactor a tiempo 0 de la concentracion y temperatura inicial para los diferentes tipos de recorridos que puede hacer (Ejemplo que los reactivos sean 0 por que se llene de solvente, o que la corriente de alimentaciÃ³n sea un llenado instantaneo, preenfrio el reactor o lo precaliento...)
 existen 3 tipos de representaciones:
 \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\alph*}]
-	\item Temperatura frente a conversión
-	\item Temperatura en ordenadas y conversión en absisas
+	\item Temperatura frente a conversiÃ³n
+	\item Temperatura en ordenadas y conversiÃ³n en absisas
 	\item Concentracion en ordenadas y temperatura en absisas
 \end{enumerate}
 %* Introducir graficos de los 3 tipos de representaciones
 
-\subsection{Sistema isotermo-cinético de inhibición}
+\subsection{Sistema isotermo-cinÃ©tico de inhibiciÃ³n}
 \noindent cuando existe una cinetica de inhibicion (propia de los sistemas biologicos y no quimicos) tanto el numerador como el denominador la velocidad depende de la concentracion del reactivo limitante
 \begin{equation}
 	r_A = - \frac{k_1 \cdot C_A}{(1 + k_2 \cdot C_A)^2}
 \end{equation}
-como partimos en la modelización del balance a componentes es decir del reactivo limitante
+como partimos en la modelizaciÃ³n del balance a componentes es decir del reactivo limitante
 \begin{equation}
 	\frac{dN_A}{dt} = F \cdot (C_{AO} - C_{AS}) -\frac{k_1 \cdot C_A}{(1 + k_2 \cdot C_A)^2} \cdot V \quad \text{\scriptsize e.e $\frac{dN_A}{dt}=0$}
 \end{equation}
@@ -197,18 +197,18 @@ el caudal molar de entrada tiene que ser igual al caudal molar de salida
 	n_{Ae} & = F\cdot (C_{AO} -C_{AS})                             \\
 	n_{As} & = \frac{k_1 \cdot C_A}{(1 + k_2 \cdot C_A)^2} \cdot V
 \end{align}
-si representamos estas expresiónes en funcion del estado estacionario que se llega , se puede ver que la segunda expresion tiene una forma cuadratica mientras la primera es una linea recta con una pendiente negativa que da una posibilidad de hasta 3 estados estacionarios.
+si representamos estas expresiÃ³nes en funcion del estado estacionario que se llega , se puede ver que la segunda expresion tiene una forma cuadratica mientras la primera es una linea recta con una pendiente negativa que da una posibilidad de hasta 3 estados estacionarios.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Imagenes/inhibicion.png}
-	\caption{Multiplicidad de estados estacionarios para cinetica de inhibición}
+	\caption{Multiplicidad de estados estacionarios para cinetica de inhibiciÃ³n}
 	\label{fig:inhibicion}
 \end{figure}
 
 tambien se podria obtener un plano de fases solucionando el modelo con las condiciones iniciales.
 \subsection{Bateria de tanques en serie}
 \begin{flushleft}
-	En una batería de $N$ tanques en serie, el volumen total $V$ se reparte en $N$ tanques de volumen $v_i$. El tiempo espacial de cada tanque es:
+	En una baterÃ­a de $N$ tanques en serie, el volumen total $V$ se reparte en $N$ tanques de volumen $v_i$. El tiempo espacial de cada tanque es:
 	\[
 		\tau_i = \frac{v_i}{F}
 	\]
@@ -217,15 +217,15 @@ tambien se podria obtener un plano de fases solucionando el modelo con las condi
 		\tau = N\,\tau_i
 	\]
 
-	Cada tanque recibe como alimentación la corriente de salida del anterior. Así:
+	Cada tanque recibe como alimentaciÃ³n la corriente de salida del anterior. AsÃ­:
 	\begin{itemize}
-		\item Tanque 1: entrada con conversión $x_{A0}$, salida $x_{A1}$.
+		\item Tanque 1: entrada con conversiÃ³n $x_{A0}$, salida $x_{A1}$.
 		\item Tanque 2: entrada $x_{A1}$, salida $x_{A2}$.
 		\item $\dots$
 		\item Tanque $n$: entrada $x_{A(n-1)}$, salida $x_{An}$ (o $x_{As}$).
 	\end{itemize}
 
-	El caudal $F$ se mantiene constante en todos los tanques, mientras que la conversión aumenta progresivamente a lo largo de la serie, de acuerdo con la ecuación de diseño (ec. 3.10).
+	El caudal $F$ se mantiene constante en todos los tanques, mientras que la conversiÃ³n aumenta progresivamente a lo largo de la serie, de acuerdo con la ecuaciÃ³n de diseÃ±o (ec. 3.10).
 \end{flushleft}
 \begin{equation}
 	\tau_i = \frac{v_i}{F} \rightarrow \tau = \frac{V}{F} = n\cdot \frac{v_i}{F} = n\cdot \tau_i
@@ -238,119 +238,466 @@ tambien se podria obtener un plano de fases solucionando el modelo con las condi
 \noindent se nos pueden presentar dos casos fundamentalmente:
 \begin{itemize}
 	\item que conozcamos el numero de tanques con el que vayamos a trabajar es decir N
-	\item lo que conocemos es la conversión a la entrada $x_{AO}$ queremos una determinada conversion a la salida $x_{An}$
+	\item lo que conocemos es la conversiÃ³n a la entrada $x_{AO}$ queremos una determinada conversion a la salida $x_{An}$
 \end{itemize}
 \begin{flushleft}
-	Para el cálculo en una batería de $N$ tanques en serie, se puede resolver el problema de forma secuencial. Conocido el tiempo espacial $\tau_i$ y la conversión de entrada, se calcula la conversión a la salida de cada tanque de manera sucesiva: $x_{A1}$, $x_{A2}$, ..., hasta $x_{AN}$.
+	Para el cÃ¡lculo en una baterÃ­a de $N$ tanques en serie, se puede resolver el problema de forma secuencial. Conocido el tiempo espacial $\tau_i$ y la conversiÃ³n de entrada, se calcula la conversiÃ³n a la salida de cada tanque de manera sucesiva: $x_{A1}$, $x_{A2}$, ..., hasta $x_{AN}$.
 
-	En diseño (segundo caso), se suele suponer un número de tanques $N$ y un $\tau_i$, y realizar el cálculo en sentido inverso: partiendo de la conversión de salida conocida, se determinan las conversiones intermedias hasta obtener la conversión de entrada $x_{A0}$.
+	En diseÃ±o (segundo caso), se suele suponer un nÃºmero de tanques $N$ y un $\tau_i$, y realizar el cÃ¡lculo en sentido inverso: partiendo de la conversiÃ³n de salida conocida, se determinan las conversiones intermedias hasta obtener la conversiÃ³n de entrada $x_{A0}$.
 
-	Si la conversión calculada $x_{A0}$ no coincide con la requerida:
+	Si la conversiÃ³n calculada $x_{A0}$ no coincide con la requerida:
 	\begin{itemize}
 		\item Si $x_{A0}$ calculada es mayor, faltan tanques $\Rightarrow$ aumentar $N$.
 		\item Si $x_{A0}$ calculada es menor, sobran tanques $\Rightarrow$ disminuir $N$.
 	\end{itemize}
 
-	Se itera hasta que la conversión calculada coincide con la especificada.
+	Se itera hasta que la conversiÃ³n calculada coincide con la especificada.
 \end{flushleft}
 
-\mlenma{Ventajas y desventajas de la batería de tanques}{
-	La principal ventaja es que genera un perfil de concentraciones: cada reactor trabaja a mayor concentración que el siguiente, lo que implica mayores velocidades de reacción y, por tanto, mayor rendimiento global.
+\mlenma{Ventajas y desventajas de la baterÃ­a de tanques}{
+	La principal ventaja es que genera un perfil de concentraciones: cada reactor trabaja a mayor concentraciÃ³n que el siguiente, lo que implica mayores velocidades de reacciÃ³n y, por tanto, mayor rendimiento global.
 
 	Para un mismo volumen total:
 	\begin{itemize}
-		\item 1 tanque $\Rightarrow$ menor conversión.
-		\item Varios tanques $\Rightarrow$ mayor conversión.
-		\item $N \to \infty$ $\Rightarrow$ comportamiento de reactor flujo pistón.
+		\item 1 tanque $\Rightarrow$ menor conversiÃ³n.
+		\item Varios tanques $\Rightarrow$ mayor conversiÃ³n.
+		\item $N \to \infty$ $\Rightarrow$ comportamiento de reactor flujo pistÃ³n.
 	\end{itemize}
 
-	Como desventaja, requiere más equipos, mayor complejidad de operación y mayor coste.
+	Como desventaja, requiere mÃ¡s equipos, mayor complejidad de operaciÃ³n y mayor coste.
 
-	Además, permite operar distintas etapas en condiciones diferentes (temperatura, pH), lo cual es útil en procesos con múltiples reacciones.
+	AdemÃ¡s, permite operar distintas etapas en condiciones diferentes (temperatura, pH), lo cual es Ãºtil en procesos con mÃºltiples reacciones.
 }
 
-\qs{RCMP-E-2023}{El equilibrio químico en disolución acuosa:
 
-	A + B  $\rightleftarrows$  C
 
-	Factor preexponencial de Arrhenius = 960 m$^3$/(mol·h)\\
-	Factor preexponencial de Van't Hoff = 1.1E-4 m$^3$/mol\\
-	Energía de activación = 3.2E4 J/mol\\
-	Entalpía de reacción = -1.7E5 J/mol
+\section{Scilab}
 
-	Se lleva a cabo en un reactor continuo mezcla perfecta de 1 m$^3$ alimentado por una corriente de 1 m$^3$/h con 1000 mol/m$^3$ del compuesto A
-	y 1500 mol/m$^3$ del compuesto B a 300 K. El reactor dispone de una camisa a 290 K capaz de transmitir calor a 9E5 J/(K·h).
+\vspace{1em}
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{|p{4.5cm}|p{2.5cm}|p{3.0cm}|p{3.0cm}|p{3.5cm}|}
+			\hline
+			\rowcolor{teal!20}
+			\textbf{Objetivo / Detalle Clave}                                             & \textbf{Isotermo} & \textbf{No adiabÃ¡tico (T camisa cte)} & \textbf{No adiabÃ¡tico (T camisa var)} & \textbf{ExÃ¡menes y Otros} \\
+			\hline
+			\textbf{Estudiar dinÃ¡mica / ConversiÃ³n bÃ¡sica}                             &
+			\hyperlink{qs:RCMP-1}{RCMP-1}\newline \hyperlink{qs:RCMP-2}{RCMP-2}           &
+			                                                                              &
+			                                                                              &
+			\\
+			\hline
+			\textbf{OptimizaciÃ³n / Maximizar selectividad}                               &
+			\hyperlink{qs:RCMP-MULT-1}{RCMP-MULT-1}\newline \hyperlink{qs:RCMP-4}{RCMP-4} &
+			                                                                              &
+			                                                                              &
+			\\
+			\hline
+			\textbf{DiseÃ±o tÃ©rmico (caudal/temperatura agua)}                           &
+			                                                                              &
+			                                                                              &
+			\hyperlink{qs:RCMP-3}{RCMP-3}\newline \hyperlink{qs:RCMP-MULT-2}{RCMP-MULT-2} &
+			\hyperlink{qs:RCMP-2023-E}{RCMP-2023-E}\newline \hyperlink{qs:RCMP-2023-O}{RCMP-2023-O}\newline \hyperlink{qs:RCMP-MULTI-2024-E}{RCMP-MULTI-2024-E}\newline \hyperlink{qs:RCMP-MULTI-2025-E}{RCMP-MULTI-2025-E}  \\
+			\hline
+			\textbf{Estados estacionarios y Estabilidad}                                  &
+			                                                                              &
+			\hyperlink{qs:RCMP-5}{RCMP-5}                                                 &
+			\hyperlink{qs:RCMP-3}{RCMP-3}\newline \hyperlink{qs:RCMP-MULT-2}{RCMP-MULT-2} &
+			\hyperlink{qs:RCMP-2023-E}{RCMP-2023-E}                                                                                                                                                                          \\
+			\hline
+		\end{tabular}
+	}
+	\caption{ClasificaciÃ³n de ejercicios del RCMP por tipo de operaciÃ³n y objetivos clave.}
+	\label{tab:clasificacion_rcmp}
+\end{table}
+\vspace{1em}
 
-	\begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
-		\item Empleando un sistema de ecuaciones algebraicas:
-		      \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\arabic*}]
-			      \item Obtener el estado estacionario usando la alimentación como solución supuesta
-			      \item Comprobar la estabilidad del estado estacionario calculado
-		      \end{enumerate}
-		\item Empleando un sistema de ecuaciones diferenciales:
-		      \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\arabic*}]
-			      \item Obtener la dinámica tomando la alimentación como puesta en marcha
-			      \item Determinar cuándo la concentración del compuesto C supera a la del compuesto A y la del compuesto B
-			      \item Determinar cuándo se alcanza la temperatura máxima
-		      \end{enumerate}
-	\end{enumerate}
-}
 
-\qs{RCMP-O-2020}{Las reacciones químicas\\
+\qs{RCMP-1}{Un reactor continuo mezcla perfecta isotermo de 15 L es alimentado por una corriente de 1 L/h a una concentraciÃ³n de 1 mol/L del compuesto A. En el reactor se lleva a cabo la reacciÃ³n quÃ­mica:
+
+	A $\rightarrow$ B\\
+	Constante de velocidad = 1 h$^{-1}$
+
+	\begin{enumerate}[label={\alph*)}]
+		\item Obtener las condiciones del estado estacionario
+		\item Obtener la dinÃ¡mica del proceso si el reactor se pone en marcha en las mismas condiciones que la alimentaciÃ³n
+	\end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+clear; clc; 
+// RCMP-1.sce
+// A => B
+// Isotermo
+
+// (a) Estado estacionario
+
+// SISTEMA DE ECUACIONES ALGEBRAICAS
+function dxdt = f(x)
+    // Variables
+    CA = x(1)
+    CB = x(2)
+    // Velocidad de reacciÃ³n
+    r = k*CA
+    // Balance de materia para A
+    // d(V*CA)dt = F*CA0 - F*CA - r*V
+    dCAdt = F*(CA0-CA)/V - r
+    // Balance de materia para B
+    // d(V*CB)dt = F*CB0 - F*CB + r*V
+    dCBdt = F*(CB0-CB)/V + r
+    // Derivadas
+    dxdt(1) = dCAdt
+    dxdt(2) = dCBdt
+endfunction
+
+// CONSTANTES
+F = 1; // L/h
+CA0 = 1; CB0 = 0; // mol/L
+V = 15; // L
+k = 1; // 1/h
+
+// SOLUCIÃ“N SUPUESTA
+CAeeguess = 1; CBeeguess = 0; // mol/L
+xeeguess = [CAeeguess;CBeeguess];
+
+// RESOLVER
+[xee,fxee,info] = fsolve(xeeguess,f)
+CAee = xee(1)
+CBee = xee(2)
+
+// (b) DinÃ¡mica
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = g(t,x)
+    dxdt = f(x)
+endfunction
+
+// CONDICIONES INICIALES
+CAini = 1; CBini = 0; // mol/L
+xini = [CAini;CBini];
+
+// TIEMPO
+tfin = 20; dt = 0.1; t = 0:dt:tfin; // h
+
+// RESOLVER
+x = ode(xini,0,t,g);
+CA = x(1,:); CAfin = CA($)
+CB = x(2,:); CBfin = CB($)
+
+// GRÃFICAS
+scf(1); clf(1);
+plot(t,CA,t,CB);
+xgrid; xlabel('t'); legend('CA','CB',-2,%f);
+\end{minted}
+
+\qs{RCMP-2}{El equilibrio quÃ­mico:
+
+	A + B $\rightleftharpoons$ C\\
+	Constante de velocidad directa = 0.1 L/(mol$\cdot$min)\\
+	Constante de equilibrio = 10 L/mol
+
+	se lleva a cabo en un reactor continuo mezcla perfecta isotermo de 150 L alimentado por una corriente de 10 L/min a una concentraciÃ³n de 1 mol/L del compuesto A y 1.5 mol/L del compuesto B.
+
+	\begin{enumerate}[label={\alph*)}]
+		\item Obtener las condiciones del estado estacionario
+		\item Obtener la dinÃ¡mica del proceso si el reactor se pone en marcha exento de reactivos y determinar cuÃ¡ndo se alcanza el estado estacionario, definido por unas derivadas absolutas de las concentraciones inferiores a 1E-5 mol/(L$\cdot$h)
+	\end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+clear; clc; 
+// RCMP-2.sce
+// A + B <=> C
+// Isotermo
+
+// (a) Estado estacionario
+
+// SISTEMA DE ECUACIONES ALGEBRAICAS
+function dxdt = f(x)
+    // Variables
+    CA = x(1)
+    CB = x(2)
+    CC = x(3)
+    // Velocidad de reacciÃ³n
+    // r = rd - ri = kd*CA*CB - ki*CC = kd*CA*CB - kd*CC/Keq
+    r = kd*(CA*CB - CC/Keq)
+    // Balance de materia para A
+    // d(V*CA)dt = F*CA0 - F*CA - r*V
+    dCAdt = F*(CA0-CA)/V - r
+    // Balance de materia para B
+    // d(V*CB)dt = F*CB0 - F*CB - r*V
+    dCBdt = F*(CB0-CB)/V - r
+    // Balance de materia para C
+    // d(V*CC)dt = F*CC0 - F*CC + r*V
+    dCCdt = F*(CC0-CC)/V + r
+    // Derivadas
+    dxdt(1) = dCAdt
+    dxdt(2) = dCBdt
+    dxdt(3) = dCCdt
+endfunction
+
+// CONSTANTES
+F = 10; // L/min
+CA0 = 1; CB0 = 1.5; CC0 = 0; // mol/L
+V = 150; // L
+kd = 0.1; // L/(mol*min)
+Keq = 10; // L/mol
+
+// SOLUCIÃ“N SUPUESTA
+CAeeguess = 1; CBeeguess = 1.5; CCeeguess = 0; // mol/L
+xeeguess = [CAeeguess; CBeeguess; CCeeguess];
+
+// RESOLVER
+[xee,fxee,info] = fsolve(xeeguess,f)
+CAee = xee(1)
+CBee = xee(2)
+CPee = xee(3)
+
+// (b) DinÃ¡mica
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = g(t,x)
+    dxdt = f(x)
+endfunction
+
+// CONDICIONES INICIALES
+CAini = 0; CBini = 0; CCini = 0; // mol/L
+xini = [CAini; CBini; CCini];
+
+// TIEMPO
+tfin = 150; dt = 0.5; t = 0:dt:tfin; // min
+
+// RESOLVER
+x = ode(xini,0,t,g);
+CA = x(1,:); CAfin = CA($)
+CB = x(2,:); CBfin = CB($) 
+CC = x(3,:); CCfin = CC($)
+
+dCAdt = diff(CA)/dt; dCBdt = diff(CB)/dt; dCCdt = diff(CC)/dt;
+dCAdtee = 1E-5; dCBdtee = 1E-5; dCCdtee = 1E-5;// mol/(L*h)
+indexCAee = find(abs(dCAdt)<dCAdtee,1); indexCBee = find(abs(dCBdt)<dCBdtee,1); indexCCee = find(abs(dCCdt)<dCCdtee,1);
+tCAee = t(indexCAee), tCBee = t(indexCBee), tCCee = t(indexCCee)
+CAee = CA(indexCAee), CBee = CB(indexCBee), CCee = CC(indexCCee)
+
+// GRÃFICAS
+
+scf(1); clf(1);
+plot(t,CA,t,CB,t,CC);
+plot(tCAee,CAee,'b.',tCBee,CBee,'g.', tCCee,CCee,'r.');
+xgrid; xlabel('t'); legend('CA','CB','CC',-2,%f);
+
+scf(2); clf(2); 
+plot(t(1:$-1),abs(dCAdt),t(1:$-1),abs(dCBdt),t(1:$-1),abs(dCCdt));
+plot(tCAee,dCAdtee,'b.',tCBee,dCBdtee,'g.',tCCee,dCCdtee,'r.'); 
+xgrid; xlabel('t'); legend('|dCAdt|','|dCBdt|','|dCCdt|',-2,%f);
+a2 = gca; a2.log_flags = "nl";
+\end{minted}
+
+\qs{RCMP-3}{La reacciÃ³n quÃ­mica
+
+	A $\rightarrow$ B\\
+	Factor preexponencial = 2.5E10 s$^{-1}$\\
+	EnergÃ­a de activaciÃ³n = 2.1E4 cal/mol\\
+	EntalpÃ­a de reacciÃ³n = -8E4 cal/mol
+
+	se lleva a cabo en un reactor continuo mezcla perfecta de 1500 L alimentado por una corriente de 20 L/s de 2.5 mol/L del compuesto A a 293 K. El reactor dispone de una camisa a 283 K capaz de refrigerarlo a 1E4 cal/(s$\cdot$K). Considerando para la mezcla reaccionante una densidad de 1000 g/L y una capacidad calorÃ­fica de 0.8 cal/(g$\cdot$K).
+
+	\begin{enumerate}[label={\alph*)}]
+		\item Representar grÃ¡ficamente los balances de materia y energÃ­a en estado estacionario y localizar los posibles estados estacionarios
+		\item Obtener los posibles estados estacionarios resolviendo el correspondiente sistema de ecuaciones algebraicas y determinar su estabilidad de los estados estacionarios
+		\item Estudiar la dinÃ¡mica del reactor representando el plano de fases (concentraciÃ³n de A - temperatura) incluyendo el campo vectorial y trayectorias para diferentes condiciones iniciales
+	\end{enumerate}}
+\begin{minted}[fontsize=\small, linenos]{scilab}
+clear; clc; 
+// RCMP-3.sce
+// A => B
+// No adiabÃ¡tico
+
+// (a) MÃ©todo. grÃ¡fico
+
+// CONSTANTES
+CP = 0.8; // cal/(g*K)
+RHO = 1000; // g/L
+F = 20; // L/s
+V = 1500; // L
+UA = 1E4; // cal/(K*s)
+H = -8E4; // cal/mol
+T0 = 293; // K
+TJ = 283; // K
+CA0 = 2.5; // mol/L
+k0 = 2.5E10; // 1/s
+R = 1.987; // cal/(mol*K)
+E = 2.1E4; // cal/mol
+
+// BALANCES 
+
+scf(1); clf(1);
+xlabel('CA'); CAmin = 0; CAmax = 3;
+ylabel('T'); Tmin = 280; Tmax = 500;
+
+dT = 0.1; T = Tmin:dT:Tmax;
+k = k0*exp(-E./(R*T)); // EcuaciÃ³n de Arrhenius
+Q = UA*(T-TJ); // Calor transferido del reactor a la camisa
+
+// Balance de materia para A
+// d(V*CA)dt = F*CA0 - F*CA - r*V = F*CA0 - F*CA - k*CA*V = 0
+// F*CA0 = CA * (F + k*V)
+CAbm = F*CA0./(F+k*V);
+plot(CAbm,T,'r-');
+
+// Balance de energÃ­a
+// d(V*RHO*CP*T)dt = F*RHO*CP*T0 - F*RHO*CP*T -H*r*V - Q = 0
+// F*RHO*CP*(T0-T) - Q = H*k*CA*V
+CAbe = (F*RHO*CP*(T0-T) - Q)./(H*k*V); 
+plot(CAbe,T,'r--');
+
+// LOCALIZACIÃ“N DE ESTADOS ESTACIONARIOS
+y = CAbm-CAbe;
+indexy0 = find(y(1:$-1).*y(2:$)<0)+1;
+CAeeg = CAbm(indexy0)
+Teeg = T(indexy0)
+plot(CAeeg,Teeg,'ro');
+
+// (b) Estado estacionario
+
+// SISTEMA DE ECUACIONES ALGEBRAICAS
+function dxdt = f(x)
+    // Variables
+    CA = x(1)
+    T  = x(2)
+    // EcuaciÃ³n de Arrhenius
+    k = k0*exp(-E/(R*T))
+    // Velocidad de reacciÃ³n
+    r = k*CA
+    // Calor transferido del reactor a la camisa
+    Q = UA*(T-TJ)
+    // Balance de materia para A
+    //d(V*CA)dt = F*CA0 - F*CA - r*V
+    dCAdt = F*(CA0-CA)/V - r
+    // Balance de energÃ­a
+    // d(V*RHO*CP*T)dt = F*RHO*CP*T0 - F*RHO*CP*T -H*r*V - Q
+    dTdt = F*(T0-T)/V - H*r/(RHO*CP) - Q/(V*RHO*CP) 
+    // Derivadas
+    dxdt(1) = dCAdt
+    dxdt(2) = dTdt
+endfunction
+
+// SOLUCIÃ“N SUPUESTA
+CAeeguess = 2.5; // mol/L
+Teeguess = 293; // K
+xeeguess = [CAeeguess; Teeguess];
+
+// RESOLVER
+[xee,v,info] = fsolve(xeeguess,f)
+CAee = xee(1)
+Tee = xee(2)
+plot(CAee,Tee,'x');
+
+// ESTABILIDAD
+J = numderivative(f,xee) // Jacobiano
+lambda = spec(J)  // Valores propios
+Estable = and(real(lambda) < 0)
+
+// (c) DinÃ¡mica
+
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = g(t,x)
+    dxdt = f(x)
+endfunction
+
+// CAMPO VECTORIAL
+dCA = 0.1; dT = 10;
+fchamp(g,0,CAmin:dCA:CAmax,Tmin:dT:Tmax);
+
+// CONDICIONES INICIALES
+CAini = 0; // mol/L
+Tini = 280; // K
+xini = [CAini; Tini];
+
+// TIEMPO
+tfin = 1000; dt = 1; t = 0:dt:tfin; // s
+
+// RESOLVER
+x = ode(xini,0,t,g);
+CA = x(1,:); CAfin = CA($)
+T = x(2,:); Tfin = T($)
+plot(CA,T,'bo-');
+
+a1 = gca;
+a1.data_bounds = [CAmin, Tmin ; CAmax,Tmax];
+\end{minted}
+
+\qs{RCMP-4}{En una baterÃ­a en serie de 2 reactores continuos mezcla perfecta de 1 L se llevan a cabo las siguientes reacciones quÃ­micas:
+
+	\begin{align*}
+		A + B & \rightarrow P \quad k_1 = 1 \text{ L/(mol}\cdot\text{s)}   \\
+		P + B & \rightarrow Q \quad k_2 = 0.1 \text{ L/(mol}\cdot\text{s)}
+	\end{align*}
+
+	Se dispone de 2 corrientes de alimentaciÃ³n de caudal 0.003 L/s y concentraciÃ³n 1 mol/L de los compuestos A y B, respectivamente. Mientras que el compuesto A se alimenta Ãºnicamente al primer reactor, el compuesto B se reparte entre ambos reactores.
+
+	\begin{enumerate}[label={\alph*)}]
+		\item Determinar el reparto Ã³ptimo de la corriente del compuesto B que maximiza la selectividad, definida como el cociente de concentraciones de los compuestos P y Q a la salida del segundo reactor en estado estacionario
+		\item Obtener la dinÃ¡mica para el reparto Ã³ptimo calculado en el apartado anterior
+	\end{enumerate}}
+
+\qs{RCMP-5}{Las reacciones quÃ­micas
+
+	2 A $\rightarrow$ B\\
+	Factor preexponencial = 1E16 L/(s$\cdot$mol)\\
+	EnergÃ­a de activaciÃ³n = 1.2E5 J/mol\\
+	EntalpÃ­a de reacciÃ³n = -1.13E5 J/mol\\[1ex]
+	A $\rightarrow$ C\\
+	Factor preexponencial = 9.5E12 s$^{-1}$\\
+	EnergÃ­a de activaciÃ³n = 8.8E4 J/mol\\
+	EntalpÃ­a de reacciÃ³n = -8.37E4 J/mol
+
+	se llevan a cabo en disoluciÃ³n acuosa en un reactor continuo mezcla perfecta de 0.1 L alimentado por una corriente de 0.01 L/s de 10 mol/L del compuesto A a 318 K. El reactor dispone de una camisa a 318 K capaz de refrigerarlo a 371 J/(s$\cdot$K).
+
+	\begin{enumerate}[label={\alph*)}]
+		\item Representar grÃ¡ficamente los balances de materia y energÃ­a en estado estacionario y localizar los posibles estados estacionarios
+		\item Obtener los posibles estados estacionarios resolviendo el correspondiente sistema de ecuaciones algebraicas y determinar su estabilidad de los estados estacionarios
+		\item Estudiar la dinÃ¡mica del reactor representando el plano de fases (concentraciÃ³n de A - temperatura) incluyendo el campo vectorial y trayectorias para diferentes condiciones iniciales
+	\end{enumerate}}
+
+
+
+
+\qs{RCMP-2020-O}{Las reacciones quÃ­micas\\
 	A $\rightarrow$ B\\
 	Factor preexponencial = 4.03E2 min$^{-1}$\\
-	Energía de activación = 5166 cal/mol\\
-	Entalpía de reacción = -1000 cal/mol
+	EnergÃ­a de activaciÃ³n = 5166 cal/mol\\
+	EntalpÃ­a de reacciÃ³n = -1000 cal/mol
 
 	B $\rightarrow$ C\\
 	Factor preexponencial = 2.41E7 min$^{-1}$\\
-	Energía de activación = 12319 cal/mol\\
-	Entalpía de reacción = -500 cal/mol
+	EnergÃ­a de activaciÃ³n = 12319 cal/mol\\
+	EntalpÃ­a de reacciÃ³n = -500 cal/mol
 
 	B $\rightarrow$ D\\
 	Factor preexponencial = 1.09E3 min$^{-1}$\\
-	Energía de activación = 4371 cal/mol\\
-	Entalpía de reacción = -2000 cal/mol
+	EnergÃ­a de activaciÃ³n = 4371 cal/mol\\
+	EntalpÃ­a de reacciÃ³n = -2000 cal/mol
 
-	Se llevan a cabo en disolución acuosa en un reactor continuo mezcla perfecta de 150 L alimentado por una corriente de 5L/min a 300 K con 1 mol/L  del compuesto A.
-	El reactor dispone de una camisa a 350 K capaz de transmitir calor a 700 cal/(min·K).
+	Se llevan a cabo en disoluciÃ³n acuosa en un reactor continuo mezcla perfecta de 150 L alimentado por una corriente de 5L/min a 300 K con 1 mol/L  del compuesto A.
+	El reactor dispone de una camisa a 350 K capaz de transmitir calor a 700 cal/(minÂ·K).
 
 	\begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
 		\item Creando un primer script
 		      \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\arabic*}]
 			      \item Obtener el estado estacionario del proceso
-			      \item Optimizar la temperatura de alimentación considerando que D es el compuesto deseado
+			      \item Optimizar la temperatura de alimentaciÃ³n considerando que D es el compuesto deseado
 		      \end{enumerate}
 		\item Creando un segundo script
 		      \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\arabic*}]
-			      \item Obtener la dinámica para una puesta en marcha en las mismas condiciones que la alimentación hasta alcanzar el estado estacionario
-			            definido por una variación de la temperatura inferior a 0.001 K/min
-			      \item Determinar durante cuánto tiempo predomina el compuesto A
-			      \item Localizar el momento de máxima concentración del compuesto B
-			      \item Localizar el momento en el que la concentración del compuesto C supera a la concentración del compuesto B
-			      \item Determinar durante cuánto tiempo la concentración del compuesto D está comprendida entre 0.2 y 0.6 mol/L
+			      \item Obtener la dinÃ¡mica para una puesta en marcha en las mismas condiciones que la alimentaciÃ³n hasta alcanzar el estado estacionario
+			            definido por una variaciÃ³n de la temperatura inferior a 0.001 K/min
+			      \item Determinar durante cuÃ¡nto tiempo predomina el compuesto A
+			      \item Localizar el momento de mÃ¡xima concentraciÃ³n del compuesto B
+			      \item Localizar el momento en el que la concentraciÃ³n del compuesto C supera a la concentraciÃ³n del compuesto B
+			      \item Determinar durante cuÃ¡nto tiempo la concentraciÃ³n del compuesto D estÃ¡ comprendida entre 0.2 y 0.6 mol/L
 			      \item Localizar el momento en el que la temperatura crece a 0.1 K/min
 		      \end{enumerate}
 	\end{enumerate}}
-
-\qs{RCMP-E-2023}{En un reactor continuo mezcla perfecta de 2000 L alimentado por una corriente de 1200 L/min de 2 mol/L del compuesto A  a 300 K se lleva a cabo la reacción química:
-
-	A $\rightarrow$ B
-
-	Factor preexponencial = 1.5E12 min$^{-1}$\\
-	Energía de activación = 87.8 Kj/mol\\
-	Entalpía de reacción = -293 Kj/mol\\
-	Densidad = 0.9 Kg/L\\
-	Capacidad calorífica = 3.34 KJ/(Kg·K)
-
-	El reactor dispone de una camisa capaz de refrigerar a 2510 Kj/(K·min) que se sitúa a 370 K durante los primeros 60 min de operación. A continuación, la camisa se sitúa permanentemente a 380 K.
-
-
-	\begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
-		\item Representar gráficamente los balances de materia y energía en estado estacionario y localizar los posibles estados estacionarios.
-		\item Para unas condiciones iniciales iguales a la alimentación, obtener la evolución temporal de la concentración de A y de la temperatura y representar la trayectoria en la gráfica anterior.
-	\end{enumerate}}
-\qs{¿RDMP-O-?}{Las siguientes reacciones químicas se llevan a cabo en un reactor discontinuo mezcla perfecta.
+\qs{RCMP-2021-O1}{Las siguientes reacciones quÃ­micas se llevan a cabo en un reactor continuo mezcla perfecta.
 
 	\begin{align*}
 		A      & \rightarrow X     & \quad k_1 & = 1\ \text{min}^{-1}                            \\
@@ -359,12 +706,125 @@ tambien se podria obtener un plano de fases solucionando el modelo con las condi
 		X      & \rightarrow E     & \quad k_4 & = 1\ \text{min}^{-1}
 	\end{align*}
 
-	Las concentraciones de los compuestos A y B (que están en exceso en todo momento) pueden considerarse constantes e iguales a 1.5 y 3 mol/L, respectivamente.
+	Las concentraciones de los compuestos A y B (que estÃ¡n en exceso en todo momento) pueden considerarse constantes e iguales a 1.5 y 3 mol/L, respectivamente.
 
 	\begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
-		\item Representar gráficamente los balances de materia para los compuestos X e Y.
+		\item Representar grÃ¡ficamente los balances de materia para los compuestos X e Y.
 		\item Obtener los posibles estados estacionarios y determinar su estabilidad.
 		\item Representar el campo vectorial.
-		\item Si el reactor se pone en marcha sin los compuestos X e Y, determinar durante cuánto tiempo las concentraciones de dichos compuestos son simultáneamente mayores de 2 mol/L.
+		\item Si el reactor se pone en marcha sin los compuestos X e Y, determinar durante cuÃ¡nto tiempo las concentraciones de dichos compuestos son simultÃ¡neamente mayores de 2 mol/L.
 	\end{enumerate}}
-\end{raggedright}
+
+
+\qs{RCMP-2021-O2}{La reacciÃ³n quÃ­mica
+
+	A $\Rightarrow$ B\\
+	Factor preexponencial = 1.5$\cdot 10^{12}$ min$^{-1}$\\
+	EnergÃ­a de activaciÃ³n = 8.5$\cdot 10^4$ J/mol\\
+	EntalpÃ­a de reacciÃ³n = -3.1$\cdot 10^5$ J/mol\\[1ex]
+
+	se lleva a cabo en un reactor continuo mezcla perfecta de 1000 L alimentado por una corriente de 1200 L/min con 2 mol/L del compuesto A a 290 K. El reactor dispone de una camisa de 100 L capaz de refrigerar a 2.5$\cdot 10^6$ J/(min$\cdot$K) y por la que circulan 600 L/min de agua que entran a 280 K.
+
+	Considerando que el reactor se pone en marcha libre de reactivo y que para la mezcla reaccionante pueden suponerse una densidad de 800 g/L y una capacidad calorÃ­fica de 3.5 J/(g$\cdot$K):
+
+	\begin{enumerate}[label={\alph*)}]
+		\item Estudiar la influencia de la temperatura inicial del reactor en la dinÃ¡mica del proceso
+		\item Para una temperatura inicial del reactor de 350 K, determinar cuÃ¡ndo la diferencia de temperatura entre el reactor y la camisa es menor de 5 K
+		\item Para una temperatura inicial del reactor de 420 K, determinar la diferencia de temperatura entre el reactor y la camisa mÃ­nima
+	\end{enumerate}
+}
+
+
+\qs{RCMP-2023-E}{El equilibrio quÃ­mico en disoluciÃ³n acuosa:
+
+	A + B  $\rightleftarrows$  C
+
+	Factor preexponencial de Arrhenius = 960 m$^3$/(molÂ·h)\\
+	Factor preexponencial de Van't Hoff = 1.1E-4 m$^3$/mol\\
+	EnergÃ­a de activaciÃ³n = 3.2E4 J/mol\\
+	EntalpÃ­a de reacciÃ³n = -1.7E5 J/mol
+
+	Se lleva a cabo en un reactor continuo mezcla perfecta de 1 m$^3$ alimentado por una corriente de 1 m$^3$/h con 1000 mol/m$^3$ del compuesto A
+	y 1500 mol/m$^3$ del compuesto B a 300 K. El reactor dispone de una camisa a 290 K capaz de transmitir calor a 9E5 J/(KÂ·h).
+
+	\begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
+		\item Empleando un sistema de ecuaciones algebraicas:
+		      \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\arabic*}]
+			      \item Obtener el estado estacionario usando la alimentaciÃ³n como soluciÃ³n supuesta
+			      \item Comprobar la estabilidad del estado estacionario calculado
+		      \end{enumerate}
+		\item Empleando un sistema de ecuaciones diferenciales:
+		      \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\arabic*}]
+			      \item Obtener la dinÃ¡mica tomando la alimentaciÃ³n como puesta en marcha
+			      \item Determinar cuÃ¡ndo la concentraciÃ³n del compuesto C supera a la del compuesto A y la del compuesto B
+			      \item Determinar cuÃ¡ndo se alcanza la temperatura mÃ¡xima
+		      \end{enumerate}
+	\end{enumerate}
+}
+
+
+\qs{RCMP-2023-O}{En un reactor continuo mezcla perfecta de 2000 L alimentado por una corriente de 1200 L/min de 2 mol/L del compuesto A  a 300 K se lleva a cabo la reacciÃ³n quÃ­mica:
+
+	A $\rightarrow$ B
+
+	Factor preexponencial = 1.5E12 min$^{-1}$\\
+	EnergÃ­a de activaciÃ³n = 87.8 Kj/mol\\
+	EntalpÃ­a de reacciÃ³n = -293 Kj/mol\\
+	Densidad = 0.9 Kg/L\\
+	Capacidad calorÃ­fica = 3.34 KJ/(KgÂ·K)
+
+	El reactor dispone de una camisa capaz de refrigerar a 2510 Kj/(KÂ·min) que se sitÃºa a 370 K durante los primeros 60 min de operaciÃ³n. A continuaciÃ³n, la camisa se sitÃºa permanentemente a 380 K.
+
+
+	\begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
+		\item Representar grÃ¡ficamente los balances de materia y energÃ­a en estado estacionario y localizar los posibles estados estacionarios.
+		\item Para unas condiciones iniciales iguales a la alimentaciÃ³n, obtener la evoluciÃ³n temporal de la concentraciÃ³n de A y de la temperatura y representar la trayectoria en la grÃ¡fica anterior.
+	\end{enumerate}}
+
+
+\qs{RCMP-2024-E}{En un reactor continuo mezcla perfecta, alimentado por 15 L/h a 300 K con 1 mol/L del compuesto A, se realizan las siguientes reacciones quÃ­micas en disoluciÃ³n acuosa:
+
+	A $\Rightarrow$ B\\
+	k = exp(6-2500/T) h$^{-1}$\\
+	EntalpÃ­a de reacciÃ³n = -35 kcal/mol\\[1ex]
+
+	B $\Rightarrow$ C\\
+	k = exp(15-6000/T) h$^{-1}$\\
+	EntalpÃ­a de reacciÃ³n = -18 kcal/mol\\[1ex]
+
+	El reactor dispone de una camisa capaz de refrigerar a 6 kcal/(h$\cdot$K) que se fija a 300 K hasta que la concentraciÃ³n del compuesto B se estabiliza a 0.5 mol/L. A continuaciÃ³n, la temperatura de la camisa sufre una perturbaciÃ³n por la que oscila entre 290 K y 310 K con periodos de 10 h.
+
+	Considerando una puesta en marcha en las mismas condiciones que la alimentaciÃ³n:
+
+	\begin{enumerate}[label={\alph*)}]
+		\item Obtener la dinÃ¡mica de la operaciÃ³n
+		\item Comentar los efectos de la perturbaciÃ³n
+	\end{enumerate}
+}
+
+
+\qs{RCMP-2024-E}{Las reacciones quÃ­micas en disoluciÃ³n acuosa:
+
+	A $\Rightarrow$ B\\
+	k = 18$\cdot$exp(-1800/T) min$^{-1}$\\
+	EntalpÃ­a de reacciÃ³n = -376 kJ/mol\\[1ex]
+
+	A $\Rightarrow$ C\\
+	k = 983$\cdot$exp(-3200/T) min$^{-1}$\\
+	EntalpÃ­a de reacciÃ³n = -334 kJ/mol\\[1ex]
+
+	B $\Rightarrow$ D\\
+	k = 2670$\cdot$exp(-3100/T) min$^{-1}$\\
+	EntalpÃ­a de reacciÃ³n = -209 kJ/mol\\[1ex]
+
+	transcurre durante 30 min en un reactor tanque agitado que se pone en marcha a 280 K con 1000 L del compuesto A a 0.5 mol/L. El reactor es alimentado por una corriente del compuesto B a 300 K cuyo caudal desciende linealmente desde 10 L/min iniciales hasta anularse al final de la operaciÃ³n.
+
+	Teniendo en cuenta que la reacciÃ³n termina con 450 moles del compuesto D:
+
+	\begin{enumerate}[label={\alph*)}]
+		\item Obtener la dinÃ¡mica
+		\item Localizar el nÃºmero mÃ¡ximo de moles de B
+		\item Determinar durante cuÃ¡nto tiempo la temperatura crece mÃ¡s de 2 K/min
+	\end{enumerate}
+}
+

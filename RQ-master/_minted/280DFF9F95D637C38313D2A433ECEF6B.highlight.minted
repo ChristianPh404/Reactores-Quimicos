@@ -1,0 +1,89 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{clear}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{clc}\PYG{p}{;}
+\PYG{c+c1}{// RCFP\PYGZhy{}2.sce}
+\PYG{c+c1}{// A + B =\PYGZgt{} 2 B}
+\PYG{c+c1}{// Isotermo}
+\PYG{c+c1}{// Estado estacionario}
+\PYG{c+c1}{// Recirculación}
+
+
+\PYG{c+c1}{// SISTEMA DE ECUACIONES DIFERENCIALES}
+\PYG{k}{function}\PYG{+w}{ }dxdtau\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nf}{f}\PYG{p}{(}tau,x\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Variables diferenciales}
+\PYG{+w}{    }\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Velocidad de reacción}
+\PYG{+w}{    }\PYG{n}{r}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{o}{*}\PYG{n}{CA}\PYG{o}{*}\PYG{n}{CB}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para A}
+\PYG{+w}{    }\PYG{c+c1}{// RDMP: d(V*CA)dt = \PYGZhy{}r*V}
+\PYG{+w}{    }\PYG{n}{dCAdtau}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{r}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para B}
+\PYG{+w}{    }\PYG{c+c1}{// RDMP: d(V*CB)dt = (\PYGZhy{}r + 2*r)*V}
+\PYG{+w}{    }\PYG{n}{dCBdtau}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{r}
+\PYG{+w}{    }\PYG{n}{dxdtau}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCAdtau}
+\PYG{+w}{    }\PYG{n}{dxdtau}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCBdtau}
+\PYG{k}{endfunction}
+
+\PYG{c+c1}{// CONSTANTES}
+\PYG{n}{F}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{  }\PYG{l+m+mi}{5}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L/h}
+\PYG{n}{L}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{  }\PYG{l+m+mi}{12}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dm}
+\PYG{n}{D}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dm}
+\PYG{n}{V}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+no}{\PYGZpc{}pi}\PYG{o}{/}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{D}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{L}\PYG{+w}{ }\PYG{c+c1}{// L}
+\PYG{n}{R}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{TAU}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{V}\PYG{o}{/}\PYG{p}{(}\PYG{n}{F}\PYG{o}{*}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{+}\PYG{n}{R}\PYG{p}{))}\PYG{+w}{  }\PYG{c+c1}{// h}
+\PYG{n}{k}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L/(mol·h)}
+\PYG{n}{CA0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{CB0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.01}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{x0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CA0}\PYG{p}{;}\PYG{n}{CB0}\PYG{p}{];}
+
+\PYG{c+c1}{// TIEMPO DE RESIDENCIA}
+\PYG{n}{N}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1000}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{ }\PYG{n}{tau}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{TAU}\PYG{o}{/}\PYG{n}{N}\PYG{p}{:}\PYG{n}{TAU}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// h}
+\PYG{n}{l}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{L}\PYG{o}{/}\PYG{n}{N}\PYG{p}{:}\PYG{n}{L}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dm}
+
+\PYG{c+c1}{// SOLUCIÓN SUPUESTA}
+\PYG{n}{CAsguess}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CBsguess}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.01}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{xsguess}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CAsguess}\PYG{p}{;}\PYG{n}{CBsguess}\PYG{p}{];}
+
+\PYG{n}{imax}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{20}\PYG{p}{;}
+\PYG{n}{tol}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1E\PYGZhy{}5}\PYG{p}{;}
+
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{imax}
+
+\PYG{+w}{    }\PYG{n}{i}
+
+\PYG{+w}{    }\PYG{c+c1}{// Balance al mezclador}
+\PYG{+w}{    }\PYG{c+c1}{// F*CA0 + F*R*CAsguess = F*(1+R)*CAe}
+\PYG{+w}{    }\PYG{c+c1}{// F*CB0 + F*R*CBsguess = F*(1+R)*CBe}
+\PYG{+w}{    }\PYG{c+c1}{// CAe = (CA0 + R*CAsguess)/(1+R)}
+\PYG{+w}{    }\PYG{c+c1}{// CBe = (CB0 + R*CBsguess)/(1+R)}
+\PYG{+w}{    }\PYG{n}{xe}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{x0}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{R}\PYG{o}{*}\PYG{n}{xsguess}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{+}\PYG{n}{R}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// RESOLVER}
+\PYG{+w}{    }\PYG{n}{x}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ode}\PYG{p}{(}\PYG{n}{xe}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{tau}\PYG{p}{,}\PYG{n}{f}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{xs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(:,}\PYGZdl{}\PYG{p}{)}
+
+\PYG{+w}{    }\PYG{n}{err}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{xs}\PYG{o}{\PYGZhy{}}\PYG{n}{xsguess}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{n}{err}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{tol}\PYG{+w}{ }\PYG{n+nb}{then}
+\PYG{+w}{        }\PYG{k}{break}
+\PYG{+w}{    }\PYG{k}{else}
+\PYG{+w}{        }\PYG{n}{xsguess}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{xs}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{end}
+
+\PYG{k}{end}
+
+\PYG{n}{i}\PYG{p}{;}
+\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CAs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{xs}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{CB}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CBs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{xs}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}la concentracion final de A es:\PYGZsq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{CAs}\PYG{p}{)),}\PYG{+w}{ }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}la concentracion final de B es:\PYGZsq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{n+nb}{string}\PYG{p}{(}\PYG{n}{CBs}\PYG{p}{));}
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{CA}\PYG{p}{,}\PYG{n}{l}\PYG{p}{,}\PYG{n}{CB}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}l\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CA\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}CB\PYGZsq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+no}{\PYGZpc{}f}\PYG{p}{);}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{R}\PYG{p}{,}\PYG{n}{CAs}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}o\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xgrid}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CAs\PYGZsq{}}\PYG{p}{);}
+
+
+\PYG{c+c1}{//! hacer una segunda parte donde busque el optimo con R aumentandola}
+\end{MintedVerbatim}
