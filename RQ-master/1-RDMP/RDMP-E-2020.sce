@@ -1,31 +1,12 @@
 clear; clc; 
 // RDMP-E-2020.sce
 
-function t_cruce = encontrar_cruces(C1, C2, t)
-    t_cruce = [];
-    diffC = C1 - C2;
-    for i = 1:(length(t)-1)
-        if diffC(i)*diffC(i+1) < 0 then
-            // interpolación lineal cruzando cero
-            t_int = t(i) - diffC(i) * (t(i+1) - t(i)) / (diffC(i+1) - diffC(i));
-            t_cruce = [t_cruce, t_int];
-        elseif diffC(i) == 0 then
-            // Evitar duplicados (ya que el if capturaría el i, el sgt i+1 no dispara porque <0 no se cumple y ==0 no ocurrirá salvo que se mantenga)
-            if i == 1 | diffC(i-1) <> 0 then
-                t_cruce = [t_cruce, t(i)];
-            end
-        end
-    end
-endfunction
-
-function dxdt = f(t, x, Fc_val)
+function dxdt = f(t, x)
     CA = x(1);
     CB = x(2);
     CC = x(3);
     T = x(4);
     TJ = x(5);
-    
-    R = 1.987; // cal/(mol K)
     
     // Cinética
     k1 = A1 * exp(-Ea1/(R*T));
@@ -75,6 +56,7 @@ rhoCp = 1000; // cal/(L K) (densidad 1 kg/L, Cp 1000 cal/(kg K))
 rhoCp_c = 1000; // cal/(L K)
 
 Tce = 280; // K
+R = 1.987; // cal/(mol K)
 
 // Condiciones Iniciales
 CA0 = 1; // mol/L
@@ -88,30 +70,39 @@ tfin = 120; // min
 dt = 0.5;
 t = 0:dt:tfin;
 
-Fc_nominal = 25; // L/min
+Fc_val = 25; // L/min (Caudal nominal)
 
 // --- Apartado A ---
-x_nom = ode(x0, 0, t, list(f, Fc_nominal));
+x = ode(x0,0,t,f);
 
-CA_nom = x_nom(1,:);
-CB_nom = x_nom(2,:);
-CC_nom = x_nom(3,:);
-T_nom  = x_nom(4,:);
-TJ_nom = x_nom(5,:);
+CA_nom = x(1,:);
+CB_nom = x(2,:);
+CC_nom = x(3,:);
+T_nom  = x(4,:);
+TJ_nom = x(5,:);
+[Tmax,IndTmax] = max(T_nom);
+tTmax = t(IndTmax);
+
+disp("=== Apartado A ===");
+disp("Tmax = " + string(Tmax) + " K en t = " + string(tTmax) + " min");
 
 // --- Apartado B ---
 disp("=== Apartado B: Cruces de concentraciones ===");
-cruce_AB = encontrar_cruces(CA_nom, CB_nom, t);
-disp("Cruce CA = CB aprox en t = " + string(cruce_AB) + " min");
-y_AB = interp1(t, CA_nom, cruce_AB, 'linear');
+[min_AB, idx_AB] = min(abs(CA_nom - CB_nom));
+t_cruce_AB = t(idx_AB);
+y_AB = CA_nom(idx_AB);
+disp("Cruce CA = CB aprox en t = " + string(t_cruce_AB) + " min");
 
-cruce_BC = encontrar_cruces(CB_nom, CC_nom, t);
-disp("Cruce CB = CC aprox en t = " + string(cruce_BC) + " min");
-y_BC = interp1(t, CB_nom, cruce_BC, 'linear');
+[min_BC, idx_BC] = min(abs(CB_nom - CC_nom));
+t_cruce_BC = t(idx_BC);
+y_BC = CB_nom(idx_BC);
+disp("Cruce CB = CC aprox en t = " + string(t_cruce_BC) + " min");
 
-cruce_AC = encontrar_cruces(CA_nom, CC_nom, t);
-disp("Cruce CA = CC aprox en t = " + string(cruce_AC) + " min");
-y_AC = interp1(t, CA_nom, cruce_AC, 'linear');
+[min_AC, idx_AC] = min(abs(CA_nom - CC_nom));
+t_cruce_AC = t(idx_AC);
+y_AC = CA_nom(idx_AC);
+disp("Cruce CA = CC aprox en t = " + string(t_cruce_AC) + " min");
+
 
 // --- Apartado C ---
 disp("=== Apartado C: Máxima transmisión de calor ===");
@@ -129,8 +120,8 @@ vec_CC_end = zeros(1, length(Fcs));
 vec_T_max = zeros(1, length(Fcs));
 
 for i = 1:length(Fcs)
-    Fc_test = Fcs(i);
-    sol = ode(x0, 0, t, list(f, Fc_test));
+    Fc_val = Fcs(i); // Cambiamos la variable global
+    sol = ode(x0, 0, t, f);
     
     CC_end_val = sol(3,$);
     T_max_val = max(sol(4,:));
@@ -139,7 +130,7 @@ for i = 1:length(Fcs)
     vec_T_max(i) = T_max_val;
     
     if (CC_end_val > 0.85) & (T_max_val < 310) then
-        Fcs_validos = [Fcs_validos, Fc_test];
+        Fcs_validos = [Fcs_validos, Fc_val];
     end
 end
 
@@ -149,12 +140,15 @@ else
     disp("Rango de caudales válido: [" + string(min(Fcs_validos)) + " , " + string(max(Fcs_validos)) + "] L/min");
 end
 
+// Restauramos el caudal nominal
+Fc_val = 25;
+
 // Gráficas
 scf(1); clf(1);
 plot(t, CA_nom, 'b-', t, CB_nom, 'm-', t, CC_nom, 'g-');
-plot(cruce_AB, y_AB, 'ko', 'MarkerSize', 5);
-plot(cruce_BC, y_BC, 'ko', 'MarkerSize', 5);
-plot(cruce_AC, y_AC, 'ko', 'MarkerSize', 5);
+plot(t_cruce_AB, y_AB, 'ko');
+plot(t_cruce_BC, y_BC, 'ko');
+plot(t_cruce_AC, y_AC, 'ko');
 xgrid; xlabel("Tiempo (min)"); ylabel("Concentración (mol/L)");
 legend("CA", "CB", "CC", "Cruces");
 

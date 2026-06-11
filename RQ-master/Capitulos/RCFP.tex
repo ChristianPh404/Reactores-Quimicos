@@ -1499,6 +1499,23 @@ xgrid; xlabel('R'); ylabel('CAs');
 //! hacer una segunda parte donde busque el optimo con R aumentandola 
 \end{minted}
 
+\qs{RCFP-2022-O}{El equilibrio químico
+
+	A + B  $\rightleftarrows$  C
+	
+	Factor preexponencial de Arrhenius = 1.8E8 m$^3$/(kmol$\cdot$h)\\
+	Factor preexponencial de Van't Hoff = 8.2E-22 m$^3$/kmol\\
+	Energía de activación = 6.2E4 kJ/kmol\\
+	Entalpía de reacción = -1.4E5 kJ/kmol
+
+	se lleva a cabo en disolución acuosa y régimen adiabático en 3 reactores tubulares en serie de 20 m de longitud y 0.25 m de diámetro entre los que se sitúan 2 enfriadores con una potencia de 1000 kJ/h.
+
+	\begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
+		\item Obtener el estado estacionario del proceso considerando que el primer reactor es alimentado por 0.05 m$^3$/h a 310 K de los compuestos A y B a concentración 2 kmol/m$^3$
+		\item Optimizar la potencia de enfriamiento
+	\end{enumerate}
+}
+
 \qs{RCFP-2024-O}{En un reactor continuo tubular 30 m de largo y 0.25 m de diámetro, alimentado por una corriente de 0.5 m$^3$/min con 1500 mol/m$^3$ del compuesto A a 310 K, se lleva a cabo una reacción química exotérmica con entalpía de reacción = -4.1E5 J/mol
 
 	A $\Rightarrow$ B\\
@@ -1513,3 +1530,35 @@ xgrid; xlabel('R'); ylabel('CAs');
 	\end{enumerate}
 }
 
+\qs{RCFP-UNK}{La siguiente reacción química se lleva a cabo en fase líquida acuosa en una batería de 2 reactores continuos flujo pistón en serie de 2500 L cada uno:
+
+	$A + B \rightleftarrows P$
+
+	$k_d = 2\text{E}8 \cdot \exp(-7500/T) \text{ L/(mol}\cdot\text{h)}$\\
+	$K_{eq} = 8\text{E-}22 \cdot \exp(16400/T) \text{ L/mol}$\\
+	$\Delta H = -150000 \text{ J/mol}$
+
+	Al primer reactor se alimentan 50 L/h a 300 K con 2 mol/L del compuesto A y 2 mol/L del compuesto B. Al segundo reactor se alimenta la salida del primero tras ser enfriada 25 K.
+
+	Empleando Scilab, estudiar el estado estacionario del proceso aportando script, salida en consola, gráficas y comentarios.
+}
+
+\qs{RCFP-UNK-2}{En un reactor tubular continuo de 2 dm de diámetro tiene lugar la reacción de equilibrio en fase líquida
+
+	A + B $\rightleftarrows$ C
+	
+	Factor preexponencial (Arrhenius) = 1.8E8 L/(mol$\cdot$h)\\
+	Factor preexponencial (van't Hoff) = 8E-22 L/mol\\
+	Energía de activación = 6.25E4 J/mol\\
+	Entalpía de reacción = -1.5E5 J/mol
+
+	El reactor es alimentado por 0.1 L/h de 1 mol A/h y 1 mol B/h a 310 K. Dispone de una camisa a 300 K que refrigera el reactor con un coeficiente de 10 J/(dm$^2\cdot$h$\cdot$K).
+
+	\begin{enumerate}[label={\alph*)}]
+		\item Considerando un tiempo de residencia de 1000 h, calcular el estado estacionario del reactor.
+		\item Localizar el 50\% de conversión.
+		\item Localizar la temperatura máxima.
+	\end{enumerate}
+
+	Asumir, cuando sea necesario, las propiedades físicas del agua.
+}

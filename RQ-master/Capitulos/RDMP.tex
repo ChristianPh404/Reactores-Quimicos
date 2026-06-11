@@ -383,7 +383,7 @@ Ademas hay que tener en cuenta que la constante de velocidad $k_i$ cumple la ecu
             \hyperlink{qs:RDMP-2}{RDMP-2}\newline \hyperlink{qs:RDMP-5}{RDMP-5}                                                                                                                             &
             \hyperlink{qs:RDMP-2022}{RDMP-2022}\newline \hyperlink{qs:RDMP-MULTI-2024-0}{RDMP-M-2024}                                                                                                       &
                                                                                                                                                                                                             &
-            \hyperlink{qs:RDMP-6}{RDMP-6}\newline \hyperlink{qs:RDMP-O-2018}{RDMP-O-2018}\newline \hyperlink{qs:RDMP-O-2022}{RDMP-O-2022}                                                                                                                                                                                                                         \\
+            \hyperlink{qs:RDMP-6}{RDMP-6}\newline \hyperlink{qs:RDMP-O-2018}{RDMP-O-2018}\newline \hyperlink{qs:RDMP-2021-O}{RDMP-2021-O}\newline \hyperlink{qs:RDMP-O-2022}{RDMP-O-2022}                                                                                                                                                                                                                         \\
             \hline
             \textbf{Encontrar extremo (Tmax, Tmin, o máx. conc)}                                                                                                                                            &
             \hyperlink{qs:RDMP-4}{RDMP-4}\newline \hyperlink{qs:RDMP-MULT-1}{RDMP-MULT-1}                                                                                                                   &
@@ -397,7 +397,7 @@ Ademas hay que tener en cuenta que la constante de velocidad $k_i$ cumple la ecu
                                                                                                                                                                                                             &
             \hyperlink{qs:RDMP-2022}{RDMP-2022}\newline \hyperlink{qs:RDMP-MULT-2}{RDMP-MULT-2}\newline \hyperlink{qs:RDMP-MULTI-2024-0}{RDMP-M-2024}\newline \hyperlink{qs:RDMP-MULTI-2025-O}{RDMP-M-2025} &
             \hyperlink{qs:RDMP-3b}{RDMP-3b}                                                                                                                                                                 &
-            \hyperlink{qs:RDMP-2023-O}{RDMP-2023-O}\newline \hyperlink{qs:RDMP-3a}{RDMP-3a}\newline \hyperlink{qs:RDMP-E-2020}{RDMP-E-2020}\newline \hyperlink{qs:RDMP-E-2022}{RDMP-E-2022}\newline \hyperlink{qs:RDMP-O-2018}{RDMP-O-2018}\newline \hyperlink{qs:RDMP-O-2022}{RDMP-O-2022}                                                                       \\
+            \hyperlink{qs:RDMP-2023-O}{RDMP-2023-O}\newline \hyperlink{qs:RDMP-3a}{RDMP-3a}\newline \hyperlink{qs:RDMP-E-2020}{RDMP-E-2020}\newline \hyperlink{qs:RDMP-2021-O}{RDMP-2021-O}\newline \hyperlink{qs:RDMP-E-2022}{RDMP-E-2022}\newline \hyperlink{qs:RDMP-O-2018}{RDMP-O-2018}\newline \hyperlink{qs:RDMP-O-2022}{RDMP-O-2022}                                                                       \\
             \hline
             \textbf{Localizar donde se igualan concentraciones}                                                                                                                                             &
                                                                                                                                                                                                             &
@@ -2566,6 +2566,28 @@ legend("Temperatura máxima", "Máximo permitido");
     \label{fig:RDMP_E_2020_3}
 \end{figure}
 \newpage
+
+\qs{RDMP-2021-O}{El equilibrio químico
+
+	A + B  $\rightleftarrows$  C
+	
+	Factor preexponencial de Arrhenius = 1.8E8 m$^3$/(kmol$\cdot$h)\\
+	Factor preexponencial de Van't Hoff = 2.5E-22 m$^3$/kmol\\
+	Energía de activación = 1.5E4 kcal/kmol\\
+	Entalpía de reacción = -3.5E4 kcal/kmol
+
+	se lleva a cabo durante 120 h en un reactor discontinuo mezcla perfecta de 1 m$^3$ que contiene inicialmente 1 kmol/m$^3$ del compuesto A y 1.5 kmol/m$^3$ del compuesto B a 320 K. El reactor dispone de una camisa de 5 m$^2$ a 300 K con un coeficiente global de transmisión de calor de 1.5 kcal/(m$^2\cdot$h$\cdot$K).
+
+	Considerando para la mezcla reaccionante una densidad de 1200 kg/m$^3$ y una capacidad calorífica de 0.9 kcal/(kg$\cdot$K):
+
+	\begin{enumerate}[label=\bfseries\scriptsize\protect\circled{\footnotesize\Alph*}]
+		\item Determinar las concentraciones intermedias y finales
+		\item Determinar durante cuánto tiempo la temperatura del reactor es mayor de 330 K
+		\item Optimizar la temperatura de la camisa
+	\end{enumerate}
+}
+
+\newpage
 \qs{RDMP-2022-E}{Las siguientes reacciones químicas se llevan a cabo en disolución acuosa durante 2.5h en un reactor discontinuo mezcla perfecta
     de 125 cm$^3$ que se pone en marcha a 310 K con 1 mmol/cm$^3$ del compuesto A:
 
@@ -3038,6 +3060,7 @@ xgrid; xlabel('H'); ylabel('Tmax');
         \label{fig:RDMP-2023_3}
     \end{subfigure}
 \end{figure}
+
 \qs{RDMP-2024-O}{Las siguientes reacciones químicas tienen lugar en disolución acuosa:
 
     \begin{align*}

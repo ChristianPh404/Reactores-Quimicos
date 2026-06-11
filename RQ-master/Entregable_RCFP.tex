@@ -1,0 +1,71 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{chemfig}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{adjustbox}
+\usepackage{pdflscape}
+\usepackage[backend=biber, style=apa]{biblatex}
+\usepackage{caption}
+\usepackage[spanish]{babel}
+\usepackage{lmodern}
+\usepackage{multirow}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc, decorations.pathreplacing, babel, shapes.geometric}
+\usepackage{amsmath}
+\usepackage{minted}
+\usepackage{csquotes}
+\usepackage{subcaption}
+\usepackage{float}
+\addto\captionsspanish{
+  \renewcommand{\contentsname}{Índice}
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{Pérez Hita, Christian (christianperez@correo.ugr.es)}
+\fancyfoot[C]{\thepage}
+
+\title{\Huge{ \includegraphics[width=0.4\textwidth]{escudo.png}\\[2cm] Prácticas de Scilab}\\Reactor Continuo de Flujo Pistón (RCFP)}
+\author{\huge{Christian Pérez Hita}}
+\date{}
+
+\begin{document}
+\spanishdeactivate{.<>}
+\maketitle
+
+\qs{Título del Ejercicio}{
+	Inserta aquí el enunciado del problema.
+}
+\solve{}
+
+\textbf{Código Scilab:}
+\begin{minted}[linenos, breaklines, frame=lines]{scilab}
+// Pega aquí tu código de Scilab
+clc; clear;
+
+\end{minted}
+
+\vspace{1em}
+\textbf{Gráficas de Resultados:}
+\begin{figure}[H]
+	\centering
+	% Descomenta la siguiente línea y cambia el nombre del archivo
+	% \includegraphics[width=0.7\linewidth]{Imagenes/grafica_rcfp.png}
+	\caption{Descripción de la gráfica generada por Scilab.}
+\end{figure}
+
+\begin{center}
+	\Res{\parbox{14cm}{\vspace{1em}\centering Pega aquí la salida de consola (los valores de disp) o la conclusión final del ejercicio.\vspace{1em}}}
+\end{center}
+
+\end{document}

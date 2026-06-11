@@ -70,28 +70,66 @@ scf(2); clf(2);
 plot(t,T,'r-',t,TJ,'g-');
 xgrid; xtitle('A.sce','t','T(rojo), TJ(verde)');
 
-scf(3); //clf(3);
-plot(Tini,CAee,'bo');
-xgrid; xtitle('A.sce','Tini','CAee');
-
-scf(4); //clf(4);
-plot(Tini,Tee,'ro',Tini,TJee,'go');
-xgrid; xtitle('A.sce','Tini','Tee(rojo), TJee(verde)');
+// Resultados del estado estacionario
+disp("=== Estado Estacionario (Tini = 350 K) ===");
+disp("CAee = " + string(CAee) + " mol/L");
+disp("Tee = " + string(Tee) + " K");
+disp("TJee = " + string(TJee) + " K");
 
 DT = T-TJ;
-scf(5); clf(5);
-plot(t,DT);
-xgrid; xtitle('A.sce','t','DT');
 
 // (b)
 DTobj = 5; // K
 indexDTobj = find(DT<DTobj,1);
-tDTobj = t(indexDTobj)
-TDTobj = T(indexDTobj)
-TJDTobj = TJ(indexDTobj)
-plot(tDTobj,DTobj,'ro');
+tDTobj = t(indexDTobj);
+TDTobj = T(indexDTobj);
+TJDTobj = TJ(indexDTobj);
+CAindex = CA(indexDTobj);
+
+disp('La diferencia de temperatura entre el reactor y la camisa es inferior a '+string(DTobj)+' K a partir del instante '+string(tDTobj)+' min')
+
 
 // (c)
-[DTmin,indexDTmin] = min(DT)
-tDTmin = t(indexDTmin)
-plot(tDTmin,DTmin,'ro');
+disp("=== Apartado C ===");
+Tini_c = 420; // K
+xini_c = [CAini; Tini_c; TJini];
+x_c = ode(xini_c, 0, t, f);
+
+T_c = x_c(2,:);
+TJ_c = x_c(3,:);
+DT_c = T_c - TJ_c;
+
+[DTmin, indexDTmin] = min(DT_c);
+tDTmin = t(indexDTmin);
+
+disp("Para Tini = 420 K, la diferencia de temperatura mínima es " + string(DTmin) + " K en t = " + string(tDTmin) + " min");
+
+scf(3); clf(3);
+plot(t, DT, 'g-'); // Tini = 350 K
+plot(t, DT_c, 'b-'); // Tini = 420 K
+plot(tDTobj, DTobj, 'mo'); // Punto apartado b
+plot(tDTmin, DTmin, 'ro'); // Punto apartado c
+xgrid; xtitle('Evolución de DT (T - TJ)', 't (min)', 'DT (K)');
+legend("Tini = 350 K", "Tini = 420 K", "Objetivo (b)", "Mínimo (c)", 4);
+//estudiando la influencia de la temperatura inicial
+disp("=== Influencia de Tini en la concentración y conversión final ===");
+Tini_inf = 200:5:400;
+CAee_inf = zeros(1, length(Tini_inf));
+XAee_inf = zeros(1, length(Tini_inf));
+
+for i = 1:length(Tini_inf)
+    xini_inf = [CAini; Tini_inf(i); TJini];
+    x_inf = ode(xini_inf, 0, t, f);
+    
+    CAee_val = x_inf(1, $); // Solo nos interesa CA
+    CAee_inf(i) = CAee_val;
+    XAee_inf(i) = (CA0 - CAee_val) / CA0; // Conversión de A
+end
+
+scf(6); clf(6);
+plot(Tini_inf, CAee_inf, 'b-');
+xgrid; xtitle('Influencia de Tini en la Concentración Final', 'Tini (K)', 'CAee (mol/L)');
+
+scf(7); clf(7);
+plot(Tini_inf, XAee_inf, 'r-');
+xgrid; xtitle('Influencia de Tini en la Conversión', 'Tini (K)', 'XA');

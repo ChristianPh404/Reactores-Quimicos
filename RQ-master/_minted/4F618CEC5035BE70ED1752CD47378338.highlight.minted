@@ -1,0 +1,119 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{clear}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{clc}\PYG{p}{;}
+\PYG{c+c1}{// RCMP\PYGZhy{}3.sce}
+\PYG{c+c1}{// A =\PYGZgt{} B}
+\PYG{c+c1}{// No adiabático}
+
+\PYG{c+c1}{// (a) Método. gráfico}
+
+\PYG{c+c1}{// CONSTANTES}
+\PYG{n}{CP}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.8}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// cal/(g*K)}
+\PYG{n}{RHO}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// g/L}
+\PYG{n}{F}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{20}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L/s}
+\PYG{n}{V}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1500}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// L}
+\PYG{n}{UA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1E4}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// cal/(K*s)}
+\PYG{n}{H}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{8E4}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// cal/mol}
+\PYG{n}{T0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{293}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{n}{TJ}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{283}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{n}{CA0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{2.5}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{k0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{2.5E10}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// 1/s}
+\PYG{n}{R}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.987}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// cal/(mol*K)}
+\PYG{n}{E}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{2.1E4}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// cal/mol}
+
+\PYG{c+c1}{// BALANCES}
+
+\PYG{n}{scf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{clf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}CA\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{CAmin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CAmax}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{;}
+\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}T\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{Tmin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{280}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{Tmax}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{500}\PYG{p}{;}
+
+\PYG{n}{dT}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{T}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Tmin}\PYG{p}{:}\PYG{n}{dT}\PYG{p}{:}\PYG{n}{Tmax}\PYG{p}{;}
+\PYG{n}{k}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k0}\PYG{o}{*}\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{E}\PYG{o}{./}\PYG{p}{(}\PYG{n}{R}\PYG{o}{*}\PYG{n}{T}\PYG{p}{));}\PYG{+w}{ }\PYG{c+c1}{// Ecuación de Arrhenius}
+\PYG{n}{Q}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{UA}\PYG{o}{*}\PYG{p}{(}\PYG{n}{T}\PYG{o}{\PYGZhy{}}\PYG{n}{TJ}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{// Calor transferido del reactor a la camisa}
+
+\PYG{c+c1}{// Balance de materia para A}
+\PYG{c+c1}{// d(V*CA)dt = F*CA0 \PYGZhy{} F*CA \PYGZhy{} r*V = F*CA0 \PYGZhy{} F*CA \PYGZhy{} k*CA*V = 0}
+\PYG{c+c1}{// F*CA0 = CA * (F + k*V)}
+\PYG{n}{CAbm}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{F}\PYG{o}{*}\PYG{n}{CA0}\PYG{o}{./}\PYG{p}{(}\PYG{n}{F}\PYG{o}{+}\PYG{n}{k}\PYG{o}{*}\PYG{n}{V}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{CAbm}\PYG{p}{,}\PYG{n}{T}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}r\PYGZhy{}\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c+c1}{// Balance de energía}
+\PYG{c+c1}{// d(V*RHO*CP*T)dt = F*RHO*CP*T0 \PYGZhy{} F*RHO*CP*T \PYGZhy{}H*r*V \PYGZhy{} Q = 0}
+\PYG{c+c1}{// F*RHO*CP*(T0\PYGZhy{}T) \PYGZhy{} Q = H*k*CA*V}
+\PYG{n}{CAbe}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{F}\PYG{o}{*}\PYG{n}{RHO}\PYG{o}{*}\PYG{n}{CP}\PYG{o}{*}\PYG{p}{(}\PYG{n}{T0}\PYG{o}{\PYGZhy{}}\PYG{n}{T}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{Q}\PYG{p}{).}\PYG{o}{/}\PYG{p}{(}\PYG{n}{H}\PYG{o}{*}\PYG{n}{k}\PYG{o}{*}\PYG{n}{V}\PYG{p}{);}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{CAbe}\PYG{p}{,}\PYG{n}{T}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}r\PYGZhy{}\PYGZhy{}\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c+c1}{// LOCALIZACIÓN DE ESTADOS ESTACIONARIOS}
+\PYG{n}{y}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CAbm}\PYG{o}{\PYGZhy{}}\PYG{n}{CAbe}\PYG{p}{;}
+\PYG{n}{indexy0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{find}\PYG{p}{(}\PYG{n}{y}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{:}\PYGZdl{}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{).}\PYG{o}{*}\PYG{n}{y}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{:}\PYGZdl{}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{n}{CAeeg}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CAbm}\PYG{p}{(}\PYG{n}{indexy0}\PYG{p}{)}
+\PYG{n}{Teeg}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{(}\PYG{n}{indexy0}\PYG{p}{)}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{CAeeg}\PYG{p}{,}\PYG{n}{Teeg}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c+c1}{// (b) Estado estacionario}
+
+\PYG{c+c1}{// SISTEMA DE ECUACIONES ALGEBRAICAS}
+\PYG{k}{function}\PYG{+w}{ }dxdt\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nf}{f}\PYG{p}{(}x\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Variables}
+\PYG{+w}{    }\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{T}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Ecuación de Arrhenius}
+\PYG{+w}{    }\PYG{n}{k}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k0}\PYG{o}{*}\PYG{n+nb}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{E}\PYG{o}{/}\PYG{p}{(}\PYG{n}{R}\PYG{o}{*}\PYG{n}{T}\PYG{p}{))}
+\PYG{+w}{    }\PYG{c+c1}{// Velocidad de reacción}
+\PYG{+w}{    }\PYG{n}{r}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{o}{*}\PYG{n}{CA}
+\PYG{+w}{    }\PYG{c+c1}{// Calor transferido del reactor a la camisa}
+\PYG{+w}{    }\PYG{n}{Q}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{UA}\PYG{o}{*}\PYG{p}{(}\PYG{n}{T}\PYG{o}{\PYGZhy{}}\PYG{n}{TJ}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de materia para A}
+\PYG{+w}{    }\PYG{c+c1}{//d(V*CA)dt = F*CA0 \PYGZhy{} F*CA \PYGZhy{} r*V}
+\PYG{+w}{    }\PYG{n}{dCAdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{F}\PYG{o}{*}\PYG{p}{(}\PYG{n}{CA0}\PYG{o}{\PYGZhy{}}\PYG{n}{CA}\PYG{p}{)}\PYG{o}{/}\PYG{n}{V}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{r}
+\PYG{+w}{    }\PYG{c+c1}{// Balance de energía}
+\PYG{+w}{    }\PYG{c+c1}{// d(V*RHO*CP*T)dt = F*RHO*CP*T0 \PYGZhy{} F*RHO*CP*T \PYGZhy{}H*r*V \PYGZhy{} Q}
+\PYG{+w}{    }\PYG{n}{dTdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{F}\PYG{o}{*}\PYG{p}{(}\PYG{n}{T0}\PYG{o}{\PYGZhy{}}\PYG{n}{T}\PYG{p}{)}\PYG{o}{/}\PYG{n}{V}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{H}\PYG{o}{*}\PYG{n}{r}\PYG{o}{/}\PYG{p}{(}\PYG{n}{RHO}\PYG{o}{*}\PYG{n}{CP}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{Q}\PYG{o}{/}\PYG{p}{(}\PYG{n}{V}\PYG{o}{*}\PYG{n}{RHO}\PYG{o}{*}\PYG{n}{CP}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c+c1}{// Derivadas}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dCAdt}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{dTdt}
+\PYG{k}{endfunction}
+
+\PYG{c+c1}{// SOLUCIÓN SUPUESTA}
+\PYG{n}{CAeeguess}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{2.5}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{Teeguess}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{293}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{n}{xeeguess}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CAeeguess}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{Teeguess}\PYG{p}{];}
+
+\PYG{c+c1}{// RESOLVER}
+\PYG{p}{[}\PYG{n}{xee}\PYG{p}{,}\PYG{n}{v}\PYG{p}{,}\PYG{n}{info}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{fsolve}\PYG{p}{(}\PYG{n}{xeeguess}\PYG{p}{,}\PYG{n}{f}\PYG{p}{)}
+\PYG{n}{CAee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{xee}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{Tee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{xee}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{CAee}\PYG{p}{,}\PYG{n}{Tee}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}x\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c+c1}{// ESTABILIDAD}
+\PYG{n}{J}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{numderivative}\PYG{p}{(}\PYG{n}{f}\PYG{p}{,}\PYG{n}{xee}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Jacobiano}
+\PYG{n}{lambda}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{spec}\PYG{p}{(}\PYG{n}{J}\PYG{p}{)}\PYG{+w}{  }\PYG{c+c1}{// Valores propios}
+\PYG{n}{Estable}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{and}\PYG{p}{(}\PYG{n+nb}{real}\PYG{p}{(}\PYG{n}{lambda}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}
+
+\PYG{c+c1}{// (c) Dinámica}
+
+\PYG{c+c1}{// SISTEMA DE ECUACIONES DIFERENCIALES}
+\PYG{k}{function}\PYG{+w}{ }dxdt\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nf}{g}\PYG{p}{(}t,x\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{dxdt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+\PYG{k}{endfunction}
+
+\PYG{c+c1}{// CAMPO VECTORIAL}
+\PYG{n}{dCA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dT}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}
+\PYG{n}{fchamp}\PYG{p}{(}\PYG{n}{g}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{CAmin}\PYG{p}{:}\PYG{n}{dCA}\PYG{p}{:}\PYG{n}{CAmax}\PYG{p}{,}\PYG{n}{Tmin}\PYG{p}{:}\PYG{n}{dT}\PYG{p}{:}\PYG{n}{Tmax}\PYG{p}{);}
+
+\PYG{c+c1}{// CONDICIONES INICIALES}
+\PYG{n}{CAini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mol/L}
+\PYG{n}{Tini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{280}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// K}
+\PYG{n}{xini}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CAini}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{Tini}\PYG{p}{];}
+
+\PYG{c+c1}{// TIEMPO}
+\PYG{n}{tfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1000}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dt}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{dt}\PYG{p}{:}\PYG{n}{tfin}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// s}
+
+\PYG{c+c1}{// RESOLVER}
+\PYG{n}{x}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ode}\PYG{p}{(}\PYG{n}{xini}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{g}\PYG{p}{);}
+\PYG{n}{CA}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{CAfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{CA}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+\PYG{n}{T}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,:);}\PYG{+w}{ }\PYG{n}{Tfin}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{(}\PYGZdl{}\PYG{p}{)}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{CA}\PYG{p}{,}\PYG{n}{T}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}bo\PYGZhy{}\PYGZsq{}}\PYG{p}{);}
+
+\PYG{n}{a1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{gca}\PYG{p}{;}
+\PYG{n}{a1}\PYG{p}{.}\PYG{n}{data\PYGZus{}bounds}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{CAmin}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Tmin}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{ }\PYG{n}{CAmax}\PYG{p}{,}\PYG{n}{Tmax}\PYG{p}{];}
+\end{MintedVerbatim}

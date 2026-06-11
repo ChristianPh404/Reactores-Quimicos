@@ -1,0 +1,94 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Análisis}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Caracterización de reactores}{4}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Reactores de mezcla perfecta}{5}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Reactor de flujo pistón}{5}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Modelización de reactores}{6}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Modelo de mezcla perfecta}{6}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Velocidades de reacción}{8}{subsection.1.2.2}%
+\contentsline {subsubsection}{Fase Líquida}{8}{section*.2}%
+\contentsline {subsubsection}{Fase Gaseosa}{9}{section*.3}%
+\contentsline {subsubsection}{Calor intercambiado con el exterior}{9}{section*.4}%
+\contentsline {chapter}{\numberline {2}Reactor Discontinuo Mezcla perfecta}{11}{chapter.2}%
+\contentsline {subsection}{\numberline {2.0.1}Isotermo}{11}{subsection.2.0.1}%
+\contentsline {subsection}{\numberline {2.0.2}Funcionamiento adiabático}{13}{subsection.2.0.2}%
+\contentsline {subsection}{\numberline {2.0.3}Funcionamiento no isotermo-no adiabático}{14}{subsection.2.0.3}%
+\contentsline {section}{\numberline {2.1}Progresión óptima de la temperatura}{15}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Problemas Practicos-Scilab}{19}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Reactor Continuo Mezcla Perfecta}{78}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introducción}{78}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Isotermo}{78}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Adiabático}{79}{section.3.3}%
+\contentsline {section}{\numberline {3.4}No isotermo}{80}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Multiplicidad de estados estacionarios}{80}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Plano de fases}{82}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Sistema isotermo-cinético de inhibición}{82}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Bateria de tanques en serie}{83}{subsection.3.4.4}%
+\contentsline {section}{\numberline {3.5}Scilab}{85}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Reactor Continuo Flujo Pistón}{96}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Isotermo}{96}{section.4.1}%
+\contentsline {section}{\numberline {4.2}adiabático}{97}{section.4.2}%
+\contentsline {section}{\numberline {4.3}no isotermo}{99}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Recirculación en el RCFP}{99}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Comparacion de funcionamiento de reactores}{101}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Graficos de Levenspiel}{102}{subsection.4.4.2}%
+\contentsline {subsubsection}{Cinética potencial}{103}{section*.45}%
+\contentsline {subsubsection}{Cinética de inhibición}{103}{section*.47}%
+\contentsline {section}{\numberline {4.5}Estado no estacionario}{104}{section.4.5}%
+\contentsline {subsubsection}{Simulación de tanques agitados o aproximación por segmentos finitos}{105}{section*.50}%
+\contentsline {section}{\numberline {4.6}Modelo de dispersión axial}{107}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Scilab}{108}{section.4.7}%
+\contentsline {chapter}{\numberline {5}Reactor semicontinuo mezcla perfecta}{120}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introducción}{120}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Relación entre selectividades en reactores}{121}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Reactor discontinuo mezcla perfecta}{121}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Reactor continuo flujo de pistón}{121}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Reactor continuo mezcla perfecta}{122}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Influencia del orden de reacción}{122}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Primer caso $n_1 < n_2$}{123}{subsection.5.3.1}%
+\contentsline {subsubsection}{Flujo pistón}{123}{section*.56}%
+\contentsline {subsubsection}{Reactor continuo mezcla perfecta}{123}{section*.57}%
+\contentsline {subsection}{\numberline {5.3.2}Segundo caso $n_1 > n_2$}{123}{subsection.5.3.2}%
+\contentsline {subsubsection}{Flujo pistón (RCFP)}{124}{section*.59}%
+\contentsline {subsubsection}{Reactor continuo mezcla perfecta (RCMP)}{125}{section*.60}%
+\contentsline {section}{\numberline {5.4}Reacciones múltiples}{126}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Reacciones en paralelo}{126}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Reacciones en serie}{127}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Reacciones en paralelo con dos reactivos}{129}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Estrategias para Cinéticas Complejas y Órdenes Intermedios}{131}{subsection.5.4.4}%
+\contentsline {subsubsection}{Análisis analítico del máximo}{131}{section*.62}%
+\contentsline {subsubsection}{Minimización del Volumen Total (Tren de Reactores)}{132}{section*.63}%
+\contentsline {section}{\numberline {5.5}Modelización del RSMP}{132}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Modelo Isotermo}{133}{subsection.5.5.1}%
+\contentsline {section}{\numberline {5.6}Scilab}{133}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Análisis de reactores reales}{135}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Funciones de Distribución de Edades}{135}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Aplicación de las funciones E y I}{137}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Reactor continuo flujo de pistón}{137}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Reactor continuo mezcla perfecta (RCMP)}{138}{subsection.6.2.2}%
+\contentsline {section}{\numberline {6.3}Experimentos estímulo-respuesta}{139}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Estímulo en escalón o estímulo continuo}{139}{subsection.6.3.1}%
+\contentsline {subsubsection}{Balance al estado no estacionario}{140}{section*.71}%
+\contentsline {subsection}{\numberline {6.3.2}Estímulo en impulso o estímulo instantáneo}{140}{subsection.6.3.2}%
+\contentsline {subsubsection}{Balance al estado no estacionario}{141}{section*.74}%
+\contentsline {subsection}{\numberline {6.3.3}Aplicación de la función E}{142}{subsection.6.3.3}%
+\contentsline {section}{\numberline {6.4}Modelización}{142}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Ecuaciones de Modelización según la Varianza}{143}{subsection.6.4.1}%
+\contentsline {section}{\numberline {6.5}Modelo de flujo segregado}{144}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Ejemplos practicos}{145}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Experimento en Escalón}{145}{subsection.6.6.1}%
+\contentsline {subsubsection}{Modelización}{146}{section*.78}%
+\contentsline {subsection}{\numberline {6.6.2}Experimento de Impulso}{148}{subsection.6.6.2}%
+\contentsline {subsubsection}{Modelización}{150}{section*.86}%
+\contentsline {subsection}{\numberline {6.6.3}Modelos Mezclados}{152}{subsection.6.6.3}%
+\contentsline {chapter}{\numberline {7}Examenes de teoría}{154}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Examen mayo 2020}{154}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Examen junio 2020}{162}{section.7.2}%
+\contentsline {section}{\numberline {7.3}2023}{169}{section.7.3}%
+\contentsline {section}{\numberline {7.4}2024}{180}{section.7.4}%
+\contentsline {section}{\numberline {7.5}??}{184}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Examen 2014}{192}{section.7.6}%
+\contentsline {section}{\numberline {7.7}Otros ejercicios de examen}{195}{section.7.7}%
+\contentsline {section}{\numberline {7.8}Examen 2017}{197}{section.7.8}%
+\contentsline {section}{\numberline {7.9}Examen (Año desconocido)}{200}{section.7.9}%
+\contentsfinish 

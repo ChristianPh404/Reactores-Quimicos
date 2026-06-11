@@ -2098,6 +2098,454 @@ Es decir, la concentración de A debe ser lo menor posible ($C_A \downarrow$). D
 		            \begin{equation*}
 			            s = \frac{r_1}{r_1+r_2} =  \frac{1}{1+\dfrac{r_2}{r_1}} = \frac{1}{1+\dfrac{k_2}{k_1}\cdot \dfrac{\cancel{C_A}}{C_A^{\cancel{2}}}}
 		            \end{equation*}
-		            es decir la concentración de A debe ser lo mayor posible $C_A \uparrow$ y por tanto es el caso de un flujo pistón (RCFP).
 	      \end{itemize}
+\end{enumerate}
+
+\newpage
+\section{Examen 2014}
+
+\qs{Ejercicio 1}{
+	La reacción reversible exotérmica $A \rightleftarrows B$ se quiere llevar a cabo en un reactor discontinuo mezcla perfecta. El sistema permite una temperatura máxima de trabajo $T_{\text{max}}$ que da lugar a una conversión de equilibrio inferior a la conversión deseada. ¿Cómo llevarías a cabo la reacción? Justifica tu respuesta.
+}
+\solve{}
+Para llevar a cabo una reacción reversible exotérmica maximizando la conversión final, se debe utilizar una \textbf{progresión óptima de la temperatura}. Como la reacción es exotérmica, la conversión de equilibrio disminuye al aumentar la temperatura, y por ello la $T_{\text{max}}$ permitida no logra la conversión deseada.
+
+La estrategia de operación en el reactor discontinuo mezcla perfecta (RDMP) sería la siguiente:
+\begin{enumerate}
+	\item \textbf{Fase inicial (Isoterma a $T_{\text{max}}$):} Iniciar la reacción a la temperatura máxima permitida por el sistema ($T_{\text{max}}$). Esto se hace porque, a bajas conversiones, la velocidad de reacción es mayor cuanto mayor es la temperatura (el efecto cinético supera al termodinámico), minimizando así el tiempo de reacción en esta primera etapa.
+	\item \textbf{Fase de enfriamiento (Progresión óptima):} Mantener la temperatura en $T_{\text{max}}$ hasta que la trayectoria de reacción alcance el lugar geométrico de las velocidades máximas (los puntos donde $\frac{\partial r_A}{\partial T} = 0$). A partir de ese momento, la temperatura debe disminuir progresivamente siguiendo exactamente dicha curva de velocidades máximas. A medida que la reacción avanza y la conversión se acerca al equilibrio, disminuir la temperatura desplaza el equilibrio hacia los productos, permitiendo alcanzar conversiones mayores sin penalizar en exceso la velocidad.
+	\item \textbf{Fin de reacción:} Continuar enfriando el reactor a lo largo de la curva de progresión óptima de la temperatura hasta lograr la conversión deseada, la cual se alcanzará a una temperatura forzosamente menor que $T_{\text{max}}$.
+\end{enumerate}
+
+\qs{Ejercicio 2}{
+	Para el sistema $A \rightarrow P$, $r_P = k_1 \cdot C_A$ donde P es el producto deseado, justifica en qué reactor continuo debería llevarse a cabo el proceso para que este sea más selectivo.
+	$A \rightarrow Q$, $r_Q = k_2 \cdot C_A^2$
+}
+\solve{}
+Para evaluar la selectividad, se define el rendimiento fraccional o selectividad instantánea del producto deseado ($P$) respecto a la reacción secundaria indeseada ($Q$):
+\begin{equation*}
+	s = \frac{r_P}{r_P + r_Q} = \frac{1}{1 + \frac{r_Q}{r_P}} = \frac{1}{1 + \frac{k_2 \cdot C_A^2}{k_1 \cdot C_A}} = \frac{1}{1 + \frac{k_2}{k_1} \cdot C_A}
+\end{equation*}
+
+De la ecuación anterior se deduce que para \textbf{maximizar la selectividad} del producto deseado ($s \rightarrow 1$), es necesario que el término $\frac{k_2}{k_1} \cdot C_A$ sea lo menor posible. Para ello, \textbf{la concentración del reactivo $A$ ($C_A$) debe ser lo menor posible} durante todo el transcurso de la reacción.
+
+Para mantener concentraciones de reactivo lo más bajas posibles en todo momento, el reactor idóneo es un \textbf{Reactor Continuo Mezcla Perfecta (RCMP)}. En un tanque agitado la concentración de los reactivos en el interior del reactor es inmediatamente igual a la concentración final de salida (la cual es baja si la conversión es alta), por lo que las reacciones ocurren siempre a la concentración mínima de $A$, favoreciendo así la cinética de orden inferior (formación de $P$, orden 1) frente a la de orden superior (formación de $Q$, orden 2).
+
+\begin{center}
+	\Res{\parbox{12cm}{\vspace{1em}\centering El reactor continuo en el que debería llevarse a cabo el proceso es un \textbf{Reactor Continuo Mezcla Perfecta (RCMP)}.\vspace{1em}}}
+\end{center}
+
+\qs{Ejercicio 3}{
+	Se sospecha que en un reactor continuo tanque agitado no funciona como un mezcla perfecta. El reactor tiene un volumen de 100 m$^3$ y el caudal de la corriente de alimentación es de 15 L/s. Tras un experimento estímulo-respuesta en impulso se obtuvo que $\int_0^\infty E \cdot d\theta = 0.67$ y que $\int_0^\infty \theta \cdot E \cdot d\theta = 0.50$. ¿Qué modelo utilizarías para la modificación del reactor? Para una reacción irreversible de 1$^{er}$ orden con $k = 1\text{ s}^{-1}$, determina la conversión de salida.
+}
+\solve{}
+En primer lugar, procedemos a analizar los datos del experimento de trazador:
+\begin{itemize}
+	\item \textbf{Caudal ($F$):} $15\text{ L/s} = 0.015\text{ m}^3\text{/s}$
+	\item \textbf{Volumen total ($V$):} $100\text{ m}^3$
+\end{itemize}
+
+El análisis de las integrales obtenidas (cuyos valores deberían ser exactamente igual a 1 en condiciones ideales y habiendo registrado el intervalo $0 \rightarrow \infty$ completo) permite caracterizar el tipo de comportamiento real:
+\begin{equation*}
+	\frac{F_a}{F} = \int_{0^+}^\infty E \cdot d\theta = 0.67 \implies F_a = 0.67 F \quad \text{y} \quad F_b = 0.33 F
+\end{equation*}
+Esto nos indica que un $67\%$ del flujo atraviesa la zona activa del reactor, mientras que el $33\%$ restante experimenta un \textbf{cortocircuito (bypass)}, es decir, sale directamente del reactor sin reaccionar (tiempo de residencia nulo).
+
+Por otro lado, se analiza el volumen activo:
+\begin{equation*}
+	\frac{V_a}{V} = \int_{0^+}^\infty \theta \cdot E \cdot d\theta = 0.50 \implies V_a = 0.50 V \quad \text{y} \quad V_m = 0.50 V
+\end{equation*}
+Ello significa que solo el $50\%$ del reactor es útil, mientras que el otro $50\%$ corresponde a un \textbf{volumen estancado (zonas muertas)}, donde el fluido queda atrapado y no se renueva con el flujo principal.
+
+\textbf{Modelo propuesto:}
+Se debe modelizar usando el modelo de flujos mezclados, es decir, un \textbf{Reactor mezcla perfecta con volumen muerto y cortocircuito}.
+
+\textbf{Cálculo de la conversión:}
+Para determinar la conversión final del reactor real se debe calcular primero el comportamiento en la zona activa (que funciona como un tanque agitado ideal) y posteriormente realizar un balance al punto de mezcla de salida con el cortocircuito.
+
+Las propiedades de la zona activa ($a$) son:
+\begin{align*}
+	F_a & = 0.67 \cdot F = 0.67 \cdot 15\text{ L/s} = 10.05\text{ L/s} = 0.01005\text{ m}^3\text{/s} \\
+	V_a & = 0.50 \cdot V = 0.50 \cdot 100\text{ m}^3 = 50\text{ m}^3
+\end{align*}
+
+El tiempo espacial de la zona activa es:
+\begin{equation*}
+	\tau_a = \frac{V_a}{F_a} = \frac{50\text{ m}^3}{0.01005\text{ m}^3\text{/s}} = 4975.12\text{ s}
+\end{equation*}
+
+Para una reacción irreversible de primer orden en un mezcla perfecta, la concentración de salida de la zona activa ($C_{Aa}$) se obtiene del balance de materia:
+\begin{equation*}
+	C_{Aa} = \frac{C_{A0}}{1 + k \tau_a} = \frac{C_{A0}}{1 + 1\text{ s}^{-1} \cdot 4975.12\text{ s}} = \frac{C_{A0}}{4976.12} \approx 0.000201 C_{A0}
+\end{equation*}
+Como el producto de $k\tau_a$ es elevadísimo, la conversión en la zona activa es prácticamente del $100\%$ y $C_{Aa} \approx 0$.
+
+Finalmente, la corriente que sale de la zona activa ($F_a$, con concentración $C_{Aa}$) se mezcla con la corriente de cortocircuito ($F_b$, con concentración inalterada $C_{A0}$):
+\begin{equation*}
+	F \cdot C_{A,out} = F_a \cdot C_{Aa} + F_b \cdot C_{A0} \implies C_{A,out} = \frac{F_a}{F} C_{Aa} + \frac{F_b}{F} C_{A0}
+\end{equation*}
+Sustituyendo los valores:
+\begin{equation*}
+	C_{A,out} = 0.67 \cdot \left(\frac{C_{A0}}{4976.12}\right) + 0.33 \cdot C_{A0} = C_{A0} \cdot (0.0001346 + 0.33) \approx 0.3301 C_{A0}
+\end{equation*}
+
+La conversión global de salida del reactor será:
+\begin{equation*}
+	X_A = \frac{C_{A0} - C_{A,out}}{C_{A0}} = 1 - 0.3301 = 0.6699
+\end{equation*}
+
+\begin{center}
+	\Res{\parbox{12cm}{\vspace{1em}\centering La conversión global de salida del reactor modificado es del \textbf{67.0\%}.\vspace{1em}}}
+\end{center}
+
+\newpage
+\section{Otros ejercicios de examen}
+
+\qs{Ejercicio 1}{
+	Para el sistema de reacciones competitivo (paralelo):
+	\begin{align*}
+		A + B \longrightarrow P & \qquad r_P = k_1 C_A^{n_1} C_B^{m_1} \qquad (P \text{ es el producto deseado}) \\
+		A + B \longrightarrow Q & \qquad r_Q = k_2 C_A^{n_2} C_B^{m_2}
+	\end{align*}
+	Responde justificadamente a las siguientes cuestiones:
+	\begin{enumerate}[label=\alph*)]
+		\item Condiciones experimentales que favorecen el proceso.
+		\item ¿Utilizarías el reactor semicontinuo en algún caso?
+		\item ¿En qué reactor continuo llevarías a cabo el proceso para que este sea más selectivo si $n_1 = 2$, $n_2 = 1$, $m_1 = 1$ y $m_2 = 1$? ¿Se podría alcanzar el 100\% de selectividad?
+	\end{enumerate}
+}
+\solve{}
+\begin{enumerate}[label=\alph*)]
+	\item La selectividad instantánea del producto deseado se define como $s = \frac{r_P}{r_P + r_Q} = \frac{1}{1 + \frac{r_Q}{r_P}}$. Para favorecer el proceso, es necesario maximizar esta selectividad, lo cual se logra minimizando el cociente de velocidades $\frac{r_Q}{r_P}$:
+	      \begin{equation*}
+		      \frac{r_Q}{r_P} = \frac{k_2 C_A^{n_2} C_B^{m_2}}{k_1 C_A^{n_1} C_B^{m_1}} = \frac{k_{20} \cdot e^{-E_{a2}/RT}}{k_{10} \cdot e^{-E_{a1}/RT}} \cdot C_A^{n_2 - n_1} \cdot C_B^{m_2 - m_1} = \frac{k_{20}}{k_{10}} e^{\frac{E_{a1}-E_{a2}}{RT}} C_A^{n_2 - n_1} C_B^{m_2 - m_1}
+	      \end{equation*}
+	      De aquí deducimos las condiciones experimentales óptimas para mantener $\frac{r_Q}{r_P}$ lo más bajo posible:
+	      \begin{itemize}
+		      \item \textbf{Temperatura:}
+		            \begin{itemize}
+			            \item Si $E_{a1} > E_{a2}$, el término exponencial es positivo, por lo que interesa una temperatura \textbf{alta} (para minimizar $e^{\Delta E/RT}$).
+			            \item Si $E_{a1} < E_{a2}$, el término exponencial es negativo, por lo que interesa una temperatura \textbf{baja}.
+		            \end{itemize}
+		      \item \textbf{Concentración del reactivo A ($C_A$):}
+		            \begin{itemize}
+			            \item Si $n_1 > n_2 \implies n_2 - n_1 < 0 \implies C_A$ está en el denominador, luego se requiere mantener una $C_A$ \textbf{alta}.
+			            \item Si $n_1 < n_2 \implies n_2 - n_1 > 0 \implies C_A$ está en el numerador, luego se requiere mantener una $C_A$ \textbf{baja}.
+		            \end{itemize}
+		      \item \textbf{Concentración del reactivo B ($C_B$):}
+		            \begin{itemize}
+			            \item Si $m_1 > m_2 \implies m_2 - m_1 < 0 \implies C_B$ está en el denominador, luego se requiere mantener una $C_B$ \textbf{alta}.
+			            \item Si $m_1 < m_2 \implies m_2 - m_1 > 0 \implies C_B$ está en el numerador, luego se requiere mantener una $C_B$ \textbf{baja}.
+		            \end{itemize}
+	      \end{itemize}
+
+	\item \textbf{Sí, un reactor semicontinuo es extremadamente útil} cuando las cinéticas nos exigen mantener la concentración de un reactivo alta y la del otro baja (es decir, en los casos $n_1 > n_2$ y $m_1 < m_2$, o viceversa, $n_1 < n_2$ y $m_1 > m_2$).
+	      \begin{itemize}
+		      \item Por ejemplo, si se requiere \textbf{$C_A$ alta y $C_B$ baja}, se cargaría inicialmente todo el volumen del reactivo A en el tanque (alta concentración) y se alimentaría lentamente un pequeño caudal de B (manteniéndose siempre a una concentración muy baja al consumirse instantáneamente).
+	      \end{itemize}
+
+	\item Sustituyendo los órdenes particulares proporcionados ($n_1 = 2$, $n_2 = 1$, $m_1 = 1$, $m_2 = 1$), el cociente de velocidades queda:
+	      \begin{equation*}
+		      \frac{r_Q}{r_P} = \frac{k_2 C_A^1 C_B^1}{k_1 C_A^2 C_B^1} = \frac{k_2}{k_1} C_A^{-1} = \frac{k_2}{k_1 \cdot C_A}
+	      \end{equation*}
+	      Para maximizar la selectividad ($s \rightarrow 1$) debemos hacer que este cociente sea lo más pequeño posible, lo que implica que \textbf{la concentración del reactivo A ($C_A$) debe ser lo mayor posible}. (Nótese que la concentración de B no influye).
+
+	      En operación continua, el reactor que mantiene la concentración de reactivo más elevada a lo largo de todo el proceso es el \textbf{Reactor Continuo de Flujo Pistón (RCFP)}. A diferencia del tanque agitado, donde la concentración cae drásticamente desde el primer instante hasta la concentración de salida, en el flujo pistón la concentración disminuye de forma progresiva partiendo de $C_{A0}$.
+
+	      Para que $s = 1$ (100\%), el término $\frac{k_2}{k_1 \cdot C_A}$ tendría que valer exactamente 0. Esto solo ocurre si $C_A \rightarrow \infty$ o si $k_2 = 0$. Como en la realidad no existen concentraciones infinitas y la reacción secundaria está ocurriendo ($k_2 \neq 0$), \textbf{no se puede alcanzar un 100\% estricto}. Solamente podemos acercarnos asintóticamente operando a concentraciones altísimas de A o con un enorme exceso.
+\end{enumerate}
+
+\newpage
+\section{Examen 2017}
+
+\qs{Ejercicio 1}{
+	Para la reacción irreversible exotérmica $A \rightarrow P$, en fase líquida, a partir de los balances al reactivo limitante y entálpico, determina las expresiones:
+	\begin{enumerate}[label=\alph*)]
+		\item tiempo de reacción y perfil de temperaturas en función de la conversión de reactivo limitante en un reactor discontinuo mezcla perfecta adiabático.
+		\item tiempo espacial en función de la conversión en un reactor continuo flujo de pistón con recirculación isotermo.
+	\end{enumerate}
+}
+\solve{}
+\begin{enumerate}[label=\alph*)]
+	\item \textbf{Reactor Discontinuo Mezcla Perfecta (RDMP) Adiabático:}
+	      Partimos de los balances de materia y energía para un RDMP.
+	      \begin{align*}
+		      \text{Materia:} & \quad \frac{dN_A}{dt} = -(-r_A) V \implies N_{A0} \frac{dX_A}{dt} = (-r_A) V \\
+		      \text{Energía:} & \quad \sum (N_i C_{pi}) \frac{dT}{dt} = (-\Delta H_r) (-r_A) V
+	      \end{align*}
+	      Dividiendo ambas expresiones para relacionar $T$ y $X_A$:
+	      \begin{equation*}
+		      \frac{\sum (N_i C_{pi}) \frac{dT}{dt}}{N_{A0} \frac{dX_A}{dt}} = \frac{(-\Delta H_r) (-r_A) V}{(-r_A) V} \implies \sum (N_i C_{pi}) dT = (-\Delta H_r) N_{A0} dX_A
+	      \end{equation*}
+	      Integrando desde las condiciones iniciales ($X_{A0}=0$, $T=T_0$) hasta unas condiciones dadas ($X_A, T$):
+	      \begin{equation*}
+		      T = T_0 + \frac{(-\Delta H_r) N_{A0}}{\sum (N_i C_{pi})} X_A = T_0 + \frac{-\Delta H_r}{\rho C_p} C_{A0} X_A
+	      \end{equation*}
+	      Esta es la expresión del \textbf{perfil de temperaturas} (relación lineal $T$ vs $X_A$).
+	      Para el \textbf{tiempo de reacción}, sustituimos esta relación en el balance de materia y despejamos $dt$:
+	      \begin{equation*}
+		      dt = \frac{N_{A0}}{(-r_A) V} dX_A = \frac{C_{A0}}{-r_A} dX_A \implies t = C_{A0} \int_0^{X_A} \frac{dX_A}{-r_A(X_A, T(X_A))}
+	      \end{equation*}
+
+	\item \textbf{Reactor Continuo Flujo Pistón (RCFP) con Recirculación Isotermo:}
+	      En un sistema con recirculación $R = F_R / F$, las condiciones a la entrada del reactor (punto de mezcla) vienen dadas por:
+	      \begin{equation*}
+		      X_{A,ent} = \frac{X_{A0} + R X_{A,sal}}{1 + R}
+	      \end{equation*}
+	      El balance de diseño para el flujo pistón sobre la mezcla que lo atraviesa (caudal total $F \cdot (1+R)$) es:
+	      \begin{equation*}
+		      \frac{V}{F(1+R)} = C_{A0} \int_{X_{A,ent}}^{X_{A,sal}} \frac{dX_A}{-r_A}
+	      \end{equation*}
+	      Sabiendo que el tiempo espacial se define referenciado al caudal de alimentación fresca ($F$), $\tau = V/F$:
+	      \begin{equation*}
+		      \tau = C_{A0} (1+R) \int_{\frac{X_{A0} + R X_{A,sal}}{1 + R}}^{X_{A,sal}} \frac{dX_A}{-r_A}
+	      \end{equation*}
+	      Esta es la expresión para el \textbf{tiempo espacial} en función de la conversión de salida $X_{A,sal}$ (al ser isotermo, $-r_A$ solo depende de $X_A$).
+\end{enumerate}
+
+\qs{Ejercicio 2}{
+	La reacción reversible exotérmica $A \rightleftarrows B$ se quiere llevar a cabo en un reactor discontinuo mezcla perfecta. El sistema permite una temperatura máxima de trabajo $T_{\text{max}}$ que da lugar a una conversión de equilibrio inferior a la conversión deseada. ¿Cómo llevarías a cabo la reacción? Justifica tu respuesta.
+}
+\solve{}
+Para llevar a cabo una reacción reversible exotérmica maximizando la conversión final, se debe utilizar una \textbf{progresión óptima de la temperatura}. Como la reacción es exotérmica, la conversión de equilibrio disminuye al aumentar la temperatura, y por ello la $T_{\text{max}}$ permitida no logra la conversión deseada.
+
+La estrategia de operación en el reactor discontinuo mezcla perfecta (RDMP) sería la siguiente:
+\begin{enumerate}
+	\item \textbf{Fase inicial (Isoterma a $T_{\text{max}}$):} Iniciar la reacción a la temperatura máxima permitida ($T_{\text{max}}$). A bajas conversiones, la velocidad de reacción es mayor cuanto mayor es la temperatura (el efecto cinético supera al termodinámico), minimizando así el tiempo de reacción en esta primera etapa.
+	\item \textbf{Fase de enfriamiento (Progresión óptima):} Mantener la temperatura en $T_{\text{max}}$ hasta alcanzar el lugar geométrico de las velocidades máximas (donde $\frac{\partial r_A}{\partial T} = 0$). A partir de ese momento, la temperatura debe disminuir progresivamente siguiendo exactamente dicha curva. Al enfriar el sistema conforme la reacción se acerca al equilibrio, éste se desplaza hacia los productos, permitiendo alcanzar conversiones mayores.
+	\item \textbf{Fin de reacción:} Continuar enfriando el reactor a lo largo de la curva de progresión óptima hasta lograr la conversión deseada, la cual se alcanzará forzosamente a una temperatura menor que $T_{\text{max}}$.
+\end{enumerate}
+
+\qs{Ejercicio 3}{
+	Para el sistema:
+	\begin{align*}
+		A + B \rightarrow P & \qquad r_P = k_1 C_A C_B^2 \qquad (\text{donde $P$ es el producto deseado}) \\
+		A + B \rightarrow Q & \qquad r_Q = k_2 C_A^2 C_B
+	\end{align*}
+	Discute la configuración y modo de operación del reactor en que debería llevarse a cabo el proceso para que éste sea más selectivo.
+}
+\solve{}
+Para maximizar la selectividad del producto deseado ($P$) frente al indeseado ($Q$), debemos minimizar la relación de velocidades $r_Q / r_P$:
+\begin{equation*}
+	\frac{r_Q}{r_P} = \frac{k_2 C_A^2 C_B}{k_1 C_A C_B^2} = \frac{k_2}{k_1} \frac{C_A}{C_B}
+\end{equation*}
+Para que este cociente sea lo más bajo posible, necesitamos que, durante todo el transcurso de la reacción:
+\begin{itemize}
+	\item La concentración del reactivo $A$ ($C_A$) sea lo \textbf{menor} posible.
+	\item La concentración del reactivo $B$ ($C_B$) sea lo \textbf{mayor} posible.
+\end{itemize}
+
+El modo de operación idóneo para lograr simultáneamente un reactivo en gran exceso y el otro en defecto es un \textbf{reactor semicontinuo}.
+\begin{center}
+	\Res{\parbox{12cm}{\vspace{1em}\centering Se debe utilizar un \textbf{Reactor Semicontinuo}. Se cargaría inicialmente todo el reactivo $B$ en el tanque para mantener su concentración alta, y se iría alimentando progresivamente un pequeño caudal del reactivo $A$ para que se consuma rápidamente y su concentración se mantenga baja.\vspace{1em}}}
+\end{center}
+
+\qs{Ejercicio 4}{
+	Los resultados de un experimento de estímulo instantáneo en un reactor químico continuo de 1000 L, con caudal de 100 L/min han sido:
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			T, min       & 0 & 5   & 10  & 15  & 20  & 25  & 30 \\ \hline
+			$C_B/C_{BR}$ & 0 & 0.6 & 0.4 & 0.3 & 0.2 & 0.1 & 0  \\ \hline
+		\end{tabular}
+	\end{center}
+	\begin{enumerate}[label=\alph*)]
+		\item De acuerdo con estos datos indica la modelización más adecuada para este reactor.
+		\item Este reactor se utilizará para llevar a cabo una reacción irreversible de primer orden en funcionamiento isotermo. A la temperatura de operación la constante cinética vale 0.1 min$^{-1}$. Determinar la conversión media de salida del reactor.
+	\end{enumerate}
+}
+\solve{}
+\begin{enumerate}[label=\alph*)]
+	\item Analizamos los datos del experimento de trazador:
+	      $V = 1000$ L, $F = 100$ L/min $\implies \tau = V/F = 10$ min.
+	      A partir de los datos, como la señal de inyección es un pulso ideal, la función $E(t)$ es proporcional a la respuesta $C_B(t)$. Normalizamos $C_B$ calculando su área mediante integración por trapecios:
+	      \begin{align*}
+		      \text{Área} = \int_0^{30} C \cdot dt \approx \sum \frac{C_i + C_{i+1}}{2} \Delta t & = 5 \cdot \left[ \frac{0+0.6}{2} + \frac{0.6+0.4}{2} + \frac{0.4+0.3}{2} + \frac{0.3+0.2}{2} + \frac{0.2+0.1}{2} + \frac{0.1+0}{2} \right] \\
+		                                                                                         & = 5 \cdot [ 0.3 + 0.5 + 0.35 + 0.25 + 0.15 + 0.05 ] = 5 \cdot 1.6 = 8.0 \text{ min}
+	      \end{align*}
+	      Por lo que la función de distribución de tiempos de residencia es $E(t) = \frac{C(t)}{\text{Área}} = \frac{C(t)}{8}$.
+	      Evaluamos ahora el tiempo medio de residencia del fluido que ha atravesado el reactor:
+	      \begin{align*}
+		      \bar{t} & = \int_0^{30} t \cdot E(t) \cdot dt = \frac{1}{8} \int_0^{30} t \cdot C(t) \cdot dt \approx \frac{5}{8} \left[ \frac{0+3}{2} + \frac{3+4}{2} + \frac{4+4.5}{2} + \frac{4.5+4}{2} + \frac{4+2.5}{2} + \frac{2.5+0}{2} \right] \\
+		              & = \frac{5}{8} [ 1.5 + 3.5 + 4.25 + 4.25 + 3.25 + 1.25 ] = \frac{5}{8} \cdot 18.0 = 11.25 \text{ min}
+	      \end{align*}
+	      Evaluamos la varianza $\sigma_t^2$:
+	      \begin{align*}
+		      \overline{t^2} & = \int_0^{30} t^2 \cdot E(t) \cdot dt = \frac{1}{8} \int_0^{30} t^2 \cdot C(t) \cdot dt \approx \frac{5}{8} [ 7.5 + 27.5 + 53.75 + 71.25 + 66.25 + 31.25 ] = \frac{5}{8} \cdot 257.5 = 160.94 \text{ min}^2 \\
+		      \sigma_t^2     & = \overline{t^2} - \bar{t}^2 = 160.94 - 11.25^2 = 160.94 - 126.56 = 34.38 \text{ min}^2
+	      \end{align*}
+	      Finalmente, evaluamos los valores adimensionales:
+	      $\sigma_\theta^2 = \frac{\sigma_t^2}{\bar{t}^2} = \frac{34.38}{126.56} = 0.27$.
+
+	      Como la varianza adimensional es baja (0.27), el fluido se desvía moderadamente del flujo pistón ideal ($\sigma_\theta^2 = 0$) y no llega a la mezcla perfecta ideal ($\sigma_\theta^2 = 1$).
+	      \textbf{La modelización más adecuada es usar el modelo de Dispersión Axial (con bajo grado de dispersión) o el modelo de Tanques en Serie.}
+	      Si usamos el modelo de Tanques en Serie, el número de tanques $n$ se calcula como:
+	      $n = \frac{1}{\sigma_\theta^2} = \frac{1}{0.27} \approx 3.7 \implies \text{Podemos modelizarlo como \textbf{4 tanques agitados en serie}}.$
+
+	\item Para predecir la conversión de salida de una reacción de primer orden con la distribución real usando el modelo de tanques en serie ($n=4$):
+	      El tiempo de paso de cada tanque es $\tau_i = \bar{t} / n = 11.25 / 4 = 2.8125$ min.
+	      Para una reacción de primer orden en una batería de tanques en serie, la concentración a la salida viene dada por:
+	      \begin{equation*}
+		      \frac{C_{Asal}}{C_{A0}} = \frac{1}{(1 + k \tau_i)^n} = \frac{1}{(1 + 0.1 \cdot 2.8125)^4} = \frac{1}{(1.28125)^4} = \frac{1}{2.695} \approx 0.371
+	      \end{equation*}
+	      Por tanto, la conversión de salida es:
+	      \begin{equation*}
+		      X_A = 1 - \frac{C_{Asal}}{C_{A0}} = 1 - 0.371 = 0.629
+	      \end{equation*}
+
+	      \textit{Nota: Si aplicásemos directamente el macromodelado de segregación total integrando la exponencial con la RTD discreta, se obtendría un resultado numéricamente muy similar (aprox 63\%).}
+\end{enumerate}
+
+\newpage
+\section{Examen (Año desconocido)}
+
+\qs{Ejercicio 1}{
+	Justifica la configuración y modo de operación del reactor donde llevarías a cabo las siguientes reacciones elementales. Considera como objetivo minimizar el volumen de reacción o maximizar la selectividad del proceso.
+	\begin{enumerate}[label=\alph*)]
+		\item $A \rightarrow P$
+		\item $A + 2B \rightarrow P$ \newline $2A + B \rightarrow Q$
+		\item $A \rightleftarrows B$, proceso endotérmico
+		\item $A \rightleftarrows B$, proceso exotérmico
+		\item $A \rightarrow P$, cinética de inhibición $r_A = k \cdot C_A / (1 + C_A)^2$
+	\end{enumerate}
+}
+\solve{}
+\begin{enumerate}[label=\alph*)]
+	\item Para una reacción sencilla donde la velocidad decae fuertemente con la concentración ($n>0$), el reactor óptimo para minimizar el volumen es un \textbf{Reactor Continuo de Flujo Pistón (RCFP)}. Operación isotérmica a la temperatura máxima permitida.
+	\item Reacción competitiva donde $P$ es el producto deseado. $r_P / r_Q = \frac{k_1 C_A C_B^2}{k_2 C_A^2 C_B} = \frac{k_1 C_B}{k_2 C_A}$. Para maximizar esta selectividad requerimos baja concentración de $A$ y alta concentración de $B$. Operaríamos en un \textbf{Reactor Semicontinuo}, partiendo de un tanque lleno de $B$ y alimentando $A$ progresivamente.
+	\item Reversible endotérmica. La conversión de equilibrio aumenta con la temperatura. Además, la cinética es más rápida a mayor temperatura. Para minimizar el volumen y maximizar la conversión, la operación ideal es \textbf{isotérmica a la máxima temperatura permitida ($T_{\text{max}}$)} en un \textbf{RCFP} (o una serie de reactores isotermos con calefactores intermedios).
+	\item Reversible exotérmica. Como justificado en otros exámenes, el diseño óptimo utiliza una \textbf{Progresión óptima de la temperatura}. Se inicia a $T_{\text{max}}$ para tener alta velocidad y conforme se acerca al equilibrio se va enfriando para sortear la restricción termodinámica. Se operaría en un \textbf{Reactor Discontinuo} o en varios adiabáticos con refrigeración intermedia.
+	\item Cinética de inhibición (autocatalítica aparente). La velocidad aumenta, pasa por un máximo y luego cae (curva de $1/(-r_A)$ en forma de U). El mínimo volumen se lograría usando un \textbf{RCMP} hasta la conversión que proporcione la máxima velocidad (el mínimo de la U) y acoplando un \textbf{RCFP} a continuación para la conversión restante. También es viable un RCFP con recirculación optimizada.
+\end{enumerate}
+
+\qs{Ejercicio 2}{
+	En una planta química se tienen 3 unidades de reacción de 10 m$^3$ trabajando en continuo con un caudal de 100 L/s. Tras un experimento estímulo-respuesta en impulso se obtiene:
+	\begin{itemize}
+		\item \textbf{Reactor 1:} $\int_0^\infty E \cdot d\theta = 1$, $\int_0^\infty \theta \cdot E \cdot d\theta = 1$ y $\int_0^\infty \theta^2 \cdot E \cdot d\theta = \frac{5}{4}$
+		\item \textbf{Reactor 2:} $\int_0^\infty E \cdot d\theta = 0.85$, $\int_0^\infty \theta \cdot E \cdot d\theta = 0.90$
+		\item \textbf{Reactor 3:} $\int_0^\infty E \cdot d\theta = 1$, $\int_0^\infty \theta \cdot E \cdot d\theta = 1$ y $\int_0^\infty \theta^2 \cdot E \cdot d\theta = \frac{7}{4}$
+	\end{itemize}
+	Desarrolla y justifica el modelo a emplear en cada reactor para funcionamiento isotermo. Considera la reacción irreversible en fase líquida $A \rightarrow P$, de segundo orden.
+}
+\solve{}
+Analizamos los modelos de dispersión o de comportamiento no ideal para cada caso evaluando los momentos de la distribución de las edades (RTD) adimensionalizados con el tiempo espacial teórico $\tau = 10\text{ m}^3 / 0.1\text{ m}^3/\text{s} = 100$ s.
+
+\begin{itemize}
+	\item \textbf{Reactor 1:}
+	      Verificamos las integrales: $\bar{\theta} = 1$ y $\overline{\theta^2} = 1.25$.
+	      Varianza: $\sigma_\theta^2 = \overline{\theta^2} - \bar{\theta}^2 = 1.25 - 1^2 = 0.25$.
+	      Como $0 < 0.25 < 1$, es un comportamiento intermedio con baja dispersión.
+	      \textbf{Modelo justificado:} \textbf{Modelo de Tanques en Serie}. El número de tanques se calcula como $n = 1/\sigma_\theta^2 = 1/0.25 = 4$.
+	      Se resuelve modelizando 4 reactores de mezcla perfecta en serie, resolviendo analíticamente la cascada acoplada para una cinética de segundo orden o iterativamente.
+
+	\item \textbf{Reactor 2:}
+	      Verificamos las integrales: $\int E d\theta = 0.85 \neq 1$. Al ser menor a 1, un $15\%$ del fluido sufre \textbf{cortocircuito (bypass)}.
+	      Evaluamos el volumen activo: $\int \theta E d\theta = 0.90 \neq 1$. Esto indica un \textbf{volumen muerto} del $10\%$.
+	      \textbf{Modelo justificado:} \textbf{Reactor Mezcla Perfecta (o modelo de flujos mezclados) con Bypass y Volumen estancado}.
+	      Se resuelve dividiendo el flujo, calculando la reacción de segundo orden solo sobre el volumen activo ($90\%$) con el flujo activo ($85\%$) y posteriormente mezclando la salida con el caudal de cortocircuito puro.
+
+	\item \textbf{Reactor 3:}
+	      Verificamos las integrales: $\bar{\theta} = 1$ y $\overline{\theta^2} = 1.75$.
+	      Varianza: $\sigma_\theta^2 = 1.75 - 1^2 = 0.75$.
+	      Esta varianza es alta y muy cercana a 1 (mezcla perfecta ideal).
+	      Para el RCFP con recirculación, la varianza empírica es aprox. $\sigma_\theta^2 \approx \frac{R}{R+1}$. Por tanto, $0.75 = \frac{R}{R+1} \implies R = 3$. Se resuelve integrando la ecuación de diseño para flujo pistón empleando un caudal modificado por la relación de recirculación calculada.
+\end{itemize}
+
+\qs{Ejercicio 3}{
+	En un reactor continuo de $100\text{ L}$ alimentado con un caudal de $10\text{ L/min}$ ($C_{A0} = 2\text{ M}$), se lleva a cabo una reacción de primer orden con constante cinética $k = 0.304\text{ min}^{-1}$.
+
+	Para caracterizar el flujo real en el interior del reactor, se realiza un experimento estímulo-respuesta en impulso con un trazador inerte $B$, obteniéndose los siguientes resultados de concentración a la salida:
+
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			$t$ (min) & 1 & 2  & 3  & 4  & 5  & 6  & 8  & 10 & 15 & 20 & 30 & 41 & 52 & 67 \\ \hline
+			$C_B$     & 9 & 57 & 81 & 90 & 90 & 86 & 77 & 67 & 47 & 32 & 15 & 7  & 3  & 1  \\ \hline
+		\end{tabular}
+	\end{center}
+
+	De acuerdo con estos datos:
+	\begin{enumerate}[label=\alph*)]
+		\item Calcula el tiempo medio de residencia real y discute si existen anomalías de flujo (bypass o volúmenes muertos) comparándolo con el tiempo espacial teórico.
+		\item Determina la conversión media a la salida del reactor.
+	\end{enumerate}
+}
+\solve{}
+\begin{enumerate}[label=\alph*)]
+	\item A partir de los datos, calculamos el área bajo la curva mediante integración numérica (método de los trapecios) para poder normalizar la función $E(t) = C_B(t) / \text{Área}$:
+	      \begin{equation*}
+		      \text{Área} = \int_0^\infty C_B(t) \cdot dt \approx 1596 \text{ M}\cdot\text{min}
+	      \end{equation*}
+	      El tiempo medio de residencia real del fluido en el interior del reactor es el primer momento de la distribución:
+	      \begin{equation*}
+		      \bar{t} = \int_0^\infty t \cdot E(t) \cdot dt = \frac{\int_0^\infty t \cdot C_B(t) \cdot dt}{\int_0^\infty C_B(t) \cdot dt} \approx \frac{24260}{1596} = 15.20 \text{ min}
+	      \end{equation*}
+	      Por otra parte, el tiempo espacial teórico del reactor (tiempo de residencia para un flujo ideal sin anomalías) es:
+	      \begin{equation*}
+		      \tau = \frac{V}{F} = \frac{100\text{ L}}{10\text{ L/min}} = 10.0 \text{ min}
+	      \end{equation*}
+	      Como el tiempo medio de residencia real es marcadamente superior al tiempo teórico ($\bar{t} > \tau$), esto evidencia la presencia de anomalías. Normalmente, $\bar{t} < \tau$ indica zonas muertas (volumen estancado). Que el tiempo medido sea mayor suele estar asociado a interacciones físico-químicas del trazador con las paredes (adsorción), arrastre, errores de calibración en la medida del caudal $F$ o en el volumen real disponible del sistema.
+
+	\item Para predecir la conversión de una reacción de primer orden con cualquier patrón de flujo macromixto, empleamos el \textbf{modelo de segregación total}. La concentración media a la salida es la media ponderada por $E(t)$ de todos los elementos de fluido que operan como reactores discontinuos (donde para orden 1, $C_{A}/C_{A0} = e^{-kt}$):
+	      \begin{equation*}
+		      \bar{X}_A = 1 - \frac{\bar{C}_A}{C_{A0}} = 1 - \int_0^\infty e^{-kt} E(t) \cdot dt = 1 - \frac{1}{\text{Área}} \int_0^\infty e^{-kt} \cdot C_B(t) \cdot dt
+	      \end{equation*}
+	      Aplicando integración numérica por el método de los trapecios a la función $e^{-0.304 t} \cdot C_B(t)$:
+	      \begin{equation*}
+		      \int_0^\infty e^{-0.304 t} \cdot C_B(t) \cdot dt \approx 165.1 \text{ M}\cdot\text{min}
+	      \end{equation*}
+	      Por tanto, la conversión media de salida es:
+	      \begin{equation*}
+		      \bar{X}_A = 1 - \frac{165.1}{1596} = 1 - 0.103 = 0.897
+	      \end{equation*}
+	      \begin{center}
+		      \Res{\parbox{12cm}{\vspace{1em}\centering La conversión media de salida que se alcanzará en el reactor es del \textbf{89.7\%}.\vspace{1em}}}
+	      \end{center}
+\end{enumerate}
+
+\qs{Ejercicio 4}{
+	Se ha realizado un experimento estímulo-respuesta en un reactor continuo. Se sabe que el reactor tiene un volumen de $100\text{ L}$ y es alimentado con un caudal de $15\text{ L/h}$. Tras medir la respuesta del trazador y normalizar la curva, se obtienen las siguientes integrales:
+	\begin{equation*}
+		\int_0^\infty E(\theta) \cdot d\theta = 0.67 \qquad \int_0^\infty \theta \cdot E(\theta) \cdot d\theta = 0.70
+	\end{equation*}
+	\begin{enumerate}[label=\alph*)]
+		\item ¿Cuál sería el mejor modelo para representar este reactor?
+		\item Si en el reactor tiene lugar una reacción de primer orden en condiciones isotermas con una constante cinética $k = 1\text{ s}^{-1}$, ¿cuál será la conversión alcanzada a la salida?
+	\end{enumerate}
+}
+\solve{}
+\begin{enumerate}[label=\alph*)]
+	\item Analizamos los momentos de la distribución adimensionalizada (donde $\theta = t/\tau$ y $\tau = V/F_0 = 100/15 = 6.67\text{ h}$).
+	      \begin{itemize}
+		      \item La integral $\int_0^\infty E(\theta) d\theta$ representa la fracción de caudal activo que atraviesa el reactor. Como su valor es $0.67 \neq 1$, existe un \textbf{cortocircuito (bypass)} del $33\%$ ($1 - 0.67 = 0.33$).
+		      \item La integral $\int_0^\infty \theta E(\theta) d\theta$ representa el volumen activo del sistema. Al valer $0.70 \neq 1$, deducimos que existe un \textbf{volumen muerto (estancado)} del $30\%$ ($1 - 0.70 = 0.30$).
+	      \end{itemize}
+	      Dado que no se proporcionan varianzas que justifiquen dispersión, el \textbf{mejor modelo} es el de un \textbf{Reactor Continuo Mezcla Perfecta (RCMP) con Bypass y Volumen Muerto}.
+
+	\item Para calcular la conversión global, primero determinamos las condiciones de la zona activa del reactor (el volumen de mezcla perfecta real por donde pasa el fluido).
+	      \begin{align*}
+		      V_a & = 0.70 \cdot V = 0.70 \cdot 100 = 70\text{ L}       \\
+		      F_a & = 0.67 \cdot F_0 = 0.67 \cdot 15 = 10.05\text{ L/h}
+	      \end{align*}
+	      El tiempo de residencia en la zona activa es:
+	      \begin{equation*}
+		      \tau_a = \frac{V_a}{F_a} = \frac{70}{10.05} = 6.965\text{ h} = 25074\text{ s}
+	      \end{equation*}
+	      Como la reacción ocurre exclusivamente en la zona activa y es de primer orden, la conversión en el interior del volumen activo ($X_{A,a}$) en el tanque agitado se obtiene de la ecuación de diseño $X_A = \frac{k\tau_a}{1+k\tau_a}$:
+	      \begin{equation*}
+		      X_{A,a} = \frac{1\text{ s}^{-1} \cdot 25074\text{ s}}{1 + 1\text{ s}^{-1} \cdot 25074\text{ s}} = \frac{25074}{25075} \approx 0.99996 \approx 1
+	      \end{equation*}
+	      Prácticamente todo el reactivo que entra a la zona activa reacciona. Sin embargo, la corriente de salida final es la mezcla del efluente activo y la corriente de bypass (cortocircuito), la cual no ha reaccionado nada ($X_{A,b} = 0$, $C_{A,b} = C_{A0}$).
+
+	      Realizando un balance en el punto de mezcla a la salida:
+	      \begin{equation*}
+		      C_{A,salida} \cdot F_0 = C_{A,a} \cdot F_a + C_{A0} \cdot (1-0.67) F_0 \implies C_{A,salida} = \frac{0 \cdot F_a + C_{A0} \cdot 0.33 F_0}{F_0} = 0.33 C_{A0}
+	      \end{equation*}
+	      La conversión global del reactor será:
+	      \begin{equation*}
+		      X_A = 1 - \frac{C_{A,salida}}{C_{A0}} = 1 - 0.33 = 0.67
+	      \end{equation*}
+	      \begin{center}
+		      \Res{\parbox{14cm}{\vspace{1em}\centering La conversión a la salida es del \textbf{67\%}. Está completamente limitada por el bypass, ya que por muy rápida que sea la cinética ($k=1\text{ s}^{-1}$), el 33\% del fluido sale sin reaccionar.\vspace{1em}}}
+	      \end{center}
 \end{enumerate}
